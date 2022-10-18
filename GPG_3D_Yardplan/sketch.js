@@ -67,14 +67,15 @@ function setup() {
   stroke(0)
   ambientMaterial(40,40,200)
   textSize(16);
+  debugMode()
 
 }
 function draw() {
   background(200);
-  push()
-  fill(0)
-  cylinder(20, 20);
-  pop()
+  // push()
+  // fill(0)
+  // cylinder(20, 20);
+  // pop()
   orbitControl();
   for(let i =0; i<cArray.length; i++){
     push();

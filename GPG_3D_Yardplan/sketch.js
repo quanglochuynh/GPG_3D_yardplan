@@ -68,16 +68,19 @@ function setup() {
   normalMaterial();
   init()
   stroke(0)
-  ambientMaterial(40,40,200)
+  // ambientMaterial(40,40,200)
   textSize(16);
   // debugMode()
   textAlign(CENTER)
 }
 function draw() {
-  background(225);
-  orbitControl();
+  background(240);
+  orbitControl(2,2,0.5);
   for(let i =0; i<cArray.length; i++){
     push();
+    // pointLight(255,255,255,1000,1000,200)
+
+    shininess(20);
     drawCont(cArray[i])
     pop();
   }

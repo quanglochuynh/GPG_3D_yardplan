@@ -64,21 +64,25 @@ function drawCont(cont){
   
 
 function setup() {
-  createCanvas(800, 800, WEBGL);
+  createCanvas(windowWidth, windowHeight, WEBGL);
   normalMaterial();
   init()
   stroke(0)
   ambientMaterial(40,40,200)
   textSize(16);
-  debugMode()
+  // debugMode()
   textAlign(CENTER)
 }
 function draw() {
-  background(200);
+  background(225);
   orbitControl();
   for(let i =0; i<cArray.length; i++){
     push();
     drawCont(cArray[i])
     pop();
   }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }

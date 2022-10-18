@@ -1,4 +1,9 @@
 cArray = undefined;
+const contWidth = 80;
+const contHeight = 85;
+const contLength = 200;
+const contHalfLength = Math.floor(contLength/2);
+const contGap = Math.floor(contLength*0.06);
 
 function setColor(opt){
   switch (opt){
@@ -37,27 +42,25 @@ function drawCont(cont){
   if (b%2 != 0){
     // Container 40ft
     b = Math.floor(b/2);
-    translate(b*215+100,r*80,t*80);
+    translate(b*(contLength+contGap)+contHalfLength,r*contHeight,t*contWidth);
     setColor(cont.HangTauID)
-    box(400, 80, 80);
+    box(contLength*2, contHeight, contWidth);
     fill(255)
     rotateY(1.5707963268)
     translate(0,0,201)
-    textAlign(CENTER)
-    text(cont.Container.substring(0,4)+"\n" + cont.Container.substring(4,11), 0,0)
   }else{
     // Container 20ft
     b=b/2
-    translate(b*215,r*80,t*80);
+    translate(b*(contLength+contGap),r*contHeight,t*contWidth);
     setColor(cont.HangTauID)
-    box(200, 80, 80);
+    box(contLength, contHeight, contWidth);
     fill(255)
     rotateY(1.5707963268)
     translate(0,0,101)
-    textAlign(CENTER)
-    text(cont.Container.substring(0,4)+"\n" + cont.Container.substring(4,11), 0,0)
   }
+  text(cont.Container.substring(0,4)+"\n" + cont.Container.substring(4,11), 0,0)
 }
+  
   
 
 function setup() {
@@ -68,14 +71,10 @@ function setup() {
   ambientMaterial(40,40,200)
   textSize(16);
   debugMode()
-
+  textAlign(CENTER)
 }
 function draw() {
   background(200);
-  // push()
-  // fill(0)
-  // cylinder(20, 20);
-  // pop()
   orbitControl();
   for(let i =0; i<cArray.length; i++){
     push();

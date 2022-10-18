@@ -12,8 +12,7 @@ function setColor(opt){
       fill(140,180,180);
       break;
     default:
-      fill(140,180,180);
-
+      fill(32,32,32);
   }
 }
 

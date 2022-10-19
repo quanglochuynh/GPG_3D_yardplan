@@ -1,4 +1,5 @@
 cArray = undefined;
+ground = undefined;
 const contWidth = 80;
 const contHeight = 85;
 const contLength = 200;
@@ -22,9 +23,13 @@ function setColor(opt){
 }
 
 function preload(){
-  $.getJSON("data.json", function(data){
-    cArray = data[0];
+  $.getJSON("cont.json", function(data){
+    cArray = data;
   })
+  $.getJSON("tbd_ground.json", function(data){
+    ground = data;
+  })
+  
 }
 
 

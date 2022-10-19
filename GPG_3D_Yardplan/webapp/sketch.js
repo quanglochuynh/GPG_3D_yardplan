@@ -25,7 +25,7 @@ function cvtArea(a){
 }
 
 function preload(){
-  $.getJSON("../data/cont.json", function(data){
+  $.getJSON("../data/cont2.json", function(data){
     cArray = data;
   })
   $.getJSON("../data/etd.json", function(data){
@@ -51,6 +51,7 @@ function drawCont(cont){
 
   rotateY(3.1415926548);
   area = cvtArea(cont.Block);
+  console.log(area);
   b =  cont.Bay-1;
   r =  -cont.Tier+1;
   t =  cont.Row-1;
@@ -112,7 +113,7 @@ function draw() {
   for(let i =0; i<cArray.length; i++){
     drawCont(cArray[i])
   }
-  // noLoop();
+  noLoop();
 
 }
 

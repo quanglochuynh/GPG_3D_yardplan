@@ -1,14 +1,6 @@
 cArray = undefined;
-ground = undefined;
-const contWidth = 16;
-const contHeight = 17;
-const contLength = 40;
-const contHalfLength = Math.floor(contLength/2);
-const contGap = Math.floor(contLength*0.06);
-const fontSize = 3
+depot = undefined;
 
-const dx = -500;
-const dy = -400
 
 // function transform
 
@@ -28,14 +20,17 @@ function setColor(opt){
   }
 }
 
+function cvtArea(a){
+  return a.charCodeAt(0)-65;
+}
+
 function preload(){
   $.getJSON("../data/cont.json", function(data){
     cArray = data;
   })
-  $.getJSON("../data/tbd_ground.json", function(data){
-    ground = data;
+  $.getJSON("../data/etd.json", function(data){
+    depot = data;
   })
-  
 }
 
 
@@ -45,66 +40,80 @@ function init(){
   ambientLight(255,255,255)
   normalMaterial();
   stroke(0)
-  textSize(fontSize);
-  debugMode()
+  textSize(4);
+  // debugMode()
   textAlign(CENTER)
 }
 
 function drawCont(cont){
+  push();
+  strokeWeight(1)
+
+  rotateY(3.1415926548);
+  area = cvtArea(cont.Block);
   b =  cont.Bay-1;
   r =  -cont.Tier+1;
   t =  cont.Row-1;
+  translate(0.5*depot.contLength, -0.5*depot.contHeight, 0.5*depot.contWidth)
   if (b%2 != 0){
     // Container 40ft
     b = Math.floor(b/2);
-    translate(b*(contLength+contGap)+contHalfLength,r*contHeight,t*contWidth);
+    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
+
     setColor(cont.HangTauID)
-    box(contLength*2, contHeight, contWidth);
+    box(depot.contLength*2, depot.contHeight, depot.contWidth);
     fill(255)
     rotateY(1.5707963268)
-    translate(0,0,contLength+1)
+    // translate(0,0,depot.contLength+1)
   }else{
     // Container 20ft
     b=b/2
-    translate(b*(contLength+contGap),r*contHeight,t*contWidth);
+    translate(b*(depot.contLength+depot.contGap) - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
     setColor(cont.HangTauID)
-    box(contLength, contHeight, contWidth);
+    box(depot.contLength, depot.contHeight, depot.contWidth);
     fill(255)
     rotateY(1.5707963268)
-    translate(0,0,contHalfLength+1)
+    // translate(0,0,depot.contHalfLength+1)
   }
-  text(cont.Container.substring(0,4)+"\n" + cont.Container.substring(4,11), 0,0)
+  // text(cont.Container.substring(0,4)+"\n" + cont.Container.substring(4,11), 0,0)
+  pop();
 }
   
-function drawGround(grd){
+function drawDepot(depot){
   push();
   rotateX(1.5707963268);
-  for (let i =0; i<grd.x.length-1; i++){
-    // circle(grd.x[i]+dx, grd.y[i]+dy, 10);
-    line(grd.x[i]+dx, grd.y[i]+dy, grd.x[i+1]+dx, grd.y[i+1]+dy)
+  for (let j=0; j<depot.layout.shape.length; j++){
+    for (let i =0; i<depot.layout.shape[j].length-1; i++){
+      p1 = depot.layout.shape[j].seq[i]
+      p2 = depot.layout.shape[j].seq[i+1]
+      line(p1.x, p1.y, p2.x, p2.y)
+    }
   }
-  line(grd.x[grd.x.length-1]+dx, grd.y[grd.x.length-1]+dy, grd.x[0]+dx, grd.y[0]+dy)
+
+  // for (let i=0; i<depot.Warehouse.length; i++){
+  //   x = depot.layout.shape[depot.Warehouse[i].shapeID];
+  //   box()
+  // }
+
   pop();
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  // createCanvas(windowWidth, windowHeight);
   init();
-
+  // frameRate(10)
 }
 function draw() {
   orbitControl(2,2,0.5);
-  background(240);
-  
 
-  drawGround(ground);
+  background(240);
+  strokeWeight(2)
+  drawDepot(depot);
   for(let i =0; i<cArray.length; i++){
-    push();
-    shininess(20);
     drawCont(cArray[i])
-    pop();
   }
+  // noLoop();
+
 }
 
 // function windowResized() {

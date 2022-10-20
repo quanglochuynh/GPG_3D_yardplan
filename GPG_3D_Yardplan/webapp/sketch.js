@@ -41,8 +41,8 @@ function init(){
   ambientLight(255,255,255)
   normalMaterial();
   stroke(0)
-  textSize(4);
-  debugMode()
+  textSize(7);
+  // debugMode()
   textAlign(CENTER)
 }
 
@@ -55,36 +55,29 @@ function drawCont(cont, ar){
   t =  cont.Row-1;
   rotateY(3.1415926548);
   // rotateY(ar[area].angle)
+  translate(0.5*depot.contLength, -0.5*depot.contHeight, 0.5*depot.contWidth)
 
 
   if (b%2 != 0){
     // Container 40ft
     b = Math.floor(b/2);
-    // rotateY(ar[area].angle)
-
     translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
-    rotateY(ar[area].angle)
-    translate(0.5*depot.contLength, -0.5*depot.contHeight, 0.5*depot.contWidth)
-
     setColor(cont.HangTauID)
     box(depot.contLength*2, depot.contHeight, depot.contWidth);
     fill(255)
     // rotateY(1.5707963268)
-    // translate(0,0,depot.contLength+1)
+    translate(0,0, +depot.contWidth/2+1)
   }else{
     // Container 20ft
-    b=b/2
-    translate(b*(depot.contLength+depot.contGap) - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
-    rotateY(ar[area].angle)
-    translate(0.5*depot.contLength, -0.5*depot.contHeight, 0.5*depot.contWidth)
-
-    setColor(cont.HangTauID)
-    box(depot.contLength, depot.contHeight, depot.contWidth);
-    fill(255)
-    // rotateY(1.5707963268)
-    // translate(0,0,depot.contHalfLength+1)
+    // b=b/2
+    // translate(b*(depot.contLength+depot.contGap) - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
+    // setColor(cont.HangTauID)
+    // box(depot.contLength, depot.contHeight, depot.contWidth);
+    // fill(255)
+    // rotateZ(1.5707963268)
+    // translate(0,depot.contWidth/2+1,0)
   }
-  // text(cont.Container.substring(0,4)+"\n" + cont.Container.substring(4,11), 0,0)
+  // text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0)
   pop();
 }
   

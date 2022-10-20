@@ -42,40 +42,46 @@ function init(){
   normalMaterial();
   stroke(0)
   textSize(4);
-  // debugMode()
+  debugMode()
   textAlign(CENTER)
 }
 
-function drawCont(cont){
+function drawCont(cont, ar){
   push();
   strokeWeight(1)
-
-  rotateY(3.1415926548);
   area = cvtArea(cont.Block);
-  // console.log(area);
   b =  cont.Bay-1;
   r =  -cont.Tier+1;
   t =  cont.Row-1;
-  // type = cont.
-  translate(0.5*depot.contLength, -0.5*depot.contHeight, 0.5*depot.contWidth)
+  rotateY(3.1415926548);
+  // rotateY(ar[area].angle)
+
+
   if (b%2 != 0){
     // Container 40ft
     b = Math.floor(b/2);
+    // rotateY(ar[area].angle)
+
     translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
+    rotateY(ar[area].angle)
+    translate(0.5*depot.contLength, -0.5*depot.contHeight, 0.5*depot.contWidth)
 
     setColor(cont.HangTauID)
     box(depot.contLength*2, depot.contHeight, depot.contWidth);
     fill(255)
-    rotateY(1.5707963268)
+    // rotateY(1.5707963268)
     // translate(0,0,depot.contLength+1)
   }else{
     // Container 20ft
     b=b/2
     translate(b*(depot.contLength+depot.contGap) - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
+    rotateY(ar[area].angle)
+    translate(0.5*depot.contLength, -0.5*depot.contHeight, 0.5*depot.contWidth)
+
     setColor(cont.HangTauID)
     box(depot.contLength, depot.contHeight, depot.contWidth);
     fill(255)
-    rotateY(1.5707963268)
+    // rotateY(1.5707963268)
     // translate(0,0,depot.contHalfLength+1)
   }
   // text(cont.Container.substring(0,4)+"\n" + cont.Container.substring(4,11), 0,0)
@@ -92,13 +98,25 @@ function drawDepot(depot){
       line(p1.x, p1.y, p2.x, p2.y)
     }
   }
-
-  // for (let i=0; i<depot.Warehouse.length; i++){
-  //   x = depot.layout.shape[depot.Warehouse[i].shapeID];
-  //   box()
-  // }
-
   pop();
+}
+
+function drawHouse(house){
+  for (let i=0; i<house.length; i++){
+    push();
+    rotateX(1.5707963268)
+    
+
+    p1 = house[i].shape.seq[house[i].id1]
+    p2 = house[i].shape.seq[house[i].id2]
+    w = Math.abs(p1.x-p2.x)
+    h = Math.abs(p1.y-p2.y)
+    // console.log(x);
+    translate(p1.x-w/2,p1.y-h/2,house[i].height/2)
+    rotateZ(-house[i].angle)
+    box(w, h, house[i].height)
+    pop();
+  }
 }
 
 function setup() {
@@ -113,12 +131,13 @@ function draw() {
   strokeWeight(2)
   drawDepot(depot);
   for(let i =0; i<cArray.length; i++){
-    drawCont(cArray[i])
+    drawCont(cArray[i],depot.Area)
   }
+  drawHouse(depot.house);
   // noLoop();
 
 }
 
-// function windowResized() {
-//   resizeCanvas(windowWidth, windowHeight);
-// }
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}

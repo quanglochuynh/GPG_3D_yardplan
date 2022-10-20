@@ -6,11 +6,11 @@ depot = undefined;
 
 function setColor(opt){
   switch (opt){
-    case "EVG":   
-      fill(60,200,40);
+    case "HLC":   
+      fill(252,140,3);
       break;
-    case "RCL": 
-      fill(40,80,200);
+    case "YML": 
+      fill(212,205,199);
       break;
     case "COS": 
       fill(140,180,180);

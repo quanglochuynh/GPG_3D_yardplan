@@ -16,11 +16,12 @@ function setColor(opt){
       fill(140,180,180);
       break;
     default:
-      fill(32,32,32);
+      fill(132,232,232);
   }
 }
 
 function cvtArea(a){
+  if (a == "SC") return 4;
   return a.charCodeAt(0)-65;
 }
 
@@ -51,10 +52,11 @@ function drawCont(cont){
 
   rotateY(3.1415926548);
   area = cvtArea(cont.Block);
-  console.log(area);
+  // console.log(area);
   b =  cont.Bay-1;
   r =  -cont.Tier+1;
   t =  cont.Row-1;
+  // type = cont.
   translate(0.5*depot.contLength, -0.5*depot.contHeight, 0.5*depot.contWidth)
   if (b%2 != 0){
     // Container 40ft
@@ -113,7 +115,7 @@ function draw() {
   for(let i =0; i<cArray.length; i++){
     drawCont(cArray[i])
   }
-  noLoop();
+  // noLoop();
 
 }
 

@@ -1,8 +1,9 @@
 let cArray = undefined;
 let depot = undefined;
 let showText = false;
-
+let rotOffset = [];
 // function transform
+p5.disableFriendlyErrors = true;
 
 function setColor(opt){
   switch (opt){
@@ -25,22 +26,17 @@ function cvtArea(a){
   return a.charCodeAt(0)-65;
 }
 
-function recalc_cont(area){
-  // for (let i=0; i<cArray.length;i++){
-  //   areaID = cvtArea(cArray[i].Block);
-  //   a = createVector(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*depot.contWidth + depot.Area[area].y_coor, r*depot.contHeight);
-  //   alpha = 0.5 * (Math.PI-area[areaID].angle);
-  //   b = createVector(-2*a*Math.pow(Math.cos(alpha)), a* Math.sin(alpha));
-  // }
-}
-
 function preload(){
-  $.getJSON("../data/cont2.json", function(data){
+  $.getJSON("../data/cont3.json", function(data){
     cArray = data;
   })
   $.getJSON("../data/etd.json", function(data){
     depot = data;
   })
+  console.log("Done");
+  // console.log(depot.Area);
+  console.log(depot);
+
 }
 
 
@@ -50,12 +46,12 @@ function init(){
   ambientLight(255,255,255)
   normalMaterial();
   stroke(0)
-  textSize(14);
-  debugMode()
+  textSize(12);
+  // debugMode();
   textAlign(CENTER)
   showTextCheckbox = createCheckbox("Show Container name",false);
   showTextCheckbox.changed(changeTextVisibility);
-  recalc_cont();
+
 }
 
 function drawCont(cont, ar){
@@ -66,12 +62,14 @@ function drawCont(cont, ar){
   r =  -cont.Tier+1;
   t =  cont.Row-1;
   rotateY(3.1415926548);
-  // rotateZ(ar[area].angle)
-  translate(0.5*depot.contLength, -0.5*depot.contWidth, -0.5*depot.contHeight)
+  rotateZ(ar[area].angle);
+  x_flip = 1 - 2*ar[area].x_flip;
+  translate(0.5*depot.contLength, -0.5*depot.contWidth*x_flip, -0.5*depot.contHeight)
   if (b%2 != 0){
     // Container 40ft
     b = Math.floor(b/2);
-    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight) + depot.Area[area].y_coor, r*(depot.contWidth));
+    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight)*x_flip + depot.Area[area].y_coor, r*(depot.contWidth));
+    translate(ar[area].offset.x, ar[area].offset.y)
     setColor(cont.HangTauID)
     box(depot.contLength*2, depot.contHeight, depot.contWidth);
     if (showText){
@@ -83,7 +81,8 @@ function drawCont(cont, ar){
   }else{
     // Container 20ft
     b=b/2
-    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight) + depot.Area[area].y_coor, r*(depot.contWidth));
+    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight)*x_flip + depot.Area[area].y_coor, r*(depot.contWidth));
+    translate(ar[area].offset.x, ar[area].offset.y)
     setColor(cont.HangTauID)
     box(depot.contLength, depot.contHeight, depot.contWidth);
     if (showText){
@@ -98,7 +97,6 @@ function drawCont(cont, ar){
   
 function drawDepot(depot){
   push();
-  
   for (let j=0; j<depot.layout.shape.length; j++){
     for (let i =0; i<depot.layout.shape[j].length-1; i++){
       p1 = depot.layout.shape[j].seq[i]
@@ -118,6 +116,7 @@ function drawHouse(house){
     w = Math.abs(p1.x-p2.x)
     h = Math.abs(p1.y-p2.y)
     // console.log(x);
+    fill(100);
     translate(p1.x-w/2,p1.y-h/2,house[i].height/2)
     rotateZ(-house[i].angle)
     box(w, h, house[i].height)
@@ -127,10 +126,11 @@ function drawHouse(house){
 
 function setup() {
   createCanvas(windowWidth, windowHeight-100, WEBGL);
-  init();
+  init()
 }
+
 function draw() {
-  orbitControl(2,2,0.25);
+  orbitControl(2,2,0.1);
   rotateX(1.5707963268);
 
   background(240);
@@ -140,7 +140,6 @@ function draw() {
     drawCont(cArray[i],depot.Area)
   }
   drawHouse(depot.house);
-  // noLoop();
 
 }
 
@@ -161,4 +160,9 @@ function changeTextVisibility(){
 
 // function mouseClicked(){
 //   console.log(mouseX, mouseY)
+// }
+
+// function touchMoved() {
+//   ellipse(mouseX, mouseY, 5, 5);
+//   return false;
 // }

@@ -25,6 +25,15 @@ function cvtArea(a){
   return a.charCodeAt(0)-65;
 }
 
+function recalc_cont(area){
+  // for (let i=0; i<cArray.length;i++){
+  //   areaID = cvtArea(cArray[i].Block);
+  //   a = createVector(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*depot.contWidth + depot.Area[area].y_coor, r*depot.contHeight);
+  //   alpha = 0.5 * (Math.PI-area[areaID].angle);
+  //   b = createVector(-2*a*Math.pow(Math.cos(alpha)), a* Math.sin(alpha));
+  // }
+}
+
 function preload(){
   $.getJSON("../data/cont2.json", function(data){
     cArray = data;
@@ -41,11 +50,12 @@ function init(){
   ambientLight(255,255,255)
   normalMaterial();
   stroke(0)
-  textSize(12);
-  // debugMode()
+  textSize(14);
+  debugMode()
   textAlign(CENTER)
   showTextCheckbox = createCheckbox("Show Container name",false);
   showTextCheckbox.changed(changeTextVisibility);
+  recalc_cont();
 }
 
 function drawCont(cont, ar){
@@ -56,31 +66,30 @@ function drawCont(cont, ar){
   r =  -cont.Tier+1;
   t =  cont.Row-1;
   rotateY(3.1415926548);
-  // rotateY(ar[area].angle)
-  translate(0.5*depot.contLength, -0.5*depot.contHeight, 0.5*depot.contWidth)
-
-
+  // rotateZ(ar[area].angle)
+  translate(0.5*depot.contLength, -0.5*depot.contWidth, -0.5*depot.contHeight)
   if (b%2 != 0){
     // Container 40ft
     b = Math.floor(b/2);
-    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
+    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight) + depot.Area[area].y_coor, r*(depot.contWidth));
     setColor(cont.HangTauID)
     box(depot.contLength*2, depot.contHeight, depot.contWidth);
     if (showText){
       fill(255)
-      translate(0,0, depot.contWidth/2+1)
+      rotateX(1.5707963268);
+      translate(0,0, depot.contWidth/2+2)
       text(cont.ContID, 0,0);
     }
-    
   }else{
     // Container 20ft
     b=b/2
-    translate(b*(depot.contLength+depot.contGap) - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
+    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight) + depot.Area[area].y_coor, r*(depot.contWidth));
     setColor(cont.HangTauID)
     box(depot.contLength, depot.contHeight, depot.contWidth);
     if (showText){
       fill(255)
-      translate(0,0, depot.contWidth/2+1);
+      rotateX(1.5707963268);
+      translate(0,0, depot.contWidth/2+2);
       text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
     }
   }
@@ -89,7 +98,7 @@ function drawCont(cont, ar){
   
 function drawDepot(depot){
   push();
-  rotateX(1.5707963268);
+  
   for (let j=0; j<depot.layout.shape.length; j++){
     for (let i =0; i<depot.layout.shape[j].length-1; i++){
       p1 = depot.layout.shape[j].seq[i]
@@ -103,9 +112,7 @@ function drawDepot(depot){
 function drawHouse(house){
   for (let i=0; i<house.length; i++){
     push();
-    rotateX(1.5707963268)
-    
-
+    // rotateX(1.5707963268)
     p1 = house[i].shape.seq[house[i].id1]
     p2 = house[i].shape.seq[house[i].id2]
     w = Math.abs(p1.x-p2.x)
@@ -123,7 +130,9 @@ function setup() {
   init();
 }
 function draw() {
-  orbitControl(2,2,0.5);
+  orbitControl(2,2,0.25);
+  rotateX(1.5707963268);
+
   background(240);
   strokeWeight(2)
   drawDepot(depot);

@@ -1,6 +1,6 @@
-cArray = undefined;
-depot = undefined;
-
+let cArray = undefined;
+let depot = undefined;
+let showText = false;
 
 // function transform
 
@@ -41,9 +41,11 @@ function init(){
   ambientLight(255,255,255)
   normalMaterial();
   stroke(0)
-  textSize(7);
+  textSize(12);
   // debugMode()
   textAlign(CENTER)
+  showTextCheckbox = createCheckbox("Show Container name",false);
+  showTextCheckbox.changed(changeTextVisibility);
 }
 
 function drawCont(cont, ar){
@@ -64,20 +66,24 @@ function drawCont(cont, ar){
     translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
     setColor(cont.HangTauID)
     box(depot.contLength*2, depot.contHeight, depot.contWidth);
-    fill(255)
-    // rotateY(1.5707963268)
-    translate(0,0, +depot.contWidth/2+1)
+    if (showText){
+      fill(255)
+      translate(0,0, depot.contWidth/2+1)
+      text(cont.ContID, 0,0);
+    }
+    
   }else{
     // Container 20ft
-    // b=b/2
-    // translate(b*(depot.contLength+depot.contGap) - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
-    // setColor(cont.HangTauID)
-    // box(depot.contLength, depot.contHeight, depot.contWidth);
-    // fill(255)
-    // rotateZ(1.5707963268)
-    // translate(0,depot.contWidth/2+1,0)
+    b=b/2
+    translate(b*(depot.contLength+depot.contGap) - depot.Area[area].x_coor,r*depot.contHeight,t*depot.contWidth - depot.Area[area].y_coor);
+    setColor(cont.HangTauID)
+    box(depot.contLength, depot.contHeight, depot.contWidth);
+    if (showText){
+      fill(255)
+      translate(0,0, depot.contWidth/2+1);
+      text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+    }
   }
-  // text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0)
   pop();
 }
   
@@ -113,13 +119,11 @@ function drawHouse(house){
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  createCanvas(windowWidth, windowHeight-100, WEBGL);
   init();
-  // frameRate(10)
 }
 function draw() {
   orbitControl(2,2,0.5);
-
   background(240);
   strokeWeight(2)
   drawDepot(depot);
@@ -132,5 +136,20 @@ function draw() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight-100);
 }
+
+function changeTextVisibility(){
+  if (showTextCheckbox.checked()){
+    showText = true;
+    frameRate(24);
+  }else{
+    showText = false;
+    frameRate(60);
+
+  }
+}
+
+// function mouseClicked(){
+//   console.log(mouseX, mouseY)
+// }

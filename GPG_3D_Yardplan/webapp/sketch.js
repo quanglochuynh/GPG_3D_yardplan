@@ -2,6 +2,8 @@ let cArray = undefined;
 let depot = undefined;
 let showText = false;
 let rotOffset = [];
+const largeFontSize = 48;
+const smallFontSize = 14
 // function transform
 p5.disableFriendlyErrors = true;
 
@@ -27,26 +29,26 @@ function cvtArea(a){
 }
 
 function preload(){
+
   $.getJSON("../data/cont3.json", function(data){
     cArray = data;
   })
   $.getJSON("../data/etd.json", function(data){
     depot = data;
+    console.log(depot);
+
   })
   console.log("Done");
-  // console.log(depot.Area);
-  console.log(depot);
-
 }
 
 
 function init(){
-  myFont = loadFont("Poppins-Light.ttf")
+  myFont = loadFont("Poppins-Light.ttf", )
   textFont(myFont);
   ambientLight(255,255,255)
   normalMaterial();
   stroke(0)
-  textSize(12);
+  textSize(smallFontSize);
   // debugMode();
   textAlign(CENTER)
   showTextCheckbox = createCheckbox("Show Container name",false);
@@ -110,29 +112,38 @@ function drawDepot(depot){
 function drawHouse(house){
   for (let i=0; i<house.length; i++){
     push();
-    // rotateX(1.5707963268)
     p1 = house[i].shape.seq[house[i].id1]
     p2 = house[i].shape.seq[house[i].id2]
     w = Math.abs(p1.x-p2.x)
     h = Math.abs(p1.y-p2.y)
-    // console.log(x);
     fill(100);
     translate(p1.x-w/2,p1.y-h/2,house[i].height/2)
     rotateZ(-house[i].angle)
     box(w, h, house[i].height)
+    translate(0,0,house[i].height/2+1)
+    fill(255)
+    if (w<h){
+      rotateZ(1.5707963268)
+    }
+    textSize(largeFontSize)
+    text(house[i].name, 0,0)
     pop();
   }
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight-100, WEBGL);
+  setAttributes('antialias', true);
+  createEasyCam({distance:2000});
+  document.oncontextmenu = function() { return false; }
+  document.onmousedown   = function() { return false; }
   init()
+
 }
 
 function draw() {
-  orbitControl(2,2,0.1);
+  // orbitControl(2,2,0.1);
   rotateX(1.5707963268);
-
   background(240);
   strokeWeight(2)
   drawDepot(depot);
@@ -166,3 +177,5 @@ function changeTextVisibility(){
 //   ellipse(mouseX, mouseY, 5, 5);
 //   return false;
 // }
+
+

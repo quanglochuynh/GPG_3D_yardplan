@@ -134,7 +134,8 @@ function drawHouse(house){
 function setup() {
   createCanvas(windowWidth, windowHeight-100, WEBGL);
   setAttributes('antialias', true);
-  createEasyCam({distance:2000});
+  easycam = new Dw.EasyCam(this._renderer, {distance : 2000}); 
+  // easycam.setRotationConstraint(false, true, true);
   document.oncontextmenu = function() { return false; }
   document.onmousedown   = function() { return false; }
   init()
@@ -143,6 +144,8 @@ function setup() {
 
 function draw() {
   // orbitControl(2,2,0.1);
+  perspective(60 * PI/180, width/height, 1, 5000);
+
   rotateX(1.5707963268);
   background(240);
   strokeWeight(2)
@@ -154,8 +157,12 @@ function draw() {
 
 }
 
+// function windowResized() {
+//   resizeCanvas(windowWidth, windowHeight-100);
+// }
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight-100);
+  easycam.setViewport([0,0,windowWidth, windowHeight]);
 }
 
 function changeTextVisibility(){

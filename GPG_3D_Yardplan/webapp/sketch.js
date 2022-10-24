@@ -250,51 +250,6 @@ function changeTextVisibility(){
   }
 }
 
-// function mouseReleased(){
-//   r = easycam.getRotation();
-//   // d = easycam.getDistance();
-//   // r[3] = 0;
-//   console.log((r[0] + r[2]));
-//   // if ((r[2]>0.1)&&(r[2]<0.97)&&(d<=2000)){
-//   //   console.log("true");
-//   // }else{
-//   //   console.log("false");
-//   // }
-// }
-
-
-// function docFile(){
-//   path = document.getElementById("excel_upload").value;
-//   console.log(path);
-//   table = loadTable("upload/" + path + ".csv", "header", loadData())
-
-// }
-
-// function loadData(){
-//   contID = table.getColumn("contID");
-//   hangtau = table.getColumn("HangTauID");
-//   block = table.getColumn("Block");
-//   bay = table.getColumn("Bay");
-//   row = table.getColumn("Row");
-//   tier = table.getColumn("Tier")
-//   cArray.clear();
-//   for (let i=0; i<contID.length; i++){
-//     cArray.push(Container(contID[i], hangtau[i], block[i], bay[i],row[i], tier[i]))
-//   }
-// }
-
-
-// class Container{
-//   constructor(id, HangTauID, block, bay, row, tier){
-//     self.ContID = id;
-//     self.HangTauID = HangTauID;
-//     self.Block = block;
-//     self.Bay = bay;
-//     self.Row = row;
-//     self.Tier = tier;
-//   }
-// }
-
 function drawSlope(x, y, wid, len, hei, offset, angle){
   push();
   rotateZ(angle);

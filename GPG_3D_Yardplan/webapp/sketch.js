@@ -8,6 +8,7 @@ let stage=0;
 let rot,dis;
 const largeFontSize = 48;
 const smallFontSize = 12
+roofHeight = 20;
 // function transform
 p5.disableFriendlyErrors = true;
 
@@ -165,13 +166,22 @@ function drawHouse(house){
     translate(p1.x-w/2,p1.y-h/2,house[i].height/2)
     rotateZ(-house[i].angle)
     box(w, h, house[i].height)
-    translate(0,0,house[i].height/2+1)
-    fill(255)
-    if (w<h){
-      rotateZ(1.5707963268)
+    // noStroke();
+    strokeWeight(1)
+    if (w>h){
+      rotateZ(1.5707963268);
+      translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
+      scale(0.6*h/(roofHeight),1,1 )
+      cylinder(roofHeight,w,4,1)
+    }else{
+      translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
+      scale(0.6*w/(roofHeight),1,1 )
+      cylinder(roofHeight,h,4,1)
     }
-    textSize(largeFontSize)
-    text(house[i].name, 0,0)
+    fill(255)
+    
+    // textSize(largeFontSize)
+    // text(house[i].name, 0,0)
     pop();
   }
 }

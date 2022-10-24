@@ -183,9 +183,6 @@ function setup() {
 }
 
 function draw() {
-  // orbitControl(2,2,0.1);
-  // perspective(60 * PI/180, width/height, 1, 5000);
-
   rotateX(1.5707963268);
   background(240);
   strokeWeight(2)
@@ -199,8 +196,6 @@ function draw() {
     drawCont(cArray[i],depot.Area,ori1, ori2, dis)
   }
   drawHouse(depot.house);
-  // console.log(easycam.getRotation());
-  // noLoop();
 }
 
 function windowResized() {
@@ -219,17 +214,17 @@ function changeTextVisibility(){
   }
 }
 
-function mouseReleased(){
-  r = easycam.getRotation();
-  // d = easycam.getDistance();
-  // r[3] = 0;
-  console.log((r[0] + r[2]));
-  // if ((r[2]>0.1)&&(r[2]<0.97)&&(d<=2000)){
-  //   console.log("true");
-  // }else{
-  //   console.log("false");
-  // }
-}
+// function mouseReleased(){
+//   r = easycam.getRotation();
+//   // d = easycam.getDistance();
+//   // r[3] = 0;
+//   console.log((r[0] + r[2]));
+//   // if ((r[2]>0.1)&&(r[2]<0.97)&&(d<=2000)){
+//   //   console.log("true");
+//   // }else{
+//   //   console.log("false");
+//   // }
+// }
 
 
 // function docFile(){

@@ -9,8 +9,22 @@ let rot,dis;
 const largeFontSize = 48;
 const smallFontSize = 12
 roofHeight = 20;
-// function transform
 p5.disableFriendlyErrors = true;
+
+const defaultState = {
+  "distance": 2059.3289393985488,
+  "center": [
+      291.1905894992754,
+      28.64227214233992,
+      -254.39126097724892
+  ],
+  "rotation": [
+      0.3544999517122829,
+      -0.06668080137401443,
+      0.9208759403662182,
+      -0.14788832752699732
+  ]
+}
 
 function setColor(opt){
   switch (opt){
@@ -49,7 +63,8 @@ function preload(){
 function init(){
   createCanvas(windowWidth, windowHeight-100, WEBGL);
   setAttributes('antialias', true);
-  easycam = new Dw.EasyCam(this._renderer, {distance : 2000}); 
+  easycam = new Dw.EasyCam(this._renderer, defaultState); 
+  easycam.setState=defaultState;
   document.oncontextmenu = function() { return false; }
   document.onmousedown   = function() { return false; }
   let myFont = loadFont("Poppins-Light.ttf", )
@@ -157,39 +172,50 @@ function drawDepot(depot){
 
 function drawHouse(house){
   for (let i=0; i<house.length; i++){
-    push();
-    p1 = house[i].shape.seq[house[i].id1]
-    p2 = house[i].shape.seq[house[i].id2]
-    w = Math.abs(p1.x-p2.x)
-    h = Math.abs(p1.y-p2.y)
-    fill(100);
-    translate(p1.x-w/2,p1.y-h/2,house[i].height/2)
-    rotateZ(-house[i].angle)
-    box(w, h, house[i].height)
-    // noStroke();
-    strokeWeight(1)
-    if (w>h){
-      rotateZ(1.5707963268);
-      translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
-      scale(0.6*h/(roofHeight),1,1 )
-      cylinder(roofHeight,w,4,1)
+    if (house[i].type<2){
+      push();
+      p1 = house[i].shape.seq[house[i].id1]
+      p2 = house[i].shape.seq[house[i].id2]
+      w = Math.abs(p1.x-p2.x)
+      h = Math.abs(p1.y-p2.y)
+      fill(100);
+      translate(p1.x-w/2,p1.y-h/2,house[i].height/2)
+      rotateZ(-house[i].angle)
+      box(w, h, house[i].height)
+      // noStroke();
+      strokeWeight(1)
+      if (w>h){
+        rotateZ(1.5707963268);
+        translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
+        scale(0.6*h/(roofHeight),1,1 )
+        cylinder(roofHeight,w,4,1)
+        scale((roofHeight)/(0.6*h),1,1 )
+      }else{
+        translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
+        scale(0.6*w/(roofHeight),1,1 )
+        cylinder(roofHeight,h,4,1)
+        scale((roofHeight)/(0.6*w),1,1 )
+      }
+      fill(255)
+      // resetMatrix();
+      translate(0,0,roofHeight)
+      textSize(largeFontSize)
+      text(house[i].name, 0,0)
+      pop();
     }else{
-      translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
-      scale(0.6*w/(roofHeight),1,1 )
-      cylinder(roofHeight,h,4,1)
+      p1 = house[i].shape.seq[house[i].id1]
+      p2 = house[i].shape.seq[house[i].id2]
+      w = Math.abs(p1.x-p2.x)
+      h = Math.abs(p1.y-p2.y)
+      drawSlope(p1.x+house[i].offsetX, p1.y+house[i].offsetY, h,w,20,0.9, Math.PI/2)
     }
-    fill(255)
-    
-    // textSize(largeFontSize)
-    // text(house[i].name, 0,0)
-    pop();
   }
 }
 
 function setup() {
   noLoop();
   init()
-
+  
 }
 
 function draw() {
@@ -268,3 +294,26 @@ function changeTextVisibility(){
 //     self.Tier = tier;
 //   }
 // }
+
+function drawSlope(x, y, wid, len, hei, offset, angle){
+  push();
+  rotateZ(angle);
+  translate(-x,y,0);
+  fill(100);
+  beginShape();
+  vertex(0,0,0);
+  vertex(offset*wid,0,hei);
+  vertex(offset*wid,len,hei);
+  vertex(0, len,0);
+  endShape(CLOSE);
+
+  beginShape();
+  vertex(offset*wid,0,hei);
+  vertex(offset*wid,len,hei);
+  vertex(wid, len,0);
+  vertex(wid, 0,0);
+
+  endShape(CLOSE);
+  pop();
+}
+

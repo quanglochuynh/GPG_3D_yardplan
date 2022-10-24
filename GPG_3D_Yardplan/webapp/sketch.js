@@ -2,6 +2,8 @@ let cArray = undefined;
 let depot = undefined;
 let showText = false;
 let rotOffset = [];
+let table;
+let easycam;
 const largeFontSize = 48;
 const smallFontSize = 14
 // function transform
@@ -77,7 +79,12 @@ function drawCont(cont, ar){
     if (showText){
       fill(255)
       rotateX(1.5707963268);
-      translate(0,0, depot.contWidth/2+2)
+      if ((k[2]>0.5)||(k[2]<-0.5)){
+        translate(0,0, depot.contWidth/2+2);
+      }else{
+        rotateY(Math.PI);
+        translate(0,0, depot.contWidth/2+2);
+      }
       text(cont.ContID, 0,0);
     }
   }else{
@@ -90,7 +97,13 @@ function drawCont(cont, ar){
     if (showText){
       fill(255)
       rotateX(1.5707963268);
-      translate(0,0, depot.contWidth/2+2);
+      k = easycam.getRotation();
+      if ((k[2]>0.5)||(k[2]<-0.5)){
+        translate(0,0, depot.contWidth/2+2);
+      }else{
+        rotateY(Math.PI);
+        translate(0,0, depot.contWidth/2+2);
+      }
       text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
     }
   }
@@ -135,7 +148,8 @@ function setup() {
   createCanvas(windowWidth, windowHeight-100, WEBGL);
   setAttributes('antialias', true);
   easycam = new Dw.EasyCam(this._renderer, {distance : 2000}); 
-  // easycam.setRotationConstraint(false, true, true);
+  // easycam.setRotationConstraint(true, true, false);
+
   document.oncontextmenu = function() { return false; }
   document.onmousedown   = function() { return false; }
   init()
@@ -144,7 +158,7 @@ function setup() {
 
 function draw() {
   // orbitControl(2,2,0.1);
-  perspective(60 * PI/180, width/height, 1, 5000);
+  // perspective(60 * PI/180, width/height, 1, 5000);
 
   rotateX(1.5707963268);
   background(240);
@@ -154,12 +168,10 @@ function draw() {
     drawCont(cArray[i],depot.Area)
   }
   drawHouse(depot.house);
-
+  // console.log(easycam.getRotation());
+  // noLoop();
 }
 
-// function windowResized() {
-//   resizeCanvas(windowWidth, windowHeight-100);
-// }
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight-100);
   easycam.setViewport([0,0,windowWidth, windowHeight]);
@@ -176,13 +188,42 @@ function changeTextVisibility(){
   }
 }
 
-// function mouseClicked(){
-//   console.log(mouseX, mouseY)
+function mouseReleased(){
+  // console.log("clgt");
+  r = easycam.getRotation()
+  // r[3] = 0;
+  console.log(r);
+}
+
+
+// function docFile(){
+//   path = document.getElementById("excel_upload").value;
+//   console.log(path);
+//   table = loadTable("upload/" + path + ".csv", "header", loadData())
+
 // }
 
-// function touchMoved() {
-//   ellipse(mouseX, mouseY, 5, 5);
-//   return false;
+// function loadData(){
+//   contID = table.getColumn("contID");
+//   hangtau = table.getColumn("HangTauID");
+//   block = table.getColumn("Block");
+//   bay = table.getColumn("Bay");
+//   row = table.getColumn("Row");
+//   tier = table.getColumn("Tier")
+//   cArray.clear();
+//   for (let i=0; i<contID.length; i++){
+//     cArray.push(Container(contID[i], hangtau[i], block[i], bay[i],row[i], tier[i]))
+//   }
 // }
 
 
+// class Container{
+//   constructor(id, HangTauID, block, bay, row, tier){
+//     self.ContID = id;
+//     self.HangTauID = HangTauID;
+//     self.Block = block;
+//     self.Bay = bay;
+//     self.Row = row;
+//     self.Tier = tier;
+//   }
+// }

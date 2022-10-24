@@ -4,8 +4,10 @@ let showText = false;
 let rotOffset = [];
 let table;
 let easycam;
+let stage=0;
+let rot,dis;
 const largeFontSize = 48;
-const smallFontSize = 14
+const smallFontSize = 12
 // function transform
 p5.disableFriendlyErrors = true;
 
@@ -31,21 +33,25 @@ function cvtArea(a){
 }
 
 function preload(){
-
   $.getJSON("../data/cont3.json", function(data){
     cArray = data;
   })
   $.getJSON("../data/etd.json", function(data){
     depot = data;
     console.log(depot);
-
+    loop();
   })
   console.log("Done");
 }
 
 
 function init(){
-  myFont = loadFont("Poppins-Light.ttf", )
+  createCanvas(windowWidth, windowHeight-100, WEBGL);
+  setAttributes('antialias', true);
+  easycam = new Dw.EasyCam(this._renderer, {distance : 2000}); 
+  document.oncontextmenu = function() { return false; }
+  document.onmousedown   = function() { return false; }
+  let myFont = loadFont("Poppins-Light.ttf", )
   textFont(myFont);
   ambientLight(255,255,255)
   normalMaterial();
@@ -55,11 +61,10 @@ function init(){
   textAlign(CENTER)
   showTextCheckbox = createCheckbox("Show Container name",false);
   showTextCheckbox.changed(changeTextVisibility);
-
 }
 
-function drawCont(cont, ar){
-  push();
+function drawCont(cont, ar,or1, or2, dis){
+  push();  
   strokeWeight(1)
   area = cvtArea(cont.Block);
   b =  cont.Bay-1;
@@ -79,13 +84,27 @@ function drawCont(cont, ar){
     if (showText){
       fill(255)
       rotateX(1.5707963268);
-      if ((k[2]>0.5)||(k[2]<-0.5)){
-        translate(0,0, depot.contWidth/2+2);
-      }else{
+      if (or1<0.25){
         rotateY(Math.PI);
-        translate(0,0, depot.contWidth/2+2);
       }
-      text(cont.ContID, 0,0);
+      translate(0,0, depot.contWidth/2+2);
+      if (dis<=2200){
+        text(cont.ContID, 0,0);
+      } 
+      translate(0,0, -depot.contWidth/2-2);
+      if ((rot[2]<0.5)&&(rot[2]>-0.5)){
+        rotateY(-Math.PI);
+      }
+      if (((or2>1)||(or2<-1))){
+        rotateY(Math.PI/2);
+      }else{
+        rotateY(-Math.PI/2);
+      }
+      translate(0,0, depot.contLength+2);
+      textSize(7)
+      if (dis<=2000){
+        text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+      }
     }
   }else{
     // Container 20ft
@@ -97,14 +116,27 @@ function drawCont(cont, ar){
     if (showText){
       fill(255)
       rotateX(1.5707963268);
-      k = easycam.getRotation();
-      if ((k[2]>0.5)||(k[2]<-0.5)){
-        translate(0,0, depot.contWidth/2+2);
-      }else{
+      if (or1<0.25){
         rotateY(Math.PI);
-        translate(0,0, depot.contWidth/2+2);
       }
-      text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+      translate(0,0, depot.contWidth/2+2);
+      if (dis<=2200){
+        text(cont.ContID, 0,0);
+      } 
+      translate(0,0, -depot.contWidth/2-2);
+      if ((rot[2]<0.5)&&(rot[2]>-0.5)){
+        rotateY(-Math.PI);
+      }
+      if (((or2>1)||(or2<-1))){
+        rotateY(Math.PI/2);
+      }else{
+        rotateY(-Math.PI/2);
+      }
+      translate(0,0, depot.contLength/2+2);
+      textSize(7)
+      if (dis<=2000){
+        text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+      }
     }
   }
   pop();
@@ -145,13 +177,7 @@ function drawHouse(house){
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight-100, WEBGL);
-  setAttributes('antialias', true);
-  easycam = new Dw.EasyCam(this._renderer, {distance : 2000}); 
-  // easycam.setRotationConstraint(true, true, false);
-
-  document.oncontextmenu = function() { return false; }
-  document.onmousedown   = function() { return false; }
+  noLoop();
   init()
 
 }
@@ -164,8 +190,13 @@ function draw() {
   background(240);
   strokeWeight(2)
   drawDepot(depot);
+  rot = easycam.getRotation();
+  dis = easycam.getDistance();
+  ori1 = rot[2]**2;
+  ori2 = rot[0]+rot[2];
+
   for(let i =0; i<cArray.length; i++){
-    drawCont(cArray[i],depot.Area)
+    drawCont(cArray[i],depot.Area,ori1, ori2, dis)
   }
   drawHouse(depot.house);
   // console.log(easycam.getRotation());
@@ -189,10 +220,15 @@ function changeTextVisibility(){
 }
 
 function mouseReleased(){
-  // console.log("clgt");
-  r = easycam.getRotation()
+  r = easycam.getRotation();
+  // d = easycam.getDistance();
   // r[3] = 0;
-  console.log(r);
+  console.log((r[0] + r[2]));
+  // if ((r[2]>0.1)&&(r[2]<0.97)&&(d<=2000)){
+  //   console.log("true");
+  // }else{
+  //   console.log("false");
+  // }
 }
 
 

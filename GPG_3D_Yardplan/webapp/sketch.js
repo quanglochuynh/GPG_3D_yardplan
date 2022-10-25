@@ -400,3 +400,7 @@ function setCamera(state){
   // easycam.setCenter(state.center,500);
   console.log(state);
 }
+
+// function mouseDragged(){
+//   redraw();
+// }

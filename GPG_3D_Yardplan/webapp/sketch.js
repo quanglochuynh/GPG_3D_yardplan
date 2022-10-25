@@ -5,11 +5,14 @@ let showBay = [];
 let easycam;
 let stage=0;
 let rot,dis;
+let contArray3D;
+const maxRow=20;
+const maxBay = 30;
+const maxTier = 6;
 const largeFontSize = 48;
 const smallFontSize = 12
 roofHeight = 20;
 p5.disableFriendlyErrors = true;
-button = [];
 
 const states = [{
   "distance": 2059.3289393985488,
@@ -129,18 +132,46 @@ function cvtArea(a){
   return a.charCodeAt(0)-65;
 }
 
+function processCont(array){
+  contArray3D = [];
+  for (let i=0; i<depot.Area.length;i++){
+    area = []
+    for (let j=0; j<maxBay; j++){
+      bay = []
+      for (let k=0; k<maxRow; k++){
+        r = [];
+        for (let l=0; l<maxTier; l++){
+          r.push(0);
+        }
+        bay.push(r);
+      }
+      area.push(bay);
+    }
+    contArray3D.push(area)
+  }
+  for (let i=0; i<array.length; i++){
+    a = cvtArea(array[i].Block);
+    b = array[i].Bay;
+    r = array[i].Row;
+    t = array[i].Tier;
+    // console.log(a,b,r,t);
+    contArray3D[a][b][r][t] = 1;
+  }
+}
+
 function preload(){
   $.getJSON("../data/cont3.json", function(data){
     cArray = data;
+    $.getJSON("../data/etd.json", function(data){
+      depot = data;
+      console.log(depot);
+      showBay = Array(depot.Area.length).fill(1);
+      processCont(cArray);
+      init()
+      loop();
+    })
   })
-  $.getJSON("../data/etd.json", function(data){
-    depot = data;
-    console.log(depot);
-    showBay = Array(depot.Area.length).fill(1);
-    init()
-
-    loop();
-  })
+  
   console.log("Done");
 }
 function switchBay(id){
@@ -404,3 +435,29 @@ function setCamera(state){
 // function mouseDragged(){
 //   redraw();
 // }
+
+
+function updateFrameBuffer(){
+
+}
+
+function mouseReleased(){
+  console.log(mouseX, "  ", mouseY);
+}
+
+function drawBox(w,h,d){
+  // beginShape();
+  // vertex(0,0,0);
+  // vertex(w,0,0);
+  // vertex(w,h,0);
+  // vertex(0,h,0);
+  // endShape();
+  translate(0,0,+depot.contHeight/2);
+  plane(w,h,1 ,1);
+  translate(0,0,-depot.contHeight);
+  plane(w,h,1 ,1);
+  translate(0,0,depot.contHeight/2)
+  rotateX(Math.PI/2);
+  translate(0,0,depot.contHeight/2);
+  plane(h,d,0);
+}

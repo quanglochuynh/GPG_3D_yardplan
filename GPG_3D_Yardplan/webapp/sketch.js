@@ -1,8 +1,7 @@
 let cArray = undefined;
 let depot = undefined;
 let showText = false;
-let rotOffset = [];
-let table;
+let showBay = [];
 let easycam;
 let stage=0;
 let rot,dis;
@@ -10,8 +9,9 @@ const largeFontSize = 48;
 const smallFontSize = 12
 roofHeight = 20;
 p5.disableFriendlyErrors = true;
+button = [];
 
-const defaultState = {
+const states = [{
   "distance": 2059.3289393985488,
   "center": [
       291.1905894992754,
@@ -24,7 +24,89 @@ const defaultState = {
       0.9208759403662182,
       -0.14788832752699732
   ]
+},
+{
+  "distance": 1685.9791504657426,
+  "center": [
+      -276.4506264579203,
+      106.16259098032675,
+      -211.9164391674737
+  ],
+  "rotation": [
+      -0.3537624022177311,
+      0.041863659727330145,
+      0.9269739476041958,
+      -0.11755380569964356
+  ]
+},
+{
+  "distance": 1977.4167746454539,
+  "center": [
+      277.24663009745524,
+      317.9617307877529,
+      353.8653951073716
+  ],
+  "rotation": [
+      -0.9288240460479843,
+      0.14723126224919147,
+      -0.33506782123915624,
+      0.05777890678786246
+  ]
+},
+{
+  "distance": 1977.4167746454539,
+  "center": [
+      441.7313948620282,
+      376.2394294929234,
+      142.73667287233428
+  ],
+  "rotation": [
+      -0.4237331232220197,
+      0.08465511407126676,
+      -0.8820071472604534,
+      0.18800836185541125
+  ]
+},
+{
+  "distance": 1063.2537348041867,
+  "center": [
+      109.47893418893946,
+      -37.743662779817925,
+      -403.4403825980332
+  ],
+  "rotation": [
+      0.6763999840037055,
+      -0.1631002257457524,
+      -0.7028718750384398,
+      0.1478259289888153
+  ]
+},
+{
+  "distance": 533.0972798979914,
+  "center": [
+      124.47713497822522,
+      -176.33047332493723,
+      1296.5832422652277
+  ],
+  "rotation": [
+      0.8713838273437718,
+      -0.13264547865021642,
+      -0.47013966633787396,
+      0.04543232960216371
+  ]
 }
+]
+
+const deviceType = () => {
+  const ua = navigator.userAgent;
+  if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+      return 1;
+  }
+  else if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
+      return 2;
+  }
+  return 0;
+};
 
 function setColor(opt){
   switch (opt){
@@ -54,16 +136,25 @@ function preload(){
   $.getJSON("../data/etd.json", function(data){
     depot = data;
     console.log(depot);
+    showBay = Array(depot.Area.length).fill(1);
+    init()
+
     loop();
   })
   console.log("Done");
 }
+function switchBay(id){
+  showBay[id]= 1- showBay[id];
+}
 
 function init(){
-  createCanvas(windowWidth, windowHeight-100, WEBGL);
   setAttributes('antialias', true);
-  easycam = new Dw.EasyCam(this._renderer, defaultState); 
-  easycam.setState=defaultState;
+  easycam = new Dw.EasyCam(this._renderer, states[0]); 
+  if (deviceType()!=0){
+    easycam.setRotationScale(0.0005);
+  }else{
+    easycam.setRotationScale(0.0008);
+  }
   document.oncontextmenu = function() { return false; }
   document.onmousedown   = function() { return false; }
   let myFont = loadFont("Poppins-Light.ttf", )
@@ -76,20 +167,24 @@ function init(){
   textAlign(CENTER)
   showTextCheckbox = createCheckbox("Show Container name",false);
   showTextCheckbox.changed(changeTextVisibility);
-  view1 = createButton("View 1");
-  // view2 = createButton("View 2");
-  // view3 = createButton("View 3");
-  // view4 = createButton("View 4");
-  // view1.onPress(easycam.setState(defaultState,1000));
+  // for (let i=0; i<states.length; i++){
+  //   button.push(createButton("View "+ (i+1)));
+  //   button[i].mousePressed(() => {setCamera(states[i])});
+  // }
+  for (let i=0; i<showBay.length; i++){
+    btn = createButton("Bay "+ depot.Area[i].name);
+    btn.mousePressed(() => {switchBay(i)});
+  } 
 }
 
 function drawCont(cont, ar,or1, or2, dis){
-  push();  
-  strokeWeight(1)
   area = cvtArea(cont.Block);
+  if (showBay[area]==false) return
   b =  cont.Bay-1;
   r =  -cont.Tier+1;
   t =  cont.Row-1;
+  push();  
+  strokeWeight(1)
   rotateY(3.1415926548);
   rotateZ(ar[area].angle);
   x_flip = 1 - 2*ar[area].x_flip;
@@ -180,6 +275,17 @@ function drawDepot(depot){
   //   }
   // }
   pop();
+  // draw text
+  fill(0);
+  for (let i=0; i<depot.layout.text.length; i++){
+    push();
+    textSize(largeFontSize);
+    pos = depot.layout.text[i].position;
+    translate(pos.x, pos.y,10);
+    rotateZ(Math.PI/2);
+    text(depot.layout.text[i].content, 0,0)
+    pop();
+  }
 }
 
 function drawHouse(house){
@@ -230,9 +336,8 @@ function drawHouse(house){
 }
 
 function setup() {
+  createCanvas(windowWidth, windowHeight-100, WEBGL);
   noLoop();
-  init()
-  
 }
 
 function draw() {
@@ -259,10 +364,10 @@ function windowResized() {
 function changeTextVisibility(){
   if (showTextCheckbox.checked()){
     showText = true;
-    frameRate(24);
+    // frameRate(24);
   }else{
     showText = false;
-    frameRate(60);
+    // frameRate(60);
 
   }
 }
@@ -290,5 +395,8 @@ function drawSlope(x, y, wid, len, hei, offset, angle){
 }
 
 function setCamera(state){
-
+  // easycam.setRotation(state.rotation,500);
+  // easycam.setDistance(state.distance,500);
+  // easycam.setCenter(state.center,500);
+  console.log(state);
 }

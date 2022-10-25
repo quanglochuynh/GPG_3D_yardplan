@@ -13,6 +13,11 @@
       .b {
         fill: #fff;
       }
+
+      .c {
+        font-size: 23.07px;
+        font-family: MyriadPro-Regular, Myriad Pro;
+      }
     </style>
   </defs>
   <polygon class="a" points="99 60 100 123 39 138 1 169 1 528 13 966 22 966 24 992 321 1017 369 1015 365 823 523 825 496 568 549 327 551 1 119 11 117 60 99 60"/>
@@ -26,4 +31,16 @@
   <polygon class="a" points="368 511 382 810 496 805 485 505 368 511"/>
   <polygon class="b" points="336 6 186 10 188 57 338 51 336 6"/>
   <polygon class="b" points="534 190 534 298 499 298 498 190 534 190"/>
+  <text class="c" transform="translate(459 205) rotate(90)">A</text>
+  <text class="c" transform="translate(459 251) rotate(90)">B</text>
+  <text class="c" transform="translate(489 499) rotate(90)">C</text>
+  <text class="c" transform="translate(362 489) rotate(90)">C</text>
+  <text class="c" transform="translate(285 483) rotate(90)">SC</text>
+  <text class="c" transform="translate(44 495) rotate(90)">SC</text>
+  <text class="c" transform="translate(319 665) rotate(90)">D</text>
+  <text class="c" transform="translate(328 884) rotate(90)">F</text>
+  <text class="c" transform="translate(35 675) rotate(90)">D</text>
+  <text class="c" transform="translate(25 894) rotate(90)">F</text>
+  <text class="c" transform="translate(44 206) rotate(90)">A</text>
+  <text class="c" transform="translate(44 252) rotate(90)">B</text>
 </svg>

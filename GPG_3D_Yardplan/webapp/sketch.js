@@ -59,7 +59,6 @@ function preload(){
   console.log("Done");
 }
 
-
 function init(){
   createCanvas(windowWidth, windowHeight-100, WEBGL);
   setAttributes('antialias', true);
@@ -77,6 +76,11 @@ function init(){
   textAlign(CENTER)
   showTextCheckbox = createCheckbox("Show Container name",false);
   showTextCheckbox.changed(changeTextVisibility);
+  view1 = createButton("View 1");
+  // view2 = createButton("View 2");
+  // view3 = createButton("View 3");
+  // view4 = createButton("View 4");
+  // view1.onPress(easycam.setState(defaultState,1000));
 }
 
 function drawCont(cont, ar,or1, or2, dis){
@@ -160,13 +164,21 @@ function drawCont(cont, ar,or1, or2, dis){
   
 function drawDepot(depot){
   push();
-  for (let j=0; j<depot.layout.shape.length; j++){
-    for (let i =0; i<depot.layout.shape[j].length-1; i++){
-      p1 = depot.layout.shape[j].seq[i]
-      p2 = depot.layout.shape[j].seq[i+1]
-      line(p1.x, p1.y, p2.x, p2.y)
-    }
+  fill(140);
+  beginShape();
+  for (let j=1; j<depot.layout.shape[0].length; j++){
+    p1 = depot.layout.shape[0].seq[j];
+    vertex(p1.x,p1.y,0)
   }
+  endShape(CLOSE);
+  // noFill();
+  // for (let j=1; j<depot.layout.shape.length; j++){
+  //   for (let i =0; i<depot.layout.shape[j].length-1; i++){
+  //     p1 = depot.layout.shape[j].seq[i]
+  //     p2 = depot.layout.shape[j].seq[i+1]
+  //     line(p1.x, p1.y, p2.x, p2.y)
+  //   }
+  // }
   pop();
 }
 
@@ -178,7 +190,7 @@ function drawHouse(house){
       p2 = house[i].shape.seq[house[i].id2]
       w = Math.abs(p1.x-p2.x)
       h = Math.abs(p1.y-p2.y)
-      fill(100);
+      fill(180);
       translate(p1.x-w/2,p1.y-h/2,house[i].height/2)
       rotateZ(-house[i].angle)
       box(w, h, house[i].height)
@@ -198,6 +210,11 @@ function drawHouse(house){
       }
       fill(255)
       // resetMatrix();
+      if (w>h){
+        rotateZ(-Math.PI/2);
+      }else{
+        rotateZ(Math.PI/2);
+      }
       translate(0,0,roofHeight)
       textSize(largeFontSize)
       text(house[i].name, 0,0)
@@ -272,3 +289,6 @@ function drawSlope(x, y, wid, len, hei, offset, angle){
   pop();
 }
 
+function setCamera(state){
+
+}

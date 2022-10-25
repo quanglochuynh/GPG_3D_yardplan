@@ -232,18 +232,16 @@ function drawCont(cont, ar,or1, or2, dis){
     if (showText){
       fill(255)
       rotateX(1.5707963268);
-      if (or1<0.25){
-        // if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]==1) {
-          // fill(0);
-          // drawSideCont(cont, or2)
-          // pop();
-          // return;
-        // }
-        // rotateY(Math.PI);
+
+
+
+      if (or1<0.5){
+        if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]==1) {
+          pop();
+          return;
+        }
       }else{
         if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]==1) {
-          fill(0);
-          drawSideCont(cont, or2);
           pop();
           return;
         }
@@ -253,7 +251,7 @@ function drawCont(cont, ar,or1, or2, dis){
         text(cont.ContID, 0,0);
       } 
       translate(0,0, -depot.contWidth/2-2);
-      drawSideCont(cont, or1, or2)
+      // drawSideCont(cont, or1, or2)
     }
   }else{
     // Container 20ft
@@ -470,9 +468,9 @@ function mouseReleased(){
 // }
 
 function drawSideCont(cont, or1, or2){
-  if (or1<0.25){
-    rotateY(-Math.PI);
-  }
+  // if (or1<0.25){
+  //   rotateY(-Math.PI);
+  // }
   if (((or2>1)||(or2<-1))){
     rotateY(Math.PI/2);
   }else{

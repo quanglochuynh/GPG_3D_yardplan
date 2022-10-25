@@ -5,9 +5,11 @@ let showBay = [];
 let easycam;
 let stage=0;
 let rot,dis;
+let ori1;
+let ori2;
 let contArray3D;
 const maxRow=20;
-const maxBay = 30;
+const maxBay = 32;
 const maxTier = 6;
 const largeFontSize = 48;
 const smallFontSize = 12
@@ -231,59 +233,62 @@ function drawCont(cont, ar,or1, or2, dis){
       fill(255)
       rotateX(1.5707963268);
       if (or1<0.25){
-        rotateY(Math.PI);
-      }
+        // if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]==1) {
+          // fill(0);
+          // drawSideCont(cont, or2)
+          // pop();
+          // return;
+        // }
+        // rotateY(Math.PI);
+      }else{
+        if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]==1) {
+          fill(0);
+          drawSideCont(cont, or2);
+          pop();
+          return;
+        }
+      }      
       translate(0,0, depot.contWidth/2+2);
       if (dis<=2200){
         text(cont.ContID, 0,0);
       } 
       translate(0,0, -depot.contWidth/2-2);
-      if ((rot[2]<0.5)&&(rot[2]>-0.5)){
-        rotateY(-Math.PI);
-      }
-      if (((or2>1)||(or2<-1))){
-        rotateY(Math.PI/2);
-      }else{
-        rotateY(-Math.PI/2);
-      }
-      translate(0,0, depot.contLength+2);
-      textSize(7)
-      if (dis<=2000){
-        text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
-      }
+      drawSideCont(cont, or1, or2)
     }
   }else{
     // Container 20ft
-    b=b/2
-    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight)*x_flip + depot.Area[area].y_coor, r*(depot.contWidth));
-    translate(ar[area].offset.x, ar[area].offset.y)
-    setColor(cont.HangTauID)
-    box(depot.contLength, depot.contHeight, depot.contWidth);
-    if (showText){
-      fill(255)
-      rotateX(1.5707963268);
-      if (or1<0.25){
-        rotateY(Math.PI);
-      }
-      translate(0,0, depot.contWidth/2+2);
-      if (dis<=2200){
-        text(cont.ContID, 0,0);
-      } 
-      translate(0,0, -depot.contWidth/2-2);
-      if ((rot[2]<0.5)&&(rot[2]>-0.5)){
-        rotateY(-Math.PI);
-      }
-      if (((or2>1)||(or2<-1))){
-        rotateY(Math.PI/2);
-      }else{
-        rotateY(-Math.PI/2);
-      }
-      translate(0,0, depot.contLength/2+2);
-      textSize(7)
-      if (dis<=2000){
-        text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
-      }
-    }
+    // b=b/2
+    // translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight)*x_flip + depot.Area[area].y_coor, r*(depot.contWidth));
+    // translate(ar[area].offset.x, ar[area].offset.y)
+    // setColor(cont.HangTauID)
+    // box(depot.contLength, depot.contHeight, depot.contWidth);
+    // if (showText){
+    //   fill(255)
+    //   rotateX(1.5707963268);
+    //   if (or1<0.25){
+    //     rotateY(Math.PI);
+    //   }
+    //   if (contArray3D[area][b][r+1][t]==0) return;
+      
+    //   translate(0,0, depot.contWidth/2+2);
+    //   if (dis<=2200){
+    //     text(cont.ContID, 0,0);
+    //   } 
+    //   translate(0,0, -depot.contWidth/2-2);
+    //   if ((rot[2]<0.5)&&(rot[2]>-0.5)){
+    //     rotateY(-Math.PI);
+    //   }
+    //   if (((or2>1)||(or2<-1))){
+    //     rotateY(Math.PI/2);
+    //   }else{
+    //     rotateY(-Math.PI/2);
+    //   }
+    //   translate(0,0, depot.contLength/2+2);
+    //   textSize(7)
+    //   if (dis<=2000){
+    //     text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+    //   }
+    // }
   }
   pop();
 }
@@ -442,22 +447,40 @@ function updateFrameBuffer(){
 }
 
 function mouseReleased(){
-  console.log(mouseX, "  ", mouseY);
+  // console.log(easycam.getCenter());
+  // console.log(mouseX, mouseY);
+  console.log(ori1, ori2);
 }
 
-function drawBox(w,h,d){
-  // beginShape();
-  // vertex(0,0,0);
-  // vertex(w,0,0);
-  // vertex(w,h,0);
-  // vertex(0,h,0);
-  // endShape();
-  translate(0,0,+depot.contHeight/2);
-  plane(w,h,1 ,1);
-  translate(0,0,-depot.contHeight);
-  plane(w,h,1 ,1);
-  translate(0,0,depot.contHeight/2)
-  rotateX(Math.PI/2);
-  translate(0,0,depot.contHeight/2);
-  plane(h,d,0);
+// function drawBox(w,h,d){
+//   // beginShape();
+//   // vertex(0,0,0);
+//   // vertex(w,0,0);
+//   // vertex(w,h,0);
+//   // vertex(0,h,0);
+//   // endShape();
+//   translate(0,0,+depot.contHeight/2);
+//   plane(w,h,1 ,1);
+//   translate(0,0,-depot.contHeight);
+//   plane(w,h,1 ,1);
+//   translate(0,0,depot.contHeight/2)
+//   rotateX(Math.PI/2);
+//   translate(0,0,depot.contHeight/2);
+//   plane(h,d,0);
+// }
+
+function drawSideCont(cont, or1, or2){
+  if (or1<0.25){
+    rotateY(-Math.PI);
+  }
+  if (((or2>1)||(or2<-1))){
+    rotateY(Math.PI/2);
+  }else{
+    rotateY(+Math.PI/2);
+  }
+  translate(0,0, depot.contLength+2);
+  textSize(7)
+  if (dis<=2000){
+    text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+  }
 }

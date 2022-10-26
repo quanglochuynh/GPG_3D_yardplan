@@ -156,7 +156,6 @@ function processCont(array){
     b = array[i].Bay;
     r = array[i].Row;
     t = array[i].Tier;
-    // console.log(a,b,r,t);
     contArray3D[a][b][r][t] = 1;
   }
 }

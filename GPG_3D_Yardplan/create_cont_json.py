@@ -19,8 +19,8 @@ class depotEncoder(JSONEncoder):
         return o.__dict__
 
 if __name__ == "__main__":
-    path = input("\b \b Kéo  file excel đã xoá 5 dòng đầu tiên vào đây: \b \b")
-    excel = pd.read_excel(path, index_col=None)
+    path = input("\b \b Kéo  file excel vào đây: \b \b")
+    excel = pd.read_excel(path, index_col=None, header=5)
     excel = excel.drop(columns=['ContTareWeight','ContWeight',	'ContYear',	'Booking chỉ định',	'Cảng chỉ định', 'Area'	,	'PhanLoaiID',	'Phân loại đóng hàng',	'SoNgayLuuBai',	'Ngày hoàn thành PSC',	'Ngày báo giá',	'Mô tả hư hỏng',	'Mô tả',	'Description',	'DateIn',	'GhiChuStock',	'Ghi chú chỉ định',	'TrangthaiInstock',	'Ghi chú GateIn',	'Remark',	'BookingChiDinh'])
     excel = excel.drop([0], axis=0)
     print(excel)

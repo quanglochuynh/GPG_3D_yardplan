@@ -15,6 +15,7 @@ const largeFontSize = 48;
 const smallFontSize = 12
 roofHeight = 20;
 p5.disableFriendlyErrors = true;
+let currentState;
 
 const states = [{
   "distance": 2059.3289393985488,
@@ -172,7 +173,6 @@ function preload(){
       loop();
     })
   })
-  
   console.log("Done");
 }
 function switchBay(id){
@@ -180,7 +180,7 @@ function switchBay(id){
 }
 
 function init(){
-  // setAttributes('antialias', true);
+  setAttributes('antialias', true);
   easycam = new Dw.EasyCam(this._renderer, states[0]); 
   if (deviceType()!=0){
     easycam.setRotationScale(0.0004);
@@ -326,6 +326,23 @@ function drawDepot(depot){
     vertex(p1.x,p1.y,0)
   }
   endShape(CLOSE);
+  beginShape();
+  for (let j=1; j<depot.layout.shape[0].length; j++){
+    p1 = depot.layout.shape[0].seq[j];
+    vertex(p1.x,p1.y,-10)
+  }
+  endShape(CLOSE);
+  for (let j=1; j<depot.layout.shape[0].length-1; j++){
+    beginShape();
+    p1 = depot.layout.shape[0].seq[j];
+    p2 = depot.layout.shape[0].seq[j+1];
+    vertex(p1.x,p1.y,0);
+    vertex(p2.x,p2.y,0);
+    vertex(p2.x,p2.y,-10);
+    vertex(p1.x,p1.y,-10);
+    endShape(CLOSE);
+  }
+  
   // noFill();
   // for (let j=1; j<depot.layout.shape.length; j++){
   //   for (let i =0; i<depot.layout.shape[j].length-1; i++){
@@ -396,11 +413,46 @@ function drawHouse(house){
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight-100, WEBGL);
+  createCanvas(windowWidth-10, windowHeight-100, WEBGL);
   noLoop();
 }
 
 function draw() {
+  currentState = easycam.getCenter();
+  if (keyIsPressed){
+    switch (key){
+      case (('ArrowUp')):
+        currentState[0]+=10;
+        break;
+      case (('ArrowDown')):
+        currentState[0]-=10;
+        break;
+      case (('ArrowLeft')):
+        currentState[2]-=10;
+        break;
+      case (('ArrowRight')):
+        currentState[2]+=10;
+        break;
+      case ('w'):
+        currentState[0]+=10;
+        break;
+      case (('s')):
+        currentState[0]-=10;
+        break;
+      case (('a')):
+        currentState[2]-=10;
+        break;
+      case (('d')):
+        currentState[2]+=10;
+        break;
+      case ('z'):
+        currentState[1]+=10;
+        break;
+      case ('x'):
+        currentState[1]-=10;
+        break;
+    }
+  }
   rotateX(1.5707963268);
   background(240);
   strokeWeight(2)
@@ -416,7 +468,7 @@ function draw() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight-100);
+  resizeCanvas(windowWidth-10, windowHeight-100);
   easycam.setViewport([0,0,windowWidth, windowHeight]);
 }
 
@@ -464,33 +516,12 @@ function setCamera(state){
 //   redraw();
 // }
 
-
-function updateFrameBuffer(){
-
-}
-
 function mouseReleased(){
   // console.log(easycam.getCenter());
   // console.log(mouseX, mouseY);
   console.log(ori1, ori2);
 }
 
-// function drawBox(w,h,d){
-//   // beginShape();
-//   // vertex(0,0,0);
-//   // vertex(w,0,0);
-//   // vertex(w,h,0);
-//   // vertex(0,h,0);
-//   // endShape();
-//   translate(0,0,+depot.contHeight/2);
-//   plane(w,h,1 ,1);
-//   translate(0,0,-depot.contHeight);
-//   plane(w,h,1 ,1);
-//   translate(0,0,depot.contHeight/2)
-//   rotateX(Math.PI/2);
-//   translate(0,0,depot.contHeight/2);
-//   plane(h,d,0);
-// }
 
 function drawSideCont(cont, or2, twenty_feet){
   if (((or2>1)||(or2<-1))){
@@ -519,3 +550,4 @@ function drawSideCont(cont, or2, twenty_feet){
     rotateY(Math.PI/2);
   }
 }
+

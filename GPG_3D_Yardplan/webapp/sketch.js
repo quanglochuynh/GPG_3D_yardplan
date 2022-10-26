@@ -181,12 +181,13 @@ function switchBay(id){
 }
 
 function init(){
-  setAttributes('antialias', true);
+  // setAttributes('antialias', true);
   easycam = new Dw.EasyCam(this._renderer, states[0]); 
   if (deviceType()!=0){
-    easycam.setRotationScale(0.0005);
+    easycam.setRotationScale(0.0004);
   }else{
-    easycam.setRotationScale(0.0008);
+    console.log("Desktop");
+    easycam.setRotationScale(0.0006);
   }
   document.oncontextmenu = function() { return false; }
   document.onmousedown   = function() { return false; }
@@ -263,6 +264,7 @@ function drawCont(cont, ar,or1, or2, dis){
         }
       }      
       translate(0,0, depot.contWidth/2+2);
+      textSize(smallFontSize)
       if (dis<=2200){
         text(cont.ContID, 0,0);
       } 
@@ -325,14 +327,14 @@ function drawDepot(depot){
     vertex(p1.x,p1.y,0)
   }
   endShape(CLOSE);
-  noFill();
-  for (let j=1; j<depot.layout.shape.length; j++){
-    for (let i =0; i<depot.layout.shape[j].length-1; i++){
-      p1 = depot.layout.shape[j].seq[i]
-      p2 = depot.layout.shape[j].seq[i+1]
-      line(p1.x, p1.y, p2.x, p2.y)
-    }
-  }
+  // noFill();
+  // for (let j=1; j<depot.layout.shape.length; j++){
+  //   for (let i =0; i<depot.layout.shape[j].length-1; i++){
+  //     p1 = depot.layout.shape[j].seq[i]
+  //     p2 = depot.layout.shape[j].seq[i+1]
+  //     line(p1.x, p1.y, p2.x, p2.y)
+  //   }
+  // }
   pop();
   // draw text
   fill(0);
@@ -408,7 +410,6 @@ function draw() {
   dis = easycam.getDistance();
   ori1 = rot[2]**2;
   ori2 = rot[0]+rot[2];
-
   for(let i =0; i<cArray.length; i++){
     drawCont(cArray[i],depot.Area,ori1, ori2, dis)
   }

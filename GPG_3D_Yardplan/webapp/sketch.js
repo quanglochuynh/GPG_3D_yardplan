@@ -232,16 +232,32 @@ function drawCont(cont, ar,or1, or2, dis){
     if (showText){
       fill(255)
       rotateX(1.5707963268);
-
-
+      if (((or2>1)||(or2<-1))){
+        if (cont.Bay<maxBay-4){
+          if (contArray3D[area][cont.Bay+4][cont.Row][cont.Tier]!=1){
+            drawSideCont(cont, or2, false)
+          }
+        }else{
+          drawSideCont(cont, or2, false)
+        }
+      }else{
+        if (cont.Bay>4){
+          if (contArray3D[area][cont.Bay-4][cont.Row][cont.Tier]!=1){
+            drawSideCont(cont, or2, false)
+          }
+        }else{
+          drawSideCont(cont, or2, false)
+        }
+      }
 
       if (or1<0.5){
-        if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]==1) {
+        if (contArray3D[area][cont.Bay][cont.Row-(1*x_flip)][cont.Tier]==1) {
           pop();
           return;
         }
+        rotateY(Math.PI)
       }else{
-        if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]==1) {
+        if (contArray3D[area][cont.Bay][cont.Row+(1*x_flip)][cont.Tier]==1) {
           pop();
           return;
         }
@@ -250,43 +266,52 @@ function drawCont(cont, ar,or1, or2, dis){
       if (dis<=2200){
         text(cont.ContID, 0,0);
       } 
-      translate(0,0, -depot.contWidth/2-2);
-      // drawSideCont(cont, or1, or2)
     }
   }else{
     // Container 20ft
-    // b=b/2
-    // translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight)*x_flip + depot.Area[area].y_coor, r*(depot.contWidth));
-    // translate(ar[area].offset.x, ar[area].offset.y)
-    // setColor(cont.HangTauID)
-    // box(depot.contLength, depot.contHeight, depot.contWidth);
-    // if (showText){
-    //   fill(255)
-    //   rotateX(1.5707963268);
-    //   if (or1<0.25){
-    //     rotateY(Math.PI);
-    //   }
-    //   if (contArray3D[area][b][r+1][t]==0) return;
-      
-    //   translate(0,0, depot.contWidth/2+2);
-    //   if (dis<=2200){
-    //     text(cont.ContID, 0,0);
-    //   } 
-    //   translate(0,0, -depot.contWidth/2-2);
-    //   if ((rot[2]<0.5)&&(rot[2]>-0.5)){
-    //     rotateY(-Math.PI);
-    //   }
-    //   if (((or2>1)||(or2<-1))){
-    //     rotateY(Math.PI/2);
-    //   }else{
-    //     rotateY(-Math.PI/2);
-    //   }
-    //   translate(0,0, depot.contLength/2+2);
-    //   textSize(7)
-    //   if (dis<=2000){
-    //     text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
-    //   }
-    // }
+    b=b/2
+    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight)*x_flip + depot.Area[area].y_coor, r*(depot.contWidth));
+    translate(ar[area].offset.x, ar[area].offset.y)
+    setColor(cont.HangTauID)
+    box(depot.contLength, depot.contHeight, depot.contWidth);
+    if (showText){
+      fill(255)
+      rotateX(1.5707963268);
+      if (((or2>1)||(or2<-1))){
+        if (cont.Bay<maxBay-2){
+          if (contArray3D[area][cont.Bay+2][cont.Row][cont.Tier]!=1){
+            drawSideCont(cont, or2, true)
+          }
+        }else{
+          drawSideCont(cont, or2, true)
+        }
+      }else{
+        if (cont.Bay>2){
+          if (contArray3D[area][cont.Bay-2][cont.Row][cont.Tier]!=1){
+            drawSideCont(cont, or2, true)
+          }
+        }else{
+          drawSideCont(cont, or2, true)
+        }
+      }
+
+      if (or1<0.5){
+        if (contArray3D[area][cont.Bay][cont.Row-(1*x_flip)][cont.Tier]==1) {
+          pop();
+          return;
+        }
+        rotateY(Math.PI)
+      }else{
+        if (contArray3D[area][cont.Bay][cont.Row+(1*x_flip)][cont.Tier]==1) {
+          pop();
+          return;
+        }
+      }      
+      translate(0,0, depot.contWidth/2+2);
+      if (dis<=2200){
+        text(cont.ContID, 0,0);
+      } 
+    }
   }
   pop();
 }
@@ -467,18 +492,30 @@ function mouseReleased(){
 //   plane(h,d,0);
 // }
 
-function drawSideCont(cont, or1, or2){
-  // if (or1<0.25){
-  //   rotateY(-Math.PI);
-  // }
+function drawSideCont(cont, or2, twenty_feet){
   if (((or2>1)||(or2<-1))){
     rotateY(Math.PI/2);
   }else{
-    rotateY(+Math.PI/2);
+    rotateY(-Math.PI/2);
   }
-  translate(0,0, depot.contLength+2);
-  textSize(7)
-  if (dis<=2000){
-    text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+  if (!twenty_feet){
+    translate(0,0, depot.contLength+2);
+    textSize(7)
+    if (dis<=2000){
+      text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+    }
+    translate(0,0, -depot.contLength-2);
+  }else{
+    translate(0,0, depot.contLength/2+2);
+    textSize(7)
+    if (dis<=2000){
+      text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+    }
+    translate(0,0, -(depot.contLength/2)-2);
+  }
+  if (((or2>1)||(or2<-1))){
+    rotateY(-Math.PI/2);
+  }else{
+    rotateY(Math.PI/2);
   }
 }

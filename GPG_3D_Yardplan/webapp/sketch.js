@@ -325,14 +325,14 @@ function drawDepot(depot){
     vertex(p1.x,p1.y,0)
   }
   endShape(CLOSE);
-  // noFill();
-  // for (let j=1; j<depot.layout.shape.length; j++){
-  //   for (let i =0; i<depot.layout.shape[j].length-1; i++){
-  //     p1 = depot.layout.shape[j].seq[i]
-  //     p2 = depot.layout.shape[j].seq[i+1]
-  //     line(p1.x, p1.y, p2.x, p2.y)
-  //   }
-  // }
+  noFill();
+  for (let j=1; j<depot.layout.shape.length; j++){
+    for (let i =0; i<depot.layout.shape[j].length-1; i++){
+      p1 = depot.layout.shape[j].seq[i]
+      p2 = depot.layout.shape[j].seq[i+1]
+      line(p1.x, p1.y, p2.x, p2.y)
+    }
+  }
   pop();
   // draw text
   fill(0);

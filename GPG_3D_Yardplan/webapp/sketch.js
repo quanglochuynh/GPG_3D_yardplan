@@ -16,6 +16,7 @@ const smallFontSize = 12
 roofHeight = 20;
 p5.disableFriendlyErrors = true;
 let currentState;
+let heading;
 
 const states = [{
   "distance": 2059.3289393985488,
@@ -210,7 +211,7 @@ function init(){
   } 
 }
 
-function drawCont(cont, ar,or1, or2, dis){
+function drawCont(cont, ar,or1, or2, center){
   area = cvtArea(cont.Block);
   if (showBay[area]==false) return
   b =  cont.Bay-1;
@@ -225,20 +226,27 @@ function drawCont(cont, ar,or1, or2, dis){
   if (b%2 != 0){
     // Container 40ft
     b = Math.floor(b/2);
-    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight)*x_flip + depot.Area[area].y_coor, r*(depot.contWidth));
-    translate(ar[area].offset.x, ar[area].offset.y)
+    let x = b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor + ar[area].offset.x;
+    let y = -t*(depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
+    let z = r*(depot.contWidth);
+    translate(x,y, z);
     setColor(cont.HangTauID)
-    box(depot.contLength*2, depot.contHeight, depot.contWidth);
+    box(depot.contLength*2, depot.contHeight, depot.contWidth);    
+    let dis = easycam.getDistance() - myDist(center[0], center[2], center[1], x,y,z);
+    if (dis>1000) {
+      pop();
+      return;
+    }
     if (showText){
       fill(255)
       rotateX(1.5707963268);
       if (((or2>1)||(or2<-1))){
         if (cont.Bay<maxBay-4){
           if (contArray3D[area][cont.Bay+4][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, false)
+            drawSideCont(cont, or2, false, dis)
           }
         }else{
-          drawSideCont(cont, or2, false)
+          drawSideCont(cont, or2, false, dis)
         }
       }else{
         if (cont.Bay>4){
@@ -246,7 +254,7 @@ function drawCont(cont, ar,or1, or2, dis){
             drawSideCont(cont, or2, false)
           }
         }else{
-          drawSideCont(cont, or2, false)
+          drawSideCont(cont, or2, false, dis)
         }
       }
 
@@ -264,35 +272,40 @@ function drawCont(cont, ar,or1, or2, dis){
       }      
       translate(0,0, depot.contWidth/2+2);
       textSize(smallFontSize)
-      if (dis<=2200){
-        text(cont.ContID, 0,0);
-      } 
+      text(cont.ContID + " " + Math.floor(dis), 0,0);
     }
   }else{
     // Container 20ft
     b=b/2
-    translate(b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor,-t*(depot.contHeight)*x_flip + depot.Area[area].y_coor, r*(depot.contWidth));
-    translate(ar[area].offset.x, ar[area].offset.y)
+    let x = b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor + ar[area].offset.x;
+    let y = -t*(depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
+    let z = r*(depot.contWidth);
+    translate(x,y, z);
     setColor(cont.HangTauID)
     box(depot.contLength, depot.contHeight, depot.contWidth);
+    let dis = easycam.getDistance() - myDist(center[0], center[2], center[1], x,y,z);
+    if (dis>1000) {
+      pop();
+      return;
+    }
     if (showText){
       fill(255)
       rotateX(1.5707963268);
       if (((or2>1)||(or2<-1))){
         if (cont.Bay<maxBay-2){
           if (contArray3D[area][cont.Bay+2][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, true)
+            drawSideCont(cont, or2, true,dis)
           }
         }else{
-          drawSideCont(cont, or2, true)
+          drawSideCont(cont, or2, true,dis)
         }
       }else{
         if (cont.Bay>2){
           if (contArray3D[area][cont.Bay-2][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, true)
+            drawSideCont(cont, or2, true,dis)
           }
         }else{
-          drawSideCont(cont, or2, true)
+          drawSideCont(cont, or2, true,dis)
         }
       }
 
@@ -418,51 +431,21 @@ function setup() {
 }
 
 function draw() {
-  currentState = easycam.getCenter();
-  if (keyIsPressed){
-    switch (key){
-      case (('ArrowUp')):
-        currentState[0]+=10;
-        break;
-      case (('ArrowDown')):
-        currentState[0]-=10;
-        break;
-      case (('ArrowLeft')):
-        currentState[2]-=10;
-        break;
-      case (('ArrowRight')):
-        currentState[2]+=10;
-        break;
-      case ('w'):
-        currentState[0]+=10;
-        break;
-      case (('s')):
-        currentState[0]-=10;
-        break;
-      case (('a')):
-        currentState[2]-=10;
-        break;
-      case (('d')):
-        currentState[2]+=10;
-        break;
-      case ('z'):
-        currentState[1]+=10;
-        break;
-      case ('x'):
-        currentState[1]-=10;
-        break;
-    }
-  }
+  checkKeyPress();
   rotateX(1.5707963268);
   background(240);
   strokeWeight(2)
   drawDepot(depot);
   rot = easycam.getRotation();
-  dis = easycam.getDistance();
   ori1 = rot[2]**2;
   ori2 = rot[0]+rot[2];
+  let center = easycam.getCenter();
+  push()
+  translate(center[0], center[2], center[1])
+  sphere(20)
+  pop();
   for(let i =0; i<cArray.length; i++){
-    drawCont(cArray[i],depot.Area,ori1, ori2, dis)
+    drawCont(cArray[i],depot.Area,ori1, ori2, center)
   }
   drawHouse(depot.house);
 }
@@ -516,14 +499,22 @@ function setCamera(state){
 //   redraw();
 // }
 
-function mouseReleased(){
-  // console.log(easycam.getCenter());
-  // console.log(mouseX, mouseY);
-  console.log(ori1, ori2);
-}
+// function mouseReleased(){
+//   // console.log(easycam.getCenter());
+//   // console.log(mouseX, mouseY);
+//   // console.log(ori1, ori2);
+//   // let quat=easycam.getRotation();
+//   // z = quat[2];
+//   // w = quat[3];
+//   // let az = ((z / sqrt(1-w**2)))**2;
+//   // console.log((az*360));
+//   let a = getAng(easycam.getRotation())
+//   console.log((a/(2*Math.PI))*360);
+  
+// }
 
 
-function drawSideCont(cont, or2, twenty_feet){
+function drawSideCont(cont, or2, twenty_feet,dis){
   if (((or2>1)||(or2<-1))){
     rotateY(Math.PI/2);
   }else{
@@ -532,16 +523,12 @@ function drawSideCont(cont, or2, twenty_feet){
   if (!twenty_feet){
     translate(0,0, depot.contLength+2);
     textSize(7)
-    if (dis<=2000){
-      text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
-    }
+    text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
     translate(0,0, -depot.contLength-2);
   }else{
     translate(0,0, depot.contLength/2+2);
     textSize(7)
-    if (dis<=2000){
-      text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
-    }
+    text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
     translate(0,0, -(depot.contLength/2)-2);
   }
   if (((or2>1)||(or2<-1))){
@@ -551,3 +538,102 @@ function drawSideCont(cont, or2, twenty_feet){
   }
 }
 
+// V[0] = 2 * (x * z - w * y + x*y - w*z) + 1 - 2 * (y*y + z*z)
+// V[1] = 2 * (y * z + w * x) + 1 - 2 * (x*x + z*z) + 2 * (x*y + w*z)
+// V[2] = 1 - 2 * (x * x + y * y)
+// z = z / sqrt(1-w*w)
+
+    // yaw (z-axis rotation)
+    // double siny_cosp = 2 * (q.w * q.z + q.x * q.y);
+    // double cosy_cosp = 1 - 2 * (q.y * q.y + q.z * q.z);
+    // angles.yaw = std::atan2(siny_cosp, cosy_cosp);
+
+function dirVector(quat){
+  let az = getAng(quat);
+  let V=Array(2);
+  V[1] = Math.cos(az);
+  V[0] = Math.sin(az);
+  // console.log('V: ', V);
+  return V;
+}
+
+function getAng(quat){
+  x = quat[0];
+  y = quat[1];
+  z = quat[2];
+  w = quat[3];
+  var test = x*y + z*w;
+  var heading, attitude, bank;
+  var test = x*y + z*w;
+  if (test > 0.499) { // singularity at north pole
+      heading = 2 * Math.atan2(x,w);
+      attitude = Math.PI/2;
+      bank = 0;
+  }
+  if (test < -0.499) { // singularity at south pole
+      heading = -2 * Math.atan2(x,w);
+      attitude = - Math.PI/2;
+      bank = 0;
+  }
+  if(isNaN(heading)){
+      var sqx = x*x;
+      var sqy = y*y;
+      var sqz = z*z;
+      heading = Math.atan2(2*y*w - 2*x*z , 1 - 2*sqy - 2*sqz); // Heading
+      attitude = Math.asin(2*test); // attitude
+      bank = Math.atan2(2*x*w - 2*y*z , 1 - 2*sqx - 2*sqz); // bank
+  }
+  return heading, attitude, bank;
+}
+
+function checkKeyPress(){
+  currentState = easycam.getCenter();
+  if (keyIsPressed){
+    dirVec = dirVector(easycam.getRotation());
+    // console.log('dirVec: ', dirVec);
+    switch (key){
+      case (('ArrowUp')):
+        currentState[0]-=10*dirVec[0];
+        currentState[2]-=10*dirVec[1];
+        break;
+      case (('ArrowDown')):
+        currentState[0]+=10*dirVec[0];
+        currentState[2]+=10*dirVec[1];
+        break;
+      case (('ArrowLeft')):
+        currentState[0]-=10*dirVec[1];
+        currentState[2]+=10*dirVec[0];
+        break;
+      case (('ArrowRight')):
+        currentState[0]+=10*dirVec[1];
+        currentState[2]-=10*dirVec[0];
+        break;
+      case ('w'):
+        currentState[0]-=10*dirVec[0];
+        currentState[2]-=10*dirVec[1];
+        break;
+      case (('s')):
+        currentState[0]+=10*dirVec[0];
+        currentState[2]+=10*dirVec[1];
+        break;
+      case (('a')):
+        currentState[0]-=10*dirVec[1];
+        currentState[2]+=10*dirVec[0];
+        break;
+      case (('d')):
+        currentState[0]+=10*dirVec[1];
+        currentState[2]-=10*dirVec[0];
+        break;
+      case ('z'):
+        currentState[1]+=10;
+        break;
+      case ('x'):
+        currentState[1]-=10;
+        break;
+    }
+  }
+}
+
+function myDist(x,y,z,a,b,c){
+  return sqrt(Math.pow(x-a,2) + Math.pow(y-b,2) + Math.pow(z-c,2));
+}

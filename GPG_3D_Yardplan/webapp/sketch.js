@@ -240,7 +240,8 @@ function drawCont(cont, ar,or1, or2, center){
     // if (dis>2000) {
     //   pop();
     //   return;
-    // }   
+    // }  
+
     if (showText){
       fill(255);
       rotateX(1.5707963268);
@@ -277,6 +278,8 @@ function drawCont(cont, ar,or1, or2, center){
       translate(0,0, depot.contWidth/2+2);
       textSize(smallFontSize);
       text(cont.ContID, 0,0);
+      // fill(lerp(dis, 0, 1000, 0, 255))
+      // text(Math.floor(dis),0,0)
     }
   }else{
     // Container 20ft
@@ -467,7 +470,7 @@ function draw() {
   let center = easycam.getCenter();
   push()
   translate(center[0], center[2], -center[1])
-  sphere(20);
+  sphere(4,6,6);
   pop();
   strokeWeight(1);
   for(let i =0; i<cArray.length; i++){

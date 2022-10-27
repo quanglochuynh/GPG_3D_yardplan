@@ -17,6 +17,7 @@ roofHeight = 20;
 p5.disableFriendlyErrors = true;
 let currentState;
 let heading;
+let eye;
 
 const states = [{
   "distance": 2059.3289393985488,
@@ -224,24 +225,25 @@ function drawCont(cont, ar,or1, or2, center){
   rotateY(3.1415926548);
   rotateZ(ar[area].angle);
   x_flip = 1 - 2*ar[area].x_flip;
-  translate(0.5*depot.contLength, -0.5*depot.contWidth*x_flip, -0.5*depot.contHeight)
+  translate(0.5*depot.contLength, -0.5*depot.contWidth*x_flip, -0.5*depot.contHeight);
+  b = Math.floor(b/2);
+  let x = b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor + ar[area].offset.x;
+  let y = -t*(depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
+  let z = r*(depot.contWidth);
+  translate(x,y, z);
+  setColor(cont.HangTauID);
+  // let d = easycam.getDistance();
+  // let v = subVec(subVec([0, -d,0],[-center[0], center[2], -center[1]]), [x,y,z]);
+  // let dis = myDist(v[0], v[1], v[2]);
   if (b%2 != 0){
     // Container 40ft
-    b = Math.floor(b/2);
-    let x = b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor + ar[area].offset.x;
-    let y = -t*(depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
-    let z = r*(depot.contWidth);
-    translate(x,y, z);
-    setColor(cont.HangTauID)
-    box(depot.contLength*2, depot.contHeight, depot.contWidth);    
-    let v = subVec([0, easycam.getDistance(),0], subVec([-center[0], center[2], -center[1]], [x,y,z]));
-    dis = myDist(v[0], v[1], v[2]);
-    if (dis>1000) {
-      pop();
-      return;
-    }
+    box(depot.contLength*2, depot.contHeight, depot.contWidth);     
+    // if (dis>2000) {
+    //   pop();
+    //   return;
+    // }   
     if (showText){
-      fill(255)
+      fill(255);
       rotateX(1.5707963268);
       if (((or2>1)||(or2<-1))){
         if (cont.Bay<maxBay-4){
@@ -274,21 +276,13 @@ function drawCont(cont, ar,or1, or2, center){
         }
       }      
       translate(0,0, depot.contWidth/2+2);
-      textSize(smallFontSize)
-      text(cont.ContID + " " + Math.floor(dis), 0,0);
+      textSize(smallFontSize);
+      text(cont.ContID, 0,0);
     }
   }else{
     // Container 20ft
-    b=b/2
-    let x = b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor + ar[area].offset.x;
-    let y = -t*(depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
-    let z = r*(depot.contWidth);
-    translate(x,y, z);
-    setColor(cont.HangTauID)
     box(depot.contLength, depot.contHeight, depot.contWidth);
-    let v = subVec([0, easycam.getDistance(),0], subVec([-center[0], center[2], -center[1]], [x,y,z]));
-    dis = myDist(v[0], v[1], v[2]);
-    if (dis>1000) {
+    if (dis>2000) {
       pop();
       return;
     }
@@ -326,9 +320,7 @@ function drawCont(cont, ar,or1, or2, center){
         }
       }      
       translate(0,0, depot.contWidth/2+2);
-      if (dis<=2200){
-        text(cont.ContID, 0,0);
-      } 
+      text(cont.ContID, 0,0);
     }
   }
   pop();
@@ -533,10 +525,10 @@ function drawSideCont(cont, or2, twenty_feet,dis){
 }
 
 function dirVector(quat){
-  let az = getAng(quat);
+  eye = getAng(quat);
   let V=Array(2);
-  V[1] = Math.cos(az[0]);
-  V[0] = Math.sin(az[0]);
+  V[1] = Math.cos(eye[0]);
+  V[0] = Math.sin(eye[0]);
   return V;
 }
 

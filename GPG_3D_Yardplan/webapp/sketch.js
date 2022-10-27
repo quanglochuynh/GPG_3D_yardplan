@@ -212,7 +212,6 @@ function init(){
     btn.mousePressed(() => {switchBay(i)});
   } 
   heading = dirVector(easycam.getRotation());
-
 }
 
 function drawCont(cont, ar,or1, or2, center){
@@ -222,11 +221,10 @@ function drawCont(cont, ar,or1, or2, center){
   r =  -cont.Tier+1;
   t =  cont.Row-1;
   push();  
-  strokeWeight(1)
   rotateY(3.1415926548);
   rotateZ(ar[area].angle);
   x_flip = 1 - 2*ar[area].x_flip;
-  translate(0.5*depot.contLength, -0.5*depot.contWidth*x_flip, -0.5*depot.contHeight);
+  translate(0.5*depot.contLength, -0.5*depot.contWidth*x_flip, -0.5*depot.contHeight -10 - depot.Area[area].z_coor);
   b = Math.floor(b/2);
   let x = b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor + ar[area].offset.x;
   let y = -t*(depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
@@ -330,6 +328,7 @@ function drawCont(cont, ar,or1, or2, center){
 function drawDepot(depot){
   push();
   fill(140);
+  // noFill();
   for (let i=0 ;i<depot.ground.length; i++){
     shapeID = depot.ground[i].shapeID;
     offsetZ = depot.ground[i].offsetZ
@@ -344,7 +343,7 @@ function drawDepot(depot){
       p1 = depot.layout.shape[shapeID].seq[j];
       vertex(p1.x,p1.y, 0)
     }
-    endShape(CLOSE);
+    endShape();
     for (let j=0; j<depot.layout.shape[shapeID].length-1; j++){
       beginShape();
       p1 = depot.layout.shape[shapeID].seq[j];
@@ -353,7 +352,7 @@ function drawDepot(depot){
       vertex(p2.x,p2.y,0);
       vertex(p2.x,p2.y,+depot.ground[i].offsetZ+10);
       vertex(p1.x,p1.y,+depot.ground[i].offsetZ+10);
-      endShape(CLOSE);
+      endShape();
     }
   }
   // noFill();
@@ -364,6 +363,30 @@ function drawDepot(depot){
   //     line(p1.x, p1.y, p2.x, p2.y)
   //   }
   // }
+  // draw slope
+  for (let i=0; i<depot.slope.length; i++){
+    let shapeID = depot.slope[i].shapeID;
+    let hei = depot.slope[i].height;
+    beginShape();
+    vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,hei+10);
+    vertex(depot.layout.shape[shapeID].seq[2].x, depot.layout.shape[shapeID].seq[2].y,10);
+    vertex(depot.layout.shape[shapeID].seq[1].x, depot.layout.shape[shapeID].seq[1].y,10);
+    vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,hei+10);
+    endShape();
+    beginShape();
+    vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,hei+10);
+    vertex(depot.layout.shape[shapeID].seq[2].x, depot.layout.shape[shapeID].seq[2].y,10);
+    vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,10);
+    vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,hei+10);
+    endShape();
+    beginShape();
+    vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,hei+10);
+    vertex(depot.layout.shape[shapeID].seq[1].x, depot.layout.shape[shapeID].seq[1].y,10);
+    vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,10);
+    vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,hei+10);
+    endShape();
+  }
+  
   pop();
   // draw text
   fill(0);
@@ -371,7 +394,7 @@ function drawDepot(depot){
     push();
     textSize(largeFontSize);
     pos = depot.layout.text[i].position;
-    translate(pos.x, pos.y,10);
+    translate(pos.x, pos.y,11);
     rotateZ(Math.PI/2);
     text(depot.layout.text[i].content, 0,0)
     pop();
@@ -387,7 +410,7 @@ function drawHouse(house){
       w = Math.abs(p1.x-p2.x)
       h = Math.abs(p1.y-p2.y)
       fill(180);
-      translate(p1.x-w/2,p1.y-h/2,house[i].height/2)
+      translate(p1.x-w/2,p1.y-h/2,house[i].height/2+house[i].offsetZ)
       rotateZ(-house[i].angle)
       box(w, h, house[i].height)
       // noStroke();
@@ -420,6 +443,7 @@ function drawHouse(house){
       p2 = house[i].shape.seq[house[i].id2]
       w = Math.abs(p1.x-p2.x)
       h = Math.abs(p1.y-p2.y)
+      translate(0,0,house[i].offsetZ)
       drawSlope(p1.x+house[i].offsetX, p1.y+house[i].offsetY, h,w,20,0.9, Math.PI/2)
     }
   }
@@ -442,12 +466,13 @@ function draw() {
   let center = easycam.getCenter();
   push()
   translate(center[0], center[2], -center[1])
-  sphere(20)
+  sphere(20);
   pop();
-  // for(let i =0; i<cArray.length; i++){
-  //   drawCont(cArray[i],depot.Area,ori1, ori2, center)
-  // }
-  // drawHouse(depot.house);
+  strokeWeight(1);
+  for(let i =0; i<cArray.length; i++){
+    drawCont(cArray[i],depot.Area,ori1, ori2, center)
+  }
+  drawHouse(depot.house);
 }
 
 function windowResized() {
@@ -495,14 +520,9 @@ function setCamera(state){
   console.log(state);
 }
 
-// function mouseDragged(){
-//   redraw();
-// }
-
 function mouseReleased(){
   heading = dirVector(easycam.getRotation());
 }
-
 
 function drawSideCont(cont, or2, twenty_feet,dis){
   if (((or2>1)||(or2<-1))){

@@ -199,7 +199,7 @@ function init(){
   normalMaterial();
   stroke(0)
   textSize(smallFontSize);
-  // debugMode();
+  debugMode();
   textAlign(CENTER)
   showTextCheckbox = createCheckbox("Show Container name",false);
   showTextCheckbox.changed(changeTextVisibility);
@@ -231,37 +231,37 @@ function drawCont(cont, ar,or1, or2, center){
   let z = r*(depot.contWidth);
   translate(x,y, z);
   setColor(cont.HangTauID);
-  // let d = easycam.getDistance();
-  // let v = subVec(subVec([0, -d,0],[-center[0], center[2], -center[1]]), [x,y,z]);
-  // let dis = myDist(v[0], v[1], v[2]);
+  let d = easycam.getDistance();
+  let v = subVec(subVec([d*Math.cos(eye[0]), -d*Math.sin(eye[0]),d*Math.cos(eye[1])],[-center[0], center[2], center[1]]), [x,y,z]);
+  let dis = myDist(v[0], v[1], v[2]);
   if ((cont.Bay)%2 == 0){
     // Container 40ft
     box(depot.contLength*2, depot.contHeight, depot.contWidth);     
-    // if (dis>2000) {
-    //   pop();
-    //   return;
-    // }  
+    if (dis>4000) {
+      pop();
+      return;
+    }  
 
     if (showText){
       fill(255);
       rotateX(1.5707963268);
-      if (((or2>1)||(or2<-1))){
-        if (cont.Bay<maxBay-4){
-          if (contArray3D[area][cont.Bay+4][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, false, dis)
-          }
-        }else{
-          drawSideCont(cont, or2, false, dis)
-        }
-      }else{
-        if (cont.Bay>4){
-          if (contArray3D[area][cont.Bay-4][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, false)
-          }
-        }else{
-          drawSideCont(cont, or2, false, dis)
-        }
-      }
+      // if (((or2>1)||(or2<-1))){
+      //   if (cont.Bay<maxBay-4){
+      //     if (contArray3D[area][cont.Bay+4][cont.Row][cont.Tier]!=1){
+      //       drawSideCont(cont, or2, false, dis)
+      //     }
+      //   }else{
+      //     drawSideCont(cont, or2, false, dis)
+      //   }
+      // }else{
+      //   if (cont.Bay>4){
+      //     if (contArray3D[area][cont.Bay-4][cont.Row][cont.Tier]!=1){
+      //       drawSideCont(cont, or2, false)
+      //     }
+      //   }else{
+      //     drawSideCont(cont, or2, false, dis)
+      //   }
+      // }
 
       if (or1<0.5){
         if (contArray3D[area][cont.Bay][cont.Row-(1*x_flip)][cont.Tier]==1) {
@@ -277,54 +277,54 @@ function drawCont(cont, ar,or1, or2, center){
       }      
       translate(0,0, depot.contWidth/2+2);
       textSize(smallFontSize);
-      text(cont.ContID, 0,0);
-      // fill(lerp(dis, 0, 1000, 0, 255))
-      // text(Math.floor(dis),0,0)
+      // text(cont.ContID, 0,0);
+      fill(lerp(dis, 0, 255, 0, 1000))
+      text(Math.floor(dis),0,0)
     }
   }else{
     // Container 20ft
-    box(depot.contLength, depot.contHeight, depot.contWidth);
-    if (dis>2000) {
-      pop();
-      return;
-    }
-    if (showText){
-      fill(255)
-      rotateX(1.5707963268);
-      if (((or2>1)||(or2<-1))){
-        if (cont.Bay<maxBay-2){
-          if (contArray3D[area][cont.Bay+2][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, true,dis)
-          }
-        }else{
-          drawSideCont(cont, or2, true,dis)
-        }
-      }else{
-        if (cont.Bay>2){
-          if (contArray3D[area][cont.Bay-2][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, true,dis)
-          }
-        }else{
-          drawSideCont(cont, or2, true,dis)
-        }
-      }
+    // box(depot.contLength, depot.contHeight, depot.contWidth);
+    // if (dis>2000) {
+    //   pop();
+    //   return;
+    // }
+    // if (showText){
+    //   fill(255)
+    //   rotateX(1.5707963268);
+    //   if (((or2>1)||(or2<-1))){
+    //     if (cont.Bay<maxBay-2){
+    //       if (contArray3D[area][cont.Bay+2][cont.Row][cont.Tier]!=1){
+    //         drawSideCont(cont, or2, true,dis)
+    //       }
+    //     }else{
+    //       drawSideCont(cont, or2, true,dis)
+    //     }
+    //   }else{
+    //     if (cont.Bay>2){
+    //       if (contArray3D[area][cont.Bay-2][cont.Row][cont.Tier]!=1){
+    //         drawSideCont(cont, or2, true,dis)
+    //       }
+    //     }else{
+    //       drawSideCont(cont, or2, true,dis)
+    //     }
+    //   }
 
-      if (or1<0.5){
-        if (contArray3D[area][cont.Bay][cont.Row-(1*x_flip)][cont.Tier]==1) {
-          pop();
-          return;
-        }
-        rotateY(Math.PI)
-      }else{
-        if (contArray3D[area][cont.Bay][cont.Row+(1*x_flip)][cont.Tier]==1) {
-          pop();
-          return;
-        }
-      }      
-      translate(0,0, depot.contWidth/2+2);
-      textSize(smallFontSize);
-      text(cont.ContID, 0,0);
-    }
+    //   if (or1<0.5){
+    //     if (contArray3D[area][cont.Bay][cont.Row-(1*x_flip)][cont.Tier]==1) {
+    //       pop();
+    //       return;
+    //     }
+    //     rotateY(Math.PI)
+    //   }else{
+    //     if (contArray3D[area][cont.Bay][cont.Row+(1*x_flip)][cont.Tier]==1) {
+    //       pop();
+    //       return;
+    //     }
+    //   }      
+    //   translate(0,0, depot.contWidth/2+2);
+    //   textSize(smallFontSize);
+    //   text(cont.ContID, 0,0);
+    // }
   }
   pop();
 }
@@ -469,14 +469,29 @@ function draw() {
   ori2 = rot[0]+rot[2];
   let center = easycam.getCenter();
   push()
-  translate(center[0], center[2], -center[1])
+  noStroke();
+  translate(center[0], center[2], -center[1]);
+  sphere(4,6,6);
+  translate(40,0,0);
+  fill("red")
+  sphere(4,6,6);
+  translate(-40,0,0);
+  translate(0,40,0);
+  fill("green");
+  sphere(4,6,6);
+  translate(0,-40,0);
+  translate(0,0,40);
+  fill("blue");
   sphere(4,6,6);
   pop();
+  sphere(20,6,6)
   strokeWeight(1);
-  for(let i =0; i<cArray.length; i++){
-    drawCont(cArray[i],depot.Area,ori1, ori2, center)
-  }
-  drawHouse(depot.house);
+  // for(let i =0; i<cArray.length; i++){
+  //   drawCont(cArray[i],depot.Area,ori1, ori2, center)
+  // }
+  // drawHouse(depot.house);
+  strokeWeight(4);
+  line(0, 0, 0, center[0], center[2], -center[1])
 }
 
 function windowResized() {

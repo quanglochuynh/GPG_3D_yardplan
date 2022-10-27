@@ -177,6 +177,7 @@ function preload(){
   })
   console.log("Done");
 }
+
 function switchBay(id){
   showBay[id]= 1- showBay[id];
 }
@@ -235,7 +236,7 @@ function drawCont(cont, ar,or1, or2, center){
   // let d = easycam.getDistance();
   // let v = subVec(subVec([0, -d,0],[-center[0], center[2], -center[1]]), [x,y,z]);
   // let dis = myDist(v[0], v[1], v[2]);
-  if (b%2 != 0){
+  if ((cont.Bay)%2 == 0){
     // Container 40ft
     box(depot.contLength*2, depot.contHeight, depot.contWidth);     
     // if (dis>2000) {
@@ -329,29 +330,32 @@ function drawCont(cont, ar,or1, or2, center){
 function drawDepot(depot){
   push();
   fill(140);
-  beginShape();
-  for (let j=1; j<depot.layout.shape[0].length; j++){
-    p1 = depot.layout.shape[0].seq[j];
-    vertex(p1.x,p1.y,0)
-  }
-  endShape(CLOSE);
-  beginShape();
-  for (let j=1; j<depot.layout.shape[0].length; j++){
-    p1 = depot.layout.shape[0].seq[j];
-    vertex(p1.x,p1.y,-10)
-  }
-  endShape(CLOSE);
-  for (let j=1; j<depot.layout.shape[0].length-1; j++){
+  for (let i=0 ;i<depot.ground.length; i++){
+    shapeID = depot.ground[i].shapeID;
+    offsetZ = depot.ground[i].offsetZ
     beginShape();
-    p1 = depot.layout.shape[0].seq[j];
-    p2 = depot.layout.shape[0].seq[j+1];
-    vertex(p1.x,p1.y,0);
-    vertex(p2.x,p2.y,0);
-    vertex(p2.x,p2.y,-10);
-    vertex(p1.x,p1.y,-10);
+    for (let j=0; j<depot.layout.shape[shapeID].length; j++){
+      p1 = depot.layout.shape[shapeID].seq[j];
+      vertex(p1.x,p1.y, offsetZ+10)
+    }
     endShape(CLOSE);
+    beginShape();
+    for (let j=0; j<depot.layout.shape[shapeID].length; j++){
+      p1 = depot.layout.shape[shapeID].seq[j];
+      vertex(p1.x,p1.y, 0)
+    }
+    endShape(CLOSE);
+    for (let j=0; j<depot.layout.shape[shapeID].length-1; j++){
+      beginShape();
+      p1 = depot.layout.shape[shapeID].seq[j];
+      p2 = depot.layout.shape[shapeID].seq[j+1];
+      vertex(p1.x,p1.y,0);
+      vertex(p2.x,p2.y,0);
+      vertex(p2.x,p2.y,+depot.ground[i].offsetZ+10);
+      vertex(p1.x,p1.y,+depot.ground[i].offsetZ+10);
+      endShape(CLOSE);
+    }
   }
-  
   // noFill();
   // for (let j=1; j<depot.layout.shape.length; j++){
   //   for (let i =0; i<depot.layout.shape[j].length-1; i++){
@@ -440,10 +444,10 @@ function draw() {
   translate(center[0], center[2], -center[1])
   sphere(20)
   pop();
-  for(let i =0; i<cArray.length; i++){
-    drawCont(cArray[i],depot.Area,ori1, ori2, center)
-  }
-  drawHouse(depot.house);
+  // for(let i =0; i<cArray.length; i++){
+  //   drawCont(cArray[i],depot.Area,ori1, ori2, center)
+  // }
+  // drawHouse(depot.house);
 }
 
 function windowResized() {

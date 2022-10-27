@@ -319,6 +319,7 @@ function drawCont(cont, ar,or1, or2, center){
         }
       }      
       translate(0,0, depot.contWidth/2+2);
+      textSize(smallFontSize);
       text(cont.ContID, 0,0);
     }
   }

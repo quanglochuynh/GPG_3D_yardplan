@@ -209,6 +209,8 @@ function init(){
     btn = createButton("Bay "+ depot.Area[i].name);
     btn.mousePressed(() => {switchBay(i)});
   } 
+  heading = dirVector(easycam.getRotation());
+
 }
 
 function drawCont(cont, ar,or1, or2, center){
@@ -232,7 +234,8 @@ function drawCont(cont, ar,or1, or2, center){
     translate(x,y, z);
     setColor(cont.HangTauID)
     box(depot.contLength*2, depot.contHeight, depot.contWidth);    
-    let dis = easycam.getDistance() - myDist(center[0], center[2], center[1], x,y,z);
+    let v = subVec([0, easycam.getDistance(),0], subVec([-center[0], center[2], -center[1]], [x,y,z]));
+    dis = myDist(v[0], v[1], v[2]);
     if (dis>1000) {
       pop();
       return;
@@ -283,7 +286,8 @@ function drawCont(cont, ar,or1, or2, center){
     translate(x,y, z);
     setColor(cont.HangTauID)
     box(depot.contLength, depot.contHeight, depot.contWidth);
-    let dis = easycam.getDistance() - myDist(center[0], center[2], center[1], x,y,z);
+    let v = subVec([0, easycam.getDistance(),0], subVec([-center[0], center[2], -center[1]], [x,y,z]));
+    dis = myDist(v[0], v[1], v[2]);
     if (dis>1000) {
       pop();
       return;
@@ -441,7 +445,7 @@ function draw() {
   ori2 = rot[0]+rot[2];
   let center = easycam.getCenter();
   push()
-  translate(center[0], center[2], center[1])
+  translate(center[0], center[2], -center[1])
   sphere(20)
   pop();
   for(let i =0; i<cArray.length; i++){
@@ -499,19 +503,9 @@ function setCamera(state){
 //   redraw();
 // }
 
-// function mouseReleased(){
-//   // console.log(easycam.getCenter());
-//   // console.log(mouseX, mouseY);
-//   // console.log(ori1, ori2);
-//   // let quat=easycam.getRotation();
-//   // z = quat[2];
-//   // w = quat[3];
-//   // let az = ((z / sqrt(1-w**2)))**2;
-//   // console.log((az*360));
-//   let a = getAng(easycam.getRotation())
-//   console.log((a/(2*Math.PI))*360);
-  
-// }
+function mouseReleased(){
+  heading = dirVector(easycam.getRotation());
+}
 
 
 function drawSideCont(cont, or2, twenty_feet,dis){
@@ -538,22 +532,11 @@ function drawSideCont(cont, or2, twenty_feet,dis){
   }
 }
 
-// V[0] = 2 * (x * z - w * y + x*y - w*z) + 1 - 2 * (y*y + z*z)
-// V[1] = 2 * (y * z + w * x) + 1 - 2 * (x*x + z*z) + 2 * (x*y + w*z)
-// V[2] = 1 - 2 * (x * x + y * y)
-// z = z / sqrt(1-w*w)
-
-    // yaw (z-axis rotation)
-    // double siny_cosp = 2 * (q.w * q.z + q.x * q.y);
-    // double cosy_cosp = 1 - 2 * (q.y * q.y + q.z * q.z);
-    // angles.yaw = std::atan2(siny_cosp, cosy_cosp);
-
 function dirVector(quat){
   let az = getAng(quat);
   let V=Array(2);
-  V[1] = Math.cos(az);
-  V[0] = Math.sin(az);
-  // console.log('V: ', V);
+  V[1] = Math.cos(az[0]);
+  V[0] = Math.sin(az[0]);
   return V;
 }
 
@@ -583,13 +566,13 @@ function getAng(quat){
       attitude = Math.asin(2*test); // attitude
       bank = Math.atan2(2*x*w - 2*y*z , 1 - 2*sqx - 2*sqz); // bank
   }
-  return heading, attitude, bank;
+  return [heading, attitude, bank];
 }
 
 function checkKeyPress(){
   currentState = easycam.getCenter();
   if (keyIsPressed){
-    dirVec = dirVector(easycam.getRotation());
+    dirVec = heading;
     // console.log('dirVec: ', dirVec);
     switch (key){
       case (('ArrowUp')):
@@ -634,6 +617,10 @@ function checkKeyPress(){
   }
 }
 
-function myDist(x,y,z,a,b,c){
-  return sqrt(Math.pow(x-a,2) + Math.pow(y-b,2) + Math.pow(z-c,2));
+function myDist(x,y,z){
+  return sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2));
+}
+
+function subVec(a,b){
+  return [a[0]-b[0], a[1]-b[1], a[2]-b[2]];
 }

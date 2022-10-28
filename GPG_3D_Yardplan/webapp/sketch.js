@@ -201,14 +201,10 @@ function init(){
   normalMaterial();
   stroke(0)
   textSize(smallFontSize);
-  debugMode();
+  // debugMode();
   textAlign(CENTER)
   showTextCheckbox = createCheckbox("Show Container name",false);
   showTextCheckbox.changed(changeTextVisibility);
-  // for (let i=0; i<states.length; i++){
-  //   button.push(createButton("View "+ (i+1)));
-  //   button[i].mousePressed(() => {setCamera(states[i])});
-  // }
   for (let i=0; i<showBay.length; i++){
 	btn = createButton("Bay "+ depot.Area[i].name);
 	btn.mousePressed(() => {switchBay(i)});
@@ -241,7 +237,6 @@ function drawCont(cont, ar,or1, or2, center){
     pop();
     return;
   }
-
   if ((cont.Bay)%2 == 0){
 	// Container 40ft
     box(depot.contLength*2, depot.contHeight, depot.contWidth);     
@@ -570,44 +565,44 @@ function checkKeyPress(){
 	// console.log('dirVec: ', dirVec);
 	switch (key){
 	  case (('ArrowUp')):
-		currentState[0]-=10*dirVec[0];
-		currentState[2]-=10*dirVec[1];
-		break;
+      currentState[0]-=10*dirVec[0];
+      currentState[2]-=10*dirVec[1];
+      break;
 	  case (('ArrowDown')):
-		currentState[0]+=10*dirVec[0];
-		currentState[2]+=10*dirVec[1];
-		break;
+      currentState[0]+=10*dirVec[0];
+      currentState[2]+=10*dirVec[1];
+      break;
 	  case (('ArrowLeft')):
-		currentState[0]-=10*dirVec[1];
-		currentState[2]+=10*dirVec[0];
-		break;
+      currentState[0]-=10*dirVec[1];
+      currentState[2]+=10*dirVec[0];
+      break;
 	  case (('ArrowRight')):
-		currentState[0]+=10*dirVec[1];
-		currentState[2]-=10*dirVec[0];
-		break;
+      currentState[0]+=10*dirVec[1];
+      currentState[2]-=10*dirVec[0];
+      break;
 	  case ('w'):
-		currentState[0]-=10*dirVec[0];
-		currentState[2]-=10*dirVec[1];
-		break;
+      currentState[0]-=10*dirVec[0];
+      currentState[2]-=10*dirVec[1];
+      break;
 	  case (('s')):
-		currentState[0]+=10*dirVec[0];
-		currentState[2]+=10*dirVec[1];
-		break;
+      currentState[0]+=10*dirVec[0];
+      currentState[2]+=10*dirVec[1];
+      break;
 	  case (('a')):
-		currentState[0]-=10*dirVec[1];
-		currentState[2]+=10*dirVec[0];
-		break;
+      currentState[0]-=10*dirVec[1];
+      currentState[2]+=10*dirVec[0];
+      break;
 	  case (('d')):
-		currentState[0]+=10*dirVec[1];
-		currentState[2]-=10*dirVec[0];
-		break;
+      currentState[0]+=10*dirVec[1];
+      currentState[2]-=10*dirVec[0];
+      break;
 	  case ('z'):
-		currentState[1]+=10;
-		break;
+      currentState[1]+=10;
+      break;
 	  case ('x'):
-		currentState[1]-=10;
-		break;
-	}
+      currentState[1]-=10;
+      break;
+	  }
   }
 }
 

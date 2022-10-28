@@ -237,7 +237,7 @@ function drawCont(cont, ar,or1, or2, center){
   let by = (depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
   let bz = (depot.contWidth);
   let dis2Bay = myDist(subVec(eyeVector,[-x,by,bz]));
-  if (dis2Bay<500){
+  if (dis2Bay<400){
     pop();
     return;
   }
@@ -252,23 +252,7 @@ function drawCont(cont, ar,or1, or2, center){
     if (showText){
       fill(255);
       rotateX(1.5707963268);
-      if (((or2>1)||(or2<-1))){
-        if (cont.Bay<maxBay-4){
-          if (contArray3D[area][cont.Bay+4][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, false, dis)
-          }
-        }else{
-          drawSideCont(cont, or2, false, dis)
-        }
-      }else{
-        if (cont.Bay>4){
-          if (contArray3D[area][cont.Bay-4][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, false)
-          }
-        }else{
-          drawSideCont(cont, or2, false, dis)
-        }
-      }
+      drawSideCont(cont, or2, false, dis)
       if (or1<0.5){
         if (contArray3D[area][cont.Bay][cont.Row-(1*x_flip)][cont.Tier]==1) {
           pop();
@@ -284,6 +268,7 @@ function drawCont(cont, ar,or1, or2, center){
       translate(0,0, depot.contWidth/2+2);
       textSize(smallFontSize);
       text(cont.ContID, 0,0);
+      // text(Math.floor(dis2Bay),0,0)
     }
   }else{
 	// Container 20ft
@@ -295,23 +280,7 @@ function drawCont(cont, ar,or1, or2, center){
     if (showText){
       fill(255);
       rotateX(1.5707963268);
-      if (((or2>1)||(or2<-1))){
-        if (cont.Bay<maxBay-4){
-          if (contArray3D[area][cont.Bay+4][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, true, dis)
-          }
-        }else{
-          drawSideCont(cont, or2, true, dis)
-        }
-      }else{
-        if (cont.Bay>4){
-          if (contArray3D[area][cont.Bay-4][cont.Row][cont.Tier]!=1){
-            drawSideCont(cont, or2, true)
-          }
-        }else{
-          drawSideCont(cont, or2, true, dis)
-        }
-      }
+      drawSideCont(cont, or2, true, dis)
       if (or1<0.5){
         if (contArray3D[area][cont.Bay][cont.Row-(1*x_flip)][cont.Tier]==1) {
           pop();
@@ -476,13 +445,7 @@ function draw() {
   for(let i =0; i<cArray.length; i++){
     drawCont(cArray[i],depot.Area,ori1, ori2, center)
   }
-  // drawHouse(depot.house);
-  // push()
-  // translate(eyeVector[0],eyeVector[1], eyeVector[2]);
-  // sphere(20,6,6);
-  // pop();
-  // line(0,0,0,eyeVector[0],eyeVector[1], eyeVector[2]);
-
+  drawHouse(depot.house);
   checkKeyPress();
 }
 

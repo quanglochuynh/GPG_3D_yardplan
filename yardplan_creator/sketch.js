@@ -42,12 +42,15 @@ function drawDepot(){
     p2 = depot.layout.shape[0].seq[i+1]
     line(p1.x, p1.y, p2.x, p2.y)
   }
+  fill(40);
   for (let j=7; j<depot.layout.shape.length; j++){
-    for (let i =0; i<depot.layout.shape[j].length-1; i++){
-      p1 = depot.layout.shape[j].seq[i]
-      p2 = depot.layout.shape[j].seq[i+1]
-      line(p1.x, p1.y, p2.x, p2.y)
+    beginShape()
+    for (let i =0; i<depot.layout.shape[j].length; i++){
+      p1 = depot.layout.shape[j].seq[i];
+      vertex(p1.x, p1.y);
     }
+    endShape(CLOSE);
+
   }
   fill("pink")
   for (let i=0; i<depot.Area.length; i++){
@@ -116,50 +119,56 @@ function draw(){
   circle(0,0,50);
   noFill();
   drawDepot();
-  if ((mode=="add_area")&&(newAreaStart!=undefined)){
-    drawNewArea();
+  if ((mode=="add_area")){
+    drawGrid();
   }
   // noLoop();
 }
 
-function mousePressed(){
-  let x = Math.floor(mouseX);
-  let y = Math.floor(mouseY);
-  if (mode=="add_area"){
-    console.log(x,y);
-    newAreaStart = new Point(mouseX, mouseY);
-    console.log('newAreaStart: ', newAreaStart);
-  }
+function drawGrid(){
+  // for 
 }
 
-function mouseReleased(){
-  if (mode=="add_area"){
-    // console.log(x,y);
-    newAreaEnd = new Point(Math.floor(mouseX-newAreaEnd.x), Math.floor(mouseY-newAreaEnd.y));
-    console.log('newAreaEnd: ', newAreaEnd);
-    mode = "view";
-  }
-}
-
-// function mouseDragged(){
+// function mousePressed(){
+//   let x = Math.floor(mouseX);
+//   let y = Math.floor(mouseY);
 //   if (mode=="add_area"){
-//     drawNewArea();
+//     console.log(x,y);
+//     newAreaStart = new Point(mouseX, mouseY);
+//     console.log('newAreaStart: ', newAreaStart);
 //   }
 // }
+
+// function mouseReleased(){
+//   if (mode=="add_area"){
+//     // console.log(x,y);
+//     newAreaEnd = new Point(Math.floor(mouseX-newAreaEnd.x), Math.floor(mouseY-newAreaEnd.y));
+//     console.log('newAreaEnd: ', newAreaEnd);
+//     mode = "view";
+//   }
+// }
+
+// // function mouseDragged(){
+// //   if (mode=="add_area"){
+// //     drawNewArea();
+// //   }
+// // }
 
 function addArea(){
   mode = "add_area";
   console.log('mode: ', mode);
+  console.log("Grid shown");
+
 }
 
 function doneAddArea(){
   mode = "view";
   console.log('mode: ', mode);
-  depot.Area.push(new Area(newAreaStart.x, newAreaStart.y, newAreaEnd.x, newAreaEnd.y));
-  console.log('newArea: ', newArea);
+  // depot.Area.push(new Area(newAreaStart.x, newAreaStart.y, newAreaEnd.x, newAreaEnd.y));
+  // console.log('newArea: ', newArea);
 
 }
 
-function drawNewArea(){
-  rect(newAreaStart.x, newAreaStart.y, mouseX-newAreaStart.x, mouseY-newAreaStart.y)
-}
+// function drawNewArea(){
+//   rect(newAreaStart.x, newAreaStart.y, mouseX-newAreaStart.x, mouseY-newAreaStart.y)
+// }

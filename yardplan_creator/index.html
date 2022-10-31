@@ -9,8 +9,17 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.min.js"></script>
     <script src="sketch.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
+    <div class="toolbar">
+        <input class="toolbar_button" type="button" value="Add area" onclick="addArea()">
+        <input class="toolbar_button" type="button" value="Done" onclick="doneAddArea()">
 
+    </div>
+    <div class="p5canvas" id="main_canvas">
+
+    </div>
 </body>
 </html>

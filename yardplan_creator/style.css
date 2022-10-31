@@ -1,0 +1,19 @@
+body{
+    margin: 20px;
+}
+
+toolbar{
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    height:fit-content;
+}
+
+toolbar_button{
+    margin-top: 10px;
+}
+
+p5canvas{
+    margin: 10px;
+    padding: 10px;
+}

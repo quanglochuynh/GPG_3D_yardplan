@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="551" height="1017" viewBox="0 0 551 1017">
+  <defs>
+    <style>
+      .a {
+        fill: none;
+      }
+
+      .a, .b {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .b {
+        fill: #fff;
+      }
+
+      .c {
+        font-size: 23.07px;
+        font-family: MyriadPro-Regular, Myriad Pro;
+      }
+    </style>
+  </defs>
+  <polygon class="a" points="1 528 1 169 39 138 100 123 99 60 117 60 119 11 551 1 549 327 496 568 523 825 365 823 369 1015 321 1017 24 992 22 966 13 966 1 528"/>
+  <polygon class="a" points="450 124 451 205 70 205 70 137 100 137 99 125 450 124"/>
+  <polygon class="a" points="451 263 451 388 70 388 70 263 451 263"/>
+  <polygon class="a" points="499 496 384 499 382 443 498 439 499 496"/>
+  <polygon class="a" points="279 457 282 497 65 509 62 468 279 457"/>
+  <polygon class="a" points="316 678 323 838 61 850 53 691 316 678"/>
+  <polygon class="a" points="325 898 35 911 38 991 126 988 127 1000 215 995 216 1007 272 1004 331 1001 325 898"/>
+  <polygon class="a" points="326 623 60 637 55 523 321 509 326 623"/>
+  <polygon class="a" points="376 511 390 810 496 805 485 505 376 511"/>
+  <polygon class="b" points="336 6 186 10 188 57 338 51 336 6"/>
+  <polygon class="b" points="534 190 534 298 499 298 498 190 534 190"/>
+  <text class="c" transform="translate(459 205) rotate(90)">A</text>
+  <text class="c" transform="translate(459 251) rotate(90)">B</text>
+  <text class="c" transform="translate(496 420) rotate(90)">C</text>
+  <text class="c" transform="translate(371 425) rotate(90)">C</text>
+  <text class="c" transform="translate(279 426) rotate(90)">SC</text>
+  <text class="c" transform="translate(55 438) rotate(90)">SC</text>
+  <text class="c" transform="translate(319 665) rotate(90)">D</text>
+  <text class="c" transform="translate(328 884) rotate(90)">F</text>
+  <text class="c" transform="translate(35 675) rotate(90)">D</text>
+  <text class="c" transform="translate(25 894) rotate(90)">F</text>
+  <text class="c" transform="translate(44 206) rotate(90)">A</text>
+  <text class="c" transform="translate(44 252) rotate(90)">B</text>
+</svg>

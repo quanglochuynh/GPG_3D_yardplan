@@ -166,9 +166,9 @@ function processCont(array){
 }
 
 function preload(){
-  $.getJSON("../data/cont3.json", function(data){
+  $.getJSON("./data/cont3.json", function(data){
 	cArray = data;
-	$.getJSON("../data/etd.json", function(data){
+	$.getJSON("./data/etd.json", function(data){
 	  depot = data;
 	  console.log(depot);
 	  processCont(cArray);

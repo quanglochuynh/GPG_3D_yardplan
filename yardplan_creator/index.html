@@ -14,9 +14,15 @@
 </head>
 <body>
     <div class="toolbar">
-        <input class="toolbar_button" type="button" value="Add area" onclick="addArea()">
-        <input class="toolbar_button" type="button" value="Done" onclick="doneAddArea()">
-
+        <input class="toolbar_button"  id="btnAddArea" type="button" value="Add area" onclick="addArea()">
+        <div id="addPanel">
+            <!-- <input class="single_char_input" id="edtxBay" type="text" placeholder="Bay" value="4" onchange="previewAddArea()">
+            <input class="single_char_input" id="edtxRow" type="text" placeholder="Row" value="4" onchange="previewAddArea()"> -->
+            <!-- <input class="checkbox" id="checkXFlip" type="checkbox" title="Flip" onchange="previewAddArea()"> -->
+            <input class="checkbox" id="checkAngle" type="checkbox" checked="false" onchange="changeGridAngle()">
+            <!-- <input class="toolbar_button" id="btnPreviewArea" type="button" value="Preview" onclick="previewAddArea()"> -->
+            <input class="toolbar_button" id="btnDoneAddArea" type="button" value="Done" onclick="doneAddArea()">
+        </div> 
     </div>
     <div class="p5canvas" id="main_canvas">
 

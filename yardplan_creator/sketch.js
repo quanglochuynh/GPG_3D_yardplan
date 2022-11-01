@@ -1,9 +1,12 @@
 const largeFontSize = 28
 let depot;
 let mode="view";
-let newAreaStart=undefined;
-let newAreaEnd=undefined;
+let tempArea=undefined;
 const scaleFactor = 0.4;
+let gridAngle = 0;
+let selection = [];
+let selectionStart = {x:0, y:0};
+let selectionEnd = {x:0, y:0};
 
 class Point{
   constructor(x,y){
@@ -12,24 +15,32 @@ class Point{
   }
 }
 class Area{
-  constructor(x,y,b,r,a){
+  constructor(x,y,b,r,a, xflip){
     this.name = undefined;
     this.data = undefined;
     this.angle = a;
     this.x_coor = x;
     this.y_coor = y;
-    this.angle = undefined;
-    this.x_flip = undefined;
+    // this.angle = undefined;
+    this.x_flip = xflip;
     this.y_flip = undefined;
     this.num_of_bay = b;
     this.num_of_row = r;
   }
 }
 
+class Teu{
+  constructor(x, y, opt){
+    this.x = x;
+    this.y = y;
+    this.opt=opt;
+  }
+}
+
 function drawDepot(){
   push();
-  // erase()
-  translate(-height/2, width/2);
+  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
+  scale(scaleFactor);
   strokeWeight(2)
   // fill(0)
   for (let i=0; i<depot.ground.length;i++){
@@ -98,23 +109,21 @@ function preload(){
 }
 
 function init(){
+  document.getElementById("addPanel").style.visibility = "hidden";
+  document.getElementById("checkAngle").checked = false;
   background(240)
-  // drawDepot();
-  // newArea = new Area(0,0)
-  // newAreaStart = new Point(0,0);
 }
 
 function setup() {
   myCanvas = createCanvas(windowWidth-40, windowHeight-80);
   myCanvas.parent("main_canvas");
-  // debugMode()
-  // noLoop();
   frameRate(20)
 }
 
 function draw(){
-  background(240);
-  
+  background(240); 
+  stroke(0); 
+  strokeWeight(4);
   push();
   translate(width/2+depot.offset.x,height/2 + depot.offset.y);
   scale(scaleFactor);
@@ -123,128 +132,172 @@ function draw(){
   line(0,0,20,0);
   line(0,0,0,40);
   noFill();
-  drawDepot();
-  // if (mode=="add_area"){
-  //   let mm = mouseMap(mouseX,mouseY);
-  //   circle(mm.x,mm.y,20)
-  //   let real = mouseUnMap(mm.x,mm.y);
-  //   circle(real.x,real.y,10)
-  // }
   pop();
-  if ((mode=="add_area")){
+  drawDepot();
+  if (mode=="add_area"){
+    // let mm = mouseMap(mouseX,mouseY);
+    showGrid();
+    if (gridAngle == false){
+      strokeWeight(2);
+      stroke("red")
+      let x = Math.floor(mouseX/(depot.contWidth*scaleFactor));
+      let y = Math.floor(mouseY/((depot.contLength+depot.contGap)*scaleFactor));
+      rect(x*depot.contWidth*scaleFactor, y*((depot.contLength+depot.contGap)*scaleFactor), depot.contWidth*scaleFactor, depot.contLength*scaleFactor)
+    }else{
+      strokeWeight(2);
+      stroke("red")
+      let x = Math.floor(mouseX/((depot.contLength+depot.contGap)*scaleFactor));
+      let y = Math.floor(mouseY/(depot.contWidth*scaleFactor))
+      rect(x*(depot.contLength+depot.contGap)*scaleFactor, y*(depot.contWidth*scaleFactor), depot.contLength*scaleFactor, depot.contWidth*scaleFactor)
+    }
+    drawSelection();
+
   }
 }
 
-// function mousePressed(){
-//   let x = Math.floor(mouseX);
-//   let y = Math.floor(mouseY);
-//   if (mode=="add_area"){
-//     // newAreaStart = new Point(mouseX, mouseY);
-//     // console.log('newAreaStart: ', newAreaStart);
-//   }
-//   // console.log(x,y);
-//   let mm = mouseMap(x,y);
-//   console.log(Math.floor(mm.x),Math.floor(mm.y));
-//   let real = mouseUnMap(mm.x,mm.y);
-//   depot.Area.push(new Area(real.x, real.y,100,100))
-// }
+function mousePressed(){
+resetSelection();
+  let x = Math.floor(mouseX);
+  let y = Math.floor(mouseY);
+  if ((x<0)||(y<0)) return;
+  if (mode=="add_area"){
+    let mm = mouseMap(x,y);
+    selectionStart = new Point(mouseX, mouseY)
+  }
+}
 
-// function mouseReleased(){
-//   if (mode=="add_area"){
-//     // console.log(x,y);
-//     newAreaEnd = new Point(Math.floor(mouseX-newAreaEnd.x), Math.floor(mouseY-newAreaEnd.y));
-//     console.log('newAreaEnd: ', newAreaEnd);
-//     mode = "view";
-//   }
-// }
+function mouseDragged(){
+  if (mode=="add_area"){
+    selectionEnd = new Point(mouseX, mouseY);
+  }
+}
 
-// // function mouseDragged(){
-// //   if (mode=="add_area"){
-// //     drawNewArea();
-// //   }
-// // }
+function mouseReleased(){
+  if (mode=="add_area"){
+    selectionEnd = new Point(mouseX, mouseY);
+  }
+}
 
 function addArea(){
   mode = "add_area";
+  document.getElementById("addPanel").style.visibility = "visible";
   console.log('mode: ', mode);
   console.log("Grid shown");
-  depot.Area.push(new Area(-depot.offset.x,-height/2,4,4,0));
 }
 
 function doneAddArea(){
   mode = "view";
+  document.getElementById("addPanel").style.visibility = "hidden";
   console.log('mode: ', mode);
-  // depot.Area.push(new Area(newAreaStart.x, newAreaStart.y, newAreaEnd.x, newAreaEnd.y));
-  // console.log('newArea: ', newArea);
-
 }
 
-// function drawNewArea(){
-//   rect(newAreaStart.x, newAreaStart.y, mouseX-newAreaStart.x, mouseY-newAreaStart.y)
-// }
 
-// function checkGround(x,y){
-//   for (let i=0; i<depot.ground.length; i++){
-//     // count = 0;
-//     // for (let j=0; j<depot.layout.shape[depot.ground[i].shapeID].length-1; j++){
-//     //   let p1 = depot.layout.shape[depot.ground[i].shapeID].seq[j];
-//     //   let p2 = depot.layout.shape[depot.ground[i].shapeID].seq[j+1];
-//     //   let a = createVector(x-p1.x, y-p1.y);
-//     //   let b = createVector(x-p2.x, y-p2.y);
-//     //   let c = p5.Vector.mult(a,b);
-//     //   if (c.mag()<0){
-//     //     count++;
-//     //   }
-//     // }
-//     // if (count==depot.layout.shape[depot.ground[i].shapeID].length-1){
-//     //   return i
-//     // }
-//     k = mouseUnMap(x,y);
-//     console.log('k: ', k.x, k.y);
+function mouseMap(x,y){
+  let p = createVector(x-width/2-depot.offset.x,y-height/2 - depot.offset.y);
+  return p5.Vector.mult(p, 1/scaleFactor);
+}
 
-//     if (pointIsInPoly(k, depot.layout.shape[depot.ground[i].shapeID].seq)==0){
-//       return i;
-//     }
-//   }
-//   return -1;
-// }
+function mouseUnMap(x,y){
+  let p = createVector(x/1,y/1);
+  // p.sub(-width/2-depot.offset.x, height/2 + depot.offset.y);
+  // let p = createVector((depot.offset.x + width/2)/scaleFactor, (depot.offset.y+height/2)/scaleFactor);
+  // p.mult(1/scaleFactor)
+  return p;
+}
 
-// function mouseMap(x,y){
-//   let p = createVector(x-width/2-depot.offset.x,y-height/2 - depot.offset.y);
-//   return p5.Vector.mult(p, 1/scaleFactor);
-// }
+function keyPressed(){
+  if (key=="Backspace"){
+    depot.Area.pop();
+  }
+}
 
-// function mouseUnMap(x,y){
-//   let p = createVector(x/1,y/1);
-//   p.sub(-width/2-depot.offset.x, height/2 + depot.offset.y);
-//   // let p = createVector((depot.offset.x + width/2)/scaleFactor, (depot.offset.y+height/2)/scaleFactor);
-//   // p.mult(1/scaleFactor)
-//   return p;
-// }
+function drawTempArea(){
+  push()
+  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
+  scale(scaleFactor);
+  translate(tempArea.x_coor,tempArea.y_coor)
+  circle(0,0,40)
+  x_flip = -1 + 2*tempArea.x_flip;
+  for (let j=0; j<tempArea.num_of_bay; j++){
+    for (let k=0; k<tempArea.num_of_row; k++){
+      push();
+      rotate(-tempArea.angle)
+      translate(k*depot.contWidth*x_flip, j*(depot.contLength+depot.contGap),)
+      rect(0,0, depot.contWidth*x_flip, depot.contLength);
+      pop();
+    }
+  }
+  pop();
+}
 
-// function pointIsInPoly(p, polygon) {
-//   var isInside = false;
-//   var minX = polygon[0].x, maxX = polygon[0].x;
-//   var minY = polygon[0].y, maxY = polygon[0].y;
-//   for (var n = 1; n < polygon.length; n++) {
-//       var q = polygon[n];
-//       minX = Math.min(q.x, minX);
-//       maxX = Math.max(q.x, maxX);
-//       minY = Math.min(q.y, minY);
-//       maxY = Math.max(q.y, maxY);
-//   }
+function previewAddArea(){
+  tempArea. angle = (document.getElementById("edtxAngle").value)/360 * (2*PI);
+  // tempArea = new Area(0,0,num_of_bay,num_of_row,angle,x_flip)
+}
 
-//   if (p.x < minX || p.x > maxX || p.y < minY || p.y > maxY) {
-//       return false;
-//   }
+function showGrid(){
+  stroke(0);
+  noFill();
+  strokeWeight(1);
+  if (document.getElementById("checkAngle").checked == false){
+    // for (let x=0; x<2*width; x+= depot.contWidth*scaleFactor){
+    //   line(x,-2*height, x,2*height);
+    // }
+    // for (let y=0; y<2*height; y+= depot.contLength*scaleFactor){
+    //   line(-2*width,y, 2*width,y);
+    // }
+    for (let x = 0; x<width; x+=(depot.contWidth)*scaleFactor){
+      for (let y=0; y<height; y+= (depot.contLength + depot.contGap)*scaleFactor){
+        rect(x, y, depot.contWidth*scaleFactor, depot.contLength*scaleFactor)      }
+    }
+  }else{
+    for (let x = 0; x<width; x+=(depot.contLength + depot.contGap)*scaleFactor){
+      for (let y=0; y<height; y+= (depot.contWidth)*scaleFactor){
+        rect(x, y, depot.contLength*scaleFactor, depot.contWidth*scaleFactor)      }
+    }
+  }
+}
 
-//   var i = 0, j = polygon.length - 1;
-//   for (i, j; i < polygon.length; j = i++) {
-//       if ( (polygon[i].y > p.y) != (polygon[j].y > p.y) &&
-//               p.x < (polygon[j].x - polygon[i].x) * (p.y - polygon[i].y) / (polygon[j].y - polygon[i].y) + polygon[i].x ) {
-//           isInside = !isInside;
-//       }
-//   }
+function changeGridAngle(){
+  gridAngle = (document.getElementById("checkAngle").checked)
+}
 
-//   return isInside;
-// }
+function drawSelection(){
+  // if (selectionStart.x>sele
+  stroke("blue");
+  if ((selectionStart.x == selectionEnd.x)&&(selectionStart.y== selectionEnd.y)){
+    if (gridAngle==false){
+      let dx = Math.floor(selectionStart.x/(depot.contWidth*scaleFactor));
+      let dy = Math.floor(selectionStart.y/((depot.contLength+depot.contGap)*scaleFactor));
+      rect(dx*depot.contWidth*scaleFactor, dy*((depot.contLength+depot.contGap)*scaleFactor), depot.contWidth*scaleFactor, (depot.contLength)*scaleFactor)
+    }else{
+      let dx = Math.floor(selectionStart.x/((depot.contLength+depot.contGap)*scaleFactor));
+      let dy = Math.floor(selectionStart.y/(depot.contWidth*scaleFactor));
+      rect(dx*(depot.contLength+depot.contGap)*scaleFactor, dy*(depot.contWidth*scaleFactor), (depot.contLength)*scaleFactor, depot.contWidth*scaleFactor)
+    }
+  }else{
+    if (gridAngle==false){
+      for (let x = selectionStart.x; x<selectionEnd.x; x+= depot.contWidth*scaleFactor){
+        for (let y = selectionStart.y; y<selectionEnd.y; y+= (depot.contLength+depot.contGap)*scaleFactor){
+          let dx = Math.floor(x/(depot.contWidth*scaleFactor));
+          let dy = Math.floor(y/((depot.contLength+depot.contGap)*scaleFactor));
+          rect(dx*depot.contWidth*scaleFactor, dy*((depot.contLength+depot.contGap)*scaleFactor), depot.contWidth*scaleFactor, (depot.contLength)*scaleFactor)
+        }
+      }
+    }else{
+      for (let x = selectionStart.x; x<selectionEnd.x; x+= (depot.contLength+depot.contGap)*scaleFactor){
+        for (let y = selectionStart.y; y<selectionEnd.y; y+= (depot.contWidth)*scaleFactor){
+          let dx = Math.floor(x/((depot.contLength+depot.contGap)*scaleFactor));
+          let dy = Math.floor(y/(depot.contWidth*scaleFactor));
+          rect(dx*(depot.contLength+depot.contGap)*scaleFactor, dy*(depot.contWidth*scaleFactor), (depot.contLength)*scaleFactor, depot.contWidth*scaleFactor)
+        }
+      }
+    }
+  }
+}
+
+function resetSelection(){
+  selection = [];
+  selectionStart = {x:0, y:0};
+  selectionEnd = {x:0, y:0};
+}

@@ -3,7 +3,7 @@ let depot;
 let mode="view";
 let newAreaStart=undefined;
 let newAreaEnd=undefined;
-const scaleFactor = 0.35;
+const scaleFactor = 0.4;
 
 class Point{
   constructor(x,y){
@@ -57,22 +57,22 @@ function drawDepot(){
     }
     endShape(CLOSE);
   }
-  // fill("pink")
-  // for (let i=0; i<depot.Area.length; i++){
-  //   translate(depot.Area[i].x_coor,depot.Area[i].y_coor)
-  //   circle(0,0,20)
-  //   x_flip = -1 + 2*depot.Area[i].x_flip;
-  //   for (let j=0; j<depot.Area[i].num_of_bay; j++){
-  //     for (let k=0; k<depot.Area[i].num_of_row; k++){
-  //       push();
-  //       rotate(-depot.Area[i].angle)
-  //       translate(-j*(depot.contLength+depot.contGap),k*depot.contWidth*x_flip)
-  //       rect(0,0,-depot.contLength, depot.contWidth*x_flip)
-  //       pop()
-  //     }
-  //   }
-  //   translate(-depot.Area[i].x_coor,-depot.Area[i].y_coor)
-  // }
+  fill("pink")
+  for (let i=0; i<depot.Area.length; i++){
+    translate(depot.Area[i].x_coor,depot.Area[i].y_coor)
+    circle(0,0,20)
+    x_flip = -1 + 2*depot.Area[i].x_flip;
+    for (let j=0; j<depot.Area[i].num_of_bay; j++){
+      for (let k=0; k<depot.Area[i].num_of_row; k++){
+        push();
+        rotate(-depot.Area[i].angle)
+        translate(k*depot.contWidth*x_flip, j*(depot.contLength+depot.contGap),)
+        rect(0,0, depot.contWidth*x_flip, depot.contLength)
+        pop()
+      }
+    }
+    translate(-depot.Area[i].x_coor,-depot.Area[i].y_coor)
+  }
   // fill(0);
   // for (let i=0; i<depot.layout.text.length; i++){
   //   push();
@@ -90,7 +90,7 @@ function drawDepot(){
 function preload(){
   $.getJSON("./data/etdv1.json", function(data){
     depot = data;
-    depot.Area = [];
+    // depot.Area = [];
     init()
     // loop();
     console.log("Done");
@@ -99,10 +99,10 @@ function preload(){
 }
 
 function init(){
-  // background(240)
+  background(240)
   // drawDepot();
   // newArea = new Area(0,0)
-  newAreaStart = new Point(0,0);
+  // newAreaStart = new Point(0,0);
 }
 
 function setup() {
@@ -118,9 +118,11 @@ function draw(){
     circle(mouseX,mouseY,10)
   }
   push();
+  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
+
   scale(scaleFactor);
-  rotate(-PI/2);
-  translate(-height,width);
+  // rotate(-PI/2);
+  // translate(width,1.5*height);
   fill(255,0,0);
   circle(0,0,50);
   line(0,0,20,0);
@@ -129,34 +131,24 @@ function draw(){
   drawDepot();
   pop();
   if ((mode=="add_area")){
-    drawGrid();
   }
   // noLoop();
-}
-
-function drawGrid(){
-  push();
-  scale(scaleFactor);
-  for (let i=0; i<windowWidth/scaleFactor; i+=depot.contWidth){
-    line(i,0,i,height/scaleFactor)
-  }
-  for (let i=0; i<windowHeight/scaleFactor; i+=depot.contLength){
-    line(0,i,width/scaleFactor,i)
-  }
-  pop();
 }
 
 function mousePressed(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
-  // if (mode=="add_area"){
-  //   console.log(x,y);
-  //   newAreaStart = new Point(mouseX, mouseY);
-  //   console.log('newAreaStart: ', newAreaStart);
-  // }
+  if (mode=="add_area"){
+    console.log(x,y);
+    // newAreaStart = new Point(mouseX, mouseY);
+    // console.log('newAreaStart: ', newAreaStart);
+  }
+  // console.log(x,y);
   let mm = mouseMap(x,y);
-  console.log(mm.x,mm.y);
-  console.log(checkGround(mm.x,mm.y));
+  console.log(Math.floor(mm.x),Math.floor(mm.y));
+  let real = mouseUnMap(mm.x,mm.y);
+  console.log(real);
+  depot.Area.push(new Area(real.x, real.y,100,100))
 }
 
 // function mouseReleased(){
@@ -209,7 +201,10 @@ function checkGround(x,y){
     // if (count==depot.layout.shape[depot.ground[i].shapeID].length-1){
     //   return i
     // }
-    if (pointIsInPoly(new Point(x,y), depot.layout.shape[depot.ground[i].shapeID].seq)==1){
+    k = mouseUnMap(x,y);
+    console.log('k: ', k.x, k.y);
+
+    if (pointIsInPoly(k, depot.layout.shape[depot.ground[i].shapeID].seq)==0){
       return i;
     }
   }
@@ -217,9 +212,16 @@ function checkGround(x,y){
 }
 
 function mouseMap(x,y){
-  let p = createVector(x*scaleFactor,y*scaleFactor);
-  p.rotate(-PI/2);
-  p.add(-height,width);
+  let p = createVector(x-width/2-depot.offset.x,y-height/2 - depot.offset.y);
+  p.mult(scaleFactor);
+  return p;
+}
+
+function mouseUnMap(x,y){
+  // let p = createVector(x/scaleFactor,y/scaleFactor);
+  // p.add(-(width/2 + depot.offset.x), -(height/2 + depot.offset.y));
+  let p = createVector(x-(width/2 + depot.offset.x), y-(height/2 + depot.offset.y));
+  p.mult(1/scaleFactor)
   return p;
 }
 

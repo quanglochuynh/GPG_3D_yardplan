@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="551" height="1017" viewBox="0 0 551 1017">
+<svg xmlns="http://www.w3.org/2000/svg" width="1017" height="551" viewBox="0 0 1017 551">
   <defs>
     <style>
       .a {
@@ -14,37 +14,42 @@
         fill: #fff;
       }
 
-      .c {
+      .c, .d {
+        isolation: isolate;
         font-size: 23.07px;
-        font-family: MyriadPro-Regular, Myriad Pro;
+        font-family: ArialMT, Arial;
+      }
+
+      .c {
+        letter-spacing: -0.06em;
       }
     </style>
   </defs>
-  <polygon class="a" points="55 581 2 583 13 966 22 966 24 992 321 1017 369 1015 365 823 523 825 488 496 368 501 371 572 326 573 323 503 52 515 55 581"/>
-  <polygon class="a" points="2 583 1 528 1 169 39 138 100 123 99 60 117 60 119 11 551 1 549 327 496 568 2 583"/>
-  <polygon class="a" points="450 124 451 205 70 205 70 137 100 137 99 125 450 124"/>
-  <polygon class="a" points="451 263 451 388 70 388 70 263 451 263"/>
-  <polygon class="a" points="499 496 384 499 382 443 498 439 499 496"/>
-  <polygon class="a" points="279 457 282 497 65 509 62 468 279 457"/>
-  <polygon class="a" points="316 678 323 838 61 850 53 691 316 678"/>
-  <polygon class="a" points="325 898 35 911 38 991 126 988 127 1000 215 995 216 1007 272 1004 331 1001 325 898"/>
-  <polygon class="a" points="326 623 60 637 55 523 321 509 326 623"/>
-  <polygon class="a" points="376 511 390 810 496 805 485 505 376 511"/>
-  <polygon class="b" points="336 6 186 10 188 57 338 51 336 6"/>
-  <polygon class="b" points="534 190 534 298 499 298 498 190 534 190"/>
-  <polygon class="a" points="367 124 364 6 119 11 117 60 99 60 100 125 367 124"/>
-  <text class="c" transform="translate(459 205) rotate(90)">A</text>
-  <text class="c" transform="translate(459 251) rotate(90)">B</text>
-  <text class="c" transform="translate(496 420) rotate(90)">C</text>
-  <text class="c" transform="translate(371 425) rotate(90)">C</text>
-  <text class="c" transform="translate(279 426) rotate(90)">SC</text>
-  <text class="c" transform="translate(55 438) rotate(90)">SC</text>
-  <text class="c" transform="translate(319 665) rotate(90)">D</text>
-  <text class="c" transform="translate(328 884) rotate(90)">F</text>
-  <text class="c" transform="translate(35 675) rotate(90)">D</text>
-  <text class="c" transform="translate(25 894) rotate(90)">F</text>
-  <text class="c" transform="translate(44 206) rotate(90)">A</text>
-  <text class="c" transform="translate(44 252) rotate(90)">B</text>
-  <polygon class="a" points="55 581 50 463 1 465 2 583 55 581"/>
-  <polygon class="a" points="371 572 365 445 321 448 326 573 371 572"/>
+  <polygon class="a" points="581 497 583 550 966 539 966 530 992 528 1017 231 1015 183 823 187 825 29 496 64 501 184 572 181 573 226 503 229 515 500 581 497"/>
+  <polygon class="a" points="583 550 528 551 169 551 138 513 123 452 60 453 60 435 11 433 1 1 327 3 568 56 583 550"/>
+  <polygon class="a" points="124 102 205 101 205 482 137 482 137 452 125 453 124 102"/>
+  <polygon class="a" points="263 101 388 101 388 482 263 482 263 101"/>
+  <polygon class="a" points="496 53 499 168 443 170 439 54 496 53"/>
+  <polygon class="a" points="457 273 497 270 509 487 468 490 457 273"/>
+  <polygon class="a" points="678 236 838 229 850 491 691 499 678 236"/>
+  <polygon class="a" points="898 227 911 517 991 514 988 426 1000 425 995 337 1007 336 1004 280 1001 221 898 227"/>
+  <polygon class="a" points="623 226 637 492 523 497 509 231 623 226"/>
+  <polygon class="a" points="511 176 810 162 805 56 505 67 511 176"/>
+  <polygon class="b" points="6 216 10 366 57 364 51 214 6 216"/>
+  <polygon class="b" points="190 18 298 18 298 53 190 54 190 18"/>
+  <polygon class="a" points="124 185 6 188 11 433 60 435 60 453 125 452 124 185"/>
+  <text class="c" transform="translate(205 93)">A</text>
+  <text class="d" transform="translate(251 93)">B</text>
+  <text class="d" transform="translate(420 56)">C</text>
+  <text class="d" transform="translate(425 181)">C</text>
+  <text class="d" transform="translate(426 273)">SC</text>
+  <text class="d" transform="translate(438 497)">SC</text>
+  <text class="d" transform="translate(665 233)">D</text>
+  <text class="d" transform="translate(884 224)">F</text>
+  <text class="d" transform="translate(675 517)">D</text>
+  <text class="d" transform="translate(894 527)">F</text>
+  <text class="c" transform="translate(206 508)">A</text>
+  <text class="d" transform="translate(252 508)">B</text>
+  <polygon class="a" points="581 497 463 502 465 551 583 550 581 497"/>
+  <polygon class="a" points="572 181 445 187 448 231 573 226 572 181"/>
 </svg>

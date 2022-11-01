@@ -263,7 +263,6 @@ function changeGridAngle(){
 }
 
 function drawSelection(){
-  // if (selectionStart.x>sele
   stroke("blue");
   if ((selectionStart.x == selectionEnd.x)&&(selectionStart.y== selectionEnd.y)){
     if (gridAngle==false){

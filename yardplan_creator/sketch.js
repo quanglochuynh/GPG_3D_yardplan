@@ -109,6 +109,8 @@ function init(){
   findCenter();
   alignMap();
   initTeuArray();
+  resetSelection();
+
 }
 
 function setup() {
@@ -124,15 +126,12 @@ function draw(){
   push();
   translate(width/2+depot.offset.x,height/2 + depot.offset.y);
   scale(scaleFactor);
-  // fill(255,0,0);
-  // circle(0,0,50);
-  // line(0,0,20,0);
-  // line(0,0,0,40);
   fill('cyan');
   circle(depot.gridOrigin.x, depot.gridOrigin.y, 50)
   noFill();
   pop();
   drawDepot();
+  drawTeu();
   if (mode=="add_area"){
     showGrid();
     push();
@@ -160,20 +159,18 @@ function draw(){
 }
 
 function mousePressed(){
-  resetSelection();
   let x = Math.floor(mouseX);
-  // console.log('x: ', x);
   let y = Math.floor(mouseY);
-  // console.log('y: ', y);
-  if ((x<0)||(y<0)) return;
+  if ((x-blank.x<0)||(y-blank.y<0)) return;
+  resetSelection();
   if (mode=="add_area"){
     selection = [];
     selectionStart = gridMaping(x, y)[0]
     if ((selectionStart.x<0)){
-      selectionStart.x = 0;
+      resetSelection();
     }
     if ((selectionStart.y<0)){
-      selectionStart.y=0;
+      resetSelection();
     }
     selectRectStart = new Point(x, y);
     let p = gridMaping(x,y)[0];
@@ -201,14 +198,20 @@ function mouseDragged(){
 }
 
 function mouseReleased(){
+  let x = Math.floor(mouseX);
+  // console.log('x: ', x);
+  let y = Math.floor(mouseY);
+  // console.log('y: ', y);
+  if ((x-blank.x<0)||(y-blank.y<0)) return;
+
   if (mode=="add_area"){
     selectionEnd = gridMaping(mouseX, mouseY)[0];
-    if ((selectionEnd.x<0)){
-      selectionEnd.x = 0;
-    }
-    if ((selectionEnd.y<0)){
-      selectionEnd.y=0;
-    }
+    // if ((selectionEnd.x<0)){
+    //   resetSelection();
+    // }
+    // if ((selectionEnd.y<0)){
+    //   resetSelection();
+    // }
     let hx = (selectionStart.x < selectionEnd.x);
     let hy = (selectionStart.y < selectionEnd.y);
     if (!hx){
@@ -227,15 +230,24 @@ function mouseReleased(){
 
 function addArea(){
   mode = "add_area";
-  document.getElementById("addPanel").style.visibility = "visible";
   console.log('mode: ', mode);
   console.log("Grid shown");
+  showPanel(true);
 }
 
 function doneAddArea(){
   mode = "view";
-  document.getElementById("addPanel").style.visibility = "hidden";
   console.log('mode: ', mode);
+  for (let i=0; i<selection.length; i++){
+    // console.log(selection[i]);
+    if (!gridAngle){
+      verticalArray[selection[i].x][selection[i].y].opt = document.getElementById("edtxOpt").value;
+    }else{
+      horizontalArray[selection[i].x][selection[i].y].opt = document.getElementById("edtxOpt").value;
+    }
+  }
+  // console.log(selection);
+  showPanel(false)
 }
 
 function mouseMap(x,y){
@@ -364,7 +376,6 @@ function initTeuArray(){
   for (let x=0; x<depot.width; x+=depot.contWidth){
     temp = [];
     for (let y=0; y<depot.height; y+=(depot.contLength+depot.contGap)){
-      // let mm = mouseMap()
       temp.push(new Teu(x,y))
     }
     verticalArray.push(temp);
@@ -375,6 +386,59 @@ function initTeuArray(){
     for (let y=0; y<depot.height; y+= (depot.contWidth)){
       temp.push(new Teu(x,y))
     }
-    verticalArray.push(temp);
+    horizontalArray.push(temp);
   }
+  verticalArray[30][10].opt = "HLC"
+  verticalArray[30][10].bay_name = "A"
+  horizontalArray[15][5].opt= "YML"
+  horizontalArray[15][5].bay_name = "B"
+}
+
+function showPanel(val){
+  document.getElementById("edtxBay").disabled = !val;
+  document.getElementById("edtxOpt").disabled = !val;
+  document.getElementById("edtxNumTier").disabled = !val;
+  document.getElementById("checkAngle").disabled = !val;
+}
+
+function setColor(opt){
+  stroke(2);
+  switch (opt){
+    case "HLC":   
+      fill(252,140,3);
+      break;
+    case "YML": 
+      fill(212,205,199);
+      break;
+    case "COS": 
+      fill(140,180,180);
+      break;
+    default:
+      noStroke();
+      noFill()
+      break;
+  }
+}
+
+function drawTeu(){
+  push();
+  translate(blank.x, blank.y);
+  scale(scaleFactor);
+  for (let i=0; i<verticalArray.length; i++){
+    for (let j=0; j<verticalArray[0].length; j++){
+      // console.log(i,j);
+      if (verticalArray[i][j].opt==undefined) continue;
+      setColor(verticalArray[i][j].opt)
+      rect(verticalArray[i][j].x, verticalArray[i][j].y, depot.contWidth, depot.contLength);
+    }
+  }
+  for (let i=0; i<horizontalArray.length; i++){
+    for (let j=0; j<horizontalArray[0].length; j++){
+      if (horizontalArray[i][j].opt==undefined) continue;
+      setColor(horizontalArray[i][j].opt)
+      rect(horizontalArray[i][j].x, horizontalArray[i][j].y, depot.contLength, depot.contWidth);
+    }
+  }
+  pop();
+  // noLoop();
 }

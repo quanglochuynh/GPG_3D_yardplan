@@ -1,5 +1,7 @@
 body{
     margin: 20px;
+    height: 100%;
+    overflow: hidden;   
 }
 
 toolbar{

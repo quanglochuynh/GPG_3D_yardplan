@@ -104,8 +104,7 @@ function init(){
   for (let element of document.getElementsByClassName("p5Canvas")) {
     element.addEventListener("contextmenu", (e) => e.preventDefault());
   }
-  document.oncontextmenu = function() { return false; }
-  document.onmousedown   = function() { return false; }
+  document.body.classList.add("stop-scrolling")
   background(240)
   findCenter();
   alignMap();

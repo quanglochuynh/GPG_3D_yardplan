@@ -426,7 +426,6 @@ function drawTeu(){
   scale(scaleFactor);
   for (let i=0; i<verticalArray.length; i++){
     for (let j=0; j<verticalArray[0].length; j++){
-      // console.log(i,j);
       if (verticalArray[i][j].opt==undefined) continue;
       setColor(verticalArray[i][j].opt)
       rect(verticalArray[i][j].x, verticalArray[i][j].y, depot.contWidth, depot.contLength);
@@ -440,5 +439,4 @@ function drawTeu(){
     }
   }
   pop();
-  // noLoop();
 }

@@ -1,6 +1,5 @@
 const largeFontSize = 28
 let depot;
-let mode="view";
 let tempArea=undefined;
 let scaleFactor = 0.4;
 let gridAngle = 0;
@@ -11,6 +10,14 @@ let mapCenter;
 let blank = {x:0, y:0};
 let selectRectStart;
 let verticalArray, horizontalArray;
+let areaList;
+let bayNameArray;
+let optArray;
+let countBay;
+let countOpt;;
+let sumAll;
+let showGrid = false;
+
 
 class Point{
   constructor(x,y){
@@ -34,11 +41,12 @@ class Area{
 }
 
 class Teu{
-  constructor(x, y){
+  constructor(x, y, o){
     this.x = x;
     this.y = y;
+    this.orient = o;      //0 vertical, 1 horizontal
     this.opt=undefined;
-    this.num_of_tier = 6;
+    this.num_of_tier = undefined;
     this.bay_name = undefined;
 
   }
@@ -109,13 +117,15 @@ function init(){
   findCenter();
   alignMap();
   initTeuArray();
+  updateStat();
   resetSelection();
-
+  noLoop();
 }
 
 function setup() {
   myCanvas = createCanvas(windowWidth-40, windowHeight-80);
   myCanvas.parent("main_canvas");
+  myCanvas.mouseMoved(redraw)
   frameRate(10)
 }
 
@@ -127,127 +137,120 @@ function draw(){
   translate(width/2+depot.offset.x,height/2 + depot.offset.y);
   scale(scaleFactor);
   fill('cyan');
-  circle(depot.gridOrigin.x, depot.gridOrigin.y, 50)
+  // circle(depot.gridOrigin.x, depot.gridOrigin.y, 50)
   noFill();
   pop();
   drawDepot();
   drawTeu();
-  if (mode=="add_area"){
-    showGrid();
-    push();
-    translate(blank.x, blank.y);
-    scale(scaleFactor);
-    strokeWeight(2);
-    stroke("red")
-    let p = gridMaping(mouseX, mouseY)
-    let x = p[0].x;
-    let y = p[0].y;
-    if (gridAngle == false){
-      rect(x*depot.contWidth, y*((depot.contLength+depot.contGap)), depot.contWidth, depot.contLength)
-    }else{
-      rect(x*(depot.contLength+depot.contGap), y*(depot.contWidth), depot.contLength, depot.contWidth)
-    }
-    pop();
-    drawSelection();
-    noFill();
-    strokeWeight(2);
-    if ((mouseIsPressed)&&(selectRectStart!=undefined)){
-      if ((x<0)||(y<0)) return;
-      rect(selectRectStart.x, selectRectStart.y, mouseX - selectRectStart.x, mouseY-selectRectStart.y);
-    }
+  if (showGrid){
+    drawGrid();
   }
+  drawSelectionRect();
+  drawSelection();
+  drawCursor();
+  showStat();
 }
 
 function mousePressed(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
-  if ((x-blank.x<0)||(y-blank.y<0)) return;
+  if (insideDepot(x,y)==false) return;
   resetSelection();
-  if (mode=="add_area"){
-    selection = [];
-    selectionStart = gridMaping(x, y)[0]
-    if ((selectionStart.x<0)){
-      resetSelection();
-    }
-    if ((selectionStart.y<0)){
-      resetSelection();
-    }
-    selectRectStart = new Point(x, y);
-    let p = gridMaping(x,y)[0];
-    if (!gridAngle){
-      console.log(verticalArray[p.x][p.y]);
-
-    }else{
-      console.log(horizontalArray[p.x][p.y]);
-    }
-  }else if (mode=="view"){
-    let p = gridMaping(x,y)[0];
-    if (!gridAngle){
-      console.log(verticalArray[p.x][p.y]);
-    }else{
-      console.log(horizontalArray[p.x][p.y]);
-    }
+  updatePanel(getTeuFromCursor(x,y));
+  selection = [];
+  let p = gridMaping(x, y)[0] ;
+  selectionStart = p;
+  if ((selectionStart.x<0)){
+    resetSelection();
   }
-
+  if ((selectionStart.y<0)){
+    resetSelection();
+  }
+  selectRectStart = new Point(x, y);
+  redraw();
 }
 
 function mouseDragged(){
-  if (mode=="add_area"){
+  if (insideDepot(mouseX,mouseY)){
     selectionEnd = gridMaping(mouseX, mouseY)[1]
+    redraw();
   }
 }
 
 function mouseReleased(){
   let x = Math.floor(mouseX);
-  // console.log('x: ', x);
   let y = Math.floor(mouseY);
-  // console.log('y: ', y);
-  if ((x-blank.x<0)||(y-blank.y<0)) return;
-
-  if (mode=="add_area"){
-    selectionEnd = gridMaping(mouseX, mouseY)[0];
-    // if ((selectionEnd.x<0)){
-    //   resetSelection();
-    // }
-    // if ((selectionEnd.y<0)){
-    //   resetSelection();
-    // }
-    let hx = (selectionStart.x < selectionEnd.x);
-    let hy = (selectionStart.y < selectionEnd.y);
-    if (!hx){
-      [selectionStart.x, selectionEnd.x] = [selectionEnd.x, selectionStart.x];
-    }
-    if (!hy){
-      [selectionStart.y, selectionEnd.y] = [selectionEnd.y, selectionStart.y];
-    }
-    for (let i=selectionStart.x; i<=selectionEnd.x; i++){
-      for (let j=selectionStart.y; j<=selectionEnd.y; j++){
-        selection.push(new Point(i,j));
-      }
+  if (insideDepot(x,y)==false) return;
+  selectionEnd = gridMaping(mouseX, mouseY)[0];
+  let hx = (selectionStart.x < selectionEnd.x);
+  let hy = (selectionStart.y < selectionEnd.y);
+  if (!hx){
+    [selectionStart.x, selectionEnd.x] = [selectionEnd.x, selectionStart.x];
+  }
+  if (!hy){
+    [selectionStart.y, selectionEnd.y] = [selectionEnd.y, selectionStart.y];
+  }
+  for (let i=selectionStart.x; i<=selectionEnd.x; i++){
+    for (let j=selectionStart.y; j<=selectionEnd.y; j++){
+      selection.push(new Point(i,j));
     }
   }
+
+  redraw();
 }
 
 function addArea(){
-  mode = "add_area";
-  console.log('mode: ', mode);
-  console.log("Grid shown");
-  showPanel(true);
+  showGrid = document.getElementById("checkGrid").checked;
+  redraw();
 }
 
 function doneAddArea(){
-  mode = "view";
-  console.log('mode: ', mode);
+  let opt = document.getElementById("edtxOpt").value;
+  let bay = document.getElementById("edtxBay").value;
+  let tier = parseInt(document.getElementById("edtxNumTier").value);
+  if (opt==""){
+    alert("Thiếu thông tin hãng tàu");
+    return;
+  }
+  if (bay==""){
+    alert("Thiếu tên Bay");
+    return;
+  }
+  if (tier==""){
+    alert("Thiếu số tầng");
+    return;
+  }
   for (let i=0; i<selection.length; i++){
-    // console.log(selection[i]);
     if (!gridAngle){
-      verticalArray[selection[i].x][selection[i].y].opt = document.getElementById("edtxOpt").value;
+      verticalArray[selection[i].x][selection[i].y].opt = opt.toUpperCase();
+      verticalArray[selection[i].x][selection[i].y].bay_name = bay.toUpperCase();
+      verticalArray[selection[i].x][selection[i].y].num_of_tier = tier;
     }else{
-      horizontalArray[selection[i].x][selection[i].y].opt = document.getElementById("edtxOpt").value;
+      horizontalArray[selection[i].x][selection[i].y].opt = opt.toUpperCase();
+      horizontalArray[selection[i].x][selection[i].y].bay_name = bay.toUpperCase();
+      horizontalArray[selection[i].x][selection[i].y].num_of_tier = tier;
     }
   }
   // console.log(selection);
-  showPanel(false)
+  updateStat();
+  resetSelection();
+  redraw();
+}
+
+function resetArea(){
+  for (let i=0; i<selection.length; i++){
+    if (!gridAngle){
+      verticalArray[selection[i].x][selection[i].y].opt = undefined;
+      verticalArray[selection[i].x][selection[i].y].bay_name = "";
+      verticalArray[selection[i].x][selection[i].y].num_of_tier = "";
+    }else{
+      horizontalArray[selection[i].x][selection[i].y].opt = undefined;
+      horizontalArray[selection[i].x][selection[i].y].bay_name = ""
+      horizontalArray[selection[i].x][selection[i].y].num_of_tier = "";
+    }
+  }
+  updateStat();
+  redraw();
 }
 
 function mouseMap(x,y){
@@ -255,21 +258,11 @@ function mouseMap(x,y){
   return p5.Vector.mult(p, 1/scaleFactor);
 }
 
-// function mouseUnMap(x,y){
-//   let p = createVector(x/1,y/1);
-//   // p.sub(-width/2-depot.offset.x, height/2 + depot.offset.y);
-//   // let p = createVector((depot.offset.x + width/2)/scaleFactor, (depot.offset.y+height/2)/scaleFactor);
-//   // p.mult(1/scaleFactor)
-//   return p;
-// }
-
-function showGrid(){
+function drawGrid(){
   push();
   stroke('rgba(0,0,0,0.125)');
   noFill();
   strokeWeight(1);
-  // translate(width/2+depot.offset.x ,height/2 + depot.offset.y);
-  // translate(depot.gridOrigin.x, depot.gridOrigin.y);
   translate(blank.x, blank.y);
   scale(scaleFactor);
 
@@ -279,8 +272,6 @@ function showGrid(){
         rect(x,y, depot.contWidth, depot.contLength);
       }
     }
-    fill("GREEN");
-    circle(0,0,50);
   }else{
     for (let x = 0; x<depot.width; x+=(depot.contLength + depot.contGap)){
       for (let y=0; y<depot.height; y+= (depot.contWidth)){
@@ -294,6 +285,7 @@ function showGrid(){
 function changeGridAngle(){
   selection = [];
   gridAngle = (document.getElementById("checkAngle").checked)
+  redraw();
 }
 
 function drawSelection(){
@@ -313,8 +305,9 @@ function drawSelection(){
 
 function resetSelection(){
   selection = [];
-  selectionStart = {x:0, y:0};
-  selectionEnd = {x:0, y:0};
+  // selectionStart = {x:0, y:0};
+  // selectionStart = selectionEnd;
+  // selectionEnd = {x:0, y:0};
 }
 
 function gridMaping(px,py){
@@ -376,7 +369,7 @@ function initTeuArray(){
   for (let x=0; x<depot.width; x+=depot.contWidth){
     temp = [];
     for (let y=0; y<depot.height; y+=(depot.contLength+depot.contGap)){
-      temp.push(new Teu(x,y))
+      temp.push(new Teu(x,y, 0))
     }
     verticalArray.push(temp);
   }
@@ -384,21 +377,34 @@ function initTeuArray(){
   for (let x = 0; x<depot.width; x+=(depot.contLength + depot.contGap)){
     temp = [];
     for (let y=0; y<depot.height; y+= (depot.contWidth)){
-      temp.push(new Teu(x,y))
+      temp.push(new Teu(x,y, 1))
     }
     horizontalArray.push(temp);
   }
   verticalArray[30][10].opt = "HLC"
   verticalArray[30][10].bay_name = "A"
+  verticalArray[30][10].num_of_tier = 3
+
   horizontalArray[15][5].opt= "YML"
   horizontalArray[15][5].bay_name = "B"
+  horizontalArray[15][5].num_of_tier = 2
+
+  verticalArray[80][10].opt = "EVG"
+  verticalArray[80][10].bay_name = "F"
+  verticalArray[80][10].num_of_tier = 4
+
+  horizontalArray[17][5].opt= "YML"
+  horizontalArray[17][5].bay_name = "B"
+  horizontalArray[17][5].num_of_tier = 1
+
 }
 
-function showPanel(val){
-  document.getElementById("edtxBay").disabled = !val;
-  document.getElementById("edtxOpt").disabled = !val;
-  document.getElementById("edtxNumTier").disabled = !val;
-  document.getElementById("checkAngle").disabled = !val;
+function updatePanel(teu){
+  document.getElementById("edtxBay").value = teu.bay_name;
+  document.getElementById("edtxOpt").value = teu.opt;
+  document.getElementById("edtxNumTier").value = teu.num_of_tier;
+  document.getElementById("checkAngle").checked = teu.orient;
+  gridAngle = teu.orient;
 }
 
 function setColor(opt){
@@ -413,9 +419,11 @@ function setColor(opt){
     case "COS": 
       fill(140,180,180);
       break;
+    case "EVG":
+      fill(35, 207, 61)
+      break
     default:
-      noStroke();
-      noFill()
+      fill(255);
       break;
   }
 }
@@ -424,19 +432,141 @@ function drawTeu(){
   push();
   translate(blank.x, blank.y);
   scale(scaleFactor);
+  textSize(32);
+  textAlign(CENTER,CENTER);
   for (let i=0; i<verticalArray.length; i++){
     for (let j=0; j<verticalArray[0].length; j++){
       if (verticalArray[i][j].opt==undefined) continue;
       setColor(verticalArray[i][j].opt)
+      stroke(0)
       rect(verticalArray[i][j].x, verticalArray[i][j].y, depot.contWidth, depot.contLength);
+      fill(0);
+      noStroke();
+      text(verticalArray[i][j].num_of_tier, verticalArray[i][j].x + depot.contWidth/2, verticalArray[i][j].y+depot.contLength/2)
     }
   }
   for (let i=0; i<horizontalArray.length; i++){
     for (let j=0; j<horizontalArray[0].length; j++){
       if (horizontalArray[i][j].opt==undefined) continue;
       setColor(horizontalArray[i][j].opt)
+      stroke(0)
       rect(horizontalArray[i][j].x, horizontalArray[i][j].y, depot.contLength, depot.contWidth);
+      noStroke();
+      fill(0)
+      text(horizontalArray[i][j].num_of_tier, horizontalArray[i][j].x + depot.contLength/2, horizontalArray[i][j].y+depot.contWidth/2)
     }
   }
   pop();
+}
+
+function updateStat(){
+  let teuArray = []
+  for (let i=0; i<verticalArray.length; i++){
+    for (let j=0; j<verticalArray[0].length; j++){
+      if (verticalArray[i][j].opt==undefined) continue;
+      teuArray.push(verticalArray[i][j]);
+    }
+  }
+  for (let i=0; i<horizontalArray.length; i++){
+    for (let j=0; j<horizontalArray[0].length; j++){
+      if (horizontalArray[i][j].opt==undefined) continue;
+      teuArray.push(horizontalArray[i][j]);
+    }
+  }
+  sumAll = 0;
+  bayNameArray = [];
+  optArray = [];
+  countBay = [];
+  countOpt = [];
+  for (let i=0; i<teuArray.length; i++){
+    let idBay = bayNameArray.indexOf(teuArray[i].bay_name);
+    if (idBay == -1){
+      bayNameArray.push(teuArray[i].bay_name)
+      idBay = bayNameArray.length-1;
+      countBay.push(0);
+    }
+    countBay[idBay] += teuArray[i].num_of_tier;
+    let idOpt = optArray.indexOf(teuArray[i].opt);
+    if (idOpt == -1){
+      optArray.push(teuArray[i].opt)
+      idOpt = optArray.length-1;
+      countOpt.push(0);
+    }
+    countOpt[idOpt] += teuArray[i].num_of_tier;
+    sumAll += teuArray[i].num_of_tier;
+  }
+}
+
+function showStat(){
+  push();
+  textAlign(RIGHT, TOP);
+  textSize(14);
+  fill(0);
+  strokeWeight(1)
+  noStroke();
+  translate(width,0);
+  text("Tổng sức chứa: " + sumAll + " Teus", 0, 10);
+  translate(0,10);
+  for (let i=0; i<bayNameArray.length; i++){
+    translate(0, 20)
+    text("Bay "+bayNameArray[i]+ ": " + countBay[i] + " Teus", 0, 0)
+  }
+  // translate(0,20);
+  stroke(0);
+  line(0,25,-100,25)
+  translate(0,10);
+  noStroke();
+  for (let i=0; i<optArray.length; i++){
+    translate(0, 20)
+    text(optArray[i]+ ": " + countOpt[i] + " Teus", 0, 0)
+  }
+  pop();
+}
+
+function drawCursor(){
+  push();
+  translate(blank.x, blank.y);
+  scale(scaleFactor);
+  strokeWeight(2);
+  stroke("red");
+  noFill();
+  let p = gridMaping(mouseX, mouseY)[0];
+  let x = p.x;
+  let y = p.y;
+  if (gridAngle == false){
+    rect(x*depot.contWidth, y*((depot.contLength+depot.contGap)), depot.contWidth, depot.contLength)
+  }else{
+    rect(x*(depot.contLength+depot.contGap), y*(depot.contWidth), depot.contLength, depot.contWidth)
+  }
+  pop();
+}
+
+function getTeuFromCursor(x,y){
+  let p1 = gridMaping(x,y)[0];
+  gridAngle = !gridAngle;
+  let p2 = gridMaping(x,y)[0];
+  gridAngle = !gridAngle;
+  if (!gridAngle){
+    if (verticalArray[p1.x][p1.y].opt != undefined)    return verticalArray[p1.x][p1.y];
+    if (horizontalArray[p2.x][p2.y].opt != undefined)    return horizontalArray[p2.x][p2.y];
+  }else{
+    if (verticalArray[p2.x][p2.y].opt != undefined)    return verticalArray[p2.x][p2.y];
+    if (horizontalArray[p1.x][p1.y].opt != undefined)    return horizontalArray[p1.x][p1.y];
+  }
+  return new Teu(0,0,gridAngle);
+}
+
+function insideDepot(x,y){
+  if ((x<blank.x)||(y<blank.y)) return false;
+  if ((x>(width-blank.x))||(y>(height-blank.y))) return false;
+  return true;
+}
+
+function drawSelectionRect(){
+  noFill();
+  strokeWeight(2);
+  if ((mouseIsPressed)&&(selectRectStart!=undefined)){
+    if (insideDepot(mouseX,mouseY)==false) return;
+    rect(selectRectStart.x, selectRectStart.y, mouseX - selectRectStart.x, mouseY-selectRectStart.y);
+  }
 }

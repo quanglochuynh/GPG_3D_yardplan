@@ -17,6 +17,7 @@ let countBay;
 let countOpt;;
 let sumAll;
 let showGrid = false;
+let currentTeu;
 
 
 class Point{
@@ -39,7 +40,6 @@ class Area{
     this.num_of_row = r;
   }
 }
-
 class Teu{
   constructor(x, y, o){
     this.x = x;
@@ -137,7 +137,6 @@ function draw(){
   translate(width/2+depot.offset.x,height/2 + depot.offset.y);
   scale(scaleFactor);
   fill('cyan');
-  // circle(depot.gridOrigin.x, depot.gridOrigin.y, 50)
   noFill();
   pop();
   drawDepot();
@@ -145,7 +144,9 @@ function draw(){
   if (showGrid){
     drawGrid();
   }
-  drawSelectionRect();
+  if (!keyIsPressed){
+    drawSelectionRect();
+  }
   drawSelection();
   drawCursor();
   showStat();
@@ -155,18 +156,21 @@ function mousePressed(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
   if (insideDepot(x,y)==false) return;
-  resetSelection();
-  updatePanel(getTeuFromCursor(x,y));
-  selection = [];
   let p = gridMaping(x, y)[0] ;
-  selectionStart = p;
-  if ((selectionStart.x<0)){
+  currentTeu = getTeuFromCursor(x,y);
+  updatePanel(currentTeu);
+  // gridAngle = currentTeu.orient;
+  if (!keyIsPressed){
     resetSelection();
+    selectionStart = p;
+    if ((selectionStart.x<0)){
+      resetSelection();
+    }
+    if ((selectionStart.y<0)){
+      resetSelection();
+    }
+    selectRectStart = new Point(x, y);
   }
-  if ((selectionStart.y<0)){
-    resetSelection();
-  }
-  selectRectStart = new Point(x, y);
   redraw();
 }
 
@@ -181,21 +185,28 @@ function mouseReleased(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
   if (insideDepot(x,y)==false) return;
-  selectionEnd = gridMaping(mouseX, mouseY)[0];
-  let hx = (selectionStart.x < selectionEnd.x);
-  let hy = (selectionStart.y < selectionEnd.y);
-  if (!hx){
-    [selectionStart.x, selectionEnd.x] = [selectionEnd.x, selectionStart.x];
-  }
-  if (!hy){
-    [selectionStart.y, selectionEnd.y] = [selectionEnd.y, selectionStart.y];
-  }
-  for (let i=selectionStart.x; i<=selectionEnd.x; i++){
-    for (let j=selectionStart.y; j<=selectionEnd.y; j++){
-      selection.push(new Point(i,j));
+  let p = gridMaping(mouseX, mouseY)[0];
+  if (keyIsPressed){
+    if (key=="Control"){
+      selection.push(p); 
+    }
+  }else{
+    gridAngle = currentTeu.orient;
+    selectionEnd = p;
+    let hx = (selectionStart.x < selectionEnd.x);
+    let hy = (selectionStart.y < selectionEnd.y);
+    if (!hx){
+      [selectionStart.x, selectionEnd.x] = [selectionEnd.x, selectionStart.x];
+    }
+    if (!hy){
+      [selectionStart.y, selectionEnd.y] = [selectionEnd.y, selectionStart.y];
+    }
+    for (let i=selectionStart.x; i<=selectionEnd.x; i++){
+      for (let j=selectionStart.y; j<=selectionEnd.y; j++){
+        selection.push(new Point(i,j));
+      }
     }
   }
-
   redraw();
 }
 
@@ -225,10 +236,13 @@ function doneAddArea(){
       verticalArray[selection[i].x][selection[i].y].opt = opt.toUpperCase();
       verticalArray[selection[i].x][selection[i].y].bay_name = bay.toUpperCase();
       verticalArray[selection[i].x][selection[i].y].num_of_tier = tier;
+      verticalArray[selection[i].x][selection[i].y].orient = gridAngle;
     }else{
       horizontalArray[selection[i].x][selection[i].y].opt = opt.toUpperCase();
       horizontalArray[selection[i].x][selection[i].y].bay_name = bay.toUpperCase();
       horizontalArray[selection[i].x][selection[i].y].num_of_tier = tier;
+      horizontalArray[selection[i].x][selection[i].y].orient = gridAngle;
+
     }
   }
   // console.log(selection);
@@ -308,6 +322,7 @@ function resetSelection(){
   // selectionStart = {x:0, y:0};
   // selectionStart = selectionEnd;
   // selectionEnd = {x:0, y:0};
+  selectionEnd = selectionStart
 }
 
 function gridMaping(px,py){
@@ -400,11 +415,17 @@ function initTeuArray(){
 }
 
 function updatePanel(teu){
-  document.getElementById("edtxBay").value = teu.bay_name;
-  document.getElementById("edtxOpt").value = teu.opt;
-  document.getElementById("edtxNumTier").value = teu.num_of_tier;
-  document.getElementById("checkAngle").checked = teu.orient;
-  gridAngle = teu.orient;
+  if ((teu.bay_name===undefined)||(teu.opt===undefined)||(teu.num_of_tier===undefined)){
+    document.getElementById("edtxBay").value = "";
+    document.getElementById("edtxOpt").value = "";
+    document.getElementById("edtxNumTier").value = "";
+    document.getElementById("checkAngle").checked = gridAngle;
+  }else{
+    document.getElementById("edtxBay").value = teu.bay_name;
+    document.getElementById("edtxOpt").value = teu.opt;
+    document.getElementById("edtxNumTier").value = teu.num_of_tier;
+    document.getElementById("checkAngle").checked = teu.orient;
+  }
 }
 
 function setColor(opt){

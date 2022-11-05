@@ -5,7 +5,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -13,7 +14,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -21,7 +23,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -29,7 +32,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -37,7 +41,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -45,7 +50,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -53,7 +59,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -61,7 +68,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -69,7 +77,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -77,7 +86,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -85,7 +95,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -93,7 +104,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -101,7 +113,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -109,7 +122,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -117,7 +131,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -125,7 +140,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -133,7 +149,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -141,7 +158,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -149,7 +167,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -157,7 +176,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -165,7 +185,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -173,7 +194,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -181,7 +203,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -189,7 +212,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -197,7 +221,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -205,7 +230,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -213,7 +239,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -221,7 +248,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -229,7 +257,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -237,7 +266,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -245,7 +275,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -253,7 +284,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -261,7 +293,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -269,7 +302,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -277,7 +311,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -285,7 +320,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -293,7 +329,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -301,7 +338,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -309,7 +347,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -317,7 +356,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -325,7 +365,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -333,7 +374,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -341,7 +383,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -349,7 +392,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -357,7 +401,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -365,7 +410,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 14,
@@ -373,7 +419,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -381,7 +428,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -389,7 +437,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -397,7 +446,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -405,7 +455,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -413,7 +464,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -421,7 +473,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -429,7 +482,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -437,7 +491,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -445,7 +500,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -453,7 +509,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -461,7 +518,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -469,7 +527,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 15,
@@ -477,7 +536,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -485,7 +545,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -493,7 +554,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -501,7 +563,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -509,7 +572,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -517,7 +581,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -525,7 +590,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -533,7 +599,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -541,7 +608,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -549,7 +617,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -557,7 +626,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -565,7 +635,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -573,7 +644,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 16,
@@ -581,7 +653,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -589,7 +662,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -597,7 +671,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -605,7 +680,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -613,7 +689,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -621,7 +698,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -629,7 +707,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -637,7 +716,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -645,7 +725,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -653,7 +734,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -661,7 +743,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -669,7 +752,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -677,7 +761,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 17,
@@ -685,7 +770,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -693,7 +779,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -701,7 +788,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -709,7 +797,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -717,7 +806,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -725,7 +815,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -733,7 +824,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -741,7 +833,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -749,7 +842,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -757,7 +851,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -765,7 +860,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -773,7 +869,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -781,7 +878,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 18,
@@ -789,7 +887,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -797,7 +896,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -805,7 +905,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -813,7 +914,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -821,7 +923,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -829,7 +932,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -837,7 +941,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -845,7 +950,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -853,7 +959,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -861,7 +968,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -869,7 +977,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -877,7 +986,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -885,7 +995,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 19,
@@ -893,7 +1004,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 6,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -901,7 +1013,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -909,7 +1022,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -917,7 +1031,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -925,7 +1040,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -933,7 +1049,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -941,7 +1058,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -949,7 +1067,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -957,7 +1076,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -965,7 +1085,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -973,7 +1094,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -981,7 +1103,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -989,7 +1112,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -997,7 +1121,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -1005,7 +1130,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -1013,7 +1139,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -1021,7 +1148,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -1029,7 +1157,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -1037,7 +1166,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -1045,7 +1175,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -1053,7 +1184,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -1061,7 +1193,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -1069,7 +1202,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1077,7 +1211,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1085,7 +1220,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1093,7 +1229,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1101,7 +1238,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1109,7 +1247,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1117,7 +1256,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1125,7 +1265,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1133,7 +1274,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1141,7 +1283,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1149,7 +1292,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -1157,7 +1301,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1165,7 +1310,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1173,7 +1319,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1181,7 +1328,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1189,7 +1337,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1197,7 +1346,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1205,7 +1355,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1213,7 +1364,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1221,7 +1373,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1229,7 +1382,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1237,7 +1391,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -1245,7 +1400,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1253,7 +1409,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1261,7 +1418,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1269,7 +1427,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1277,7 +1436,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1285,7 +1445,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1293,7 +1454,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1301,7 +1463,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1309,7 +1472,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1317,7 +1481,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1325,7 +1490,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -1333,7 +1499,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1341,7 +1508,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1349,7 +1517,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1357,7 +1526,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1365,7 +1535,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1373,7 +1544,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1381,7 +1553,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1389,7 +1562,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1397,7 +1571,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1405,7 +1580,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1413,7 +1589,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -1421,7 +1598,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -1429,7 +1607,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -1437,7 +1616,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -1445,7 +1625,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -1453,7 +1634,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -1461,7 +1643,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -1469,7 +1652,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -1477,7 +1661,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -1485,7 +1670,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -1493,7 +1679,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -1501,7 +1688,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 39,
@@ -1509,7 +1697,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 2,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 39,
@@ -1517,7 +1706,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 39,
@@ -1525,7 +1715,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 39,
@@ -1533,7 +1724,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 39,
@@ -1541,7 +1733,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 40,
@@ -1549,7 +1742,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 40,
@@ -1557,7 +1751,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 40,
@@ -1565,7 +1760,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 40,
@@ -1573,7 +1769,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 41,
@@ -1581,7 +1778,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 41,
@@ -1589,7 +1787,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 41,
@@ -1597,7 +1796,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 41,
@@ -1605,7 +1805,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 42,
@@ -1613,7 +1814,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 42,
@@ -1621,7 +1823,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 42,
@@ -1629,7 +1832,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 42,
@@ -1637,7 +1841,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 43,
@@ -1645,7 +1850,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 43,
@@ -1653,7 +1859,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 43,
@@ -1661,7 +1868,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 43,
@@ -1669,7 +1877,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 23,
@@ -1677,7 +1886,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1685,7 +1895,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1693,7 +1904,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1701,7 +1913,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1709,7 +1922,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1717,7 +1931,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1725,7 +1940,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1733,7 +1949,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1741,7 +1958,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1749,7 +1967,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1757,7 +1976,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1765,7 +1985,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1773,7 +1994,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -1781,7 +2003,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1789,7 +2012,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1797,7 +2021,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1805,7 +2030,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1813,7 +2039,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1821,7 +2048,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1829,7 +2057,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1837,7 +2066,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1845,7 +2075,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1853,7 +2084,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1861,7 +2093,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1869,7 +2102,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1877,7 +2111,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1885,7 +2120,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -1893,7 +2129,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1901,7 +2138,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1909,7 +2147,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1917,7 +2156,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1925,7 +2165,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1933,7 +2174,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1941,7 +2183,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1949,7 +2192,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1957,7 +2201,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1965,7 +2210,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1973,7 +2219,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1981,7 +2228,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1989,7 +2237,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -1997,7 +2246,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -2005,7 +2255,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2013,7 +2264,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2021,7 +2273,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2029,7 +2282,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2037,7 +2291,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2045,7 +2300,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2053,7 +2309,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2061,7 +2318,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2069,7 +2327,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2077,7 +2336,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2085,7 +2345,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2093,7 +2354,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2101,7 +2363,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2109,7 +2372,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2117,7 +2381,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2125,7 +2390,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2133,7 +2399,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2141,7 +2408,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2149,7 +2417,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2157,7 +2426,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2165,7 +2435,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2173,7 +2444,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2181,7 +2453,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2189,7 +2462,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2197,7 +2471,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2205,7 +2480,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2213,7 +2489,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2221,7 +2498,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -2229,7 +2507,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2237,7 +2516,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2245,7 +2525,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2253,7 +2534,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2261,7 +2543,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2269,7 +2552,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2277,7 +2561,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2285,7 +2570,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2293,7 +2579,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2301,7 +2588,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2309,7 +2597,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2317,7 +2606,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2325,7 +2615,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2333,7 +2624,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -2341,7 +2633,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2349,7 +2642,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2357,7 +2651,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2365,7 +2660,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2373,7 +2669,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2381,7 +2678,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2389,7 +2687,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2397,7 +2696,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2405,7 +2705,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2413,7 +2714,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2421,7 +2723,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2429,7 +2732,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2437,7 +2741,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2445,7 +2750,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -2453,7 +2759,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2461,7 +2768,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2469,7 +2777,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2477,7 +2786,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2485,7 +2795,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2493,7 +2804,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2501,7 +2813,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2509,7 +2822,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2517,7 +2831,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2525,7 +2840,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2533,7 +2849,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2541,7 +2858,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2549,7 +2867,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2557,7 +2876,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -2565,7 +2885,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2573,7 +2894,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2581,7 +2903,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2589,7 +2912,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2597,7 +2921,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2605,7 +2930,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2613,7 +2939,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2621,7 +2948,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2629,7 +2957,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2637,7 +2966,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2645,7 +2975,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2653,7 +2984,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2661,7 +2993,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -2669,7 +3002,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2677,7 +3011,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2685,7 +3020,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2693,7 +3029,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2701,7 +3038,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2709,7 +3047,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2717,7 +3056,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2725,7 +3065,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2733,7 +3074,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 6,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2741,7 +3083,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2749,7 +3092,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2757,7 +3101,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 6,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -2765,7 +3110,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 33,
@@ -2773,7 +3119,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 33,
@@ -2781,7 +3128,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 33,
@@ -2789,7 +3137,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -2797,7 +3146,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -2805,7 +3155,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -2813,7 +3164,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -2821,7 +3173,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -2829,7 +3182,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -2837,7 +3191,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -2845,7 +3200,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -2853,7 +3209,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -2861,7 +3218,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -2869,7 +3227,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -2877,7 +3236,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -2885,7 +3245,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -2893,7 +3254,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -2901,7 +3263,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -2909,7 +3272,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -2917,7 +3281,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -2925,7 +3290,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -2933,7 +3299,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -2941,7 +3308,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -2949,7 +3317,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -2957,7 +3326,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2965,7 +3335,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2973,7 +3344,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2981,7 +3353,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2989,7 +3362,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -2997,7 +3371,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -3005,7 +3380,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -3013,7 +3389,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -3021,7 +3398,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -3029,7 +3407,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -3037,7 +3416,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -3045,7 +3425,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -3053,7 +3434,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -3061,7 +3443,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -3069,7 +3452,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -3077,7 +3461,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -3085,7 +3470,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -3093,7 +3479,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -3101,7 +3488,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -3109,7 +3497,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -3117,7 +3506,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -3125,7 +3515,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -3133,7 +3524,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -3141,7 +3533,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -3149,7 +3542,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -3157,7 +3551,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -3165,7 +3560,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -3173,7 +3569,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -3181,7 +3578,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -3189,7 +3587,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -3197,7 +3596,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -3205,7 +3605,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -3213,7 +3614,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -3221,7 +3623,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -3229,7 +3632,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -3237,7 +3641,8 @@
         "orient": true,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "E"
+        "bay_name": "E",
+        "ground": "1"
     },
     {
         "x": 11,
@@ -3245,7 +3650,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -3253,7 +3659,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -3261,7 +3668,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -3269,7 +3677,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -3277,7 +3686,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -3285,7 +3695,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -3293,7 +3704,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -3301,7 +3713,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -3309,7 +3722,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 11,
@@ -3317,7 +3731,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 3,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3325,7 +3740,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3333,7 +3749,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3341,7 +3758,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3349,7 +3767,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3357,7 +3776,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3365,7 +3785,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3373,7 +3794,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3381,7 +3803,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3389,7 +3812,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3397,7 +3821,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3405,7 +3830,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 12,
@@ -3413,7 +3839,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 4,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3421,7 +3848,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3429,7 +3857,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3437,7 +3866,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3445,7 +3875,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3453,7 +3884,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3461,7 +3893,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3469,7 +3902,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3477,7 +3911,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3485,7 +3920,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3493,7 +3929,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3501,7 +3938,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 13,
@@ -3509,7 +3947,8 @@
         "orient": false,
         "opt": "YML",
         "num_of_tier": 5,
-        "bay_name": "A"
+        "bay_name": "A",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3517,7 +3956,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3525,7 +3965,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3533,7 +3974,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3541,7 +3983,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3549,7 +3992,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3557,7 +4001,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3565,7 +4010,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3573,7 +4019,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3581,7 +4028,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3589,7 +4037,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3597,7 +4046,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3605,7 +4055,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 26,
@@ -3613,7 +4064,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 3,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3621,7 +4073,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3629,7 +4082,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3637,7 +4091,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3645,7 +4100,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3653,7 +4109,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3661,7 +4118,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3669,7 +4127,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3677,7 +4136,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3685,7 +4145,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3693,7 +4154,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3701,7 +4163,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3709,7 +4172,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 27,
@@ -3717,7 +4181,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 4,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3725,7 +4190,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3733,7 +4199,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3741,7 +4208,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3749,7 +4217,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3757,7 +4226,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3765,7 +4235,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3773,7 +4244,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3781,7 +4253,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3789,7 +4262,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3797,7 +4271,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3805,7 +4280,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3813,7 +4289,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 28,
@@ -3821,7 +4298,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 5,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -3829,7 +4307,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -3837,7 +4316,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 29,
@@ -3845,7 +4325,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -3853,7 +4334,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -3861,7 +4343,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 30,
@@ -3869,7 +4352,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -3877,7 +4361,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -3885,7 +4370,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -3893,7 +4379,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -3901,7 +4388,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -3909,7 +4397,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -3917,7 +4406,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 31,
@@ -3925,7 +4415,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 32,
@@ -3933,7 +4424,8 @@
         "orient": false,
         "opt": "HLC",
         "num_of_tier": 6,
-        "bay_name": "B"
+        "bay_name": "B",
+        "ground": "0"
     },
     {
         "x": 23,
@@ -3941,7 +4433,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -3949,7 +4442,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -3957,7 +4451,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -3965,7 +4460,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -3973,7 +4469,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -3981,7 +4478,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -3989,7 +4487,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -3997,7 +4496,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -4005,7 +4505,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -4013,7 +4514,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 33,
@@ -4021,7 +4523,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 3,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -4029,7 +4532,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -4037,7 +4541,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -4045,7 +4550,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -4053,7 +4559,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -4061,7 +4568,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -4069,7 +4577,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -4077,7 +4586,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -4085,7 +4595,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -4093,7 +4604,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -4101,7 +4613,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 33,
@@ -4109,7 +4622,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -4117,7 +4631,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -4125,7 +4640,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -4133,7 +4649,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -4141,7 +4658,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -4149,7 +4667,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -4157,7 +4676,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -4165,7 +4685,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -4173,7 +4694,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -4181,7 +4703,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -4189,7 +4712,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 33,
@@ -4197,7 +4721,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -4205,7 +4730,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -4213,7 +4739,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -4221,7 +4748,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -4229,7 +4757,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -4237,7 +4766,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -4245,7 +4775,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -4253,7 +4784,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -4261,7 +4793,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -4269,7 +4802,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -4277,7 +4811,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 5,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 33,
@@ -4285,7 +4820,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 33,
@@ -4293,7 +4829,8 @@
         "orient": true,
         "opt": "EVG",
         "num_of_tier": 4,
-        "bay_name": "D"
+        "bay_name": "D",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -4301,7 +4838,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -4309,7 +4847,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -4317,7 +4856,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -4325,7 +4865,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -4333,7 +4874,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -4341,7 +4883,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -4349,7 +4892,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -4357,7 +4901,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -4365,7 +4910,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -4373,7 +4919,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -4381,7 +4928,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -4389,7 +4937,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -4397,7 +4946,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -4405,7 +4955,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -4413,7 +4964,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -4421,7 +4973,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -4429,7 +4982,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 23,
@@ -4437,7 +4991,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 24,
@@ -4445,7 +5000,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 25,
@@ -4453,7 +5009,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 26,
@@ -4461,7 +5018,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 27,
@@ -4469,7 +5027,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 28,
@@ -4477,7 +5036,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 29,
@@ -4485,7 +5045,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 30,
@@ -4493,7 +5054,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 31,
@@ -4501,7 +5063,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 32,
@@ -4509,7 +5072,8 @@
         "orient": true,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "F"
+        "bay_name": "F",
+        "ground": "1"
     },
     {
         "x": 43,
@@ -4517,7 +5081,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 43,
@@ -4525,7 +5090,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 43,
@@ -4533,7 +5099,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 43,
@@ -4541,7 +5108,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 3,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 42,
@@ -4549,7 +5117,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 42,
@@ -4557,7 +5126,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 42,
@@ -4565,7 +5135,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 42,
@@ -4573,7 +5144,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 4,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 41,
@@ -4581,7 +5153,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 41,
@@ -4589,7 +5162,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 41,
@@ -4597,7 +5171,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 41,
@@ -4605,7 +5180,8 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 5,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     },
     {
         "x": 39,
@@ -4613,6 +5189,7 @@
         "orient": false,
         "opt": "COS",
         "num_of_tier": 2,
-        "bay_name": "C"
+        "bay_name": "C",
+        "ground": "0"
     }
 ]

@@ -1,7 +1,6 @@
 const largeFontSize = 28
 let depot;
-let tempArea=undefined;
-let scaleFactor = 0.4;
+let scaleFactor;
 let gridAngle = 0;
 let selection;
 let selectionStart = {x:0, y:0};
@@ -19,6 +18,7 @@ let sumAll;
 let showGrid = false;
 let currentTeu;
 let teuArray;
+let activeGround = 0;
 
 class Point{
   constructor(x,y){
@@ -158,9 +158,10 @@ function mousePressed(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
   if (insideDepot(x,y)==false) return;
+  activeGround = checkGround(x,y)
+  console.log(activeGround);
   let p = gridMaping(x, y)[0] ;
   currentTeu = getTeuFromCursor(x,y);
-  console.log('currentTeu: ', currentTeu);
   updatePanel(currentTeu);
   // gridAngle = currentTeu.orient;
   if (!keyIsPressed){
@@ -280,6 +281,7 @@ function updateVerticalHorizontal(){
     for (let y=0; y<verticalArray[0].length; y++){
       if (verticalArray[x][y].opt==undefined) continue
       teuArray.push(verticalArray[x][y])
+      // teuArray[teuArray.length-1].ground = checkGround()
     }
   }
   for (let x = 0; x<horizontalArray.length; x++){
@@ -394,7 +396,6 @@ function alignMap(){
   }
   depot.offset = p5.Vector.mult(depot.center,-scaleFactor);
   depot.gridOffset = p5.Vector.mult(depot.gridOrigin, scaleFactor);
-  // depot.gridOffset = p5.Vector.sub(depot.gridOffset, depot.offset);
 }
 
 function windowResized() {
@@ -473,28 +474,6 @@ function drawTeu(){
   scale(scaleFactor);
   textSize(32);
   textAlign(CENTER,CENTER);
-  // for (let i=0; i<verticalArray.length; i++){
-  //   for (let j=0; j<verticalArray[0].length; j++){
-  //     if (verticalArray[i][j].opt==undefined) continue;
-  //     setColor(verticalArray[i][j].opt)
-  //     stroke(0)
-  //     rect(verticalArray[i][j].x, verticalArray[i][j].y, depot.contWidth, depot.contLength);
-  //     fill(0);
-  //     noStroke();
-  //     text(verticalArray[i][j].num_of_tier, verticalArray[i][j].x + depot.contWidth/2, verticalArray[i][j].y+depot.contLength/2)
-  //   }
-  // }
-  // for (let i=0; i<horizontalArray.length; i++){
-  //   for (let j=0; j<horizontalArray[0].length; j++){
-  //     if (horizontalArray[i][j].opt==undefined) continue;
-  //     setColor(horizontalArray[i][j].opt)
-  //     stroke(0)
-  //     rect(horizontalArray[i][j].x, horizontalArray[i][j].y, depot.contLength, depot.contWidth);
-  //     noStroke();
-  //     fill(0)
-  //     text(horizontalArray[i][j].num_of_tier, horizontalArray[i][j].x + depot.contLength/2, horizontalArray[i][j].y+depot.contWidth/2)
-  //   }
-  // }
   let temp = gridAngle;
   for (let i=0; i<teuArray.length;i++){
     gridAngle = teuArray[i].orient
@@ -622,4 +601,41 @@ function gridMapingTranspose(p){
   }else{
     return new Point(p.x * (depot.contLength + depot.contGap), p.y * depot.contWidth);
   }
+}
+
+function checkGround(x,y){
+  // console.log(pointIsInPoly(mouseMap(x,y), depot.layout.shape[0].seq));
+  for (let i=0; i<depot.ground.length; i++){
+    let id = depot.ground[i].shapeID
+    let k = pointIsInPoly(mouseMap(x,y), depot.layout.shape[id].seq)
+    if (k!=false) return i;
+  }
+  return -1;
+}
+
+function pointIsInPoly(p, polygon) {
+  var isInside = false;
+  var minX = polygon[0].x, maxX = polygon[0].x;
+  var minY = polygon[0].y, maxY = polygon[0].y;
+  for (var n = 1; n < polygon.length; n++) {
+      var q = polygon[n];
+      minX = Math.min(q.x, minX);
+      maxX = Math.max(q.x, maxX);
+      minY = Math.min(q.y, minY);
+      maxY = Math.max(q.y, maxY);
+  }
+
+  if (p.x < minX || p.x > maxX || p.y < minY || p.y > maxY) {
+      return false;
+  }
+
+  var i = 0, j = polygon.length - 1;
+  for (i, j; i < polygon.length; j = i++) {
+      if ( (polygon[i].y > p.y) != (polygon[j].y > p.y) &&
+              p.x < (polygon[j].x - polygon[i].x) * (p.y - polygon[i].y) / (polygon[j].y - polygon[i].y) + polygon[i].x ) {
+          isInside = !isInside;
+      }
+  }
+
+  return isInside;
 }

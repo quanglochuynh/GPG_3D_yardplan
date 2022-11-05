@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1017" height="551" viewBox="0 0 1017 551">
   <defs>
     <style>
-      .a {
+      .a, .e {
         fill: none;
       }
 
@@ -52,4 +52,5 @@
   <text class="d" transform="translate(252 508)">B</text>
   <polygon class="a" points="581 497 463 502 465 551 583 550 581 497"/>
   <polygon class="a" points="572 181 445 187 448 231 573 226 572 181"/>
+  <polygon class="e" points="620 170 620 178 628 177 627 170 620 170"/>
 </svg>

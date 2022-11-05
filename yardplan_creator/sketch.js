@@ -8,17 +8,18 @@ let selectionEnd = {x:0, y:0};
 let mapCenter;
 let blank = {x:0, y:0};
 let selectRectStart;
-let verticalArray, horizontalArray;
+let ground;
 let areaList;
 let bayNameArray;
 let optArray;
 let countBay;
 let countOpt;;
 let sumAll;
-let showGrid = false;
+let showGrid = true;
 let currentTeu;
 let teuArray;
 let activeGround = 0;
+let centerOffset;
 
 class Point{
   constructor(x,y){
@@ -102,6 +103,7 @@ function preload(){
     $.getJSON("./data/etd_reservation.json", function(data){
       teuArray = data;
       // teuArray = [];
+      ground = depot.ground;
       init()
       console.log("Done");
     })
@@ -135,12 +137,12 @@ function draw(){
   background(250); 
   stroke(0); 
   strokeWeight(4);
-  push();
-  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
-  scale(scaleFactor);
-  fill('cyan');
-  noFill();
-  pop();
+  // push();
+  // translate(width/2+depot.offset.x,height/2 + depot.offset.y);
+  // scale(scaleFactor);
+  // fill('cyan');
+  // noFill();
+  // pop();
   drawDepot();
   drawTeu();
   if (showGrid){
@@ -149,7 +151,7 @@ function draw(){
   if (!keyIsPressed){
     drawSelectionRect();
   }
-  drawSelection();
+  // drawSelection();
   drawCursor();
   showStat();
 }
@@ -158,11 +160,11 @@ function mousePressed(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
   if (insideDepot(x,y)==false) return;
-  activeGround = checkGround(x,y)
-  console.log(activeGround);
+  activeGround = max(checkGround(x,y),0)
+  // console.log(activeGround);
   let p = gridMaping(x, y)[0] ;
   currentTeu = getTeuFromCursor(x,y);
-  updatePanel(currentTeu);
+  // updatePanel(currentTeu);
   // gridAngle = currentTeu.orient;
   if (!keyIsPressed){
     resetSelection();
@@ -195,7 +197,7 @@ function mouseReleased(){
       selection.push(p); 
     }
   }else{
-    gridAngle = currentTeu.orient;
+    // gridAngle = currentTeu.orient;
     selectionEnd = p;
     let hx = (selectionStart.x < selectionEnd.x);
     let hy = (selectionStart.y < selectionEnd.y);
@@ -281,7 +283,6 @@ function updateVerticalHorizontal(){
     for (let y=0; y<verticalArray[0].length; y++){
       if (verticalArray[x][y].opt==undefined) continue
       teuArray.push(verticalArray[x][y])
-      // teuArray[teuArray.length-1].ground = checkGround()
     }
   }
   for (let x = 0; x<horizontalArray.length; x++){
@@ -299,12 +300,12 @@ function mouseMap(x,y){
 
 function drawGrid(){
   push();
+  groundTranform();
+  fill(0);
+  circle(0,0,100)
   stroke('rgba(0,0,0,0.125)');
   noFill();
   strokeWeight(1);
-  translate(blank.x, blank.y);
-  scale(scaleFactor);
-
   if (document.getElementById("checkAngle").checked == false){
     for (let x=0; x<depot.width; x+=depot.contWidth){
       for (let y=0; y<depot.height; y+=(depot.contLength+depot.contGap)){
@@ -353,6 +354,9 @@ function resetSelection(){
 function gridMaping(px,py){
   let x = px - blank.x;
   let y = py - blank.y;
+
+
+
   if (!gridAngle){
     let dx = Math.floor(x/(depot.contWidth*scaleFactor));
     let dy = Math.floor(y/((depot.contLength+depot.contGap)*scaleFactor));
@@ -396,6 +400,7 @@ function alignMap(){
   }
   depot.offset = p5.Vector.mult(depot.center,-scaleFactor);
   depot.gridOffset = p5.Vector.mult(depot.gridOrigin, scaleFactor);
+  // centerOffset = 
 }
 
 function windowResized() {
@@ -405,29 +410,33 @@ function windowResized() {
 }
 
 function initTeuArray(){
-  verticalArray = [];
-  for (let x=0; x<depot.width/depot.contWidth; x++){
-    let temp = [];
-    for (let y=0; y<depot.height/(depot.contLength+depot.contGap); y++){
-      temp.push(new Teu(x,y, 0))
+  for (let g=0; g<ground.length; g++){
+    ground[g].verticalArray = [];
+    for (let x=0; x<depot.width/depot.contWidth; x++){
+      let temp = [];
+      for (let y=0; y<depot.height/(depot.contLength+depot.contGap); y++){
+        temp.push(new Teu(x,y, 0))
+      }
+      ground[g].verticalArray.push(temp);
     }
-    verticalArray.push(temp);
-  }
-  horizontalArray = [];
-  for (let x = 0; x<depot.width/(depot.contLength + depot.contGap); x++){
-    let temp = [];
-    for (let y=0; y<depot.height/depot.contWidth; y++){
-      temp.push(new Teu(x,y, 1))
+    ground[g].horizontalArray = [];
+    for (let x = 0; x<depot.width/(depot.contLength + depot.contGap); x++){
+      let temp = [];
+      for (let y=0; y<depot.height/depot.contWidth; y++){
+        temp.push(new Teu(x,y, 1))
+      }
+      ground[g].horizontalArray.push(temp);
     }
-    horizontalArray.push(temp);
   }
+  
   let temp = gridAngle;
   for (let i=0; i<teuArray.length;i++){
     gridAngle = teuArray[i].orient
+    let g = teuArray[i].ground;
     if (teuArray[i].orient==0){
-      verticalArray[teuArray[i].x][teuArray[i].y] = teuArray[i];
+      ground[g].verticalArray[teuArray[i].x][teuArray[i].y] = teuArray[i];
     }else{
-      horizontalArray[teuArray[i].x][teuArray[i].y] = teuArray[i];
+      ground[g].horizontalArray[teuArray[i].x][teuArray[i].y] = teuArray[i];
     }
   }
   gridAngle = temp;
@@ -549,12 +558,27 @@ function showStat(){
 
 function drawCursor(){
   push();
-  translate(blank.x, blank.y);
+  let dif = rotateDiff(createVector(depot.contWidth*scaleFactor,0) ,-depot.ground[activeGround].angle);
+  // translate(blank.x, blank.y);
+  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
+  translate(depot.ground[activeGround].offsetX*scaleFactor, depot.ground[activeGround].offsetY*scaleFactor);
+
+  rotate(-depot.ground[activeGround].angle)
+  // translate(-dif.x, -dif.y);
   scale(scaleFactor);
+
+
+  let p = mouseMap(mouseX, mouseY);
+
+  // groundTranform();
+
+
+  // dif.mult();
+
   strokeWeight(2);
   stroke("red");
   noFill();
-  let p = gridMaping(mouseX, mouseY)[0];
+  p = gridMaping(mouseX, mouseY)[0];
   let x = p.x;
   let y = p.y;
   if (gridAngle == false){
@@ -570,14 +594,16 @@ function getTeuFromCursor(x,y){
   gridAngle = !gridAngle;
   let p2 = gridMaping(x,y)[0];
   gridAngle = !gridAngle;
-  if (!gridAngle){
-    if (verticalArray[p1.x][p1.y].opt != undefined)    return verticalArray[p1.x][p1.y];
-    if (horizontalArray[p2.x][p2.y].opt != undefined)    return horizontalArray[p2.x][p2.y];
-  }else{
-    if (verticalArray[p2.x][p2.y].opt != undefined)    return verticalArray[p2.x][p2.y];
-    if (horizontalArray[p1.x][p1.y].opt != undefined)    return horizontalArray[p1.x][p1.y];
-  }
-  return new Teu(0,0,gridAngle);
+  // if (!gridAngle){
+  //   if (ground[activeGround].verticalArray[p1.x][p1.y].opt != undefined)    return verticalArray[p1.x][p1.y];
+  //   if (ground[activeGround].horizontalArray[p2.x][p2.y].opt != undefined)    return horizontalArray[p2.x][p2.y];
+  // }else{
+  //   if (ground[activeGround].verticalArray[p2.x][p2.y].opt != undefined)    return verticalArray[p2.x][p2.y];
+  //   if (ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined)    return horizontalArray[p1.x][p1.y];
+  // }
+  // return new Teu(0,0,gridAngle);
+  console.log(p1.x, p1.y);
+  // console.log(p2.x, p2.y);
 }
 
 function insideDepot(x,y){
@@ -587,11 +613,17 @@ function insideDepot(x,y){
 }
 
 function drawSelectionRect(){
-  noFill();
-  strokeWeight(2);
   if ((mouseIsPressed)&&(selectRectStart!=undefined)){
+    push();
+    noFill();
+    strokeWeight(2);
+    translate(selectRectStart.x, selectRectStart.y,)
+    rotate(-depot.ground[activeGround].angle);
+    let dif = rotateDiff(createVector(mouseX - selectRectStart.x, mouseY-selectRectStart.y) ,depot.ground[activeGround].angle);
+    // console.log('dif: ', dif);
     if (insideDepot(mouseX,mouseY)==false) return;
-    rect(selectRectStart.x, selectRectStart.y, mouseX - selectRectStart.x, mouseY-selectRectStart.y);
+    rect(0,0, mouseX - selectRectStart.x + dif.x, mouseY-selectRectStart.y + dif.y);
+    pop();
   }
 }
 
@@ -638,4 +670,17 @@ function pointIsInPoly(p, polygon) {
   }
 
   return isInside;
+}
+
+function groundTranform(){
+  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
+  scale(scaleFactor);
+  translate(depot.ground[activeGround].offsetX, depot.ground[activeGround].offsetY);
+  rotate(-depot.ground[activeGround].angle)
+}
+
+function rotateDiff(a,r){
+  let c = a.copy();
+  a.rotate(r)
+  return p5.Vector.sub(a,c);
 }

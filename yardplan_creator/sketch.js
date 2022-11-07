@@ -29,13 +29,14 @@ class Point{
   }
 }
 class Area{
-  constructor(x,y,a){
-    this.name = undefined;
+  constructor(name,x,y,a){
+    this.name = name;
     this.angle = a;
     this.x_coor = x;
     this.y_coor = y;
     this.x_flip = 0;
     // this.y_flip = undefined;
+
   }
 }
 class Teu{
@@ -46,7 +47,9 @@ class Teu{
     this.opt=undefined;
     this.num_of_tier = undefined;
     this.bay_name = undefined;
-
+    this.bay = undefined;
+    this.row = undefined;
+    this.ground = undefined
   }
 }
 
@@ -135,8 +138,13 @@ function mousePressed(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
   if (insideDepot(x,y)==false) return;
-  activeGround = max(checkGround(x,y),0)
-  console.log(checkGround(x,y));
+  let cg = checkGround(x,y)
+  if (cg<0) {
+    return
+  };
+  activeGround = max(cg,0)
+  // console.log(checkGround(x,y));
+
   let p = gridMaping(x, y)[0] ;
   currentTeu = getTeuFromCursor(x,y);
   updatePanel(currentTeu);
@@ -166,6 +174,10 @@ function mouseReleased(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
   if (insideDepot(x,y)==false) return;
+  let cg = checkGround(x,y)
+  if (cg<0) {
+    return
+  };
   let p = gridMaping(mouseX, mouseY)[0];
   if (keyIsPressed){
     if (key=="Control"){
@@ -706,30 +718,46 @@ function rotateDiff(a,r){
 }
 
 function exportJson(){
-  console.log(teuArray);
-  depot.ground = ground;
-  console.log(depot)
+  // console.log(teuArray);
+  // depot.ground = ground;
+  // console.log(depot)
   area = [];
   for (let i=0; i<bayNameArray.length; i++){
-    // let a = bayNameArray[i]
-    let mm = mouseMap()
     let origin = findAreaOrigin(bayNameArray[i])
+    let id = origin.ground;
     let p = gridMapingTranspose(origin.position);
-    
-    area.push(new Area())
+    let x = ground[id].offsetX + p.x;
+    let y = ground[id].offsetY + p.y
+    area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle));
+    for (let t=0; t<teuArray.length; t++){
+      if (!teuArray[t].orient){
+        teuArray[t].row = teuArray[t].x - origin.position.x;
+        teuArray[t].bay = (teuArray[t].y - origin.position.y)*2 + 1;
+      }else{
+        teuArray[t].bay = teuArray[t].x - origin.position.x;
+        teuArray[t].row = (teuArray[t].y - origin.position.y)*2 + 1;
+      }
+    }
   }
+  depot.Area = area;
+  console.log(depot);
+  console.log(teuArray);
 }
 
 function findAreaOrigin(area){
   let minX = Infinity;
   let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity
   let g;
   for (let t=0; t<teuArray.length; t++){
-    if (teuArray[i].bay_name == area){
-      minX = min(minX, teuArray[i].x)
-      minY = min(minY, teuArray[i].y)
-      g = teuArray[i].ground;
+    if (teuArray[t].bay_name == area){
+      minX = min(minX, teuArray[t].x)
+      minY = min(minY, teuArray[t].y)
+      maxX = max(maxX, teuArray[t].x)
+      maxY = max(maxY, teuArray[t].y)
+      g = teuArray[t].ground;
     }
   }
-  return {position: new Point(minX, minY), ground: g};
+  return {position: {x:minX, y:minY}, ground: parseInt(g), wid: maxX-minX, hei: maxY-minY};
 }

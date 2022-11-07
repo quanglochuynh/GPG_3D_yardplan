@@ -6,7 +6,9 @@
         "opt": "YML",
         "num_of_tier": 3,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 6,
+        "bay": 7
     },
     {
         "x": 11,
@@ -15,7 +17,9 @@
         "opt": "YML",
         "num_of_tier": 3,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 6,
+        "bay": 9
     },
     {
         "x": 11,
@@ -24,7 +28,9 @@
         "opt": "YML",
         "num_of_tier": 3,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 6,
+        "bay": 11
     },
     {
         "x": 11,
@@ -33,7 +39,9 @@
         "opt": "YML",
         "num_of_tier": 3,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 6,
+        "bay": 13
     },
     {
         "x": 11,
@@ -42,7 +50,9 @@
         "opt": "YML",
         "num_of_tier": 3,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 6,
+        "bay": 15
     },
     {
         "x": 11,
@@ -51,7 +61,9 @@
         "opt": "YML",
         "num_of_tier": 3,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 6,
+        "bay": 17
     },
     {
         "x": 11,
@@ -60,7 +72,9 @@
         "opt": "YML",
         "num_of_tier": 3,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 6,
+        "bay": 19
     },
     {
         "x": 11,
@@ -69,7 +83,9 @@
         "opt": "YML",
         "num_of_tier": 3,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 6,
+        "bay": 21
     },
     {
         "x": 11,
@@ -78,7 +94,9 @@
         "opt": "YML",
         "num_of_tier": 3,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 6,
+        "bay": 23
     },
     {
         "x": 11,
@@ -87,7 +105,9 @@
         "opt": "YML",
         "num_of_tier": 3,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 6,
+        "bay": 25
     },
     {
         "x": 12,
@@ -96,7 +116,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 7
     },
     {
         "x": 12,
@@ -105,7 +127,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 9
     },
     {
         "x": 12,
@@ -114,7 +138,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 11
     },
     {
         "x": 12,
@@ -123,7 +149,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 13
     },
     {
         "x": 12,
@@ -132,7 +160,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 15
     },
     {
         "x": 12,
@@ -141,7 +171,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 17
     },
     {
         "x": 12,
@@ -150,7 +182,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 19
     },
     {
         "x": 12,
@@ -159,7 +193,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 21
     },
     {
         "x": 12,
@@ -168,7 +204,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 23
     },
     {
         "x": 12,
@@ -177,7 +215,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 25
     },
     {
         "x": 12,
@@ -186,7 +226,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 27
     },
     {
         "x": 12,
@@ -195,7 +237,9 @@
         "opt": "YML",
         "num_of_tier": 4,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 7,
+        "bay": 29
     },
     {
         "x": 13,
@@ -204,7 +248,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 7
     },
     {
         "x": 13,
@@ -213,7 +259,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 9
     },
     {
         "x": 13,
@@ -222,7 +270,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 11
     },
     {
         "x": 13,
@@ -231,7 +281,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 13
     },
     {
         "x": 13,
@@ -240,7 +292,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 15
     },
     {
         "x": 13,
@@ -249,7 +303,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 17
     },
     {
         "x": 13,
@@ -258,7 +314,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 19
     },
     {
         "x": 13,
@@ -267,7 +325,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 21
     },
     {
         "x": 13,
@@ -276,7 +336,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 23
     },
     {
         "x": 13,
@@ -285,7 +347,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 25
     },
     {
         "x": 13,
@@ -294,7 +358,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 27
     },
     {
         "x": 13,
@@ -303,7 +369,9 @@
         "opt": "YML",
         "num_of_tier": 5,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 8,
+        "bay": 29
     },
     {
         "x": 14,
@@ -312,7 +380,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 7
     },
     {
         "x": 14,
@@ -321,7 +391,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 9
     },
     {
         "x": 14,
@@ -330,7 +402,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 11
     },
     {
         "x": 14,
@@ -339,7 +413,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 13
     },
     {
         "x": 14,
@@ -348,7 +424,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 15
     },
     {
         "x": 14,
@@ -357,7 +435,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 17
     },
     {
         "x": 14,
@@ -366,7 +446,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 19
     },
     {
         "x": 14,
@@ -375,7 +457,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 21
     },
     {
         "x": 14,
@@ -384,7 +468,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 23
     },
     {
         "x": 14,
@@ -393,7 +479,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 25
     },
     {
         "x": 14,
@@ -402,7 +490,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 27
     },
     {
         "x": 14,
@@ -411,7 +501,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 29
     },
     {
         "x": 14,
@@ -420,7 +512,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 9,
+        "bay": 31
     },
     {
         "x": 15,
@@ -429,7 +523,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 7
     },
     {
         "x": 15,
@@ -438,7 +534,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 9
     },
     {
         "x": 15,
@@ -447,7 +545,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 11
     },
     {
         "x": 15,
@@ -456,7 +556,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 13
     },
     {
         "x": 15,
@@ -465,7 +567,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 15
     },
     {
         "x": 15,
@@ -474,7 +578,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 17
     },
     {
         "x": 15,
@@ -483,7 +589,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 19
     },
     {
         "x": 15,
@@ -492,7 +600,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 21
     },
     {
         "x": 15,
@@ -501,7 +611,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 23
     },
     {
         "x": 15,
@@ -510,7 +622,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 25
     },
     {
         "x": 15,
@@ -519,7 +633,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 27
     },
     {
         "x": 15,
@@ -528,7 +644,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 29
     },
     {
         "x": 15,
@@ -537,7 +655,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 10,
+        "bay": 31
     },
     {
         "x": 16,
@@ -546,7 +666,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 7
     },
     {
         "x": 16,
@@ -555,7 +677,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 9
     },
     {
         "x": 16,
@@ -564,7 +688,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 11
     },
     {
         "x": 16,
@@ -573,7 +699,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 13
     },
     {
         "x": 16,
@@ -582,7 +710,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 15
     },
     {
         "x": 16,
@@ -591,7 +721,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 17
     },
     {
         "x": 16,
@@ -600,7 +732,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 19
     },
     {
         "x": 16,
@@ -609,7 +743,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 21
     },
     {
         "x": 16,
@@ -618,7 +754,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 23
     },
     {
         "x": 16,
@@ -627,7 +765,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 25
     },
     {
         "x": 16,
@@ -636,7 +776,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 27
     },
     {
         "x": 16,
@@ -645,7 +787,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 29
     },
     {
         "x": 16,
@@ -654,7 +798,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 11,
+        "bay": 31
     },
     {
         "x": 17,
@@ -663,7 +809,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 7
     },
     {
         "x": 17,
@@ -672,7 +820,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 9
     },
     {
         "x": 17,
@@ -681,7 +831,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 11
     },
     {
         "x": 17,
@@ -690,7 +842,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 13
     },
     {
         "x": 17,
@@ -699,7 +853,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 15
     },
     {
         "x": 17,
@@ -708,7 +864,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 17
     },
     {
         "x": 17,
@@ -717,7 +875,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 19
     },
     {
         "x": 17,
@@ -726,7 +886,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 21
     },
     {
         "x": 17,
@@ -735,7 +897,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 23
     },
     {
         "x": 17,
@@ -744,7 +908,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 25
     },
     {
         "x": 17,
@@ -753,7 +919,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 27
     },
     {
         "x": 17,
@@ -762,7 +930,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 29
     },
     {
         "x": 17,
@@ -771,7 +941,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 12,
+        "bay": 31
     },
     {
         "x": 18,
@@ -780,7 +952,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 7
     },
     {
         "x": 18,
@@ -789,7 +963,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 9
     },
     {
         "x": 18,
@@ -798,7 +974,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 11
     },
     {
         "x": 18,
@@ -807,7 +985,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 13
     },
     {
         "x": 18,
@@ -816,7 +996,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 15
     },
     {
         "x": 18,
@@ -825,7 +1007,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 17
     },
     {
         "x": 18,
@@ -834,7 +1018,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 19
     },
     {
         "x": 18,
@@ -843,7 +1029,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 21
     },
     {
         "x": 18,
@@ -852,7 +1040,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 23
     },
     {
         "x": 18,
@@ -861,7 +1051,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 25
     },
     {
         "x": 18,
@@ -870,7 +1062,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 27
     },
     {
         "x": 18,
@@ -879,7 +1073,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 29
     },
     {
         "x": 18,
@@ -888,7 +1084,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 13,
+        "bay": 31
     },
     {
         "x": 19,
@@ -897,7 +1095,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 7
     },
     {
         "x": 19,
@@ -906,7 +1106,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 9
     },
     {
         "x": 19,
@@ -915,7 +1117,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 11
     },
     {
         "x": 19,
@@ -924,7 +1128,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 13
     },
     {
         "x": 19,
@@ -933,7 +1139,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 15
     },
     {
         "x": 19,
@@ -942,7 +1150,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 17
     },
     {
         "x": 19,
@@ -951,7 +1161,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 19
     },
     {
         "x": 19,
@@ -960,7 +1172,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 21
     },
     {
         "x": 19,
@@ -969,7 +1183,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 23
     },
     {
         "x": 19,
@@ -978,7 +1194,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 25
     },
     {
         "x": 19,
@@ -987,7 +1205,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 27
     },
     {
         "x": 19,
@@ -996,7 +1216,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 29
     },
     {
         "x": 19,
@@ -1005,7 +1227,9 @@
         "opt": "YML",
         "num_of_tier": 6,
         "bay_name": "A",
-        "ground": "0"
+        "ground": "0",
+        "row": 14,
+        "bay": 31
     },
     {
         "x": 26,
@@ -1014,7 +1238,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 7
     },
     {
         "x": 26,
@@ -1023,7 +1249,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 9
     },
     {
         "x": 26,
@@ -1032,7 +1260,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 11
     },
     {
         "x": 26,
@@ -1041,7 +1271,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 13
     },
     {
         "x": 26,
@@ -1050,7 +1282,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 15
     },
     {
         "x": 26,
@@ -1059,7 +1293,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 17
     },
     {
         "x": 26,
@@ -1068,7 +1304,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 23
     },
     {
         "x": 26,
@@ -1077,7 +1315,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 25
     },
     {
         "x": 26,
@@ -1086,7 +1326,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 27
     },
     {
         "x": 26,
@@ -1095,7 +1337,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 29
     },
     {
         "x": 26,
@@ -1104,7 +1348,9 @@
         "opt": "HLC",
         "num_of_tier": 3,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 21,
+        "bay": 31
     },
     {
         "x": 27,
@@ -1113,7 +1359,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 7
     },
     {
         "x": 27,
@@ -1122,7 +1370,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 9
     },
     {
         "x": 27,
@@ -1131,7 +1381,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 11
     },
     {
         "x": 27,
@@ -1140,7 +1392,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 13
     },
     {
         "x": 27,
@@ -1149,7 +1403,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 15
     },
     {
         "x": 27,
@@ -1158,7 +1414,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 17
     },
     {
         "x": 27,
@@ -1167,7 +1425,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 23
     },
     {
         "x": 27,
@@ -1176,7 +1436,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 25
     },
     {
         "x": 27,
@@ -1185,7 +1447,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 27
     },
     {
         "x": 27,
@@ -1194,7 +1458,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 29
     },
     {
         "x": 27,
@@ -1203,7 +1469,9 @@
         "opt": "HLC",
         "num_of_tier": 4,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 22,
+        "bay": 31
     },
     {
         "x": 28,
@@ -1212,7 +1480,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 7
     },
     {
         "x": 28,
@@ -1221,7 +1491,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 9
     },
     {
         "x": 28,
@@ -1230,7 +1502,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 11
     },
     {
         "x": 28,
@@ -1239,7 +1513,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 13
     },
     {
         "x": 28,
@@ -1248,7 +1524,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 15
     },
     {
         "x": 28,
@@ -1257,7 +1535,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 17
     },
     {
         "x": 28,
@@ -1266,7 +1546,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 23
     },
     {
         "x": 28,
@@ -1275,7 +1557,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 25
     },
     {
         "x": 28,
@@ -1284,7 +1568,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 27
     },
     {
         "x": 28,
@@ -1293,7 +1579,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 29
     },
     {
         "x": 28,
@@ -1302,7 +1590,9 @@
         "opt": "HLC",
         "num_of_tier": 5,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 23,
+        "bay": 31
     },
     {
         "x": 29,
@@ -1311,7 +1601,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 7
     },
     {
         "x": 29,
@@ -1320,7 +1612,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 9
     },
     {
         "x": 29,
@@ -1329,7 +1623,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 11
     },
     {
         "x": 29,
@@ -1338,7 +1634,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 13
     },
     {
         "x": 29,
@@ -1347,7 +1645,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 15
     },
     {
         "x": 29,
@@ -1356,7 +1656,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 17
     },
     {
         "x": 29,
@@ -1365,7 +1667,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 23
     },
     {
         "x": 29,
@@ -1374,7 +1678,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 25
     },
     {
         "x": 29,
@@ -1383,7 +1689,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 27
     },
     {
         "x": 29,
@@ -1392,7 +1700,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 29
     },
     {
         "x": 29,
@@ -1401,7 +1711,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 24,
+        "bay": 31
     },
     {
         "x": 30,
@@ -1410,7 +1722,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 7
     },
     {
         "x": 30,
@@ -1419,7 +1733,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 9
     },
     {
         "x": 30,
@@ -1428,7 +1744,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 11
     },
     {
         "x": 30,
@@ -1437,7 +1755,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 13
     },
     {
         "x": 30,
@@ -1446,7 +1766,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 15
     },
     {
         "x": 30,
@@ -1455,7 +1777,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 17
     },
     {
         "x": 30,
@@ -1464,7 +1788,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 23
     },
     {
         "x": 30,
@@ -1473,7 +1799,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 25
     },
     {
         "x": 30,
@@ -1482,7 +1810,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 27
     },
     {
         "x": 30,
@@ -1491,7 +1821,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 29
     },
     {
         "x": 30,
@@ -1500,7 +1832,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 25,
+        "bay": 31
     },
     {
         "x": 31,
@@ -1509,7 +1843,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": 0
+        "ground": 0,
+        "row": 26,
+        "bay": 7
     },
     {
         "x": 31,
@@ -1518,7 +1854,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 26,
+        "bay": 9
     },
     {
         "x": 31,
@@ -1527,7 +1865,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 26,
+        "bay": 11
     },
     {
         "x": 31,
@@ -1536,7 +1876,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 26,
+        "bay": 13
     },
     {
         "x": 31,
@@ -1545,7 +1887,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 26,
+        "bay": 15
     },
     {
         "x": 31,
@@ -1554,7 +1898,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 26,
+        "bay": 17
     },
     {
         "x": 31,
@@ -1563,7 +1909,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 26,
+        "bay": 23
     },
     {
         "x": 31,
@@ -1572,7 +1920,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 26,
+        "bay": 25
     },
     {
         "x": 31,
@@ -1581,7 +1931,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 26,
+        "bay": 27
     },
     {
         "x": 31,
@@ -1590,7 +1942,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 26,
+        "bay": 29
     },
     {
         "x": 31,
@@ -1599,7 +1953,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 26,
+        "bay": 31
     },
     {
         "x": 32,
@@ -1608,7 +1964,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": 0
+        "ground": 0,
+        "row": 27,
+        "bay": 7
     },
     {
         "x": 32,
@@ -1617,7 +1975,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 27,
+        "bay": 9
     },
     {
         "x": 32,
@@ -1626,7 +1986,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 27,
+        "bay": 11
     },
     {
         "x": 32,
@@ -1635,7 +1997,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 27,
+        "bay": 13
     },
     {
         "x": 32,
@@ -1644,7 +2008,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 27,
+        "bay": 15
     },
     {
         "x": 32,
@@ -1653,7 +2019,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 27,
+        "bay": 17
     },
     {
         "x": 32,
@@ -1662,7 +2030,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 27,
+        "bay": 23
     },
     {
         "x": 32,
@@ -1671,7 +2041,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 27,
+        "bay": 25
     },
     {
         "x": 32,
@@ -1680,7 +2052,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 27,
+        "bay": 27
     },
     {
         "x": 32,
@@ -1689,7 +2063,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 27,
+        "bay": 29
     },
     {
         "x": 32,
@@ -1698,7 +2074,9 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": "0",
+        "row": 27,
+        "bay": 31
     },
     {
         "x": 39,
@@ -1707,7 +2085,9 @@
         "opt": "COS",
         "num_of_tier": 2,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 34,
+        "bay": -1
     },
     {
         "x": 39,
@@ -1716,7 +2096,9 @@
         "opt": "COS",
         "num_of_tier": 6,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 34,
+        "bay": 1
     },
     {
         "x": 39,
@@ -1725,7 +2107,9 @@
         "opt": "COS",
         "num_of_tier": 6,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 34,
+        "bay": 3
     },
     {
         "x": 39,
@@ -1734,7 +2118,9 @@
         "opt": "COS",
         "num_of_tier": 6,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 34,
+        "bay": 5
     },
     {
         "x": 39,
@@ -1743,7 +2129,9 @@
         "opt": "COS",
         "num_of_tier": 6,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 34,
+        "bay": 7
     },
     {
         "x": 40,
@@ -1752,7 +2140,9 @@
         "opt": "COS",
         "num_of_tier": 6,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 35,
+        "bay": 1
     },
     {
         "x": 40,
@@ -1761,7 +2151,9 @@
         "opt": "COS",
         "num_of_tier": 6,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 35,
+        "bay": 3
     },
     {
         "x": 40,
@@ -1770,7 +2162,9 @@
         "opt": "COS",
         "num_of_tier": 6,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 35,
+        "bay": 5
     },
     {
         "x": 40,
@@ -1779,7 +2173,9 @@
         "opt": "COS",
         "num_of_tier": 6,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 35,
+        "bay": 7
     },
     {
         "x": 41,
@@ -1788,7 +2184,9 @@
         "opt": "COS",
         "num_of_tier": 5,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 36,
+        "bay": 1
     },
     {
         "x": 41,
@@ -1797,7 +2195,9 @@
         "opt": "COS",
         "num_of_tier": 5,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 36,
+        "bay": 3
     },
     {
         "x": 41,
@@ -1806,7 +2206,9 @@
         "opt": "COS",
         "num_of_tier": 5,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 36,
+        "bay": 5
     },
     {
         "x": 41,
@@ -1815,7 +2217,9 @@
         "opt": "COS",
         "num_of_tier": 5,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 36,
+        "bay": 7
     },
     {
         "x": 42,
@@ -1824,7 +2228,9 @@
         "opt": "COS",
         "num_of_tier": 4,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 37,
+        "bay": 1
     },
     {
         "x": 42,
@@ -1833,7 +2239,9 @@
         "opt": "COS",
         "num_of_tier": 4,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 37,
+        "bay": 3
     },
     {
         "x": 42,
@@ -1842,7 +2250,9 @@
         "opt": "COS",
         "num_of_tier": 4,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 37,
+        "bay": 5
     },
     {
         "x": 42,
@@ -1851,7 +2261,9 @@
         "opt": "COS",
         "num_of_tier": 4,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 37,
+        "bay": 7
     },
     {
         "x": 43,
@@ -1860,7 +2272,9 @@
         "opt": "COS",
         "num_of_tier": 3,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 38,
+        "bay": 1
     },
     {
         "x": 43,
@@ -1869,7 +2283,9 @@
         "opt": "COS",
         "num_of_tier": 3,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 38,
+        "bay": 3
     },
     {
         "x": 43,
@@ -1878,7 +2294,9 @@
         "opt": "COS",
         "num_of_tier": 3,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 38,
+        "bay": 5
     },
     {
         "x": 43,
@@ -1887,7 +2305,9 @@
         "opt": "COS",
         "num_of_tier": 3,
         "bay_name": "C",
-        "ground": "0"
+        "ground": "0",
+        "row": 38,
+        "bay": 7
     },
     {
         "x": 5,
@@ -1896,7 +2316,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 0,
+        "bay": 1
     },
     {
         "x": 5,
@@ -1905,7 +2327,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 0,
+        "bay": 3
     },
     {
         "x": 5,
@@ -1914,7 +2338,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 0,
+        "bay": 5
     },
     {
         "x": 5,
@@ -1923,7 +2349,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 0,
+        "bay": 7
     },
     {
         "x": 5,
@@ -1932,7 +2360,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 0,
+        "bay": 9
     },
     {
         "x": 5,
@@ -1941,7 +2371,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 0,
+        "bay": 11
     },
     {
         "x": 5,
@@ -1950,7 +2382,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 0,
+        "bay": 13
     },
     {
         "x": 5,
@@ -1959,7 +2393,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 0,
+        "bay": 15
     },
     {
         "x": 5,
@@ -1968,7 +2404,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 0,
+        "bay": 17
     },
     {
         "x": 6,
@@ -1977,7 +2415,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 1,
+        "bay": 1
     },
     {
         "x": 6,
@@ -1986,7 +2426,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 1,
+        "bay": 3
     },
     {
         "x": 6,
@@ -1995,7 +2437,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 1,
+        "bay": 5
     },
     {
         "x": 6,
@@ -2004,7 +2448,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 1,
+        "bay": 7
     },
     {
         "x": 6,
@@ -2013,7 +2459,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 1,
+        "bay": 9
     },
     {
         "x": 6,
@@ -2022,7 +2470,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 1,
+        "bay": 11
     },
     {
         "x": 6,
@@ -2031,7 +2481,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 1,
+        "bay": 13
     },
     {
         "x": 6,
@@ -2040,7 +2492,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 1,
+        "bay": 15
     },
     {
         "x": 6,
@@ -2049,7 +2503,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 1,
+        "bay": 17
     },
     {
         "x": 7,
@@ -2058,7 +2514,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 2,
+        "bay": 1
     },
     {
         "x": 7,
@@ -2067,7 +2525,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 2,
+        "bay": 3
     },
     {
         "x": 7,
@@ -2076,7 +2536,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 2,
+        "bay": 5
     },
     {
         "x": 7,
@@ -2085,7 +2547,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 2,
+        "bay": 7
     },
     {
         "x": 7,
@@ -2094,7 +2558,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 2,
+        "bay": 9
     },
     {
         "x": 7,
@@ -2103,7 +2569,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 2,
+        "bay": 11
     },
     {
         "x": 7,
@@ -2112,7 +2580,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 2,
+        "bay": 13
     },
     {
         "x": 7,
@@ -2121,7 +2591,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 2,
+        "bay": 15
     },
     {
         "x": 7,
@@ -2130,7 +2602,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 2,
+        "bay": 17
     },
     {
         "x": 8,
@@ -2139,7 +2613,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 3,
+        "bay": 1
     },
     {
         "x": 8,
@@ -2148,7 +2624,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 3,
+        "bay": 3
     },
     {
         "x": 8,
@@ -2157,7 +2635,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 3,
+        "bay": 5
     },
     {
         "x": 8,
@@ -2166,7 +2646,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 3,
+        "bay": 7
     },
     {
         "x": 8,
@@ -2175,7 +2657,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 3,
+        "bay": 9
     },
     {
         "x": 8,
@@ -2184,7 +2668,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 3,
+        "bay": 11
     },
     {
         "x": 8,
@@ -2193,7 +2679,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 3,
+        "bay": 13
     },
     {
         "x": 8,
@@ -2202,7 +2690,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 3,
+        "bay": 15
     },
     {
         "x": 8,
@@ -2211,7 +2701,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 3,
+        "bay": 17
     },
     {
         "x": 9,
@@ -2220,7 +2712,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 4,
+        "bay": 1
     },
     {
         "x": 9,
@@ -2229,7 +2723,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 4,
+        "bay": 3
     },
     {
         "x": 9,
@@ -2238,7 +2734,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 4,
+        "bay": 5
     },
     {
         "x": 9,
@@ -2247,7 +2745,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 4,
+        "bay": 7
     },
     {
         "x": 9,
@@ -2256,7 +2756,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 4,
+        "bay": 9
     },
     {
         "x": 9,
@@ -2265,7 +2767,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 4,
+        "bay": 11
     },
     {
         "x": 9,
@@ -2274,7 +2778,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 4,
+        "bay": 13
     },
     {
         "x": 9,
@@ -2283,7 +2789,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 4,
+        "bay": 15
     },
     {
         "x": 9,
@@ -2292,7 +2800,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 4,
+        "bay": 17
     },
     {
         "x": 10,
@@ -2301,7 +2811,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 5,
+        "bay": 1
     },
     {
         "x": 10,
@@ -2310,7 +2822,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 5,
+        "bay": 3
     },
     {
         "x": 10,
@@ -2319,7 +2833,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 5,
+        "bay": 5
     },
     {
         "x": 10,
@@ -2328,7 +2844,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 5,
+        "bay": 7
     },
     {
         "x": 10,
@@ -2337,7 +2855,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 5,
+        "bay": 9
     },
     {
         "x": 10,
@@ -2346,7 +2866,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 5,
+        "bay": 11
     },
     {
         "x": 10,
@@ -2355,7 +2877,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 5,
+        "bay": 13
     },
     {
         "x": 10,
@@ -2364,7 +2888,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 5,
+        "bay": 15
     },
     {
         "x": 10,
@@ -2373,7 +2899,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 5,
+        "bay": 17
     },
     {
         "x": 11,
@@ -2382,7 +2910,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 6,
+        "bay": 1
     },
     {
         "x": 11,
@@ -2391,7 +2921,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 6,
+        "bay": 3
     },
     {
         "x": 11,
@@ -2400,7 +2932,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 6,
+        "bay": 5
     },
     {
         "x": 11,
@@ -2409,7 +2943,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 6,
+        "bay": 7
     },
     {
         "x": 11,
@@ -2418,7 +2954,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 6,
+        "bay": 9
     },
     {
         "x": 11,
@@ -2427,7 +2965,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 6,
+        "bay": 11
     },
     {
         "x": 11,
@@ -2436,7 +2976,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 6,
+        "bay": 13
     },
     {
         "x": 11,
@@ -2445,7 +2987,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 6,
+        "bay": 15
     },
     {
         "x": 11,
@@ -2454,7 +2998,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 6,
+        "bay": 17
     },
     {
         "x": 12,
@@ -2463,7 +3009,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 7,
+        "bay": 1
     },
     {
         "x": 12,
@@ -2472,7 +3020,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 7,
+        "bay": 3
     },
     {
         "x": 12,
@@ -2481,7 +3031,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 7,
+        "bay": 5
     },
     {
         "x": 12,
@@ -2490,7 +3042,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 7,
+        "bay": 7
     },
     {
         "x": 12,
@@ -2499,7 +3053,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 7,
+        "bay": 9
     },
     {
         "x": 12,
@@ -2508,7 +3064,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 7,
+        "bay": 11
     },
     {
         "x": 12,
@@ -2517,7 +3075,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 7,
+        "bay": 13
     },
     {
         "x": 12,
@@ -2526,7 +3086,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 7,
+        "bay": 15
     },
     {
         "x": 12,
@@ -2535,7 +3097,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 7,
+        "bay": 17
     },
     {
         "x": 13,
@@ -2544,7 +3108,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 8,
+        "bay": 1
     },
     {
         "x": 13,
@@ -2553,7 +3119,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 8,
+        "bay": 3
     },
     {
         "x": 13,
@@ -2562,7 +3130,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 8,
+        "bay": 5
     },
     {
         "x": 13,
@@ -2571,7 +3141,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 8,
+        "bay": 7
     },
     {
         "x": 13,
@@ -2580,7 +3152,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 8,
+        "bay": 9
     },
     {
         "x": 13,
@@ -2589,7 +3163,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 8,
+        "bay": 11
     },
     {
         "x": 13,
@@ -2598,7 +3174,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 8,
+        "bay": 13
     },
     {
         "x": 13,
@@ -2607,7 +3185,9 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 8,
+        "bay": 15
     },
     {
         "x": 13,
@@ -2616,6 +3196,8 @@
         "opt": "EVG",
         "num_of_tier": 6,
         "bay_name": "D",
-        "ground": 1
+        "ground": 1,
+        "row": 8,
+        "bay": 17
     }
 ]

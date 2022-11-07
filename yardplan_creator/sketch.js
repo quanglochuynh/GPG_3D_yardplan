@@ -137,12 +137,6 @@ function draw(){
   background(250); 
   stroke(0); 
   strokeWeight(4);
-  // push();
-  // translate(width/2+depot.offset.x,height/2 + depot.offset.y);
-  // scale(scaleFactor);
-  // fill('cyan');
-  // noFill();
-  // pop();
   drawDepot();
   drawTeu();
   if (showGrid){
@@ -151,7 +145,7 @@ function draw(){
   if (!keyIsPressed){
     drawSelectionRect();
   }
-  // drawSelection();
+  drawSelection();
   drawCursor();
   showStat();
 }
@@ -240,17 +234,20 @@ function doneAddArea(){
   for (let i=0; i<selection.length; i++){
     // teuArray.push(new Teu())
     if (!gridAngle){
-      verticalArray[selection[i].x][selection[i].y].opt = opt.toUpperCase();
-      verticalArray[selection[i].x][selection[i].y].bay_name = bay.toUpperCase();
-      verticalArray[selection[i].x][selection[i].y].num_of_tier = tier;
-      verticalArray[selection[i].x][selection[i].y].orient = gridAngle;
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].opt = opt.toUpperCase();
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].bay_name = bay.toUpperCase();
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].num_of_tier = tier;
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].orient = gridAngle;
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].ground = activeGround;
       // teuArray[teuArray.length-1] = verticalArray[selection[i].x][selection[i].y]
 
     }else{
-      horizontalArray[selection[i].x][selection[i].y].opt = opt.toUpperCase();
-      horizontalArray[selection[i].x][selection[i].y].bay_name = bay.toUpperCase();
-      horizontalArray[selection[i].x][selection[i].y].num_of_tier = tier;
-      horizontalArray[selection[i].x][selection[i].y].orient = gridAngle;
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].opt = opt.toUpperCase();
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].bay_name = bay.toUpperCase();
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].num_of_tier = tier;
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].orient = gridAngle;
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].ground = activeGround;
+
       // teuArray[teuArray.length-1] =  horizontalArray[selection[i].x][selection[i].y];
     }
   }
@@ -279,18 +276,20 @@ function resetArea(){
 
 function updateVerticalHorizontal(){
   teuArray = []
-  for (let x=0; x<verticalArray.length; x++){
-    for (let y=0; y<verticalArray[0].length; y++){
-      if (verticalArray[x][y].opt==undefined) continue
-      teuArray.push(verticalArray[x][y])
+  for (let g=0; g<ground.length; g++){
+    for (let x=0; x<ground[g].verticalArray.length; x++){
+      for (let y=0; y<ground[g].verticalArray[0].length; y++){
+        if (ground[g].verticalArray[x][y].opt==undefined) continue
+        teuArray.push(ground[g].verticalArray[x][y])
+      }
     }
-  }
-  for (let x = 0; x<horizontalArray.length; x++){
-    for (let y=0; y<horizontalArray[0].length; y++){
-      if (horizontalArray[x][y].opt==undefined) continue
-      teuArray.push(horizontalArray[x][y])
+    for (let x = 0; x<ground[g].horizontalArray.length; x++){
+      for (let y=0; y<ground[g].horizontalArray[0].length; y++){
+        if (ground[g].horizontalArray[x][y].opt==undefined) continue
+        teuArray.push(ground[g].horizontalArray[x][y])
+      }
     }
-  }
+  } 
 }
 
 function mouseMap(x,y){
@@ -304,22 +303,17 @@ function mouseMap(x,y){
 }
 
 function mouseMap2(x,y){
-  // let p = createVector(x-width/2-depot.offset.x,y-height/2 - depot.offset.y);
-  // p.sub(ground[activeGround].offsetX, ground[activeGround].offsetY);
-  // p.mult(1/scaleFactor)
-
-
-  let p = createVector(x-blank.x, y-blank.y);
-
+  let m = createVector(x,y);
+  m.sub(blank);
   let v0 = createVector(ground[0].offsetX, ground[0].offsetY);
   let v1 = createVector(ground[activeGround].offsetX, ground[activeGround].offsetY)
   let vOff = p5.Vector.sub(v1,v0);
   vOff.mult(scaleFactor)
-  // console.log('vOff: ', vOff);
-  p.sub(vOff);
-  let dif = rotateDiff(p5.Vector.add(createVector(x-blank.x, y-blank.y), p),-depot.ground[activeGround].angle);
+  let p = p5.Vector.sub(m, vOff);
+  let k = p5.Vector.sub(createVector(x,y),v1.mult(scaleFactor))
+  // let dif = rotateDiff(k,-depot.ground[activeGround].angle);
 
-  // p.add(dif);
+  // p.sub(dif);
   return p
 }
 
@@ -355,9 +349,11 @@ function changeGridAngle(){
 
 function drawSelection(){
   push()
-  translate(blank.x, blank.y);
-  scale(scaleFactor);
+  // translate(blank.x, blank.y);
+  // scale(scaleFactor);
+  groundTranform()
   stroke("blue");
+  noFill();
   for (let i=0; i<selection.length; i++){
     if (!gridAngle){
       rect(selection[i].x*depot.contWidth, selection[i].y*(depot.contLength + depot.contGap), depot.contWidth, (depot.contLength))
@@ -377,13 +373,9 @@ function resetSelection(){
 }
 
 function gridMaping(px,py){
-  // let x = px - blank.x;
-  // let y = py - blank.y;
-
   let p = mouseMap2(px,py)
   let x = p.x;
   let y = p.y;
-  
   if (!gridAngle){
     let dx = Math.floor(x/(depot.contWidth*scaleFactor));
     let dy = Math.floor(y/((depot.contLength+depot.contGap)*scaleFactor));
@@ -505,13 +497,17 @@ function setColor(opt){
 }
 
 function drawTeu(){
-  push();
-  translate(blank.x, blank.y);
-  scale(scaleFactor);
+  // push();
+  // translate(blank.x, blank.y);
+  // scale(scaleFactor);
   textSize(32);
   textAlign(CENTER,CENTER);
   let temp = gridAngle;
+  let temp2 = activeGround;
   for (let i=0; i<teuArray.length;i++){
+    push();
+    activeGround = teuArray[i].ground;
+    groundTranform();
     gridAngle = teuArray[i].orient
     let p = gridMapingTranspose(teuArray[i]);
     setColor(teuArray[i].opt)
@@ -527,9 +523,11 @@ function drawTeu(){
       fill(0)
       text(teuArray[i].num_of_tier, p.x + depot.contLength/2, p.y+depot.contWidth/2)
     }
+    pop();
   }
   gridAngle = temp;
-  pop();
+  activeGround = temp2;
+  // pop();
 }
 
 function updateStat(){

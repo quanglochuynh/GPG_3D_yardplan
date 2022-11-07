@@ -161,7 +161,7 @@ function mousePressed(){
   let y = Math.floor(mouseY);
   if (insideDepot(x,y)==false) return;
   activeGround = max(checkGround(x,y),0)
-  // console.log(activeGround);
+  console.log(checkGround(x,y));
   let p = gridMaping(x, y)[0] ;
   currentTeu = getTeuFromCursor(x,y);
   // updatePanel(currentTeu);
@@ -295,7 +295,32 @@ function updateVerticalHorizontal(){
 
 function mouseMap(x,y){
   let p = createVector(x-width/2-depot.offset.x,y-height/2 - depot.offset.y);
-  return p5.Vector.mult(p, 1/scaleFactor);
+  p.mult(1/scaleFactor)
+  return p
+  // let k = createVector(ground[0].offsetX, ground[0].offsetY)
+  // k.sub(ground[activeGround].offsetX, ground[activeGround].offsetY)
+  // k.mult(scaleFactor);
+  // return p.add(k);
+}
+
+function mouseMap2(x,y){
+  // let p = createVector(x-width/2-depot.offset.x,y-height/2 - depot.offset.y);
+  // p.sub(ground[activeGround].offsetX, ground[activeGround].offsetY);
+  // p.mult(1/scaleFactor)
+
+
+  let p = createVector(x-blank.x, y-blank.y);
+
+  let v0 = createVector(ground[0].offsetX, ground[0].offsetY);
+  let v1 = createVector(ground[activeGround].offsetX, ground[activeGround].offsetY)
+  let vOff = p5.Vector.sub(v1,v0);
+  vOff.mult(scaleFactor)
+  // console.log('vOff: ', vOff);
+  p.sub(vOff);
+  let dif = rotateDiff(p5.Vector.add(createVector(x-blank.x, y-blank.y), p),-depot.ground[activeGround].angle);
+
+  // p.add(dif);
+  return p
 }
 
 function drawGrid(){
@@ -352,11 +377,13 @@ function resetSelection(){
 }
 
 function gridMaping(px,py){
-  let x = px - blank.x;
-  let y = py - blank.y;
+  // let x = px - blank.x;
+  // let y = py - blank.y;
 
-
-
+  let p = mouseMap2(px,py)
+  let x = p.x;
+  let y = p.y;
+  
   if (!gridAngle){
     let dx = Math.floor(x/(depot.contWidth*scaleFactor));
     let dy = Math.floor(y/((depot.contLength+depot.contGap)*scaleFactor));
@@ -558,23 +585,10 @@ function showStat(){
 
 function drawCursor(){
   push();
-  let dif = rotateDiff(createVector(depot.contWidth*scaleFactor,0) ,-depot.ground[activeGround].angle);
-  // translate(blank.x, blank.y);
   translate(width/2+depot.offset.x,height/2 + depot.offset.y);
   translate(depot.ground[activeGround].offsetX*scaleFactor, depot.ground[activeGround].offsetY*scaleFactor);
-
   rotate(-depot.ground[activeGround].angle)
-  // translate(-dif.x, -dif.y);
   scale(scaleFactor);
-
-
-  let p = mouseMap(mouseX, mouseY);
-
-  // groundTranform();
-
-
-  // dif.mult();
-
   strokeWeight(2);
   stroke("red");
   noFill();
@@ -635,7 +649,7 @@ function gridMapingTranspose(p){
   }
 }
 
-function checkGround(x,y){
+function  checkGround(x,y){
   // console.log(pointIsInPoly(mouseMap(x,y), depot.layout.shape[0].seq));
   for (let i=0; i<depot.ground.length; i++){
     let id = depot.ground[i].shapeID

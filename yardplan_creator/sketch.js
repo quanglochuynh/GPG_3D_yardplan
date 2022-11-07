@@ -147,6 +147,7 @@ function mousePressed(){
 
   let p = gridMaping(x, y)[0] ;
   currentTeu = getTeuFromCursor(x,y);
+  console.log('currentTeu: ', currentTeu);
   updatePanel(currentTeu);
   gridAngle = currentTeu.orient;
   if (!keyIsPressed){
@@ -513,10 +514,6 @@ function setColor(opt){
 }
 
 function drawTeu(){
-  // push();
-  // translate(blank.x, blank.y);
-  // scale(scaleFactor);
-  textSize(32);
   textAlign(CENTER,CENTER);
   let temp = gridAngle;
   let temp2 = activeGround;
@@ -528,6 +525,7 @@ function drawTeu(){
     let p = gridMapingTranspose(teuArray[i]);
     setColor(teuArray[i].opt)
     stroke(0)
+    textSize(32);
     if (teuArray[i].orient==0){
       rect(p.x, p.y, depot.contWidth, depot.contLength);
       fill(0);
@@ -539,11 +537,18 @@ function drawTeu(){
       fill(0)
       text(teuArray[i].num_of_tier, p.x + depot.contLength/2, p.y+depot.contWidth/2)
     }
+    if (teuArray[i].bay == 1){
+      if (teuArray[i].row == 1){
+        noStroke();
+        fill(0);
+        textSize(64)
+        text(teuArray[i].bay_name,p.x-32, p.y-32);
+      }
+    }
     pop();
   }
   gridAngle = temp;
   activeGround = temp2;
-  // pop();
 }
 
 function updateStat(){
@@ -718,9 +723,6 @@ function rotateDiff(a,r){
 }
 
 function exportJson(){
-  // console.log(teuArray);
-  // depot.ground = ground;
-  // console.log(depot)
   area = [];
   for (let i=0; i<bayNameArray.length; i++){
     let origin = findAreaOrigin(bayNameArray[i])
@@ -729,20 +731,24 @@ function exportJson(){
     let x = ground[id].offsetX + p.x;
     let y = ground[id].offsetY + p.y
     area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle));
+
     for (let t=0; t<teuArray.length; t++){
-      if (!teuArray[t].orient){
-        teuArray[t].row = teuArray[t].x - origin.position.x;
-        teuArray[t].bay = (teuArray[t].y - origin.position.y)*2 + 1;
-      }else{
-        teuArray[t].bay = teuArray[t].x - origin.position.x;
-        teuArray[t].row = (teuArray[t].y - origin.position.y)*2 + 1;
+      if (teuArray[t].bay_name == bayNameArray[i]){
+        if (!teuArray[t].orient){
+          teuArray[t].row = teuArray[t].x - origin.position.x + 1;
+          teuArray[t].bay = (teuArray[t].y - origin.position.y)*2 + 1;
+        }else{
+          teuArray[t].bay = teuArray[t].x - origin.position.x + 1;
+          teuArray[t].row = (teuArray[t].y - origin.position.y)*2 + 1;
+        }
       }
+      // break
     }
+    // break
   }
   depot.Area = area;
   depot.teuArray = teuArray;
   console.log(depot);
-  // console.log(teuArray);
 }
 
 function findAreaOrigin(area){

@@ -740,8 +740,9 @@ function exportJson(){
     }
   }
   depot.Area = area;
+  depot.teuArray = teuArray;
   console.log(depot);
-  console.log(teuArray);
+  // console.log(teuArray);
 }
 
 function findAreaOrigin(area){

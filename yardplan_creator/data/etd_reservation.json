@@ -1509,7 +1509,7 @@
         "opt": "HLC",
         "num_of_tier": 6,
         "bay_name": "B",
-        "ground": "0"
+        "ground": 0
     },
     {
         "x": 31,
@@ -1600,6 +1600,15 @@
         "num_of_tier": 6,
         "bay_name": "B",
         "ground": "0"
+    },
+    {
+        "x": 32,
+        "y": 5,
+        "orient": false,
+        "opt": "HLC",
+        "num_of_tier": 6,
+        "bay_name": "B",
+        "ground": 0
     },
     {
         "x": 32,
@@ -1879,5 +1888,734 @@
         "num_of_tier": 3,
         "bay_name": "C",
         "ground": "0"
+    },
+    {
+        "x": 5,
+        "y": 2,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 5,
+        "y": 3,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 5,
+        "y": 4,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 5,
+        "y": 5,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 5,
+        "y": 6,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 5,
+        "y": 7,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 5,
+        "y": 8,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 5,
+        "y": 9,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 5,
+        "y": 10,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 6,
+        "y": 2,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 6,
+        "y": 3,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 6,
+        "y": 4,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 6,
+        "y": 5,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 6,
+        "y": 6,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 6,
+        "y": 7,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 6,
+        "y": 8,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 6,
+        "y": 9,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 6,
+        "y": 10,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 7,
+        "y": 2,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 7,
+        "y": 3,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 7,
+        "y": 4,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 7,
+        "y": 5,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 7,
+        "y": 6,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 7,
+        "y": 7,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 7,
+        "y": 8,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 7,
+        "y": 9,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 7,
+        "y": 10,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 8,
+        "y": 2,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 8,
+        "y": 3,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 8,
+        "y": 4,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 8,
+        "y": 5,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 8,
+        "y": 6,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 8,
+        "y": 7,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 8,
+        "y": 8,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 8,
+        "y": 9,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 8,
+        "y": 10,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 9,
+        "y": 2,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 9,
+        "y": 3,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 9,
+        "y": 4,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 9,
+        "y": 5,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 9,
+        "y": 6,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 9,
+        "y": 7,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 9,
+        "y": 8,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 9,
+        "y": 9,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 9,
+        "y": 10,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 10,
+        "y": 2,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 10,
+        "y": 3,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 10,
+        "y": 4,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 10,
+        "y": 5,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 10,
+        "y": 6,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 10,
+        "y": 7,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 10,
+        "y": 8,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 10,
+        "y": 9,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 10,
+        "y": 10,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 11,
+        "y": 2,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 11,
+        "y": 3,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 11,
+        "y": 4,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 11,
+        "y": 5,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 11,
+        "y": 6,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 11,
+        "y": 7,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 11,
+        "y": 8,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 11,
+        "y": 9,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 11,
+        "y": 10,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 12,
+        "y": 2,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 12,
+        "y": 3,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 12,
+        "y": 4,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 12,
+        "y": 5,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 12,
+        "y": 6,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 12,
+        "y": 7,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 12,
+        "y": 8,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 12,
+        "y": 9,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 12,
+        "y": 10,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 13,
+        "y": 2,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 13,
+        "y": 3,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 13,
+        "y": 4,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 13,
+        "y": 5,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 13,
+        "y": 6,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 13,
+        "y": 7,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 13,
+        "y": 8,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 13,
+        "y": 9,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
+    },
+    {
+        "x": 13,
+        "y": 10,
+        "orient": false,
+        "opt": "EVG",
+        "num_of_tier": 6,
+        "bay_name": "D",
+        "ground": 1
     }
 ]

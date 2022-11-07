@@ -20,6 +20,7 @@ let currentTeu;
 let teuArray;
 let activeGround = 0;
 let centerOffset;
+let area;
 
 class Point{
   constructor(x,y){
@@ -28,17 +29,13 @@ class Point{
   }
 }
 class Area{
-  constructor(x,y,b,r,a, xflip){
+  constructor(x,y,a){
     this.name = undefined;
-    this.data = undefined;
     this.angle = a;
     this.x_coor = x;
     this.y_coor = y;
-    // this.angle = undefined;
-    this.x_flip = xflip;
-    this.y_flip = undefined;
-    this.num_of_bay = b;
-    this.num_of_row = r;
+    this.x_flip = 0;
+    // this.y_flip = undefined;
   }
 }
 class Teu{
@@ -68,29 +65,13 @@ function drawDepot(){
     endShape(CLOSE);
   }
   fill(40);
-  for (let j=depot.ground.length+6; j<depot.layout.shape.length; j++){    // so 6 tam gan cung
+  for (let j=depot.ground.length; j<depot.layout.shape.length; j++){    // so 6 tam gan cung
     beginShape()
     for (let i =0; i<depot.layout.shape[j].length; i++){
       p1 = depot.layout.shape[j].seq[i];
       vertex(p1.x, p1.y);
     }
     endShape(CLOSE);
-  }
-  fill("pink")
-  for (let i=0; i<depot.Area.length; i++){
-    translate(depot.Area[i].x_coor,depot.Area[i].y_coor)
-    circle(0,0,40)
-    x_flip = -1 + 2*depot.Area[i].x_flip;
-    for (let j=0; j<depot.Area[i].num_of_bay; j++){
-      for (let k=0; k<depot.Area[i].num_of_row; k++){
-        push();
-        rotate(-depot.Area[i].angle)
-        translate(k*depot.contWidth*x_flip, j*(depot.contLength+depot.contGap),)
-        rect(0,0, depot.contWidth*x_flip, depot.contLength)
-        pop()
-      }
-    }
-    translate(-depot.Area[i].x_coor,-depot.Area[i].y_coor)
   }
   pop();
 
@@ -158,8 +139,8 @@ function mousePressed(){
   console.log(checkGround(x,y));
   let p = gridMaping(x, y)[0] ;
   currentTeu = getTeuFromCursor(x,y);
-  // updatePanel(currentTeu);
-  // gridAngle = currentTeu.orient;
+  updatePanel(currentTeu);
+  gridAngle = currentTeu.orient;
   if (!keyIsPressed){
     resetSelection();
     selectionStart = p;
@@ -233,22 +214,46 @@ function doneAddArea(){
   }
   for (let i=0; i<selection.length; i++){
     // teuArray.push(new Teu())
-    if (!gridAngle){
-      ground[activeGround].verticalArray[selection[i].x][selection[i].y].opt = opt.toUpperCase();
-      ground[activeGround].verticalArray[selection[i].x][selection[i].y].bay_name = bay.toUpperCase();
-      ground[activeGround].verticalArray[selection[i].x][selection[i].y].num_of_tier = tier;
-      ground[activeGround].verticalArray[selection[i].x][selection[i].y].orient = gridAngle;
-      ground[activeGround].verticalArray[selection[i].x][selection[i].y].ground = activeGround;
-      // teuArray[teuArray.length-1] = verticalArray[selection[i].x][selection[i].y]
-
+    let x = selection[i].x;
+    let y = selection[i].y;
+    if (bayNameArray.indexOf(bay.toUpperCase())>=0){
+      if (!gridAngle){
+        if ((ground[activeGround].verticalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].verticalArray[x][y-1].bay_name==bay.toUpperCase())){
+          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
+          ground[activeGround].verticalArray[x][y].orient = gridAngle;
+          ground[activeGround].verticalArray[x][y].ground = activeGround;
+        }else{
+          alert("Các Row phải liền kề nhau");
+          break;
+        }
+      }else{
+        if ((ground[activeGround].horizontalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].horizontalArray[x][y-1].bay_name==bay.toUpperCase())){
+          ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
+          ground[activeGround].horizontalArray[x][y].orient = gridAngle;
+          ground[activeGround].horizontalArray[x][y].ground = activeGround;
+        }else{
+          alert("Các Row phải liền kề nhau");
+          break;
+        }
+      }
     }else{
-      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].opt = opt.toUpperCase();
-      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].bay_name = bay.toUpperCase();
-      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].num_of_tier = tier;
-      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].orient = gridAngle;
-      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].ground = activeGround;
-
-      // teuArray[teuArray.length-1] =  horizontalArray[selection[i].x][selection[i].y];
+      if (!gridAngle){
+          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
+          ground[activeGround].verticalArray[x][y].orient = gridAngle;
+          ground[activeGround].verticalArray[x][y].ground = activeGround;
+      }else{
+        ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
+        ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
+        ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
+        ground[activeGround].horizontalArray[x][y].orient = gridAngle;
+        ground[activeGround].horizontalArray[x][y].ground = activeGround;
+      }
     }
   }
   updateVerticalHorizontal();
@@ -260,13 +265,13 @@ function doneAddArea(){
 function resetArea(){
   for (let i=0; i<selection.length; i++){
     if (!gridAngle){
-      verticalArray[selection[i].x][selection[i].y].opt = undefined;
-      verticalArray[selection[i].x][selection[i].y].bay_name = undefined
-      verticalArray[selection[i].x][selection[i].y].num_of_tier = "";
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].opt = undefined;
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].bay_name = undefined
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].num_of_tier = "";
     }else{
-      horizontalArray[selection[i].x][selection[i].y].opt = undefined;
-      horizontalArray[selection[i].x][selection[i].y].bay_name = undefined
-      horizontalArray[selection[i].x][selection[i].y].num_of_tier = "";
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].opt = undefined;
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].bay_name = undefined
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].num_of_tier = "";
     }
   }
   updateVerticalHorizontal();
@@ -292,14 +297,13 @@ function updateVerticalHorizontal(){
   } 
 }
 
-function mouseMap(x,y){
-  let p = createVector(x-width/2-depot.offset.x,y-height/2 - depot.offset.y);
+function mouseMap(i,j){
+  // let mm2 = mouseMap2(px,py);
+  // let x = mm2.x;
+  // let y = mm2.y;
+  let p = createVector(i-width/2-depot.offset.x,j-height/2 - depot.offset.y);
   p.mult(1/scaleFactor)
   return p
-  // let k = createVector(ground[0].offsetX, ground[0].offsetY)
-  // k.sub(ground[activeGround].offsetX, ground[activeGround].offsetY)
-  // k.mult(scaleFactor);
-  // return p.add(k);
 }
 
 function mouseMap2(x,y){
@@ -606,14 +610,14 @@ function getTeuFromCursor(x,y){
   gridAngle = !gridAngle;
   let p2 = gridMaping(x,y)[0];
   gridAngle = !gridAngle;
-  // if (!gridAngle){
-  //   if (ground[activeGround].verticalArray[p1.x][p1.y].opt != undefined)    return verticalArray[p1.x][p1.y];
-  //   if (ground[activeGround].horizontalArray[p2.x][p2.y].opt != undefined)    return horizontalArray[p2.x][p2.y];
-  // }else{
-  //   if (ground[activeGround].verticalArray[p2.x][p2.y].opt != undefined)    return verticalArray[p2.x][p2.y];
-  //   if (ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined)    return horizontalArray[p1.x][p1.y];
-  // }
-  // return new Teu(0,0,gridAngle);
+  if (!gridAngle){
+    if (ground[activeGround].verticalArray[p1.x][p1.y].opt != undefined)    return ground[activeGround].verticalArray[p1.x][p1.y];
+    if (ground[activeGround].horizontalArray[p2.x][p2.y].opt != undefined)    return ground[activeGround].horizontalArray[p2.x][p2.y];
+  }else{
+    if (ground[activeGround].verticalArray[p2.x][p2.y].opt != undefined)    return ground[activeGround].verticalArray[p2.x][p2.y];
+    if (ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined)    return ground[activeGround].horizontalArray[p1.x][p1.y];
+  }
+  return new Teu(0,0,gridAngle);
   console.log(p1.x, p1.y);
   // console.log(p2.x, p2.y);
 }
@@ -691,8 +695,41 @@ function groundTranform(){
   rotate(-depot.ground[activeGround].angle)
 }
 
+function groundInverseTransform(){
+
+}
+
 function rotateDiff(a,r){
   let c = a.copy();
   a.rotate(r)
   return p5.Vector.sub(a,c);
+}
+
+function exportJson(){
+  console.log(teuArray);
+  depot.ground = ground;
+  console.log(depot)
+  area = [];
+  for (let i=0; i<bayNameArray.length; i++){
+    // let a = bayNameArray[i]
+    let mm = mouseMap()
+    let origin = findAreaOrigin(bayNameArray[i])
+    let p = gridMapingTranspose(origin.position);
+    
+    area.push(new Area())
+  }
+}
+
+function findAreaOrigin(area){
+  let minX = Infinity;
+  let minY = Infinity;
+  let g;
+  for (let t=0; t<teuArray.length; t++){
+    if (teuArray[i].bay_name == area){
+      minX = min(minX, teuArray[i].x)
+      minY = min(minY, teuArray[i].y)
+      g = teuArray[i].ground;
+    }
+  }
+  return {position: new Point(minX, minY), ground: g};
 }

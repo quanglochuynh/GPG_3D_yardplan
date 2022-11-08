@@ -21,7 +21,7 @@ let teuArray;
 let activeGround = 0;
 let centerOffset;
 let area;
-let etd=0;
+let etd=1;
 
 class Point{
   constructor(x,y){
@@ -652,11 +652,11 @@ function getTeuFromCursor(x,y){
   let p2 = gridMaping(x,y)[0];
   gridAngle = !gridAngle;
   if (!gridAngle){
-    if (ground[activeGround].verticalArray[p1.x][p1.y].opt != undefined)    return ground[activeGround].verticalArray[p1.x][p1.y];
-    if (ground[activeGround].horizontalArray[p2.x][p2.y].opt != undefined)    return ground[activeGround].horizontalArray[p2.x][p2.y];
+    if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].verticalArray[p1.x][p1.y].opt != undefined))    return ground[activeGround].verticalArray[p1.x][p1.y];
+    if ((p2.x>=0)&&(p2.y>=0)&&(ground[activeGround].horizontalArray[p2.x][p2.y].opt != undefined))    return ground[activeGround].horizontalArray[p2.x][p2.y];
   }else{
-    if (ground[activeGround].verticalArray[p2.x][p2.y].opt != undefined)    return ground[activeGround].verticalArray[p2.x][p2.y];
-    if (ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined)    return ground[activeGround].horizontalArray[p1.x][p1.y];
+    if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].verticalArray[p2.x][p2.y].opt != undefined))   return ground[activeGround].verticalArray[p2.x][p2.y];
+    if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined))    return ground[activeGround].horizontalArray[p1.x][p1.y];
   }
   return new Teu(0,0,gridAngle);
 }

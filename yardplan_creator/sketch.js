@@ -1,4 +1,4 @@
-const largeFontSize = 28
+let largeFontSize = 16;
 let depot;
 let scaleFactor;
 let gridAngle = 0;
@@ -21,6 +21,7 @@ let teuArray;
 let activeGround = 0;
 let centerOffset;
 let area;
+let etd=1;
 
 class Point{
   constructor(x,y){
@@ -57,9 +58,10 @@ function drawDepot(){
   push();
   translate(width/2+depot.offset.x,height/2 + depot.offset.y);
   scale(scaleFactor);
-  strokeWeight(2)
-  // fill(0)
-  for (let i=0; i<depot.ground.length;i++){
+  strokeWeight(2);
+  noFill();
+  for (let i=0; i<depot.layout.shape.length;i++){
+    stroke('rgba(0,0,0,' + depot.layout.shape[i].visible +')')
     beginShape();
     for (let j=1; j<depot.layout.shape[i].length; j++){
       p1 = depot.layout.shape[i].seq[j];
@@ -68,30 +70,43 @@ function drawDepot(){
     endShape(CLOSE);
   }
   fill(40);
-  for (let j=depot.ground.length; j<depot.layout.shape.length; j++){    // so 6 tam gan cung
+  for (let j=0; j<depot.house.length; j++){    // so 6 tam gan cung
     beginShape()
-    for (let i =0; i<depot.layout.shape[j].length; i++){
-      p1 = depot.layout.shape[j].seq[i];
+    for (let i =0; i<depot.house[j].shape.seq.length; i++){
+      p1 = depot.house[j].shape.seq[i];
       vertex(p1.x, p1.y);
     }
     endShape(CLOSE);
   }
   pop();
-
 }
 
 function preload(){
-  $.getJSON("./data/etdv1.json", function(data){
-    depot = data;
-    depot.Area = [];
-    $.getJSON("./data/etd_reservation.json", function(data){
-      teuArray = data;
-      // teuArray = [];
-      ground = depot.ground;
-      init()
-      console.log("Done");
+  if (etd){
+    $.getJSON("./data/etdv1.json", function(data){
+      depot = data;
+      depot.Area = [];
+      $.getJSON("./data/etd_reservation.json", function(data){
+        teuArray = data;
+        // teuArray = [];
+        ground = depot.ground;
+        init()
+        console.log("Done");
+      })
     })
-  })
+  }else{
+    $.getJSON("./data2/std.json", function(data){
+      depot = data;
+      depot.Area = [];
+      $.getJSON("./data2/std_reservation.json", function(data){
+        teuArray = data;
+        // teuArray = [];
+        ground = depot.ground;
+        init()
+        console.log("Done");
+      })
+    })
+  }
 }
 
 function init(){
@@ -119,19 +134,26 @@ function setup() {
 
 function draw(){
   background(250); 
-  stroke(0); 
-  strokeWeight(4);
-  drawDepot();
-  drawTeu();
   if (showGrid){
     drawGrid();
   }
+  drawDepot();
+  drawTeu();
   if (!keyIsPressed){
     drawSelectionRect();
   }
   drawSelection();
   drawCursor();
   showStat();
+  // push();
+  // circle(mouseX, mouseY, 16)
+  // // translate(blank.x, blank.y)
+  // let v1 = createVector(ground[activeGround].offsetX, ground[activeGround].offsetY)
+  // v1.mult(scaleFactor);
+  // v1.add(width/2 + depot.offset.x, height/2 + depot.offset.y)
+  // translate(v1.x, v1.y)
+  // circle(0,0,16)
+  // pop();
 }
 
 function mousePressed(){
@@ -139,15 +161,14 @@ function mousePressed(){
   let y = Math.floor(mouseY);
   if (insideDepot(x,y)==false) return;
   let cg = checkGround(x,y)
+  console.log('cg: ', cg);
   if (cg<0) {
     return
   };
   activeGround = max(cg,0)
-  // console.log(checkGround(x,y));
-
   let p = gridMaping(x, y)[0] ;
   currentTeu = getTeuFromCursor(x,y);
-  console.log('currentTeu: ', currentTeu);
+  // console.log('currentTeu: ', currentTeu);
   updatePanel(currentTeu);
   gridAngle = currentTeu.orient;
   if (!keyIsPressed){
@@ -322,23 +343,24 @@ function mouseMap(i,j){
 function mouseMap2(x,y){
   let m = createVector(x,y);
   m.sub(blank);
-  let v0 = createVector(ground[0].offsetX, ground[0].offsetY);
+  let v0 = depot.gridOrigin;
   let v1 = createVector(ground[activeGround].offsetX, ground[activeGround].offsetY)
   let vOff = p5.Vector.sub(v1,v0);
   vOff.mult(scaleFactor)
   let p = p5.Vector.sub(m, vOff);
-  let k = p5.Vector.sub(createVector(x,y),v1.mult(scaleFactor))
-  // let dif = rotateDiff(k,-depot.ground[activeGround].angle);
-
-  // p.sub(dif);
+  let v3 = p5.Vector.mult(v1,scaleFactor);
+  v3.add(width/2 + depot.offset.x, height/2 + depot.offset.y)
+  let m2 = p5.Vector.sub(createVector(x,y),v3)
+  let dif = rotateDiff(m2,depot.ground[activeGround].angle);
+  p.add(dif);
   return p
 }
 
 function drawGrid(){
   push();
   groundTranform();
-  fill(0);
-  circle(0,0,100)
+  // fill(0);
+  // circle(0,0,100)
   stroke('rgba(0,0,0,0.125)');
   noFill();
   strokeWeight(1);
@@ -515,6 +537,8 @@ function setColor(opt){
 
 function drawTeu(){
   textAlign(CENTER,CENTER);
+  textSize(largeFontSize*scaleFactor)
+  strokeWeight(3*scaleFactor)
   let temp = gridAngle;
   let temp2 = activeGround;
   for (let i=0; i<teuArray.length;i++){
@@ -525,7 +549,6 @@ function drawTeu(){
     let p = gridMapingTranspose(teuArray[i]);
     setColor(teuArray[i].opt)
     stroke(0)
-    textSize(32);
     if (teuArray[i].orient==0){
       rect(p.x, p.y, depot.contWidth, depot.contLength);
       fill(0);
@@ -540,9 +563,9 @@ function drawTeu(){
     if (teuArray[i].bay == 1){
       if (teuArray[i].row == 1){
         noStroke();
-        fill(0);
-        textSize(64)
-        text(teuArray[i].bay_name,p.x-32, p.y-32);
+        fill(0);  
+        textSize(largeFontSize*scaleFactor*3)
+        text(teuArray[i].bay_name,p.x-(largeFontSize*scaleFactor), p.y-(largeFontSize*scaleFactor));
       }
     }
     pop();
@@ -635,8 +658,6 @@ function getTeuFromCursor(x,y){
     if (ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined)    return ground[activeGround].horizontalArray[p1.x][p1.y];
   }
   return new Teu(0,0,gridAngle);
-  console.log(p1.x, p1.y);
-  // console.log(p2.x, p2.y);
 }
 
 function insideDepot(x,y){
@@ -742,9 +763,7 @@ function exportJson(){
           teuArray[t].row = (teuArray[t].y - origin.position.y)*2 + 1;
         }
       }
-      // break
     }
-    // break
   }
   depot.Area = area;
   depot.teuArray = teuArray;
@@ -767,4 +786,10 @@ function findAreaOrigin(area){
     }
   }
   return {position: {x:minX, y:minY}, ground: parseInt(g), wid: maxX-minX, hei: maxY-minY};
+}
+
+function keyIsPressed(){
+  if (key=='Backspace'){
+    resetArea();
+  }
 }

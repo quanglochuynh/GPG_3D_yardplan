@@ -1,6 +1,6 @@
 [
     {
-        "x": 3,
+        "x": 4,
         "y": 1,
         "orient": false,
         "opt": "HỖN HỢP",
@@ -12,24 +12,13 @@
     },
     {
         "x": 4,
-        "y": 1,
-        "orient": false,
-        "opt": "HỖN HỢP",
-        "num_of_tier": 1,
-        "bay_name": "SC",
-        "bay": 1,
-        "row": 2,
-        "ground": 0
-    },
-    {
-        "x": 4,
         "y": 2,
         "orient": false,
         "opt": "HỖN HỢP",
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 3,
-        "row": 2,
+        "row": 1,
         "ground": 0
     },
     {
@@ -40,7 +29,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 5,
-        "row": 2,
+        "row": 1,
         "ground": 0
     },
     {
@@ -51,7 +40,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 7,
-        "row": 2,
+        "row": 1,
         "ground": 0
     },
     {
@@ -62,7 +51,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 9,
-        "row": 2,
+        "row": 1,
         "ground": 0
     },
     {
@@ -73,7 +62,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 11,
-        "row": 2,
+        "row": 1,
         "ground": 0
     },
     {
@@ -84,7 +73,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 13,
-        "row": 2,
+        "row": 1,
         "ground": 0
     },
     {
@@ -95,7 +84,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 15,
-        "row": 2,
+        "row": 1,
         "ground": 0
     },
     {
@@ -106,7 +95,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 17,
-        "row": 2,
+        "row": 1,
         "ground": 0
     },
     {
@@ -117,7 +106,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 1,
-        "row": 3,
+        "row": 2,
         "ground": 0
     },
     {
@@ -128,7 +117,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 3,
-        "row": 3,
+        "row": 2,
         "ground": 0
     },
     {
@@ -139,7 +128,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 5,
-        "row": 3,
+        "row": 2,
         "ground": 0
     },
     {
@@ -150,7 +139,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 7,
-        "row": 3,
+        "row": 2,
         "ground": 0
     },
     {
@@ -161,7 +150,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 9,
-        "row": 3,
+        "row": 2,
         "ground": 0
     },
     {
@@ -172,7 +161,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 11,
-        "row": 3,
+        "row": 2,
         "ground": 0
     },
     {
@@ -183,7 +172,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 13,
-        "row": 3,
+        "row": 2,
         "ground": 0
     },
     {
@@ -194,7 +183,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 15,
-        "row": 3,
+        "row": 2,
         "ground": 0
     },
     {
@@ -205,7 +194,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 17,
-        "row": 3,
+        "row": 2,
         "ground": 0
     },
     {
@@ -216,7 +205,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 1,
-        "row": 4,
+        "row": 3,
         "ground": 0
     },
     {
@@ -227,7 +216,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 3,
-        "row": 4,
+        "row": 3,
         "ground": 0
     },
     {
@@ -238,7 +227,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 5,
-        "row": 4,
+        "row": 3,
         "ground": 0
     },
     {
@@ -249,7 +238,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 7,
-        "row": 4,
+        "row": 3,
         "ground": 0
     },
     {
@@ -260,7 +249,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 9,
-        "row": 4,
+        "row": 3,
         "ground": 0
     },
     {
@@ -271,7 +260,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 11,
-        "row": 4,
+        "row": 3,
         "ground": 0
     },
     {
@@ -282,7 +271,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 13,
-        "row": 4,
+        "row": 3,
         "ground": 0
     },
     {
@@ -293,7 +282,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 15,
-        "row": 4,
+        "row": 3,
         "ground": 0
     },
     {
@@ -304,7 +293,18 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 17,
-        "row": 4,
+        "row": 3,
+        "ground": 0
+    },
+    {
+        "x": 6,
+        "y": 10,
+        "orient": false,
+        "opt": "HỖN HỢP",
+        "num_of_tier": 1,
+        "bay_name": "SC",
+        "bay": 19,
+        "row": 3,
         "ground": 0
     },
     {
@@ -315,7 +315,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 1,
-        "row": 5,
+        "row": 4,
         "ground": 0
     },
     {
@@ -326,7 +326,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 3,
-        "row": 5,
+        "row": 4,
         "ground": 0
     },
     {
@@ -337,7 +337,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 5,
-        "row": 5,
+        "row": 4,
         "ground": 0
     },
     {
@@ -348,7 +348,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 7,
-        "row": 5,
+        "row": 4,
         "ground": 0
     },
     {
@@ -359,7 +359,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 9,
-        "row": 5,
+        "row": 4,
         "ground": 0
     },
     {
@@ -370,7 +370,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 11,
-        "row": 5,
+        "row": 4,
         "ground": 0
     },
     {
@@ -381,7 +381,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 13,
-        "row": 5,
+        "row": 4,
         "ground": 0
     },
     {
@@ -392,7 +392,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 15,
-        "row": 5,
+        "row": 4,
         "ground": 0
     },
     {
@@ -403,7 +403,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 17,
-        "row": 5,
+        "row": 4,
         "ground": 0
     },
     {
@@ -414,7 +414,7 @@
         "num_of_tier": 1,
         "bay_name": "SC",
         "bay": 19,
-        "row": 5,
+        "row": 4,
         "ground": 0
     },
     {
@@ -2791,105 +2791,6 @@
         "bay_name": "F",
         "bay": 17,
         "row": 5,
-        "ground": 3
-    },
-    {
-        "x": 5,
-        "y": 1,
-        "orient": false,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "F",
-        "bay": 1,
-        "row": 6,
-        "ground": 3
-    },
-    {
-        "x": 5,
-        "y": 2,
-        "orient": false,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "F",
-        "bay": 3,
-        "row": 6,
-        "ground": 3
-    },
-    {
-        "x": 5,
-        "y": 3,
-        "orient": false,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "F",
-        "bay": 5,
-        "row": 6,
-        "ground": 3
-    },
-    {
-        "x": 5,
-        "y": 4,
-        "orient": false,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "F",
-        "bay": 7,
-        "row": 6,
-        "ground": 3
-    },
-    {
-        "x": 5,
-        "y": 5,
-        "orient": false,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "F",
-        "bay": 9,
-        "row": 6,
-        "ground": 3
-    },
-    {
-        "x": 5,
-        "y": 6,
-        "orient": false,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "F",
-        "bay": 11,
-        "row": 6,
-        "ground": 3
-    },
-    {
-        "x": 5,
-        "y": 7,
-        "orient": false,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "F",
-        "bay": 13,
-        "row": 6,
-        "ground": 3
-    },
-    {
-        "x": 5,
-        "y": 8,
-        "orient": false,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "F",
-        "bay": 15,
-        "row": 6,
-        "ground": 3
-    },
-    {
-        "x": 5,
-        "y": 9,
-        "orient": false,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "F",
-        "bay": 17,
-        "row": 6,
         "ground": 3
     }
 ]

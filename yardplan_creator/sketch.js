@@ -108,7 +108,6 @@ function preload(){
 }
 
 function init(){
-  // document.getElementById("addPanel").style.visibility = "hidden";
   document.getElementById("checkAngle").checked = false;
   for (let element of document.getElementsByClassName("p5Canvas")) {
     element.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -132,6 +131,9 @@ function setup() {
 
 function draw(){
   background(250); 
+  textAlign(LEFT)
+  textSize(2*largeFontSize);
+  text(depot.name,0,2*largeFontSize)
   if (showGrid){
     drawGrid();
   }
@@ -193,7 +195,6 @@ function mouseDragged(){
 function mouseReleased(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
-  // if (insideDepot(x,y)==false) return;
   let cg = checkGround(x,y)
   if (cg<0) {
     return
@@ -386,8 +387,6 @@ function changeGridAngle(){
 
 function drawSelection(){
   push()
-  // translate(blank.x, blank.y);
-  // scale(scaleFactor);
   groundTranform()
   stroke("blue");
   noFill();
@@ -460,7 +459,7 @@ function alignMap(){
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth-40, windowHeight-80);
+  resizeCanvas(windowWidth-40, windowHeight-120);
   alignMap();
   redraw();
 }

@@ -21,7 +21,7 @@ let teuArray;
 let activeGround = 0;
 let centerOffset;
 let area;
-let etd=1;
+let etd=0;
 
 class Point{
   constructor(x,y){
@@ -83,7 +83,7 @@ function drawDepot(){
 
 function preload(){
   if (etd){
-    $.getJSON("./data/etdv1.json", function(data){
+    $.getJSON("./data/etdv2.json", function(data){
       depot = data;
       depot.Area = [];
       $.getJSON("./data/etd_reservation.json", function(data){
@@ -537,7 +537,6 @@ function setColor(opt){
 
 function drawTeu(){
   textAlign(CENTER,CENTER);
-  textSize(largeFontSize*scaleFactor)
   strokeWeight(3*scaleFactor)
   let temp = gridAngle;
   let temp2 = activeGround;
@@ -548,7 +547,9 @@ function drawTeu(){
     gridAngle = teuArray[i].orient
     let p = gridMapingTranspose(teuArray[i]);
     setColor(teuArray[i].opt)
+    // noFill()
     stroke(0)
+    textSize(depot.contWidth)
     if (teuArray[i].orient==0){
       rect(p.x, p.y, depot.contWidth, depot.contLength);
       fill(0);
@@ -564,8 +565,8 @@ function drawTeu(){
       if (teuArray[i].row == 1){
         noStroke();
         fill(0);  
-        textSize(largeFontSize*scaleFactor*3)
-        text(teuArray[i].bay_name,p.x-(largeFontSize*scaleFactor), p.y-(largeFontSize*scaleFactor));
+        textSize(depot.contWidth*2)
+        text(teuArray[i].bay_name,p.x-(depot.contWidth), p.y-(depot.contWidth));
       }
     }
     pop();

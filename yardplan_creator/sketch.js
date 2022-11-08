@@ -21,7 +21,7 @@ let teuArray;
 let activeGround = 0;
 let centerOffset;
 let area;
-let etd=1;
+let etd=0;
 
 class Point{
   constructor(x,y){
@@ -88,7 +88,6 @@ function preload(){
       depot.Area = [];
       $.getJSON("./data/etd_reservation.json", function(data){
         teuArray = data;
-        // teuArray = [];
         ground = depot.ground;
         init()
         console.log("Done");
@@ -100,7 +99,6 @@ function preload(){
       depot.Area = [];
       $.getJSON("./data2/std_reservation.json", function(data){
         teuArray = data;
-        // teuArray = [];
         ground = depot.ground;
         init()
         console.log("Done");

@@ -413,11 +413,16 @@ function mouseReleased(){
   redraw();
 }
 
-
-function keyIsPressed(){
-  if (key=='Backspace'){
-    resetArea();
+function keyPressed(){
+  switch (key){
+    case "Backspace":
+      resetArea();
+      break;
+    case "Enter":
+      doneAddArea();
+      break;
   }
+  console.log(key);
 }
 
 // MAPPING
@@ -458,41 +463,6 @@ function gridMaping(px,py){
   let dx = Math.floor(x/((depot.contLength+depot.contGap)*scaleFactor));
   let dy = Math.floor(y/(depot.contWidth*scaleFactor));
   return [new Point(dx,dy), new Point(Math.round(dx-(blank.x/(depot.contWidth*scaleFactor))), Math.round(dy-(blank.y/(depot.contLength*scaleFactor))))]
-}
-
-function resetArea(){
-  for (let i=0; i<selection.length; i++){
-    if (!gridAngle){
-      ground[activeGround].verticalArray[selection[i].x][selection[i].y].opt = undefined;
-      ground[activeGround].verticalArray[selection[i].x][selection[i].y].bay_name = undefined
-      ground[activeGround].verticalArray[selection[i].x][selection[i].y].num_of_tier = "";
-    }else{
-      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].opt = undefined;
-      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].bay_name = undefined
-      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].num_of_tier = "";
-    }
-  }
-  updateVerticalHorizontal();
-  updateStat();
-  redraw();
-}
-
-function updateVerticalHorizontal(){
-  teuArray = []
-  for (let g=0; g<ground.length; g++){
-    for (let x=0; x<ground[g].verticalArray.length; x++){
-      for (let y=0; y<ground[g].verticalArray[0].length; y++){
-        if (ground[g].verticalArray[x][y].opt==undefined) continue
-        teuArray.push(ground[g].verticalArray[x][y])
-      }
-    }
-    for (let x = 0; x<ground[g].horizontalArray.length; x++){
-      for (let y=0; y<ground[g].horizontalArray[0].length; y++){
-        if (ground[g].horizontalArray[x][y].opt==undefined) continue
-        teuArray.push(ground[g].horizontalArray[x][y])
-      }
-    }
-  } 
 }
 
 function gridMapingTranspose(p){
@@ -587,6 +557,24 @@ function initTeuArray(){
   gridAngle = temp;
 }
 
+function updateVerticalHorizontal(){
+  teuArray = []
+  for (let g=0; g<ground.length; g++){
+    for (let x=0; x<ground[g].verticalArray.length; x++){
+      for (let y=0; y<ground[g].verticalArray[0].length; y++){
+        if (ground[g].verticalArray[x][y].opt==undefined) continue
+        teuArray.push(ground[g].verticalArray[x][y])
+      }
+    }
+    for (let x = 0; x<ground[g].horizontalArray.length; x++){
+      for (let y=0; y<ground[g].horizontalArray[0].length; y++){
+        if (ground[g].horizontalArray[x][y].opt==undefined) continue
+        teuArray.push(ground[g].horizontalArray[x][y])
+      }
+    }
+  } 
+}
+
 function updateStat(){
   sumAll = 0;
   bayNameArray = [];
@@ -626,121 +614,7 @@ function updatePanel(teu){
   }
 }
 
-// DOM EVENTS
 
-function changeActiveGround(){
-  activeGround = document.getElementById("selectGround").value;
-  if (activeGround == depot.ground.length){
-    activeGround--;
-    autoSelectGround = true;
-  }else{
-    autoSelectGround = false;
-  }
-}
-
-function addArea(){
-  showGrid = document.getElementById("checkGrid").checked;
-  redraw();
-}
-
-function doneAddArea(){
-  let opt = document.getElementById("edtxOpt").value;
-  let bay = document.getElementById("edtxBay").value;
-  let tier = parseInt(document.getElementById("edtxNumTier").value);
-  if (opt==""){
-    alert("Thiếu thông tin hãng tàu");
-    return;
-  }
-  if (bay==""){
-    alert("Thiếu tên Bay");
-    return;
-  }
-  if (tier==""){
-    alert("Thiếu số tầng");
-    return;
-  }
-  for (let i=0; i<selection.length; i++){
-    // teuArray.push(new Teu())
-    let x = selection[i].x;
-    let y = selection[i].y;
-    if (bayNameArray.indexOf(bay.toUpperCase())>=0){
-      if (!gridAngle){
-        if ((ground[activeGround].verticalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].verticalArray[x][y-1].bay_name==bay.toUpperCase())){
-          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
-          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
-          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
-          ground[activeGround].verticalArray[x][y].orient = gridAngle;
-          ground[activeGround].verticalArray[x][y].ground = activeGround;
-        }else{
-          alert("Các Row phải liền kề nhau");
-          break;
-        }
-      }else{
-        if ((ground[activeGround].horizontalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].horizontalArray[x][y-1].bay_name==bay.toUpperCase())){
-          ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
-          ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
-          ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
-          ground[activeGround].horizontalArray[x][y].orient = gridAngle;
-          ground[activeGround].horizontalArray[x][y].ground = activeGround;
-        }else{
-          alert("Các Row phải liền kề nhau");
-          break;
-        }
-      }
-    }else{
-      if (!gridAngle){
-          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
-          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
-          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
-          ground[activeGround].verticalArray[x][y].orient = gridAngle;
-          ground[activeGround].verticalArray[x][y].ground = activeGround;
-      }else{
-        ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
-        ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
-        ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
-        ground[activeGround].horizontalArray[x][y].orient = gridAngle;
-        ground[activeGround].horizontalArray[x][y].ground = activeGround;
-      }
-    }
-  }
-  updateVerticalHorizontal();
-  updateStat();
-  resetSelection();
-  redraw();
-}
-
-function changeGridAngle(){
-  selection = [];
-  gridAngle = (document.getElementById("checkAngle").checked)
-  redraw();
-}
-
-function exportJson(){
-  area = [];
-  for (let i=0; i<bayNameArray.length; i++){
-    let origin = findAreaOrigin(bayNameArray[i])
-    let id = origin.ground;
-    let p = gridMapingTranspose(origin.position);
-    let x = ground[id].offsetX + p.x;
-    let y = ground[id].offsetY + p.y
-    area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle));
-
-    for (let t=0; t<teuArray.length; t++){
-      if (teuArray[t].bay_name == bayNameArray[i]){
-        if (!teuArray[t].orient){
-          teuArray[t].row = teuArray[t].x - origin.position.x + 1;
-          teuArray[t].bay = (teuArray[t].y - origin.position.y)*2 + 1;
-        }else{
-          teuArray[t].bay = teuArray[t].x - origin.position.x + 1;
-          teuArray[t].row = (teuArray[t].y - origin.position.y)*2 + 1;
-        }
-      }
-    }
-  }
-  depot.Area = area;
-  depot.teuArray = teuArray;
-  console.log(depot);
-}
 
 // CALCULATION
 function rotateDiff(a,r){
@@ -822,4 +696,140 @@ function pointIsInPoly(p, polygon) {
   }
 
   return isInside;
+}
+
+
+// DOM EVENTS
+
+function changeActiveGround(){
+  activeGround = document.getElementById("selectGround").value;
+  if (activeGround == depot.ground.length){
+    activeGround--;
+    autoSelectGround = true;
+  }else{
+    autoSelectGround = false;
+  }
+}
+
+function addArea(){
+  showGrid = document.getElementById("checkGrid").checked;
+  redraw();
+}
+
+function doneAddArea(){
+  let opt = document.getElementById("edtxOpt").value;
+  let bay = document.getElementById("edtxBay").value;
+  let tier = parseInt(document.getElementById("edtxNumTier").value);
+  if (opt==""){
+    alert("Thiếu thông tin hãng tàu");
+    return;
+  }
+  if (bay==""){
+    alert("Thiếu tên Bay");
+    return;
+  }
+  if (tier==""){
+    alert("Thiếu số tầng");
+    return;
+  }
+  for (let i=0; i<selection.length; i++){
+    // teuArray.push(new Teu())
+    let x = selection[i].x;
+    let y = selection[i].y;
+    if (bayNameArray.indexOf(bay.toUpperCase())>=0){
+      if (!gridAngle){
+        if ((ground[activeGround].verticalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].verticalArray[x][y-1].bay_name==bay.toUpperCase())){
+          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
+          ground[activeGround].verticalArray[x][y].orient = gridAngle;
+          ground[activeGround].verticalArray[x][y].ground = activeGround;
+        }else{
+          alert("Các Row phải liền kề nhau");
+          break;
+        }
+      }else{
+        if ((ground[activeGround].horizontalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].horizontalArray[x][y-1].bay_name==bay.toUpperCase())){
+          ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
+          ground[activeGround].horizontalArray[x][y].orient = gridAngle;
+          ground[activeGround].horizontalArray[x][y].ground = activeGround;
+        }else{
+          alert("Các Row phải liền kề nhau");
+          break;
+        }
+      }
+    }else{
+      if (!gridAngle){
+          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
+          ground[activeGround].verticalArray[x][y].orient = gridAngle;
+          ground[activeGround].verticalArray[x][y].ground = activeGround;
+      }else{
+        ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
+        ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
+        ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
+        ground[activeGround].horizontalArray[x][y].orient = gridAngle;
+        ground[activeGround].horizontalArray[x][y].ground = activeGround;
+      }
+    }
+  }
+  updateVerticalHorizontal();
+  updateStat();
+  resetSelection();
+  exportJson();
+}
+
+function resetArea(){
+  for (let i=0; i<selection.length; i++){
+    if (!gridAngle){
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].opt = undefined;
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].bay_name = undefined
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].num_of_tier = "";
+    }else{
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].opt = undefined;
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].bay_name = undefined
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].num_of_tier = "";
+    }
+  }
+  updateVerticalHorizontal();
+  updateStat();
+  exportJson()
+}
+
+function changeGridAngle(){
+  // selection = [];
+  resetSelection();
+  gridAngle = (document.getElementById("checkAngle").checked)
+  redraw();
+}
+
+function exportJson(){
+  area = [];
+  for (let i=0; i<bayNameArray.length; i++){
+    let origin = findAreaOrigin(bayNameArray[i])
+    let id = origin.ground;
+    let p = gridMapingTranspose(origin.position);
+    let x = ground[id].offsetX + p.x;
+    let y = ground[id].offsetY + p.y
+    area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle));
+
+    for (let t=0; t<teuArray.length; t++){
+      if (teuArray[t].bay_name == bayNameArray[i]){
+        if (!teuArray[t].orient){
+          teuArray[t].row = teuArray[t].x - origin.position.x + 1;
+          teuArray[t].bay = (teuArray[t].y - origin.position.y)*2 + 1;
+        }else{
+          teuArray[t].bay = teuArray[t].x - origin.position.x + 1;
+          teuArray[t].row = (teuArray[t].y - origin.position.y)*2 + 1;
+        }
+      }
+    }
+  }
+  depot.Area = area;
+  depot.teuArray = teuArray;
+  console.log(depot);
+  redraw();
 }

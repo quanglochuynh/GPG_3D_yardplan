@@ -195,7 +195,7 @@ function mouseDragged(){
 function mouseReleased(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
-  if (insideDepot(x,y)==false) return;
+  // if (insideDepot(x,y)==false) return;
   let cg = checkGround(x,y)
   if (cg<0) {
     return
@@ -691,7 +691,6 @@ function gridMapingTranspose(p){
 }
 
 function  checkGround(x,y){
-  // console.log(pointIsInPoly(mouseMap(x,y), depot.layout.shape[0].seq));
   for (let i=0; i<depot.ground.length; i++){
     let id = depot.ground[i].shapeID
     let k = pointIsInPoly(mouseMap(x,y), depot.layout.shape[id].seq)

@@ -56,32 +56,6 @@ class Teu{
   }
 }
 
-function drawDepot(){
-  push();
-  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
-  scale(scaleFactor);
-  strokeWeight(2);
-  noFill();
-  for (let i=0; i<depot.layout.shape.length;i++){
-    stroke('rgba(0,0,0,' + depot.layout.shape[i].visible +')')
-    beginShape();
-    for (let j=1; j<depot.layout.shape[i].length; j++){
-      p1 = depot.layout.shape[i].seq[j];
-      vertex(p1.x,p1.y,0)
-    }
-    endShape(CLOSE);
-  }
-  fill(40);
-  for (let j=0; j<depot.house.length; j++){    // so 6 tam gan cung
-    beginShape()
-    for (let i =0; i<depot.house[j].shape.seq.length; i++){
-      p1 = depot.house[j].shape.seq[i];
-      vertex(p1.x, p1.y);
-    }
-    endShape(CLOSE);
-  }
-  pop();
-}
 
 function preload(){
   if (etd){
@@ -157,7 +131,7 @@ function draw(){
   }
   drawSelection();
   drawCursor();
-  showStat();
+  drawStat();
   // push();
   // circle(mouseX, mouseY, 16)
   // // translate(blank.x, blank.y)
@@ -168,6 +142,205 @@ function draw(){
   // circle(0,0,16)
   // pop();
 }
+
+// P5 DRAW
+function drawDepot(){
+  push();
+  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
+  scale(scaleFactor);
+  strokeWeight(2);
+  noFill();
+  for (let i=0; i<depot.layout.shape.length;i++){
+    stroke('rgba(0,0,0,' + depot.layout.shape[i].visible +')')
+    beginShape();
+    for (let j=1; j<depot.layout.shape[i].length; j++){
+      p1 = depot.layout.shape[i].seq[j];
+      vertex(p1.x,p1.y,0)
+    }
+    endShape(CLOSE);
+  }
+  fill(40);
+  for (let j=0; j<depot.house.length; j++){    // so 6 tam gan cung
+    beginShape()
+    for (let i =0; i<depot.house[j].shape.seq.length; i++){
+      p1 = depot.house[j].shape.seq[i];
+      vertex(p1.x, p1.y);
+    }
+    endShape(CLOSE);
+  }
+  pop();
+}
+
+function drawGrid(){
+  push();
+  groundTranform();
+  // fill(0);
+  // circle(0,0,100)
+  stroke('rgba(0,0,0,0.125)');
+  noFill();
+  strokeWeight(1);
+  if (document.getElementById("checkAngle").checked == false){
+    for (let x=0; x<depot.width; x+=depot.contWidth){
+      for (let y=0; y<depot.height; y+=(depot.contLength+depot.contGap)){
+        rect(x,y, depot.contWidth, depot.contLength);
+      }
+    }
+  }else{
+    for (let x = 0; x<depot.width; x+=(depot.contLength + depot.contGap)){
+      for (let y=0; y<depot.height; y+= (depot.contWidth)){
+        rect(x, y, depot.contLength, depot.contWidth)      
+      }
+    }
+  }
+  pop();
+}
+
+function drawSelectionRect(){
+  if ((mouseIsPressed)&&(selectRectStart!=undefined)){
+    push();
+    noFill();
+    strokeWeight(2);
+    translate(selectRectStart.x, selectRectStart.y,)
+    rotate(-depot.ground[activeGround].angle);
+    let dif = rotateDiff(createVector(mouseX - selectRectStart.x, mouseY-selectRectStart.y) ,depot.ground[activeGround].angle);
+    // console.log('dif: ', dif);
+    if (insideDepot(mouseX,mouseY)==false) return;
+    rect(0,0, mouseX - selectRectStart.x + dif.x, mouseY-selectRectStart.y + dif.y);
+    pop();
+  }
+}
+
+function drawSelection(){
+  push()
+  groundTranform()
+  stroke("blue");
+  noFill();
+  for (let i=0; i<selection.length; i++){
+    if (!gridAngle){
+      rect(selection[i].x*depot.contWidth, selection[i].y*(depot.contLength + depot.contGap), depot.contWidth, (depot.contLength))
+    }else{
+      rect(selection[i].x*(depot.contLength + depot.contGap), selection[i].y*depot.contWidth, (depot.contLength), depot.contWidth)
+    }
+  }
+  pop();
+}
+
+function drawTeu(){
+  textAlign(CENTER,CENTER);
+  strokeWeight(3*scaleFactor)
+  let temp = gridAngle;
+  let temp2 = activeGround;
+  for (let i=0; i<teuArray.length;i++){
+    push();
+    activeGround = teuArray[i].ground;
+    groundTranform();
+    gridAngle = teuArray[i].orient
+    let p = gridMapingTranspose(teuArray[i]);
+    setColor(teuArray[i].opt)
+    // noFill()
+    stroke(0)
+    textSize(depot.contWidth)
+    if (teuArray[i].orient==0){
+      rect(p.x, p.y, depot.contWidth, depot.contLength);
+      fill(0);
+      noStroke();
+      text(teuArray[i].num_of_tier, p.x + depot.contWidth/2, p.y+depot.contLength/2)
+    }else{
+      rect(p.x, p.y, depot.contLength, depot.contWidth);
+      noStroke();
+      fill(0)
+      text(teuArray[i].num_of_tier, p.x + depot.contLength/2, p.y+depot.contWidth/2)
+    }
+    if (teuArray[i].bay == 1){
+      if (teuArray[i].row == 1){
+        noStroke();
+        fill(0);  
+        textSize(depot.contWidth*2)
+        text(teuArray[i].bay_name,p.x-(depot.contWidth), p.y-(depot.contWidth));
+      }
+    }
+    pop();
+  }
+  gridAngle = temp;
+  activeGround = temp2;
+}
+
+function drawStat(){
+  push();
+  textAlign(RIGHT, TOP);
+  textSize(14);
+  fill(0);
+  strokeWeight(1)
+  noStroke();
+  translate(width,0);
+  text("Tổng sức chứa: " + sumAll + " Teus", 0, 10);
+  translate(0,10);
+  for (let i=0; i<bayNameArray.length; i++){
+    translate(0, 20)
+    text("Bay "+bayNameArray[i]+ ": " + countBay[i] + " Teus", 0, 0)
+  }
+  // translate(0,20);
+  stroke(0);
+  line(0,25,-100,25)
+  translate(0,10);
+  noStroke();
+  for (let i=0; i<optArray.length; i++){
+    translate(0, 20)
+    text(optArray[i]+ ": " + countOpt[i] + " Teus", 0, 0)
+  }
+  pop();
+}
+
+function drawCursor(){
+  push();
+  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
+  translate(depot.ground[activeGround].offsetX*scaleFactor, depot.ground[activeGround].offsetY*scaleFactor);
+  rotate(-depot.ground[activeGround].angle)
+  scale(scaleFactor);
+  strokeWeight(2);
+  stroke("red");
+  noFill();
+  p = gridMaping(mouseX, mouseY)[0];
+  let x = p.x;
+  let y = p.y;
+  if (gridAngle == false){
+    rect(x*depot.contWidth, y*((depot.contLength+depot.contGap)), depot.contWidth, depot.contLength)
+  }else{
+    rect(x*(depot.contLength+depot.contGap), y*(depot.contWidth), depot.contLength, depot.contWidth)
+  }
+  pop();
+}
+
+function setColor(opt){
+  stroke(2);
+  switch (opt){
+    case "HLC":   
+      fill(252,140,3);
+      break;
+    case "YML": 
+      fill(212,205,199);
+      break;
+    case "COS": 
+      fill(140,180,180);
+      break;
+    case "EVG":
+      fill(35, 207, 61)
+      break
+    default:
+      fill(255);
+      break;
+  }
+}
+
+function groundTranform(){
+  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
+  scale(scaleFactor);
+  translate(depot.ground[activeGround].offsetX, depot.ground[activeGround].offsetY);
+  rotate(-depot.ground[activeGround].angle)
+}
+
+
+// P5 EVENT
 
 function mousePressed(){
   let x = Math.floor(mouseX);
@@ -240,75 +413,51 @@ function mouseReleased(){
   redraw();
 }
 
-function addArea(){
-  showGrid = document.getElementById("checkGrid").checked;
-  redraw();
+
+function keyIsPressed(){
+  if (key=='Backspace'){
+    resetArea();
+  }
 }
 
-function doneAddArea(){
-  let opt = document.getElementById("edtxOpt").value;
-  let bay = document.getElementById("edtxBay").value;
-  let tier = parseInt(document.getElementById("edtxNumTier").value);
-  if (opt==""){
-    alert("Thiếu thông tin hãng tàu");
-    return;
+// MAPPING
+function mouseMap(i,j){
+  // let mm2 = mouseMap2(px,py);
+  // let x = mm2.x;
+  // let y = mm2.y;
+  let p = createVector(i-width/2-depot.offset.x,j-height/2 - depot.offset.y);
+  p.mult(1/scaleFactor)
+  return p
+}
+
+function mouseMap2(x,y){
+  let m = createVector(x,y);
+  m.sub(blank);
+  let v0 = depot.gridOrigin;
+  let v1 = createVector(ground[activeGround].offsetX, ground[activeGround].offsetY)
+  let vOff = p5.Vector.sub(v1,v0);
+  vOff.mult(scaleFactor)
+  let p = p5.Vector.sub(m, vOff);
+  let v3 = p5.Vector.mult(v1,scaleFactor);
+  v3.add(width/2 + depot.offset.x, height/2 + depot.offset.y)
+  let m2 = p5.Vector.sub(createVector(x,y),v3)
+  let dif = rotateDiff(m2,depot.ground[activeGround].angle);
+  p.add(dif);
+  return p
+}
+
+function gridMaping(px,py){
+  let p = mouseMap2(px,py)
+  let x = p.x;
+  let y = p.y;
+  if (!gridAngle){
+    let dx = Math.floor(x/(depot.contWidth*scaleFactor));
+    let dy = Math.floor(y/((depot.contLength+depot.contGap)*scaleFactor));
+    return [new Point(dx,dy), new Point(Math.round(dx-(blank.x/(depot.contWidth*scaleFactor))), Math.round(dy-(blank.y/(depot.contLength*scaleFactor))))]
   }
-  if (bay==""){
-    alert("Thiếu tên Bay");
-    return;
-  }
-  if (tier==""){
-    alert("Thiếu số tầng");
-    return;
-  }
-  for (let i=0; i<selection.length; i++){
-    // teuArray.push(new Teu())
-    let x = selection[i].x;
-    let y = selection[i].y;
-    if (bayNameArray.indexOf(bay.toUpperCase())>=0){
-      if (!gridAngle){
-        if ((ground[activeGround].verticalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].verticalArray[x][y-1].bay_name==bay.toUpperCase())){
-          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
-          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
-          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
-          ground[activeGround].verticalArray[x][y].orient = gridAngle;
-          ground[activeGround].verticalArray[x][y].ground = activeGround;
-        }else{
-          alert("Các Row phải liền kề nhau");
-          break;
-        }
-      }else{
-        if ((ground[activeGround].horizontalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].horizontalArray[x][y-1].bay_name==bay.toUpperCase())){
-          ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
-          ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
-          ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
-          ground[activeGround].horizontalArray[x][y].orient = gridAngle;
-          ground[activeGround].horizontalArray[x][y].ground = activeGround;
-        }else{
-          alert("Các Row phải liền kề nhau");
-          break;
-        }
-      }
-    }else{
-      if (!gridAngle){
-          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
-          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
-          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
-          ground[activeGround].verticalArray[x][y].orient = gridAngle;
-          ground[activeGround].verticalArray[x][y].ground = activeGround;
-      }else{
-        ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
-        ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
-        ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
-        ground[activeGround].horizontalArray[x][y].orient = gridAngle;
-        ground[activeGround].horizontalArray[x][y].ground = activeGround;
-      }
-    }
-  }
-  updateVerticalHorizontal();
-  updateStat();
-  resetSelection();
-  redraw();
+  let dx = Math.floor(x/((depot.contLength+depot.contGap)*scaleFactor));
+  let dy = Math.floor(y/(depot.contWidth*scaleFactor));
+  return [new Point(dx,dy), new Point(Math.round(dx-(blank.x/(depot.contWidth*scaleFactor))), Math.round(dy-(blank.y/(depot.contLength*scaleFactor))))]
 }
 
 function resetArea(){
@@ -346,96 +495,21 @@ function updateVerticalHorizontal(){
   } 
 }
 
-function mouseMap(i,j){
-  // let mm2 = mouseMap2(px,py);
-  // let x = mm2.x;
-  // let y = mm2.y;
-  let p = createVector(i-width/2-depot.offset.x,j-height/2 - depot.offset.y);
-  p.mult(1/scaleFactor)
-  return p
-}
-
-function mouseMap2(x,y){
-  let m = createVector(x,y);
-  m.sub(blank);
-  let v0 = depot.gridOrigin;
-  let v1 = createVector(ground[activeGround].offsetX, ground[activeGround].offsetY)
-  let vOff = p5.Vector.sub(v1,v0);
-  vOff.mult(scaleFactor)
-  let p = p5.Vector.sub(m, vOff);
-  let v3 = p5.Vector.mult(v1,scaleFactor);
-  v3.add(width/2 + depot.offset.x, height/2 + depot.offset.y)
-  let m2 = p5.Vector.sub(createVector(x,y),v3)
-  let dif = rotateDiff(m2,depot.ground[activeGround].angle);
-  p.add(dif);
-  return p
-}
-
-function drawGrid(){
-  push();
-  groundTranform();
-  // fill(0);
-  // circle(0,0,100)
-  stroke('rgba(0,0,0,0.125)');
-  noFill();
-  strokeWeight(1);
-  if (document.getElementById("checkAngle").checked == false){
-    for (let x=0; x<depot.width; x+=depot.contWidth){
-      for (let y=0; y<depot.height; y+=(depot.contLength+depot.contGap)){
-        rect(x,y, depot.contWidth, depot.contLength);
-      }
-    }
+function gridMapingTranspose(p){
+  if (!gridAngle){
+    return new Point(p.x * depot.contWidth, p.y * (depot.contLength + depot.contGap));
   }else{
-    for (let x = 0; x<depot.width; x+=(depot.contLength + depot.contGap)){
-      for (let y=0; y<depot.height; y+= (depot.contWidth)){
-        rect(x, y, depot.contLength, depot.contWidth)      
-      }
-    }
+    return new Point(p.x * (depot.contLength + depot.contGap), p.y * depot.contWidth);
   }
-  pop();
 }
 
-function changeGridAngle(){
-  selection = [];
-  gridAngle = (document.getElementById("checkAngle").checked)
-  redraw();
-}
-
-function drawSelection(){
-  push()
-  groundTranform()
-  stroke("blue");
-  noFill();
-  for (let i=0; i<selection.length; i++){
-    if (!gridAngle){
-      rect(selection[i].x*depot.contWidth, selection[i].y*(depot.contLength + depot.contGap), depot.contWidth, (depot.contLength))
-    }else{
-      rect(selection[i].x*(depot.contLength + depot.contGap), selection[i].y*depot.contWidth, (depot.contLength), depot.contWidth)
-    }
-  }
-  pop();
-}
-
+// INITIALIZATION EVENTS
 function resetSelection(){
   selection = [];
   // selectionStart = {x:0, y:0};
   // selectionStart = selectionEnd;
   // selectionEnd = {x:0, y:0};
   selectionEnd = selectionStart
-}
-
-function gridMaping(px,py){
-  let p = mouseMap2(px,py)
-  let x = p.x;
-  let y = p.y;
-  if (!gridAngle){
-    let dx = Math.floor(x/(depot.contWidth*scaleFactor));
-    let dy = Math.floor(y/((depot.contLength+depot.contGap)*scaleFactor));
-    return [new Point(dx,dy), new Point(Math.round(dx-(blank.x/(depot.contWidth*scaleFactor))), Math.round(dy-(blank.y/(depot.contLength*scaleFactor))))]
-  }
-  let dx = Math.floor(x/((depot.contLength+depot.contGap)*scaleFactor));
-  let dy = Math.floor(y/(depot.contWidth*scaleFactor));
-  return [new Point(dx,dy), new Point(Math.round(dx-(blank.x/(depot.contWidth*scaleFactor))), Math.round(dy-(blank.y/(depot.contLength*scaleFactor))))]
 }
 
 function findCenter(){
@@ -513,81 +587,6 @@ function initTeuArray(){
   gridAngle = temp;
 }
 
-function updatePanel(teu){
-  if ((teu.bay_name===undefined)||(teu.opt===undefined)||(teu.num_of_tier===undefined)){
-    document.getElementById("edtxBay").value = "";
-    document.getElementById("edtxOpt").value = "";
-    document.getElementById("edtxNumTier").value = "";
-    document.getElementById("checkAngle").checked = gridAngle;
-  }else{
-    document.getElementById("edtxBay").value = teu.bay_name;
-    document.getElementById("edtxOpt").value = teu.opt;
-    document.getElementById("edtxNumTier").value = teu.num_of_tier;
-    document.getElementById("checkAngle").checked = teu.orient;
-  }
-}
-
-function setColor(opt){
-  stroke(2);
-  switch (opt){
-    case "HLC":   
-      fill(252,140,3);
-      break;
-    case "YML": 
-      fill(212,205,199);
-      break;
-    case "COS": 
-      fill(140,180,180);
-      break;
-    case "EVG":
-      fill(35, 207, 61)
-      break
-    default:
-      fill(255);
-      break;
-  }
-}
-
-function drawTeu(){
-  textAlign(CENTER,CENTER);
-  strokeWeight(3*scaleFactor)
-  let temp = gridAngle;
-  let temp2 = activeGround;
-  for (let i=0; i<teuArray.length;i++){
-    push();
-    activeGround = teuArray[i].ground;
-    groundTranform();
-    gridAngle = teuArray[i].orient
-    let p = gridMapingTranspose(teuArray[i]);
-    setColor(teuArray[i].opt)
-    // noFill()
-    stroke(0)
-    textSize(depot.contWidth)
-    if (teuArray[i].orient==0){
-      rect(p.x, p.y, depot.contWidth, depot.contLength);
-      fill(0);
-      noStroke();
-      text(teuArray[i].num_of_tier, p.x + depot.contWidth/2, p.y+depot.contLength/2)
-    }else{
-      rect(p.x, p.y, depot.contLength, depot.contWidth);
-      noStroke();
-      fill(0)
-      text(teuArray[i].num_of_tier, p.x + depot.contLength/2, p.y+depot.contWidth/2)
-    }
-    if (teuArray[i].bay == 1){
-      if (teuArray[i].row == 1){
-        noStroke();
-        fill(0);  
-        textSize(depot.contWidth*2)
-        text(teuArray[i].bay_name,p.x-(depot.contWidth), p.y-(depot.contWidth));
-      }
-    }
-    pop();
-  }
-  gridAngle = temp;
-  activeGround = temp2;
-}
-
 function updateStat(){
   sumAll = 0;
   bayNameArray = [];
@@ -613,50 +612,159 @@ function updateStat(){
   }
 }
 
-function showStat(){
-  push();
-  textAlign(RIGHT, TOP);
-  textSize(14);
-  fill(0);
-  strokeWeight(1)
-  noStroke();
-  translate(width,0);
-  text("Tổng sức chứa: " + sumAll + " Teus", 0, 10);
-  translate(0,10);
-  for (let i=0; i<bayNameArray.length; i++){
-    translate(0, 20)
-    text("Bay "+bayNameArray[i]+ ": " + countBay[i] + " Teus", 0, 0)
+function updatePanel(teu){
+  if ((teu.bay_name===undefined)||(teu.opt===undefined)||(teu.num_of_tier===undefined)){
+    document.getElementById("edtxBay").value = "";
+    document.getElementById("edtxOpt").value = "";
+    document.getElementById("edtxNumTier").value = "";
+    document.getElementById("checkAngle").checked = gridAngle;
+  }else{
+    document.getElementById("edtxBay").value = teu.bay_name;
+    document.getElementById("edtxOpt").value = teu.opt;
+    document.getElementById("edtxNumTier").value = teu.num_of_tier;
+    document.getElementById("checkAngle").checked = teu.orient;
   }
-  // translate(0,20);
-  stroke(0);
-  line(0,25,-100,25)
-  translate(0,10);
-  noStroke();
-  for (let i=0; i<optArray.length; i++){
-    translate(0, 20)
-    text(optArray[i]+ ": " + countOpt[i] + " Teus", 0, 0)
-  }
-  pop();
 }
 
-function drawCursor(){
-  push();
-  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
-  translate(depot.ground[activeGround].offsetX*scaleFactor, depot.ground[activeGround].offsetY*scaleFactor);
-  rotate(-depot.ground[activeGround].angle)
-  scale(scaleFactor);
-  strokeWeight(2);
-  stroke("red");
-  noFill();
-  p = gridMaping(mouseX, mouseY)[0];
-  let x = p.x;
-  let y = p.y;
-  if (gridAngle == false){
-    rect(x*depot.contWidth, y*((depot.contLength+depot.contGap)), depot.contWidth, depot.contLength)
+// DOM EVENTS
+
+function changeActiveGround(){
+  activeGround = document.getElementById("selectGround").value;
+  if (activeGround == depot.ground.length){
+    activeGround--;
+    autoSelectGround = true;
   }else{
-    rect(x*(depot.contLength+depot.contGap), y*(depot.contWidth), depot.contLength, depot.contWidth)
+    autoSelectGround = false;
   }
-  pop();
+}
+
+function addArea(){
+  showGrid = document.getElementById("checkGrid").checked;
+  redraw();
+}
+
+function doneAddArea(){
+  let opt = document.getElementById("edtxOpt").value;
+  let bay = document.getElementById("edtxBay").value;
+  let tier = parseInt(document.getElementById("edtxNumTier").value);
+  if (opt==""){
+    alert("Thiếu thông tin hãng tàu");
+    return;
+  }
+  if (bay==""){
+    alert("Thiếu tên Bay");
+    return;
+  }
+  if (tier==""){
+    alert("Thiếu số tầng");
+    return;
+  }
+  for (let i=0; i<selection.length; i++){
+    // teuArray.push(new Teu())
+    let x = selection[i].x;
+    let y = selection[i].y;
+    if (bayNameArray.indexOf(bay.toUpperCase())>=0){
+      if (!gridAngle){
+        if ((ground[activeGround].verticalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].verticalArray[x][y-1].bay_name==bay.toUpperCase())){
+          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
+          ground[activeGround].verticalArray[x][y].orient = gridAngle;
+          ground[activeGround].verticalArray[x][y].ground = activeGround;
+        }else{
+          alert("Các Row phải liền kề nhau");
+          break;
+        }
+      }else{
+        if ((ground[activeGround].horizontalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].horizontalArray[x][y-1].bay_name==bay.toUpperCase())){
+          ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
+          ground[activeGround].horizontalArray[x][y].orient = gridAngle;
+          ground[activeGround].horizontalArray[x][y].ground = activeGround;
+        }else{
+          alert("Các Row phải liền kề nhau");
+          break;
+        }
+      }
+    }else{
+      if (!gridAngle){
+          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
+          ground[activeGround].verticalArray[x][y].orient = gridAngle;
+          ground[activeGround].verticalArray[x][y].ground = activeGround;
+      }else{
+        ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
+        ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
+        ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
+        ground[activeGround].horizontalArray[x][y].orient = gridAngle;
+        ground[activeGround].horizontalArray[x][y].ground = activeGround;
+      }
+    }
+  }
+  updateVerticalHorizontal();
+  updateStat();
+  resetSelection();
+  redraw();
+}
+
+function changeGridAngle(){
+  selection = [];
+  gridAngle = (document.getElementById("checkAngle").checked)
+  redraw();
+}
+
+function exportJson(){
+  area = [];
+  for (let i=0; i<bayNameArray.length; i++){
+    let origin = findAreaOrigin(bayNameArray[i])
+    let id = origin.ground;
+    let p = gridMapingTranspose(origin.position);
+    let x = ground[id].offsetX + p.x;
+    let y = ground[id].offsetY + p.y
+    area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle));
+
+    for (let t=0; t<teuArray.length; t++){
+      if (teuArray[t].bay_name == bayNameArray[i]){
+        if (!teuArray[t].orient){
+          teuArray[t].row = teuArray[t].x - origin.position.x + 1;
+          teuArray[t].bay = (teuArray[t].y - origin.position.y)*2 + 1;
+        }else{
+          teuArray[t].bay = teuArray[t].x - origin.position.x + 1;
+          teuArray[t].row = (teuArray[t].y - origin.position.y)*2 + 1;
+        }
+      }
+    }
+  }
+  depot.Area = area;
+  depot.teuArray = teuArray;
+  console.log(depot);
+}
+
+// CALCULATION
+function rotateDiff(a,r){
+  let c = a.copy();
+  a.rotate(r)
+  return p5.Vector.sub(a,c);
+}
+
+function findAreaOrigin(area){
+  let minX = Infinity;
+  let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity
+  let g;
+  for (let t=0; t<teuArray.length; t++){
+    if (teuArray[t].bay_name == area){
+      minX = min(minX, teuArray[t].x)
+      minY = min(minY, teuArray[t].y)
+      maxX = max(maxX, teuArray[t].x)
+      maxY = max(maxY, teuArray[t].y)
+      g = teuArray[t].ground;
+    }
+  }
+  return {position: {x:minX, y:minY}, ground: parseInt(g), wid: maxX-minX, hei: maxY-minY};
 }
 
 function getTeuFromCursor(x,y){
@@ -678,29 +786,6 @@ function insideDepot(x,y){
   if ((x<blank.x)||(y<blank.y)) return false;
   if ((x>(width-blank.x))||(y>(height-blank.y))) return false;
   return true;
-}
-
-function drawSelectionRect(){
-  if ((mouseIsPressed)&&(selectRectStart!=undefined)){
-    push();
-    noFill();
-    strokeWeight(2);
-    translate(selectRectStart.x, selectRectStart.y,)
-    rotate(-depot.ground[activeGround].angle);
-    let dif = rotateDiff(createVector(mouseX - selectRectStart.x, mouseY-selectRectStart.y) ,depot.ground[activeGround].angle);
-    // console.log('dif: ', dif);
-    if (insideDepot(mouseX,mouseY)==false) return;
-    rect(0,0, mouseX - selectRectStart.x + dif.x, mouseY-selectRectStart.y + dif.y);
-    pop();
-  }
-}
-
-function gridMapingTranspose(p){
-  if (!gridAngle){
-    return new Point(p.x * depot.contWidth, p.y * (depot.contLength + depot.contGap));
-  }else{
-    return new Point(p.x * (depot.contLength + depot.contGap), p.y * depot.contWidth);
-  }
 }
 
 function  checkGround(x,y){
@@ -737,82 +822,4 @@ function pointIsInPoly(p, polygon) {
   }
 
   return isInside;
-}
-
-function groundTranform(){
-  translate(width/2+depot.offset.x,height/2 + depot.offset.y);
-  scale(scaleFactor);
-  translate(depot.ground[activeGround].offsetX, depot.ground[activeGround].offsetY);
-  rotate(-depot.ground[activeGround].angle)
-}
-
-function groundInverseTransform(){
-
-}
-
-function rotateDiff(a,r){
-  let c = a.copy();
-  a.rotate(r)
-  return p5.Vector.sub(a,c);
-}
-
-function exportJson(){
-  area = [];
-  for (let i=0; i<bayNameArray.length; i++){
-    let origin = findAreaOrigin(bayNameArray[i])
-    let id = origin.ground;
-    let p = gridMapingTranspose(origin.position);
-    let x = ground[id].offsetX + p.x;
-    let y = ground[id].offsetY + p.y
-    area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle));
-
-    for (let t=0; t<teuArray.length; t++){
-      if (teuArray[t].bay_name == bayNameArray[i]){
-        if (!teuArray[t].orient){
-          teuArray[t].row = teuArray[t].x - origin.position.x + 1;
-          teuArray[t].bay = (teuArray[t].y - origin.position.y)*2 + 1;
-        }else{
-          teuArray[t].bay = teuArray[t].x - origin.position.x + 1;
-          teuArray[t].row = (teuArray[t].y - origin.position.y)*2 + 1;
-        }
-      }
-    }
-  }
-  depot.Area = area;
-  depot.teuArray = teuArray;
-  console.log(depot);
-}
-
-function findAreaOrigin(area){
-  let minX = Infinity;
-  let minY = Infinity;
-  let maxX = -Infinity;
-  let maxY = -Infinity
-  let g;
-  for (let t=0; t<teuArray.length; t++){
-    if (teuArray[t].bay_name == area){
-      minX = min(minX, teuArray[t].x)
-      minY = min(minY, teuArray[t].y)
-      maxX = max(maxX, teuArray[t].x)
-      maxY = max(maxY, teuArray[t].y)
-      g = teuArray[t].ground;
-    }
-  }
-  return {position: {x:minX, y:minY}, ground: parseInt(g), wid: maxX-minX, hei: maxY-minY};
-}
-
-function keyIsPressed(){
-  if (key=='Backspace'){
-    resetArea();
-  }
-}
-
-function changeActiveGround(){
-  activeGround = document.getElementById("selectGround").value;
-  if (activeGround == depot.ground.length){
-    activeGround--;
-    autoSelectGround = true;
-  }else{
-    autoSelectGround = false;
-  }
 }

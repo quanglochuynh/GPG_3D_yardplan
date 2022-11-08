@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="397" height="504" viewBox="0 0 397 504">
+  <defs>
+    <style>
+      .a, .b {
+        fill: none;
+      }
+
+      .a {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <g>
+    <polygon class="a" points="163 489 163 428 199 350 199 322 120 488 163 489"/>
+    <polygon class="a" points="163 489 293 492 293 250 397 250 397 23 381 23 218 177 200 156 172 182 164 182 151 200 142 232 176 244 186 246 200 246 199 350 163 428 163 489"/>
+    <polygon class="a" points="164 182 63 77 48 100 18 151 151 200 151 200 164 182"/>
+    <polygon class="a" points="1 180 18 151 151 200 142 232 1 180"/>
+    <polygon class="a" points="218 177 200 246 293 250 397 250 397 23 381 23 218 177"/>
+    <polygon class="b" points="119 488 162 504 159 503 119 488"/>
+    <polygon class="a" points="118 244 119 241 120 244 118 244"/>
+  </g>
+  <g>
+    <polygon class="a" points="120 488 293 492 293 250 397 250 397 1 365 1 172 182 164 182 63 77 1 180 176 244 186 246 200 246 199 322 120 488"/>
+    <polygon class="a" points="170 204 200 204 200 233 184 234 181 233 166 227 163 224 170 204"/>
+    <polygon class="a" points="397 23 381 23 218 177 200 156 365 1 397 1 397 23"/>
+    <polygon class="a" points="85 137 48 100 63 77 103 119 85 137"/>
+    <polygon class="a" points="323 250 323 229 397 229 397 250 323 250"/>
+  </g>
+</svg>

@@ -22,6 +22,8 @@ let activeGround = 0;
 let centerOffset;
 let area;
 let etd=0;
+let selectGround;
+let autoSelectGround = true;
 
 class Point{
   constructor(x,y){
@@ -113,7 +115,18 @@ function init(){
     element.addEventListener("contextmenu", (e) => e.preventDefault());
   }
   document.body.classList.add("stop-scrolling")
-  background(240)
+  selectGround = document.getElementById("selectGround");
+  selectGround.innerText = "";
+  let opt = document.createElement('option');
+  opt.value = depot.ground.length;
+  opt.innerHTML = "Auto";
+  selectGround.appendChild(opt);
+  for (let i=0; i<depot.ground.length; i++){
+    opt = document.createElement('option');
+    opt.value = i;
+    opt.innerHTML = "Area " + i;
+    selectGround.appendChild(opt);
+  }
   findCenter();
   alignMap();
   initTeuArray();
@@ -165,7 +178,10 @@ function mousePressed(){
   if (cg<0) {
     return
   };
-  activeGround = max(cg,0)
+  if (autoSelectGround){
+    activeGround = max(cg,0)
+    // document.getElementById("selectGround").value = activeGround;
+  }
   let p = gridMaping(x, y)[0] ;
   currentTeu = getTeuFromCursor(x,y);
   // console.log('currentTeu: ', currentTeu);
@@ -788,5 +804,15 @@ function findAreaOrigin(area){
 function keyIsPressed(){
   if (key=='Backspace'){
     resetArea();
+  }
+}
+
+function changeActiveGround(){
+  activeGround = document.getElementById("selectGround").value;
+  if (activeGround == depot.ground.length){
+    activeGround--;
+    autoSelectGround = true;
+  }else{
+    autoSelectGround = false;
   }
 }

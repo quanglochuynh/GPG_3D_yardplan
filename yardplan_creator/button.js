@@ -39,3 +39,9 @@ class Button{
 		return false
 	}
 }
+
+// for (let i=0; i<teuArray.length; i++){
+// 	if (teuArray[i].bay_name == "SC") {
+// 		teuArray[i].y +=10;
+// 	}
+// }

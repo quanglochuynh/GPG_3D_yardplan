@@ -357,13 +357,13 @@ function mousePressed(){
   let y = Math.floor(mouseY);
   for (let i=0; i<buttonArray.length;i++){
     if (buttonArray[i].isHovering()){
-      // resetSelection();
+      resetSelection();
       activeGround = i
+      redraw();
       break;
     }
   }
   if (checkGround(x,y)<0) {
-    // resetSelection();
     return
   }
   currentTeu = getTeuFromCursor(x,y);
@@ -404,7 +404,6 @@ function mouseReleased(){
       selection.push(p); 
     }
   }else{
-    // gridAngle = currentTeu.orient;
     selectionEnd = p;
     let hx = (selectionStart.x < selectionEnd.x);
     let hy = (selectionStart.y < selectionEnd.y);
@@ -416,7 +415,11 @@ function mouseReleased(){
     }
     for (let i=selectionStart.x; i<=selectionEnd.x; i++){
       for (let j=selectionStart.y; j<=selectionEnd.y; j++){
-        selection.push(new Point(i,j));
+        let p = mouseMap(i,j);
+        if (checkGround(p.x,p.y)>=0){
+        if ((i>0)&&(i<depot.ground[activeGround].wid) && (j>0)&&(j<depot.ground[activeGround].hei)){
+          selection.push(new Point(i,j));
+        }
       }
     }
   }
@@ -782,19 +785,25 @@ function doneAddArea(){
         }
       }
     }else{
-      if (!gridAngle){
+      try {
+        if (!gridAngle){
           ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
           ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
           ground[activeGround].verticalArray[x][y].num_of_tier = tier;
           ground[activeGround].verticalArray[x][y].orient = gridAngle;
           ground[activeGround].verticalArray[x][y].ground = activeGround;
-      }else{
-        ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
-        ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
-        ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
-        ground[activeGround].horizontalArray[x][y].orient = gridAngle;
-        ground[activeGround].horizontalArray[x][y].ground = activeGround;
+        }else{
+          ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
+          ground[activeGround].horizontalArray[x][y].orient = gridAngle;
+          ground[activeGround].horizontalArray[x][y].ground = activeGround;
+        }
+      } catch (error) {
+        alert(error)
+        return;
       }
+      
     }
   }
   updateVerticalHorizontal();

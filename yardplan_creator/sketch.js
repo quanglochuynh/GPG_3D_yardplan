@@ -24,6 +24,7 @@ let area;
 let etd=0;
 let selectGround;
 let autoSelectGround = true;
+let buttonArray;
 
 class Point{
   constructor(x,y){
@@ -105,12 +106,7 @@ function init(){
   initTeuArray();
   updateStat();
   resetSelection();
-  let p = (createVector(width/2 + depot.offset.x, height/2 + depot.offset.y));
-  for (let i=0; i<depot.ground.length; i++){
-    let p1 = createVector(depot.ground[i].button.position.x, depot.ground[i].button.position.y);
-    let p2 = p5.Vector.add(p, p1.mult(scaleFactor));
-    depot.ground[i].button = new Button(p2.x,p2.y, depot.ground[i].button.text, i, -depot.ground[i].button.angle)
-  }
+  initButton();
   noLoop();
 }
 
@@ -188,14 +184,14 @@ function drawGrid(){
   noFill();
   strokeWeight(1);
   if (document.getElementById("checkAngle").checked == false){
-    for (let x=0; x<depot.width; x+=depot.contWidth){
-      for (let y=0; y<depot.height; y+=(depot.contLength+depot.contGap)){
+    for (let x=0; x<depot.ground[activeGround].wid; x+=depot.contWidth){
+      for (let y=0; y<depot.ground[activeGround].hei; y+=(depot.contLength+depot.contGap)){
         rect(x,y, depot.contWidth, depot.contLength);
       }
     }
   }else{
-    for (let x = 0; x<depot.width; x+=(depot.contLength + depot.contGap)){
-      for (let y=0; y<depot.height; y+= (depot.contWidth)){
+    for (let x = 0; x<depot.ground[activeGround].wid; x+=(depot.contLength + depot.contGap)){
+      for (let y=0; y<depot.ground[activeGround].hei; y+= (depot.contWidth)){
         rect(x, y, depot.contLength, depot.contWidth)      
       }
     }
@@ -320,11 +316,8 @@ function drawCursor(){
 }
 
 function drawButton(){
-  for (let i=0; i<depot.ground.length;i++){
-    depot.ground[i].button.draw();
-    if (mouseIsPressed===true){
-      
-    }
+  for (let i=0; i<buttonArray.length;i++){
+    buttonArray[i].draw();
   }
 }
 
@@ -362,12 +355,17 @@ function groundTranform(){
 function mousePressed(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
-  for (let i=0; i<depot.ground.length;i++){
-    if (depot.ground[i].button.isHovering()){
+  for (let i=0; i<buttonArray.length;i++){
+    if (buttonArray[i].isHovering()){
+      // resetSelection();
       activeGround = i
+      break;
     }
   }
-  if (checkGround(x,y)<0) return
+  if (checkGround(x,y)<0) {
+    // resetSelection();
+    return
+  }
   currentTeu = getTeuFromCursor(x,y);
   updatePanel(currentTeu);
   gridAngle = currentTeu.orient;
@@ -436,6 +434,14 @@ function keyPressed(){
   }
   console.log(key);
 }
+
+function windowResized() {
+  resizeCanvas(windowWidth-40, windowHeight-120);
+  alignMap();
+  initButton();
+  redraw();
+}
+
 
 // MAPPING
 function mouseMap(i,j){
@@ -530,12 +536,6 @@ function alignMap(){
   // centerOffset = 
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth-40, windowHeight-120);
-  alignMap();
-  redraw();
-}
-
 function initTeuArray(){
   for (let g=0; g<ground.length; g++){
     ground[g].verticalArray = [];
@@ -626,6 +626,15 @@ function updatePanel(teu){
   }
 }
 
+function initButton(){
+  buttonArray = [];
+  let p = (createVector(width/2 + depot.offset.x, height/2 + depot.offset.y));
+  for (let i=0; i<depot.ground.length; i++){
+    let p1 = createVector(depot.ground[i].button.position.x, depot.ground[i].button.position.y);
+    let p2 = p5.Vector.add(p, p1.mult(scaleFactor));
+    buttonArray.push(new Button(p2.x,p2.y, depot.ground[i].button.text, i, -depot.ground[i].button.angle));
+  }
+}
 
 
 // CALCULATION

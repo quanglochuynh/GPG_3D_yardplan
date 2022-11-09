@@ -9,7 +9,6 @@ class Button{
 		this.text = text;
 		this.value = value;
 		this.angle = angle;
-		console.log(text);
 	}
 
 	draw(){

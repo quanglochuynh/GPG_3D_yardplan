@@ -415,11 +415,11 @@ function mouseReleased(){
     }
     for (let i=selectionStart.x; i<=selectionEnd.x; i++){
       for (let j=selectionStart.y; j<=selectionEnd.y; j++){
-        let p = mouseMap(i,j);
-        if (checkGround(p.x,p.y)>=0){
-        if ((i>0)&&(i<depot.ground[activeGround].wid) && (j>0)&&(j<depot.ground[activeGround].hei)){
+        // let p = mouseMap(i,j);
+        // if (checkGround(p.x,p.y)>=0){
+        // if ((i>0)&&(i<depot.ground[activeGround].wid) && (j>0)&&(j<depot.ground[activeGround].hei)){
           selection.push(new Point(i,j));
-        }
+        // }
       }
     }
   }

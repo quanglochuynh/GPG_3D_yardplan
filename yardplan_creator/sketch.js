@@ -56,7 +56,6 @@ class Teu{
   }
 }
 
-
 function preload(){
   if (etd){
     $.getJSON("./data/etdv2.json", function(data){
@@ -106,11 +105,17 @@ function init(){
   initTeuArray();
   updateStat();
   resetSelection();
+  let p = (createVector(width/2 + depot.offset.x, height/2 + depot.offset.y));
+  for (let i=0; i<depot.ground.length; i++){
+    let p1 = createVector(depot.ground[i].button.position.x, depot.ground[i].button.position.y);
+    let p2 = p5.Vector.add(p, p1.mult(scaleFactor));
+    depot.ground[i].button = new Button(p2.x,p2.y, depot.ground[i].button.text, i, -depot.ground[i].button.angle)
+  }
   noLoop();
 }
 
 function setup() {
-  myCanvas = createCanvas(windowWidth-40, windowHeight-80);
+  myCanvas = createCanvas(windowWidth-40, windowHeight-120);
   myCanvas.parent("main_canvas");
   myCanvas.mouseMoved(redraw)
   frameRate(10)
@@ -132,6 +137,7 @@ function draw(){
   drawSelection();
   drawCursor();
   drawStat();
+  drawButton()
   // push();
   // circle(mouseX, mouseY, 16)
   // // translate(blank.x, blank.y)
@@ -151,16 +157,18 @@ function drawDepot(){
   strokeWeight(2);
   noFill();
   for (let i=0; i<depot.layout.shape.length;i++){
-    stroke('rgba(0,0,0,' + depot.layout.shape[i].visible +')')
-    beginShape();
-    for (let j=1; j<depot.layout.shape[i].length; j++){
-      p1 = depot.layout.shape[i].seq[j];
-      vertex(p1.x,p1.y,0)
+    if (depot.layout.shape[i].visible!=0){
+      stroke('rgba(0,0,0,' + depot.layout.shape[i].visible +')')
+      beginShape();
+      for (let j=1; j<depot.layout.shape[i].length; j++){
+        p1 = depot.layout.shape[i].seq[j];
+        vertex(p1.x,p1.y,0)
+      }
+      endShape(CLOSE);
     }
-    endShape(CLOSE);
   }
   fill(40);
-  for (let j=0; j<depot.house.length; j++){    // so 6 tam gan cung
+  for (let j=0; j<depot.house.length; j++){   
     beginShape()
     for (let i =0; i<depot.house[j].shape.seq.length; i++){
       p1 = depot.house[j].shape.seq[i];
@@ -311,6 +319,15 @@ function drawCursor(){
   pop();
 }
 
+function drawButton(){
+  for (let i=0; i<depot.ground.length;i++){
+    depot.ground[i].button.draw();
+    if (mouseIsPressed===true){
+      
+    }
+  }
+}
+
 function setColor(opt){
   stroke(2);
   switch (opt){
@@ -345,21 +362,16 @@ function groundTranform(){
 function mousePressed(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
-  if (insideDepot(x,y)==false) return;
-  let cg = checkGround(x,y)
-  console.log('cg: ', cg);
-  if (cg<0) {
-    return
-  };
-  if (autoSelectGround){
-    activeGround = max(cg,0)
-    // document.getElementById("selectGround").value = activeGround;
+  for (let i=0; i<depot.ground.length;i++){
+    if (depot.ground[i].button.isHovering()){
+      activeGround = i
+    }
   }
-  let p = gridMaping(x, y)[0] ;
+  if (checkGround(x,y)<0) return
   currentTeu = getTeuFromCursor(x,y);
-  // console.log('currentTeu: ', currentTeu);
   updatePanel(currentTeu);
   gridAngle = currentTeu.orient;
+  let p = gridMaping(x, y)[0] ;
   if (!keyIsPressed){
     resetSelection();
     selectionStart = p;
@@ -377,7 +389,7 @@ function mousePressed(){
 function mouseDragged(){
   if (insideDepot(mouseX,mouseY)){
     selectionEnd = gridMaping(mouseX, mouseY)[1]
-    redraw();
+    // redraw();
   }
 }
 
@@ -485,8 +497,8 @@ function resetSelection(){
 function findCenter(){
   var minX = Infinity, maxX = -Infinity;
   var minY = Infinity, maxY = -Infinity;
-  for (let i=0; i<depot.ground.length; i++){
-    polygon = depot.layout.shape[depot.ground[i].shapeID].seq;
+  for (let i=0; i<depot.layout.shape.length; i++){
+    polygon = depot.layout.shape[i].seq;
     for (var n = 1; n < polygon.length; n++) {
       var q = polygon[n];
       minX = Math.min(q.x, minX);

@@ -25,7 +25,6 @@ let etd=0;
 let selectGround;
 let autoSelectGround = true;
 let buttonArray;
-// let depotPath = [""]
 
 class Point{
   constructor(x,y){
@@ -59,39 +58,56 @@ class Teu{
 }
 
 function preload(){
-  // if (etd){
-  //   $.getJSON("./data/etdv2.json", function(data){
-  //     depot = data;
-  //     depot.Area = [];
-  //     $.getJSON("./data/etd_reservation.json", function(data){
-  //       teuArray = data;
-  //       ground = depot.ground;
-  //       init()
-  //       console.log("Done");
-  //     })
+  // $.getJSON("./data/etdv2.json", function(data){
+  //   depot = data;
+  //   depot.Area = [];
+  //   $.getJSON("./data/etd_reservation.json", function(data){
+  //     teuArray = data;
+  //     ground = depot.ground;
+  //     init()
+  //     console.log("Done");
   //   })
-  // }else{
-  //   $.getJSON("./data2/std.json", function(data){
-  //     depot = data;
-  //     depot.Area = [];
-  //     $.getJSON("./data2/std_reservation.json", function(data){
-  //       teuArray = data;
-  //       ground = depot.ground;
-  //       init()
-  //       console.log("Done");
-  //     })
+  // })
+  // $.getJSON("./data2/std.json", function(data){
+  //   depot = data;
+  //   depot.Area = [];
+  //   $.getJSON("./data2/std_reservation.json", function(data){
+  //     teuArray = data;
+  //     ground = depot.ground;
+  //     init()
+  //     console.log("Done");
   //   })
-  // }
-  $.getJSON("./data3/tbd.json", function(data){
-        depot = data;
-        depot.Area = [];
-        $.getJSON("./data3/tbd_reservation.json", function(data){
-          teuArray = data;
-          ground = depot.ground;
-          init()
-          console.log("Done");
-        })
-      })
+  // })
+  // $.getJSON("./data3/tbd.json", function(data){
+  //       depot = data;
+  //       depot.Area = [];
+  //       $.getJSON("./data3/tbd_reservation.json", function(data){
+  //         teuArray = data;
+  //         ground = depot.ground;
+  //         init()
+  //         console.log("Done");
+  //       })
+  //     })
+  // $.getJSON("./data4/cld.json", function(data){
+  //   depot = data;
+  //   depot.Area = [];
+  //   $.getJSON("./data4/cld_reservation.json", function(data){
+  //     teuArray = data;
+  //     ground = depot.ground;
+  //     init()
+  //     console.log("Done");
+  //   })
+  // })
+  $.getJSON("./data5/cpd.json", function(data){
+    depot = data;
+    depot.Area = [];
+    $.getJSON("./data5/cpd_reservation.json", function(data){
+      teuArray = data;
+      ground = depot.ground;
+      init()
+      console.log("Done");
+    })
+  })
 }
 
 function init(){
@@ -134,6 +150,8 @@ function draw(){
   textAlign(LEFT, BOTTOM);
   textSize(1.25*largeFontSize);
   text(depot.name,0,height)
+    // rotate(PI/2)
+
   if (showGrid){
     drawGrid();
   }
@@ -243,7 +261,7 @@ function drawSelection(){
 
 function drawTeu(){
   textAlign(CENTER,CENTER);
-  strokeWeight(3*scaleFactor)
+  strokeWeight(2*scaleFactor)
   let temp = gridAngle;
   let temp2 = activeGround;
   for (let i=0; i<teuArray.length;i++){

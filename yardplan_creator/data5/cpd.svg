@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="990" height="501" viewBox="0 0 990 501">
+  <defs>
+    <style>
+      .a {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <polygon class="a" points="11 1 1 487 989 501 987 124 941 116 823 64 815 64 815 11 11 1"/>
+  <polygon class="a" points="7 167 1 487 989 501 987 180 7 167"/>
+  <polygon class="a" points="34 26 34 133 682 134 682 26 34 26"/>
+  <rect class="a" x="697" y="26" width="118" height="118.23"/>
+  <polygon class="a" points="55 216 53 297 4 297 6 216 55 216"/>
+  <polygon class="a" points="135 377 135 478 10 477 11 376 135 377"/>
+  <polygon class="a" points="866 314 866 499 932 500 930 314 866 314"/>
+  <rect class="a" x="951" y="409" width="29" height="77.76"/>
+</svg>

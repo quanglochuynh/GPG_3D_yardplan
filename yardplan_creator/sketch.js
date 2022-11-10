@@ -25,6 +25,7 @@ let etd=0;
 let selectGround;
 let autoSelectGround = true;
 let buttonArray;
+// let depotPath = [""]
 
 class Point{
   constructor(x,y){
@@ -58,29 +59,39 @@ class Teu{
 }
 
 function preload(){
-  if (etd){
-    $.getJSON("./data/etdv2.json", function(data){
-      depot = data;
-      depot.Area = [];
-      $.getJSON("./data/etd_reservation.json", function(data){
-        teuArray = data;
-        ground = depot.ground;
-        init()
-        console.log("Done");
+  // if (etd){
+  //   $.getJSON("./data/etdv2.json", function(data){
+  //     depot = data;
+  //     depot.Area = [];
+  //     $.getJSON("./data/etd_reservation.json", function(data){
+  //       teuArray = data;
+  //       ground = depot.ground;
+  //       init()
+  //       console.log("Done");
+  //     })
+  //   })
+  // }else{
+  //   $.getJSON("./data2/std.json", function(data){
+  //     depot = data;
+  //     depot.Area = [];
+  //     $.getJSON("./data2/std_reservation.json", function(data){
+  //       teuArray = data;
+  //       ground = depot.ground;
+  //       init()
+  //       console.log("Done");
+  //     })
+  //   })
+  // }
+  $.getJSON("./data3/tbd.json", function(data){
+        depot = data;
+        depot.Area = [];
+        $.getJSON("./data3/tbd_reservation.json", function(data){
+          teuArray = data;
+          ground = depot.ground;
+          init()
+          console.log("Done");
+        })
       })
-    })
-  }else{
-    $.getJSON("./data2/std.json", function(data){
-      depot = data;
-      depot.Area = [];
-      $.getJSON("./data2/std_reservation.json", function(data){
-        teuArray = data;
-        ground = depot.ground;
-        init()
-        console.log("Done");
-      })
-    })
-  }
 }
 
 function init(){
@@ -89,18 +100,18 @@ function init(){
     element.addEventListener("contextmenu", (e) => e.preventDefault());
   }
   document.body.classList.add("stop-scrolling")
-  selectGround = document.getElementById("selectGround");
-  selectGround.innerText = "";
-  let opt = document.createElement('option');
-  opt.value = depot.ground.length;
-  opt.innerHTML = "Auto";
-  selectGround.appendChild(opt);
-  for (let i=0; i<depot.ground.length; i++){
-    opt = document.createElement('option');
-    opt.value = i;
-    opt.innerHTML = "Area " + i;
-    selectGround.appendChild(opt);
-  }
+  // selectDepot = document.getElementById("selectDepot");
+  // selectDepot.innerText = "";
+  // let opt = document.createElement('option');
+  // opt.value = depot.ground.length;
+  // opt.innerHTML = "Auto";
+  // selectDepot.appendChild(opt);
+  // for (let i=0; i<depot.ground.length; i++){
+  //   opt = document.createElement('option');
+  //   opt.value = i;
+  //   opt.innerHTML = "Area " + i;
+  //   selectDepot.appendChild(opt);
+  // }
   findCenter();
   alignMap();
   initTeuArray();
@@ -108,6 +119,7 @@ function init(){
   resetSelection();
   initButton();
   noLoop();
+  redraw();
 }
 
 function setup() {
@@ -119,9 +131,9 @@ function setup() {
 
 function draw(){
   background(250); 
-  textAlign(LEFT)
-  textSize(2*largeFontSize);
-  text(depot.name,0,2*largeFontSize)
+  textAlign(LEFT, BOTTOM);
+  textSize(1.25*largeFontSize);
+  text(depot.name,0,height)
   if (showGrid){
     drawGrid();
   }
@@ -435,7 +447,7 @@ function keyPressed(){
       doneAddArea();
       break;
   }
-  console.log(key);
+  // console.log(key);
 }
 
 function windowResized() {
@@ -539,7 +551,7 @@ function alignMap(){
   // centerOffset = 
 }
 
-function initTeuArray(){
+function initTeuArray(){      // chua toi uu height, width cua ground
   for (let g=0; g<ground.length; g++){
     ground[g].verticalArray = [];
     for (let x=0; x<depot.width/depot.contWidth; x++){
@@ -725,14 +737,9 @@ function pointIsInPoly(p, polygon) {
 
 // DOM EVENTS
 
-function changeActiveGround(){
-  activeGround = document.getElementById("selectGround").value;
-  if (activeGround == depot.ground.length){
-    activeGround--;
-    autoSelectGround = true;
-  }else{
-    autoSelectGround = false;
-  }
+function changeDepot(){
+  let depotID = document.getElementById("selectDepot").value;
+  console.log(depotID);
 }
 
 function addArea(){
@@ -802,8 +809,7 @@ function doneAddArea(){
       } catch (error) {
         alert(error)
         return;
-      }
-      
+      } 
     }
   }
   updateVerticalHorizontal();

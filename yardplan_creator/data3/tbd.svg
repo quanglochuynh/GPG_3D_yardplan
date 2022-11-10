@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1158" height="1369" viewBox="0 0 1158 1369">
+  <defs>
+    <style>
+      .a {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g>
+    <polygon class="a" points="187 66 219 379 2 396 12 511 68 591 259 992 489 1368 927 1294 877 1029 1090 989 1127 650 1156 384 908 342 879 28 187 66"/>
+    <polygon class="a" points="219 379 2 396 12 511 68 591 259 992 489 1368 927 1294 877 1029 1090 989 1127 650 1156 384 908 342 907 336 810 344 633 359 219 379"/>
+    <polygon class="a" points="187 66 219 379 633 359 810 344 907 336 879 28 187 66"/>
+    <polygon class="a" points="647 478 655 488 653 498 68 591 12 511 647 478"/>
+    <polygon class="a" points="625 243 633 359 810 344 800 228 625 243"/>
+    <polygon class="a" points="1069 671 1118 677 1106 788 1057 782 1069 671"/>
+    <polygon class="a" points="964 997 967 1012 1002 1006 999 991 964 997"/>
+    <polygon class="a" points="1014 987 1017 1003 1083 991 1080 974 1014 987"/>
+    <polygon class="a" points="1078 942 1095 944 1099 908 1082 906 1078 942"/>
+    <polygon class="a" points="310 920 387 1097 519 1073 486 883 310 920"/>
+    <polygon class="a" points="257 620 249 562 395 539 405 594 257 620"/>
+    <polygon class="a" points="331 269 338 373 633 359 625 243 331 269"/>
+    <polygon class="a" points="800 228 810 344 907 336 896 220 800 228"/>
+    <polygon class="a" points="2 396 219 379 633 359 647 478 12 511 2 396"/>
+  </g>
+  <g>
+    <polygon class="a" points="93 654 81 658 54 601 65 596 93 654"/>
+    <polygon class="a" points="295 1060 284 1065 250 1012 261 1006 295 1060"/>
+    <polygon class="a" points="870 1312 870 1324 808 1334 806 1323 870 1312"/>
+    <polygon class="a" points="1142 587 1154 590 1145 652 1133 651 1142 587"/>
+    <polygon class="a" points="753 18 754 5 817 2 817 14 753 18"/>
+    <polygon class="a" points="182 189 170 189 164 126 176 125 182 189"/>
+    <polygon class="a" points="895 28 907 29 913 91 901 92 895 28"/>
+  </g>
+  <g>
+    <polygon class="a" points="847 1238 496 1301 357 1065 248 849 184 648 721 563 847 1238"/>
+    <polygon class="a" points="848 1034 745 482 1026 429 1083 444 1078 476 1039 825 1017 1003 848 1034"/>
+  </g>
+</svg>

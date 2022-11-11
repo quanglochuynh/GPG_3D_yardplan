@@ -1,6 +1,6 @@
 let largeFontSize = 16;
 let depot;
-let scaleFactor;
+let scaleFactor=1;
 let gridAngle = 0;
 let selection;
 let selectionStart = {x:0, y:0};
@@ -25,6 +25,9 @@ let etd=0;
 let selectGround;
 let autoSelectGround = true;
 let buttonArray;
+let screenOffset, offsetStart;
+let screenCenter;
+let mouseOffset, mo;
 
 class Point{
   constructor(x,y){
@@ -88,26 +91,26 @@ function preload(){
   //         console.log("Done");
   //       })
   //     })
-  // $.getJSON("./data4/cld.json", function(data){
-  //   depot = data;
-  //   depot.Area = [];
-  //   $.getJSON("./data4/cld_reservation.json", function(data){
-  //     teuArray = data;
-  //     ground = depot.ground;
-  //     init()
-  //     console.log("Done");
-  //   })
-  // })
-  $.getJSON("./data5/cpd.json", function(data){
+  $.getJSON("./data4/cld.json", function(data){
     depot = data;
     depot.Area = [];
-    $.getJSON("./data5/cpd_reservation.json", function(data){
+    $.getJSON("./data4/cld_reservation.json", function(data){
       teuArray = data;
       ground = depot.ground;
       init()
       console.log("Done");
     })
   })
+  // $.getJSON("./data5/cpd.json", function(data){
+  //   depot = data;
+  //   depot.Area = [];
+  //   $.getJSON("./data5/cpd_reservation.json", function(data){
+  //     teuArray = data;
+  //     ground = depot.ground;
+  //     init()
+  //     console.log("Done");
+  //   })
+  // })
 }
 
 function init(){
@@ -128,7 +131,11 @@ function init(){
   //   opt.innerHTML = "Area " + i;
   //   selectDepot.appendChild(opt);
   // }
+  screenOffset = createVector(0,0)    //pixel
+  screenCenter = createVector(width/2,height/2);
   findCenter();
+  mouseOffset = depot.center.copy();
+
   alignMap();
   initTeuArray();
   updateStat();
@@ -141,8 +148,9 @@ function init(){
 function setup() {
   myCanvas = createCanvas(windowWidth-40, windowHeight-120);
   myCanvas.parent("main_canvas");
-  myCanvas.mouseMoved(redraw)
-  frameRate(10)
+  myCanvas.mouseMoved(redraw);
+  myCanvas.mouseWheel(zoom);
+  frameRate(10);
 }
 
 function draw(){
@@ -157,22 +165,17 @@ function draw(){
   }
   drawDepot();
   drawTeu();
-  if (!keyIsPressed){
+  if ((!keyIsPressed)&&(mouseButton===LEFT)){
     drawSelectionRect();
   }
   drawSelection();
   drawCursor();
   drawStat();
   drawButton()
-  // push();
-  // circle(mouseX, mouseY, 16)
-  // // translate(blank.x, blank.y)
-  // let v1 = createVector(ground[activeGround].offsetX, ground[activeGround].offsetY)
-  // v1.mult(scaleFactor);
-  // v1.add(width/2 + depot.offset.x, height/2 + depot.offset.y)
-  // translate(v1.x, v1.y)
-  // circle(0,0,16)
-  // pop();
+  // circle(mouseOffset.x, mouseOffset.y, 10);
+  // if (mouseIsPressed){
+  //   if 
+  // }
 }
 
 // P5 DRAW
@@ -180,6 +183,10 @@ function drawDepot(){
   push();
   translate(width/2+depot.offset.x,height/2 + depot.offset.y);
   scale(scaleFactor);
+  // circle(depot.center.x, depot.center.y,20);
+  // circle(mouseOffset.x, mouseOffset.y, 10);
+  // line(depot.center.x, depot.center.y, mouseOffset.x, mouseOffset.y)
+
   strokeWeight(2);
   noFill();
   for (let i=0; i<depot.layout.shape.length;i++){
@@ -208,11 +215,10 @@ function drawDepot(){
 function drawGrid(){
   push();
   groundTranform();
-  // fill(0);
-  // circle(0,0,100)
-  stroke('rgba(0,0,0,0.125)');
+  // stroke('rgba(0,0,0,0.125)');
+  stroke(220)
   noFill();
-  strokeWeight(1);
+  strokeWeight(depot.contWidth/10);
   if (document.getElementById("checkAngle").checked == false){
     for (let x=0; x<depot.ground[activeGround].wid; x+=depot.contWidth){
       for (let y=0; y<depot.ground[activeGround].hei; y+=(depot.contLength+depot.contGap)){
@@ -261,7 +267,7 @@ function drawSelection(){
 
 function drawTeu(){
   textAlign(CENTER,CENTER);
-  strokeWeight(2*scaleFactor)
+  strokeWeight(depot.contWidth/10)
   let temp = gridAngle;
   let temp2 = activeGround;
   for (let i=0; i<teuArray.length;i++){
@@ -271,7 +277,6 @@ function drawTeu(){
     gridAngle = teuArray[i].orient
     let p = gridMapingTranspose(teuArray[i]);
     setColor(teuArray[i].opt)
-    // noFill()
     stroke(0)
     textSize(depot.contWidth)
     if (teuArray[i].orient==0){
@@ -379,87 +384,110 @@ function groundTranform(){
   rotate(-depot.ground[activeGround].angle)
 }
 
-
 // P5 EVENT
 
 function mousePressed(){
+  // console.log(mouseButton);
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
-  for (let i=0; i<buttonArray.length;i++){
-    if (buttonArray[i].isHovering()){
-      resetSelection();
-      activeGround = i
-      redraw();
-      break;
+  if (mouseButton===LEFT){
+    for (let i=0; i<buttonArray.length;i++){
+      if (buttonArray[i].isHovering()){
+        resetSelection();
+        activeGround = i
+        redraw();
+        break;
+      }
     }
-  }
-  if (checkGround(x,y)<0) {
-    return
-  }
-  currentTeu = getTeuFromCursor(x,y);
-  updatePanel(currentTeu);
-  gridAngle = currentTeu.orient;
-  let p = gridMaping(x, y)[0] ;
-  if (!keyIsPressed){
-    resetSelection();
-    selectionStart = p;
-    if ((selectionStart.x<0)){
-      resetSelection();
+    if (checkGround(x,y)<0) {
+      // console.log("eger");
+      return
     }
-    if ((selectionStart.y<0)){
+    if ((x<0)||(y<0)) {return}
+    currentTeu = getTeuFromCursor(x,y);
+    updatePanel(currentTeu);
+    gridAngle = currentTeu.orient;
+    let p = gridMaping(x, y)[0] ;
+    if (!keyIsPressed){
       resetSelection();
+      selectionStart = p;
+      if ((selectionStart.x<0)){
+        resetSelection();
+      }
+      if ((selectionStart.y<0)){
+        resetSelection();
+      }
+      selectRectStart = new Point(x, y);
     }
-    selectRectStart = new Point(x, y);
+    redraw();
+  }else if (mouseButton===RIGHT){
+    // console.log("Pan");
+    screenOffset = depot.center;
+    offsetStart = createVector(mouseX,mouseY);
   }
-  redraw();
 }
 
 function mouseDragged(){
-  if (insideDepot(mouseX,mouseY)){
-    selectionEnd = gridMaping(mouseX, mouseY)[1]
-    // redraw();
+  if (mouseButton === LEFT){
+    if (insideDepot(mouseX,mouseY)){
+      selectionEnd = gridMaping(mouseX, mouseY)[1]
+      // redraw();
+    }
+  }else if (mouseButton===RIGHT){
+    let v = p5.Vector.sub( offsetStart, createVector(mouseX,mouseY))
+    v.mult(1/scaleFactor);
+    depot.center = p5.Vector.add(screenOffset, v)
+    blank = createVector((width-depot.width*scaleFactor)/2,(height-depot.height*scaleFactor)/2)
+    depot.offset = p5.Vector.mult(depot.center,-scaleFactor);
+    initButton();
   }
 }
 
 function mouseReleased(){
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
-  let cg = checkGround(x,y)
-  if (cg<0) {
-    return
-  };
-  let p = gridMaping(mouseX, mouseY)[0];
-  if (keyIsPressed){
-    if (key=="Control"){
-      selection.push(p); 
-    }
-  }else{
-    selectionEnd = p;
-    let hx = (selectionStart.x < selectionEnd.x);
-    let hy = (selectionStart.y < selectionEnd.y);
-    if (!hx){
-      [selectionStart.x, selectionEnd.x] = [selectionEnd.x, selectionStart.x];
-    }
-    if (!hy){
-      [selectionStart.y, selectionEnd.y] = [selectionEnd.y, selectionStart.y];
-    }
-    for (let i=selectionStart.x; i<=selectionEnd.x; i++){
-      for (let j=selectionStart.y; j<=selectionEnd.y; j++){
-        // let p = mouseMap(i,j);
-        // if (checkGround(p.x,p.y)>=0){
-        // if ((i>0)&&(i<depot.ground[activeGround].wid) && (j>0)&&(j<depot.ground[activeGround].hei)){
-          selection.push(new Point(i,j));
-        // }
+  if ((x<0)||(y<0)) {return}
+
+  if (mouseButton === LEFT){
+    let cg = checkGround(x,y)
+    if (cg<0) {
+      return
+    };
+    let p = gridMaping(mouseX, mouseY)[0];
+    if (keyIsPressed){
+      if (key=="Control"){
+        selection.push(p); 
+      }
+    }else{
+      selectionEnd = p;
+      let hx = (selectionStart.x < selectionEnd.x);
+      let hy = (selectionStart.y < selectionEnd.y);
+      if (!hx){
+        [selectionStart.x, selectionEnd.x] = [selectionEnd.x, selectionStart.x];
+      }
+      if (!hy){
+        [selectionStart.y, selectionEnd.y] = [selectionEnd.y, selectionStart.y];
+      }
+      for (let i=selectionStart.x; i<=selectionEnd.x; i++){
+        for (let j=selectionStart.y; j<=selectionEnd.y; j++){
+          // let p = mouseMap(i,j);
+          // if (checkGround(p.x,p.y)>=0){
+          // if ((i>0)&&(i<depot.ground[activeGround].wid) && (j>0)&&(j<depot.ground[activeGround].hei)){
+            selection.push(new Point(i,j));
+          // }
+        }
       }
     }
+    redraw();
   }
-  redraw();
 }
 
 function keyPressed(){
   switch (key){
     case "Backspace":
-      resetArea();
+      if ((mouseX>0)&&(mouseY>0)){
+        resetArea();
+      }
       break;
     case "Enter":
       doneAddArea();
@@ -475,6 +503,18 @@ function windowResized() {
   redraw();
 }
 
+function zoom(event){
+  if (event.deltaY > 0) {
+    scaleFactor/=0.95;
+  } else {
+    scaleFactor*=0.95;
+  }
+  blank = createVector((width-depot.width*scaleFactor)/2,(height-depot.height*scaleFactor)/2);
+  depot.offset = p5.Vector.mult(depot.center,-scaleFactor);
+  depot.gridOffset = p5.Vector.mult(depot.gridOrigin, scaleFactor);
+  initButton();
+  redraw();
+}
 
 // MAPPING
 function mouseMap(i,j){
@@ -489,13 +529,16 @@ function mouseMap(i,j){
 function mouseMap2(x,y){
   let m = createVector(x,y);
   m.sub(blank);
+  let v = p5.Vector.sub(depot.center, mouseOffset)
+  v.mult(scaleFactor);
+  m.add(v);
   let v0 = depot.gridOrigin;
-  let v1 = createVector(ground[activeGround].offsetX, ground[activeGround].offsetY)
+  let v1 = createVector(ground[activeGround].offsetX, ground[activeGround].offsetY);
   let vOff = p5.Vector.sub(v1,v0);
-  vOff.mult(scaleFactor)
+  vOff.mult(scaleFactor);
   let p = p5.Vector.sub(m, vOff);
   let v3 = p5.Vector.mult(v1,scaleFactor);
-  v3.add(width/2 + depot.offset.x, height/2 + depot.offset.y)
+  v3.add(p5.Vector.add(createVector(width/2, height/2), depot.offset))
   let m2 = p5.Vector.sub(createVector(x,y),v3)
   let dif = rotateDiff(m2,depot.ground[activeGround].angle);
   p.add(dif);
@@ -553,20 +596,20 @@ function findCenter(){
 }
 
 function alignMap(){
-  let mapAspect = depot.width/depot.height;
-  let screenAspect = width/height;
-  if (screenAspect>mapAspect){
-    //laptop
-    scaleFactor = height/depot.height;
-    blank = createVector((width-depot.width*scaleFactor)/2,0)
-  }else{
-    //phone
-    scaleFactor = width/depot.width;
-    blank = createVector(0,(height-depot.height*scaleFactor)/2)
-  }
+  // let mapAspect = depot.width/depot.height;
+  // let screenAspect = width/height;
+  // if (screenAspect>mapAspect){
+  //   //laptop
+  //   // scaleFactor = height/depot.height;
+  //   blank = createVector((width-depot.width*scaleFactor)/2,0)
+  // }else{
+  //   //phone
+  //   // scaleFactor = width/depot.width;
+  //   blank = createVector(0,(height-depot.height*scaleFactor)/2)
+  // }
+  blank = createVector((width-depot.width*scaleFactor)/2,(height-depot.height*scaleFactor)/2);
   depot.offset = p5.Vector.mult(depot.center,-scaleFactor);
   depot.gridOffset = p5.Vector.mult(depot.gridOrigin, scaleFactor);
-  // centerOffset = 
 }
 
 function initTeuArray(){      // chua toi uu height, width cua ground

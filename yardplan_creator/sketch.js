@@ -91,26 +91,26 @@ function preload(){
   //         console.log("Done");
   //       })
   //     })
-  $.getJSON("./data4/cld.json", function(data){
-    depot = data;
-    depot.Area = [];
-    $.getJSON("./data4/cld_reservation.json", function(data){
-      teuArray = data;
-      ground = depot.ground;
-      init()
-      console.log("Done");
-    })
-  })
-  // $.getJSON("./data5/cpd.json", function(data){
+  // $.getJSON("./data4/cld.json", function(data){
   //   depot = data;
   //   depot.Area = [];
-  //   $.getJSON("./data5/cpd_reservation.json", function(data){
+  //   $.getJSON("./data4/cld_reservation.json", function(data){
   //     teuArray = data;
   //     ground = depot.ground;
   //     init()
   //     console.log("Done");
   //   })
   // })
+  $.getJSON("./data5/cpd.json", function(data){
+    depot = data;
+    depot.Area = [];
+    $.getJSON("./data5/cpd_reservation.json", function(data){
+      teuArray = data;
+      ground = depot.ground;
+      init()
+      console.log("Done");
+    })
+  })
 }
 
 function init(){
@@ -209,6 +209,11 @@ function drawDepot(){
     }
     endShape(CLOSE);
   }
+  stroke(0,255,0);
+  strokeWeight(depot.contWidth/10)
+  for (let i=0; i<depot.layout.line.length; i++){
+    line(depot.layout.line[i].p1.x,depot.layout.line[i].p1.y,depot.layout.line[i].p2.x, depot.layout.line[i].p2.y);
+  }
   pop();
 }
 
@@ -281,14 +286,18 @@ function drawTeu(){
     textSize(depot.contWidth)
     if (teuArray[i].orient==0){
       rect(p.x, p.y, depot.contWidth, depot.contLength);
-      fill(0);
-      noStroke();
-      text(teuArray[i].num_of_tier, p.x + depot.contWidth/2, p.y+depot.contLength/2)
+      if (scaleFactor>1){
+        fill(0);
+        noStroke();
+        text(teuArray[i].num_of_tier, p.x + depot.contWidth/2, p.y+depot.contLength/2)
+      }
     }else{
       rect(p.x, p.y, depot.contLength, depot.contWidth);
-      noStroke();
-      fill(0)
-      text(teuArray[i].num_of_tier, p.x + depot.contLength/2, p.y+depot.contWidth/2)
+      if (scaleFactor>1){
+        noStroke();
+        fill(0)
+        text(teuArray[i].num_of_tier, p.x + depot.contLength/2, p.y+depot.contWidth/2)
+      }
     }
     if (teuArray[i].bay == 1){
       if (teuArray[i].row == 1){

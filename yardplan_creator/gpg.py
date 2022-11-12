@@ -6,7 +6,6 @@ class depotEncoder(JSONEncoder):
     def default(self, o):
         return o.__dict__
 
-
 class Point:
     def __init__(self,x,y) -> None:
         self.x = x
@@ -179,27 +178,27 @@ def read_line(path):
         # y = []
         b = str.find("/>",p)
         k = str[p+16:b]
-        print(k)
+        # print(k)
         px = k.find('x1="');
         pxe = k.find('" ', px)
         x = k[px+4:pxe]
-        print(x)
+        # print(x)  
 
         py = k.find('y1="')
         pye =k.find('" ', py)
         y = k[py+4:pye]
-        print(y)
+        # print(y)
 
         pw = k.find('x2="')
         pwe =k.find('" ', pw)
         w = k[pw+4:pwe]
-        print(w)
+        # print(w)
 
         ph = k.find('y2="')
         phe =k.find('" ', ph)
         h = k[ph+4:phe]
-        print(h)
-        result.append(Line(Point(x,y), Point(w,h)))
+        # print(h)
+        result.append(Line(Point(int(x),int(y)), Point(int(w),int(h))))
         a = b
         p = str.find("<line",a)
     return result
@@ -219,7 +218,7 @@ class Area:
         self.y_flip = y_flip
 
 class Layout:
-    def __init__(self,name,svg_path, text=[]) -> None:
+    def __init__(self,name,svg_path) -> None:
         self.name = name
         self.shape = svg2layout(svg_path)
         self.text = read_text(svg_path)
@@ -230,12 +229,18 @@ class Layout:
             self.shape[i].scale(cox,coy)
         for i in range(len(self.text)):
             self.text[i].position.scale(cox, coy)
+        for i in range(len(self.line)):
+            self.line[i].p1.scale(cox,coy)
+            self.line[i].p2.scale(cox,coy)
     
     def translate(self,dx=0, dy=0):
         for i in range(len(self.shape)):
             self.shape[i].translate(dx,dy)
         for i in range(len(self.text)):
             self.text[i].position.translate(dx, dy)
+        for i in range(len(self.line)):
+            self.line[i].p1.translate(dx,dy)
+            self.line[i].p2.translate(dx,dy)
 
 class Ground:
     def __init__(self, shapeID, id1, offsetX=0, offsetY=0, offsetZ=0, angle=0, height=None, width=None, button = None):

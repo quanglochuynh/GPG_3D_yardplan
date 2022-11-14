@@ -714,7 +714,6 @@ function initButton(){
   buttonArray[activeGround].active = true;
 }
 
-
 // CALCULATION
 function rotateDiff(a,r){
   let c = a.copy();

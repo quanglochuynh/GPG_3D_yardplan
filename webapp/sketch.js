@@ -169,12 +169,12 @@ function preload(){
   $.getJSON("./data/cont3.json", function(data){
 	cArray = data;
 	$.getJSON("./data/etd.json", function(data){
-	  depot = data;
-	  console.log(depot);
-	  processCont(cArray);
-	  init()
-	  loop();
-	})
+      depot = data;
+      console.log(depot);
+      processCont(cArray);
+      init();
+      loop();
+    })
   })
   console.log("Done");
 }
@@ -432,7 +432,7 @@ function draw() {
   calcEYE();
   background(240);
   rotateX(1.5707963268);
-  strokeWeight(2)
+  strokeWeight(2);
   drawDepot(depot);
   ori1 = rot[2]**2;
   ori2 = rot[0]+rot[2];

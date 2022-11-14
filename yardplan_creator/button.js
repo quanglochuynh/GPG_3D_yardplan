@@ -1,29 +1,31 @@
 const fontSize = 14;
 
 class Button{
-	constructor(x,y,text="", value=null, angle=0){
+	constructor(x,y,text="", value=null, angle=0, scale=1){
 		this.x = x;
 		this.y = y;
-		this.w = (text.length)*(fontSize*0.75);
-		this.h = fontSize + 2 ;
+		this.w = (text.length)*(fontSize)*scale;
+		this.h = (2*fontSize)*scale ;
 		this.text = text;
 		this.value = value;
 		this.angle = angle;
+		this.active = false;
+		this.scale = scale;
 	}
 
 	draw(){
 		push();
 		translate(this.x, this.y);
 		rotate(this.angle);
-		if (!this.isHovering()){
-			fill(10);
+		if ((this.isHovering())||(this.active)){
+			fill(200);
 		}else{
-			fill(200)
+			fill(10)
 		}
 		rect(0,0,this.w,this.h)
 		textAlign(CENTER,CENTER);
 		fill(255);
-		textSize(14);
+		textSize(18*this.scale);
 		text(this.text, this.w/2, this.h/2);
 		pop();
 	}
@@ -38,9 +40,3 @@ class Button{
 		return false
 	}
 }
-
-// for (let i=0; i<teuArray.length; i++){
-// 	if (teuArray[i].bay_name == "SC") {
-// 		teuArray[i].y +=10;
-// 	}
-// }

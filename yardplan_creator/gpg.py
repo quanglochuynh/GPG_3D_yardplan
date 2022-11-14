@@ -267,20 +267,21 @@ class House:
         self.offsetY = offsetY
 
 class Depot:
-    def __init__(self, name, layout, ground=[], slope=[], area=[], house=[], container_scale=1, num_of_ground_level=1, offset=Point(0,0), scale=1) -> None:        
+    def __init__(self, name, layout, ground=[], area=[], house=[], container_scale=1, offset=Point(0,0), scale=1, defaultGround=0) -> None:        
         self.name = name
         self.layout = layout
         self.contWidth = 8 * container_scale
         self.contHeight = 8.5 * container_scale
         self.contLength = 20 * container_scale
         self.contHalfLength = 10 * container_scale
-        self.contGap = math.floor(self.contLength*0.06)
+        self.contGap = math.floor(self.contLength*0.084)
         self.fontSize = 3*container_scale   
         self.Area = area
         self.house = house
         self.ground=ground
         self.offset = offset
         self.scale = scale
+        self.defaultGround = defaultGround
 
 class Button:
     def __init__(self, p, text, angle) -> None:

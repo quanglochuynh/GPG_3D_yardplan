@@ -119,23 +119,13 @@ function init(){
     element.addEventListener("contextmenu", (e) => e.preventDefault());
   }
   document.body.classList.add("stop-scrolling")
-  // selectDepot = document.getElementById("selectDepot");
-  // selectDepot.innerText = "";
-  // let opt = document.createElement('option');
-  // opt.value = depot.ground.length;
-  // opt.innerHTML = "Auto";
-  // selectDepot.appendChild(opt);
-  // for (let i=0; i<depot.ground.length; i++){
-  //   opt = document.createElement('option');
-  //   opt.value = i;
-  //   opt.innerHTML = "Area " + i;
-  //   selectDepot.appendChild(opt);
-  // }
   screenOffset = createVector(0,0)    //pixel
   screenCenter = createVector(width/2,height/2);
   findCenter();
   mouseOffset = depot.center.copy();
-
+  if (depot.defaultGround!=undefined){
+    activeGround = depot.defaultGround;
+  }
   alignMap();
   initTeuArray();
   updateStat();
@@ -259,6 +249,7 @@ function drawSelection(){
   push()
   groundTranform()
   stroke("blue");
+  strokeWeight(1);
   noFill();
   for (let i=0; i<selection.length; i++){
     if (!gridAngle){
@@ -272,7 +263,7 @@ function drawSelection(){
 
 function drawTeu(){
   textAlign(CENTER,CENTER);
-  strokeWeight(depot.contWidth/10)
+  strokeWeight(depot.contWidth/20)
   let temp = gridAngle;
   let temp2 = activeGround;
   for (let i=0; i<teuArray.length;i++){
@@ -345,7 +336,7 @@ function drawCursor(){
   translate(depot.ground[activeGround].offsetX*scaleFactor, depot.ground[activeGround].offsetY*scaleFactor);
   rotate(-depot.ground[activeGround].angle)
   scale(scaleFactor);
-  strokeWeight(2);
+  strokeWeight(1);
   stroke("red");
   noFill();
   p = gridMaping(mouseX, mouseY)[0];
@@ -396,14 +387,15 @@ function groundTranform(){
 // P5 EVENT
 
 function mousePressed(){
-  // console.log(mouseButton);
   let x = Math.floor(mouseX);
   let y = Math.floor(mouseY);
   if (mouseButton===LEFT){
     for (let i=0; i<buttonArray.length;i++){
       if (buttonArray[i].isHovering()){
         resetSelection();
+        buttonArray[activeGround].active = false;
         activeGround = i
+        buttonArray[activeGround].active = true;
         redraw();
         break;
       }
@@ -531,8 +523,8 @@ function mouseMap(i,j){
   // let x = mm2.x;
   // let y = mm2.y;
   let p = createVector(i-width/2-depot.offset.x,j-height/2 - depot.offset.y);
-  p.mult(1/scaleFactor)
-  return p
+  p.mult(1/scaleFactor);
+  return p;
 }
 
 function mouseMap2(x,y){
@@ -624,17 +616,17 @@ function alignMap(){
 function initTeuArray(){      // chua toi uu height, width cua ground
   for (let g=0; g<ground.length; g++){
     ground[g].verticalArray = [];
-    for (let x=0; x<depot.width/depot.contWidth; x++){
+    for (let x=0; x<depot.ground[g].wid/depot.contWidth; x++){
       let temp = [];
-      for (let y=0; y<depot.height/(depot.contLength+depot.contGap); y++){
+      for (let y=0; y<depot.ground[g].hei/(depot.contLength+depot.contGap); y++){
         temp.push(new Teu(x,y, 0))
       }
       ground[g].verticalArray.push(temp);
     }
     ground[g].horizontalArray = [];
-    for (let x = 0; x<depot.width/(depot.contLength + depot.contGap); x++){
+    for (let x = 0; x<depot.ground[g].wid/(depot.contLength + depot.contGap); x++){
       let temp = [];
-      for (let y=0; y<depot.height/depot.contWidth; y++){
+      for (let y=0; y<depot.ground[g].hei/depot.contWidth; y++){
         temp.push(new Teu(x,y, 1))
       }
       ground[g].horizontalArray.push(temp);
@@ -717,8 +709,9 @@ function initButton(){
   for (let i=0; i<depot.ground.length; i++){
     let p1 = createVector(depot.ground[i].button.position.x, depot.ground[i].button.position.y);
     let p2 = p5.Vector.add(p, p1.mult(scaleFactor));
-    buttonArray.push(new Button(p2.x,p2.y, depot.ground[i].button.text, i, -depot.ground[i].button.angle));
+    buttonArray.push(new Button(p2.x,p2.y, depot.ground[i].button.text, i, -depot.ground[i].button.angle, scaleFactor));
   }
+  buttonArray[activeGround].active = true;
 }
 
 
@@ -752,13 +745,19 @@ function getTeuFromCursor(x,y){
   gridAngle = !gridAngle;
   let p2 = gridMaping(x,y)[0];
   gridAngle = !gridAngle;
-  if (!gridAngle){
-    if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].verticalArray[p1.x][p1.y].opt != undefined))    return ground[activeGround].verticalArray[p1.x][p1.y];
-    if ((p2.x>=0)&&(p2.y>=0)&&(ground[activeGround].horizontalArray[p2.x][p2.y].opt != undefined))    return ground[activeGround].horizontalArray[p2.x][p2.y];
-  }else{
-    if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].verticalArray[p2.x][p2.y].opt != undefined))   return ground[activeGround].verticalArray[p2.x][p2.y];
-    if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined))    return ground[activeGround].horizontalArray[p1.x][p1.y];
+  try {
+    if (!gridAngle){
+      if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].verticalArray[p1.x][p1.y].opt != undefined))    return ground[activeGround].verticalArray[p1.x][p1.y];
+      if ((p2.x>=0)&&(p2.y>=0)&&(ground[activeGround].horizontalArray[p2.x][p2.y].opt != undefined))    return ground[activeGround].horizontalArray[p2.x][p2.y];
+    }else{
+      if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].verticalArray[p2.x][p2.y].opt != undefined))   return ground[activeGround].verticalArray[p2.x][p2.y];
+      if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined))    return ground[activeGround].horizontalArray[p1.x][p1.y];
+    }
+  } catch (error) {
+    console.log('error: ', error);
+    
   }
+  
   return new Teu(0,0,gridAngle);
 }
 

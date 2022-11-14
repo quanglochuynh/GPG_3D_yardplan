@@ -81,26 +81,26 @@ function preload(){
   //     console.log("Done");
   //   })
   // })
-  $.getJSON("./data3/tbd.json", function(data){
-        depot = data;
-        depot.Area = [];
-        $.getJSON("./data3/tbd_reservation.json", function(data){
-          teuArray = data;
-          ground = depot.ground;
-          init()
-          console.log("Done");
-        })
-      })
-  // $.getJSON("./data4/cld.json", function(data){
-  //   depot = data;
-  //   depot.Area = [];
-  //   $.getJSON("./data4/cld_reservation.json", function(data){
-  //     teuArray = data;
-  //     ground = depot.ground;
-  //     init()
-  //     console.log("Done");
-  //   })
-  // })
+  // $.getJSON("./data3/tbd.json", function(data){
+  //       depot = data;
+  //       depot.Area = [];
+  //       $.getJSON("./data3/tbd_reservation.json", function(data){
+  //         teuArray = data;
+  //         ground = depot.ground;
+  //         init()
+  //         console.log("Done");
+  //       })
+  //     })
+  $.getJSON("./data4/cld.json", function(data){
+    depot = data;
+    // depot.Area = [];
+    $.getJSON("./data4/cld_reservation.json", function(data){
+      teuArray = data;
+      ground = depot.ground;
+      init()
+      console.log("Done");
+    })
+  })
   // $.getJSON("./data5/cpd.json", function(data){
   //   depot = data;
   //   depot.Area = [];

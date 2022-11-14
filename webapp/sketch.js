@@ -1,5 +1,5 @@
-let cArray = undefined;
-let depot = undefined;
+let cArray;
+let depot;
 let showText = false;
 let showBay = [];
 let easycam;
@@ -9,8 +9,8 @@ let ori1;
 let ori2;
 let contArray3D;
 const maxRow=20;
-const maxBay = 32;
-const maxTier = 6;
+const maxBay = 80;
+const maxTier = 7;
 const largeFontSize = 48;
 const smallFontSize = 12
 roofHeight = 20;
@@ -20,6 +20,7 @@ let heading;
 let eye;
 let center;
 let eyeVector;
+let lut;
 
 const states = [{
   "distance": 2059.3289393985488,
@@ -135,40 +136,67 @@ function setColor(opt){
 }
 
 function cvtArea(a){
-  if (a == "SC") return 4;
-  return a.charCodeAt(0)-65;
+  // if (a == "SC") return 4;
+  // return a.charCodeAt(0)-65;
+  return a;
 }
 
-function processCont(array){
+function processCont(){
+  lut = [];
+  for (let i=0; i<cArray.length; i++){
+    let id = lut.indexOf(cArray[i].Block);
+    if (id==-1){
+      lut.push(cArray[i].Block)
+    }
+    id = lut.length-1
+    cArray[i].Block = id;
+  }
   contArray3D = [];
   for (let i=0; i<depot.Area.length;i++){
-	area = []
-	for (let j=0; j<maxBay; j++){
-	  bay = []
-	  for (let k=0; k<maxRow; k++){
-		r = [];
-		for (let l=0; l<maxTier; l++){
-		  r.push(0);
-		}
-		bay.push(r);
-	  }
-	  area.push(bay);
-	}
-	contArray3D.push(area)
+    area = []
+    for (let j=0; j<maxBay; j++){
+      bay = []
+      for (let k=0; k<maxRow; k++){
+        r = [];
+        for (let l=0; l<maxTier; l++){
+          r.push(0);
+        }
+        bay.push(r);
+      }
+      area.push(bay);
+    }
+    contArray3D.push(area)
   }
-  for (let i=0; i<array.length; i++){
-	a = cvtArea(array[i].Block);
-	b = array[i].Bay;
-	r = array[i].Row;
-	t = array[i].Tier;
-	contArray3D[a][b][r][t] = 1;
+  console.log('contArray3D: ', contArray3D);
+  for (let i=0; i<cArray.length; i++){
+    a = cArray[i].Block-1;
+    b = cArray[i].Bay;
+    r = cArray[i].Row;
+    t = cArray[i].Tier;
+    try {
+      contArray3D[a][b][r][t] = 1;
+    } catch (error) {
+      console.log(a,b,r,t);
+    }
   }
 }
 
 function preload(){
-  $.getJSON("./data/cont3.json", function(data){
+  // $.getJSON("./data/cont3.json", function(data){
+	// // cArray = data;
+  //   cArray = [];
+	// $.getJSON("./data/etd.json", function(data){
+  //     depot = data;
+  //     console.log(depot);
+  //     processCont(cArray);
+  //     init();
+  //     loop();
+  //   })
+  // })
+    $.getJSON("./data4/cont4.json", function(data){
 	cArray = data;
-	$.getJSON("./data/etd.json", function(data){
+    // cArray = [];
+	$.getJSON("../../yardplan_creator/data4/cld.json", function(data){ 
       depot = data;
       console.log(depot);
       processCont(cArray);
@@ -210,19 +238,30 @@ function init(){
 	btn.mousePressed(() => {switchBay(i)});
   } 
   heading = dirVector(easycam.getRotation());
+  findCenter();
+  center = easycam.getCenter();
+  dis = easycam.getDistance();
+  rot = easycam.getRotation();
+  center = [depot.center.x, 0, depot.center.y];
 }
 
 function drawCont(cont, ar,or1, or2, center){
-  area = cvtArea(cont.Block);
+  area = cont.Block;
   if (showBay[area]==false) return
   let b =  cont.Bay-1;
   let r =  -cont.Tier+1;
   let t =  cont.Row-1;
   b = Math.floor(b/2);
-  let x_flip = 1 - 2*ar[area].x_flip;
-  let x = b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor + ar[area].offset.x;
-  let y = -t*(depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
-  let z = r*(depot.contWidth);
+  // let x_flip = 1 - 2*ar[area].x_flip;
+  let x_flip=0;
+  try {
+    let x = b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor + ar[area].offset.x;
+    let y = -t*(depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
+    let z = r*(depot.contWidth);
+  } catch (error) {
+    console.log("area",area);
+  }
+
   push();  
   rotateY(3.1415926548);
   rotateZ(ar[area].angle);
@@ -296,35 +335,34 @@ function drawCont(cont, ar,or1, or2, center){
   pop();
 }
   
-function drawDepot(depot){
+function drawDepot(){
   push();
   fill(140);
-  // noFill();
   for (let i=0 ;i<depot.ground.length; i++){
-	shapeID = depot.ground[i].shapeID;
-	offsetZ = depot.ground[i].offsetZ
-	beginShape();
-	for (let j=0; j<depot.layout.shape[shapeID].length; j++){
-	  p1 = depot.layout.shape[shapeID].seq[j];
-	  vertex(p1.x,p1.y, offsetZ+10)
-	}
-	endShape(CLOSE);
-	beginShape();
-	for (let j=0; j<depot.layout.shape[shapeID].length; j++){
-	  p1 = depot.layout.shape[shapeID].seq[j];
-	  vertex(p1.x,p1.y, 0)
-	}
-	endShape();
-	for (let j=0; j<depot.layout.shape[shapeID].length-1; j++){
-	  beginShape();
-	  p1 = depot.layout.shape[shapeID].seq[j];
-	  p2 = depot.layout.shape[shapeID].seq[j+1];
-	  vertex(p1.x,p1.y,0);
-	  vertex(p2.x,p2.y,0);
-	  vertex(p2.x,p2.y,+depot.ground[i].offsetZ+10);
-	  vertex(p1.x,p1.y,+depot.ground[i].offsetZ+10);
-	  endShape();
-	}
+    shapeID = depot.ground[i].shapeID;
+    offsetZ = depot.ground[i].offsetZ
+    beginShape();
+    for (let j=0; j<depot.layout.shape[shapeID].length; j++){
+      p1 = depot.layout.shape[shapeID].seq[j];
+      vertex(p1.x,p1.y, offsetZ+10)
+    }
+    endShape(CLOSE);
+    beginShape();
+    for (let j=0; j<depot.layout.shape[shapeID].length; j++){
+      p1 = depot.layout.shape[shapeID].seq[j];
+      vertex(p1.x,p1.y, 0)
+    }
+    endShape();
+    for (let j=0; j<depot.layout.shape[shapeID].length-1; j++){
+      beginShape();
+      p1 = depot.layout.shape[shapeID].seq[j];
+      p2 = depot.layout.shape[shapeID].seq[j+1];
+      vertex(p1.x,p1.y,0);
+      vertex(p2.x,p2.y,0);
+      vertex(p2.x,p2.y,+depot.ground[i].offsetZ+10);
+      vertex(p1.x,p1.y,+depot.ground[i].offsetZ+10);
+      endShape();
+    }
   }
   // noFill();
   // for (let j=1; j<depot.layout.shape.length; j++){
@@ -335,28 +373,28 @@ function drawDepot(depot){
   //   }
   // }
   // draw slope
-  for (let i=0; i<depot.slope.length; i++){
-	let shapeID = depot.slope[i].shapeID;
-	let hei = depot.slope[i].height;
-	beginShape();
-	vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,hei+10);
-	vertex(depot.layout.shape[shapeID].seq[2].x, depot.layout.shape[shapeID].seq[2].y,10);
-	vertex(depot.layout.shape[shapeID].seq[1].x, depot.layout.shape[shapeID].seq[1].y,10);
-	vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,hei+10);
-	endShape();
-	beginShape();
-	vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,hei+10);
-	vertex(depot.layout.shape[shapeID].seq[2].x, depot.layout.shape[shapeID].seq[2].y,10);
-	vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,10);
-	vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,hei+10);
-	endShape();
-	beginShape();
-	vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,hei+10);
-	vertex(depot.layout.shape[shapeID].seq[1].x, depot.layout.shape[shapeID].seq[1].y,10);
-	vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,10);
-	vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,hei+10);
-	endShape();
-  }
+  // for (let i=0; i<depot.slope.length; i++){
+	// let shapeID = depot.slope[i].shapeID;
+	// let hei = depot.slope[i].height;
+	// beginShape();
+	// vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,hei+10);
+	// vertex(depot.layout.shape[shapeID].seq[2].x, depot.layout.shape[shapeID].seq[2].y,10);
+	// vertex(depot.layout.shape[shapeID].seq[1].x, depot.layout.shape[shapeID].seq[1].y,10);
+	// vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,hei+10);
+	// endShape();
+	// beginShape();
+	// vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,hei+10);
+	// vertex(depot.layout.shape[shapeID].seq[2].x, depot.layout.shape[shapeID].seq[2].y,10);
+	// vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,10);
+	// vertex(depot.layout.shape[shapeID].seq[3].x, depot.layout.shape[shapeID].seq[3].y,hei+10);
+	// endShape();
+	// beginShape();
+	// vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,hei+10);
+	// vertex(depot.layout.shape[shapeID].seq[1].x, depot.layout.shape[shapeID].seq[1].y,10);
+	// vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,10);
+	// vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,hei+10);
+	// endShape();
+  // }
   
   pop();
   // draw text
@@ -429,18 +467,24 @@ function draw() {
   center = easycam.getCenter();
   dis = easycam.getDistance();
   rot = easycam.getRotation();
-  calcEYE();
+  // stroke(0)
+  // fill(0)
+  sphere(20)
+
+  translate(-depot.center.x,0, -depot.center.y)
+
+  // calcEYE();
   background(240);
   rotateX(1.5707963268);
   strokeWeight(2);
-  drawDepot(depot);
+  drawDepot();
   ori1 = rot[2]**2;
   ori2 = rot[0]+rot[2];
   strokeWeight(1);
   for(let i =0; i<cArray.length; i++){
     drawCont(cArray[i],depot.Area,ori1, ori2, center)
   }
-  drawHouse(depot.house);
+  // drawHouse(depot.house);
   checkKeyPress();
 }
 
@@ -619,4 +663,23 @@ function calcEYE(){
   let eY = dis*Math.cos(eye[0])*Math.cos(eye[1]);
   let eZ = -dis*Math.sin(eye[1]);
   eyeVector = [eX+center[0], eY+center[2], eZ+(-center[1])];
+}
+
+function findCenter(){
+  var minX = Infinity, maxX = -Infinity;
+  var minY = Infinity, maxY = -Infinity;
+  for (let i=0; i<depot.layout.shape.length; i++){
+    polygon = depot.layout.shape[i].seq;
+    for (var n = 1; n < polygon.length; n++) {
+      var q = polygon[n];
+      minX = Math.min(q.x, minX);
+      maxX = Math.max(q.x, maxX);
+      minY = Math.min(q.y, minY);
+      maxY = Math.max(q.y, maxY);
+    }
+  }
+  depot.gridOrigin = createVector(minX, minY)
+  depot.width = maxX - minX;
+  depot.height = maxY - minY;
+  depot.center = createVector((minX+maxX)/2, (minY+maxY)/2);
 }

@@ -21,19 +21,26 @@ let eye;
 let center;
 let eyeVector;
 let lut;
+let areaList;
+let bayNameArray;
+let optArray;
+let countBay;
+let countOpt;;
+let sumAll;
+let contScaleFactor = 1;
 
 const states = [{
-  "distance": 2059.3289393985488,
+  "distance": 1703.1717439021852,
   "center": [
-	  291.1905894992754,
-	  28.64227214233992,
-	  -254.39126097724892
+      755.317028515664,
+      284.8921527698694,
+      815.3716493501345
   ],
   "rotation": [
-	  0.3544999517122829,
-	  -0.06668080137401443,
-	  0.9208759403662182,
-	  -0.14788832752699732
+      -0.9191453134534767,
+      0.0983746846629784,
+      0.37359428620692586,
+      -0.07695208566044787
   ]
 },
 {
@@ -120,18 +127,26 @@ const deviceType = () => {
 };
 
 function setColor(opt){
+  stroke(2);
   switch (opt){
-	case "HLC":   
-	  fill(252,140,3);
-	  break;
-	case "YML": 
-	  fill(212,205,199);
-	  break;
-	case "COS": 
-	  fill(140,180,180);
-	  break;
-	default:
-	  fill(132,232,232);
+    case "HLC":   
+      fill(252,140,3);
+      break;
+    case "YML": 
+      fill(212,205,199);
+      break;
+    case "COS": 
+      fill(140,180,180);
+      break;
+    case "EVG":
+      fill(35, 207, 61)
+      break
+    case "CMA":
+      fill(40,40,120);
+      break;
+    default:
+      fill(255);
+      break;
   }
 }
 
@@ -144,12 +159,10 @@ function cvtArea(a){
 function processCont(){
   lut = [];
   for (let i=0; i<cArray.length; i++){
-    let id = lut.indexOf(cArray[i].Block);
-    if (id==-1){
-      lut.push(cArray[i].Block)
+    if (cArray[i].Block == ""){;
+      continue;
     }
-    id = lut.length-1
-    cArray[i].Block = id;
+    cArray[i].Block = bayNameArray.indexOf(cArray[i].Block);
   }
   contArray3D = [];
   for (let i=0; i<depot.Area.length;i++){
@@ -157,7 +170,7 @@ function processCont(){
     for (let j=0; j<maxBay; j++){
       bay = []
       for (let k=0; k<maxRow; k++){
-        r = [];
+        let r = [];
         for (let l=0; l<maxTier; l++){
           r.push(0);
         }
@@ -167,16 +180,18 @@ function processCont(){
     }
     contArray3D.push(area)
   }
-  console.log('contArray3D: ', contArray3D);
+  // console.log('contArray3D: ', contArray3D);
+  let a,b,r,t;
   for (let i=0; i<cArray.length; i++){
-    a = cArray[i].Block-1;
+    a = cArray[i].Block;
     b = cArray[i].Bay;
     r = cArray[i].Row;
     t = cArray[i].Tier;
     try {
       contArray3D[a][b][r][t] = 1;
     } catch (error) {
-      console.log(a,b,r,t);
+      console.log('error: ', error);
+      // console.log(a,b,r,t);
     }
   }
 }
@@ -198,7 +213,13 @@ function preload(){
     // cArray = [];
 	$.getJSON("../../yardplan_creator/data4/cld.json", function(data){ 
       depot = data;
+      depot.contLength *= contScaleFactor;
+      depot.contGap *= contScaleFactor;
+      depot.contHalfLength *= contScaleFactor;
+      depot.contWidth *= contScaleFactor;
+      depot.contHeight *= contScaleFactor;
       console.log(depot);
+      updateStat();
       processCont(cArray);
       init();
       loop();
@@ -234,7 +255,7 @@ function init(){
   showTextCheckbox = createCheckbox("Show Container name",false);
   showTextCheckbox.changed(changeTextVisibility);
   for (let i=0; i<showBay.length; i++){
-	btn = createButton("Bay "+ depot.Area[i].name);
+	btn = createButton("Bay "+ bayNameArray[i]);
 	btn.mousePressed(() => {switchBay(i)});
   } 
   heading = dirVector(easycam.getRotation());
@@ -245,68 +266,68 @@ function init(){
   center = [depot.center.x, 0, depot.center.y];
 }
 
-function drawCont(cont, ar,or1, or2, center){
+function drawCont(cont,or1, or2){
   area = cont.Block;
   if (showBay[area]==false) return
   let b =  cont.Bay-1;
   let r =  -cont.Tier+1;
   let t =  cont.Row-1;
   b = Math.floor(b/2);
-  // let x_flip = 1 - 2*ar[area].x_flip;
-  let x_flip=0;
-  try {
-    let x = b*(depot.contLength+depot.contGap)+depot.contHalfLength - depot.Area[area].x_coor + ar[area].offset.x;
-    let y = -t*(depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
-    let z = r*(depot.contWidth);
-  } catch (error) {
-    console.log("area",area);
-  }
-
+  let x_flip=0; 
+  let x,y,z;
+  y = b*(depot.contLength+depot.contGap)+depot.contHalfLength
+  x = t*(depot.contWidth)
+  z = -r*(depot.contHeight);
   push();  
-  rotateY(3.1415926548);
-  rotateZ(ar[area].angle);
-  translate(0.5*depot.contLength, -0.5*depot.contWidth*x_flip, -0.5*depot.contHeight -10 - depot.Area[area].z_coor);
-  translate(x,y,z);
-  setColor(cont.HangTauID);
-  let dis2cont = myDist(subVec(eyeVector,[-x,y,z]));
-  let by = (depot.contHeight)*x_flip + depot.Area[area].y_coor + ar[area].offset.y;
-  let bz = (depot.contWidth);
-  let dis2Bay = myDist(subVec(eyeVector,[-x,by,bz]));
-  if (dis2Bay<400){
-    pop();
-    return;
+  try {
+    translate(0.5*depot.contLength, -0.5*depot.contWidth*x_flip, 0.5*depot.contHeight + 10);
+    translate(depot.Area[area].x_coor, depot.Area[area].y_coor, 0);
+    rotateZ(-depot.Area[area].angle);
+    translate(x,y,z);
+  } catch (error) {
+    console.log('error: ', cont);
   }
+  setColor(cont.HangTauID);
+  let dis2cont, by,bz, dis2Bay;
+  dis2cont = myDist(subVec(eyeVector,[-x,y,z]));
+  by = (depot.contHeight)*x_flip + depot.Area[area].y_coor
+  bz = (depot.contWidth);
+  dis2Bay = myDist(subVec(eyeVector,[-x,by,bz]));
+  // if (dis2Bay<400){
+  //   pop();
+  //   return;
+  // }
   if ((cont.Bay)%2 == 0){
 	// Container 40ft
-    box(depot.contLength*2, depot.contHeight, depot.contWidth);     
-    if (dis2cont>1000) {
-      pop();
-      return;
-    }  
+    box(depot.contWidth, depot.contLength*2, depot.contHeight);     
+    // if (dis2cont>1000) {
+    //   pop();
+    //   return;
+    // }  
     if (showText){
       fill(255);
-      rotateX(1.5707963268);
-      drawSideCont(cont, or2, false, dis)
-      if (or1<0.5){
-        if (contArray3D[area][cont.Bay][cont.Row-(1*x_flip)][cont.Tier]==1) {
-          pop();
-          return;
-        }
-      rotateY(Math.PI)
-      }else{
-        if (contArray3D[area][cont.Bay][cont.Row+(1*x_flip)][cont.Tier]==1) {
-          pop();
-          return;
-        }
-      }      
+      rotateX(-1.5707963268);
+      // drawSideCont(cont, or2, false, dis)
+      if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]==1) {
+        pop();
+        return;
+      }
+      if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]==1) {
+        pop();
+        return;
+      }
+      rotateY(-PI/2)
       translate(0,0, depot.contWidth/2+2);
       textSize(smallFontSize);
       text(cont.ContID, 0,0);
       // text(Math.floor(dis2Bay),0,0)
     }
-  }else{
+  }
+  else{
 	// Container 20ft
-	box(depot.contLength, depot.contHeight, depot.contWidth);     
+  box(depot.contWidth, depot.contLength, depot.contHeight);     
+
+	// box(depot.contLength, depot.contHeight, depot.contWidth);     
     if (dis2cont>1000) {
       pop();
       return;
@@ -328,7 +349,7 @@ function drawCont(cont, ar,or1, or2, center){
         }
       }      
       translate(0,0, depot.contWidth/2+2);
-      textSize(smallFontSize);
+      textSize(depot.contHeight/2);
       text(cont.ContID, 0,0);
     }
   }
@@ -364,6 +385,8 @@ function drawDepot(){
       endShape();
     }
   }
+  pop();
+
   // noFill();
   // for (let j=1; j<depot.layout.shape.length; j++){
   //   for (let i =0; i<depot.layout.shape[j].length-1; i++){
@@ -395,8 +418,15 @@ function drawDepot(){
 	// vertex(depot.layout.shape[shapeID].seq[0].x, depot.layout.shape[shapeID].seq[0].y,hei+10);
 	// endShape();
   // }
-  
-  pop();
+  // sphere(20,6,6)
+  // for (let i=0; i<depot.Area.length; i++){
+  //   push();
+  //   // rotateZ(PI);
+  //   translate(depot.Area[i].x_coor, depot.Area[i].y_coor,0)
+  //   fill(0);
+  //   sphere(20,6,6);
+  //   pop();
+  // }
   // draw text
   fill(0);
   for (let i=0; i<depot.layout.text.length; i++){
@@ -461,19 +491,23 @@ function drawHouse(house){
 function setup() {
   createCanvas(windowWidth-10, windowHeight-100, WEBGL);
   noLoop();
+  // frameRate(10)
 }
 
 function draw() {
+  // text(Math.atan(heading[1]/heading[0]), 40,40);
+  // console.log('Math.atan(heading[1]/heading[0]): ', Math.atan(heading[1]/heading[0])/(2*PI)*360);
+  // console.log('heading: ', heading);
   center = easycam.getCenter();
   dis = easycam.getDistance();
   rot = easycam.getRotation();
   // stroke(0)
-  // fill(0)
+  fill('red')
   sphere(20)
 
   translate(-depot.center.x,0, -depot.center.y)
 
-  // calcEYE();
+  calcEYE();
   background(240);
   rotateX(1.5707963268);
   strokeWeight(2);
@@ -482,7 +516,10 @@ function draw() {
   ori2 = rot[0]+rot[2];
   strokeWeight(1);
   for(let i =0; i<cArray.length; i++){
-    drawCont(cArray[i],depot.Area,ori1, ori2, center)
+    if (cArray[i].Block == ""){;
+      continue;
+    }
+    drawCont(cArray[i],depot.Area,ori1, ori2)
   }
   // drawHouse(depot.house);
   checkKeyPress();
@@ -682,4 +719,30 @@ function findCenter(){
   depot.width = maxX - minX;
   depot.height = maxY - minY;
   depot.center = createVector((minX+maxX)/2, (minY+maxY)/2);
+}
+
+function updateStat(){
+  sumAll = 0;
+  bayNameArray = [];
+  optArray = [];
+  countBay = [];
+  countOpt = [];
+  for (let i=0; i<depot.Area.length; i++){
+    bayNameArray.push(depot.Area[i].name);
+    countBay.push(0);
+  }
+  for (let i=0; i<cArray.length; i++){
+    if (cArray[i].Block == ""){;
+      continue;
+    }
+    let idBay = bayNameArray.indexOf(cArray[i].Block);
+    if (idBay==-1) continue;
+    countBay[idBay] ++;
+    let idOpt = optArray.indexOf(cArray[i].HangTauID);
+    if (idOpt == -1){
+      optArray.push(cArray[i].HangTauID)
+      idOpt = optArray.length-1;
+    }
+    countOpt[idOpt] +=1;
+  }
 }

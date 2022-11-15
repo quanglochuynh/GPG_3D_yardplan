@@ -36,11 +36,12 @@ class Point{
   }
 }
 class Area{
-  constructor(name,x,y,a){
+  constructor(name,x,y,a, z=0){
     this.name = name;
     this.angle = a;
     this.x_coor = x;
     this.y_coor = y;
+    this.z_coor = z;
     this.x_flip = 0;
     // this.y_flip = undefined;
 
@@ -73,7 +74,7 @@ function preload(){
   // })
   // $.getJSON("./data2/std.json", function(data){
   //   depot = data;
-  //   depot.Area = [];
+  //   // depot.Area = [];
   //   $.getJSON("./data2/std_reservation.json", function(data){
   //     teuArray = data;
   //     ground = depot.ground;
@@ -132,6 +133,7 @@ function init(){
   resetSelection();
   initButton();
   noLoop();
+  exportJson();
   redraw();
 }
 
@@ -162,10 +164,6 @@ function draw(){
   drawCursor();
   drawStat();
   drawButton()
-  // circle(mouseOffset.x, mouseOffset.y, 10);
-  // if (mouseIsPressed){
-  //   if 
-  // }
 }
 
 // P5 DRAW
@@ -173,10 +171,6 @@ function drawDepot(){
   push();
   translate(width/2+depot.offset.x,height/2 + depot.offset.y);
   scale(scaleFactor);
-  // circle(depot.center.x, depot.center.y,20);
-  // circle(mouseOffset.x, mouseOffset.y, 10);
-  // line(depot.center.x, depot.center.y, mouseOffset.x, mouseOffset.y)
-
   strokeWeight(2);
   noFill();
   for (let i=0; i<depot.layout.shape.length;i++){
@@ -199,8 +193,15 @@ function drawDepot(){
     }
     endShape(CLOSE);
   }
+  // for (let i=0; i<depot.Area.length;i++){
+  //   // circle(depot.Area[i].x_coor, depot.Area[i].y_coor, 20)
+  //   text(depot.Area[i].name, depot.Area[i].x_coor, depot.Area[i].y_coor)
+  // }
   stroke(0,255,0);
   strokeWeight(depot.contWidth/10)
+  fill(0);
+  circle(0,0,20);
+  
   for (let i=0; i<depot.layout.line.length; i++){
     line(depot.layout.line[i].p1.x,depot.layout.line[i].p1.y,depot.layout.line[i].p2.x, depot.layout.line[i].p2.y);
   }
@@ -271,7 +272,7 @@ function drawTeu(){
     activeGround = teuArray[i].ground;
     groundTranform();
     gridAngle = teuArray[i].orient
-    let p = gridMapingTranspose(teuArray[i]);
+    let p = gridMapingTranspose(teuArray[i], teuArray[i].orient);
     setColor(teuArray[i].opt)
     stroke(0)
     textSize(depot.contWidth)
@@ -296,6 +297,9 @@ function drawTeu(){
         fill(0);  
         textSize(depot.contWidth*2)
         text(teuArray[i].bay_name,p.x-(depot.contWidth), p.y-(depot.contWidth));
+        // textSize(10)
+        // let ar = depot.Area[bayNameArray.indexOf(teuArray[i].bay_name)];
+        // text(ar.x_coor + " " + ar.y_coor,p.x-(depot.contWidth), p.y-(depot.contWidth));
       }
     }
     pop();
@@ -560,8 +564,8 @@ function gridMaping(px,py){
   return [new Point(dx,dy), new Point(Math.round(dx-(blank.x/(depot.contWidth*scaleFactor))), Math.round(dy-(blank.y/(depot.contLength*scaleFactor))))]
 }
 
-function gridMapingTranspose(p){
-  if (!gridAngle){
+function gridMapingTranspose(p, or=1){
+  if (!or){
     return new Point(p.x * depot.contWidth, p.y * (depot.contLength + depot.contGap));
   }else{
     return new Point(p.x * (depot.contLength + depot.contGap), p.y * depot.contWidth);
@@ -733,10 +737,10 @@ function findAreaOrigin(area){
       minY = min(minY, teuArray[t].y)
       maxX = max(maxX, teuArray[t].x)
       maxY = max(maxY, teuArray[t].y)
-      g = teuArray[t].ground;
+      g = teuArray[t];
     }
   }
-  return {position: {x:minX, y:minY}, ground: parseInt(g), wid: maxX-minX, hei: maxY-minY};
+  return {position: {x:minX, y:minY}, orient: g.orient, ground: parseInt(g.ground), wid: maxX-minX, hei: maxY-minY};
 }
 
 function getTeuFromCursor(x,y){
@@ -915,9 +919,13 @@ function exportJson(){
   for (let i=0; i<bayNameArray.length; i++){
     let origin = findAreaOrigin(bayNameArray[i])
     let id = origin.ground;
-    let p = gridMapingTranspose(origin.position);
-    let x = ground[id].offsetX + p.x;
-    let y = ground[id].offsetY + p.y
+    let p = gridMapingTranspose(origin.position, origin.orient);
+    // p = createVector(p.x,p.y);
+    // p.rotate(-ground[origin.ground].angle);
+    let dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
+    // console.log(dif);
+    let x = ground[id].offsetX + p.x + dif.x;
+    let y = ground[id].offsetY + p.y + dif.y;
     area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle));
 
     for (let t=0; t<teuArray.length; t++){
@@ -933,7 +941,8 @@ function exportJson(){
     }
   }
   depot.Area = area;
-  depot.teuArray = teuArray;
+  // depot.teuArray = teuArray;
+  // depot.ground = undefined;
   console.log(depot);
   redraw();
 }

@@ -401,14 +401,14 @@ function drawDepot(){
   }
   pop();
 
-  // noFill();
-  // for (let j=1; j<depot.layout.shape.length; j++){
-  //   for (let i =0; i<depot.layout.shape[j].length-1; i++){
-  //     p1 = depot.layout.shape[j].seq[i]
-  //     p2 = depot.layout.shape[j].seq[i+1]
-  //     line(p1.x, p1.y, p2.x, p2.y)
-  //   }
-  // }
+  noFill();
+  for (let j=1; j<depot.layout.shape.length; j++){
+    for (let i =0; i<depot.layout.shape[j].length-1; i++){
+      p1 = depot.layout.shape[j].seq[i]
+      p2 = depot.layout.shape[j].seq[i+1]
+      line(p1.x, p1.y,10, p2.x, p2.y,10)
+    }
+  }
   // draw slope
   // for (let i=0; i<depot.slope.length; i++){
 	// let shapeID = depot.slope[i].shapeID;
@@ -465,44 +465,45 @@ function drawHouse(house){
     push();
     p1 = house[i].shape.seq[house[i].id1]
     p2 = house[i].shape.seq[house[i].id2]
-    w = Math.abs(p1.x-p2.x)
-    h = Math.abs(p1.y-p2.y)
+    let dif = rotateDiff(createVector(p2.x-p1.x, p2.y-p1.y), house[i].angle)
+    w = Math.abs(p1.x-p2.x) + dif.x;
+    h = Math.abs(p1.y-p2.y) + dif.y;
     fill(180);
     translate(p1.x-w/2,p1.y-h/2,house[i].height/2+house[i].offsetZ)
     rotateZ(-house[i].angle)
     box(w, h, house[i].height)
-    // noStroke();
-    strokeWeight(1)
-    if (w>h){
-    rotateZ(1.5707963268);
-    translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
-    scale(0.6*h/(roofHeight),1,1 )
-    cylinder(roofHeight,w,4,1)
-    scale((roofHeight)/(0.6*h),1,1 )
-    }else{
-    translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
-    scale(0.6*w/(roofHeight),1,1 )
-    cylinder(roofHeight,h,4,1)
-    scale((roofHeight)/(0.6*w),1,1 )
-    }
-    fill(255)
-    // resetMatrix();
-    if (w>h){
-    rotateZ(-Math.PI/2);
-    }else{
-    rotateZ(Math.PI/2);
-    }
-    translate(0,0,roofHeight)
-    textSize(largeFontSize)
-    text(house[i].name, 0,0)
+  //   // noStroke();
+  //   strokeWeight(1)
+  //   if (w>h){
+  //   rotateZ(1.5707963268);
+  //   translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
+  //   scale(0.6*h/(roofHeight),1,1 )
+  //   cylinder(roofHeight,w,4,1)
+  //   scale((roofHeight)/(0.6*h),1,1 )
+  //   }else{
+  //   translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
+  //   scale(0.6*w/(roofHeight),1,1 )
+  //   cylinder(roofHeight,h,4,1)
+  //   scale((roofHeight)/(0.6*w),1,1 )
+  //   }
+  //   fill(255)
+  //   // resetMatrix();
+  //   if (w>h){
+  //   rotateZ(-Math.PI/2);
+  //   }else{
+  //   rotateZ(Math.PI/2);
+  //   }
+  //   translate(0,0,roofHeight)
+  //   textSize(largeFontSize)
+  //   text(house[i].name, 0,0)
     pop();
-	}else{
-	  p1 = house[i].shape.seq[house[i].id1]
-	  p2 = house[i].shape.seq[house[i].id2]
-	  w = Math.abs(p1.x-p2.x)
-	  h = Math.abs(p1.y-p2.y)
-	  translate(0,0,house[i].offsetZ)
-	  drawSlope(p1.x+house[i].offsetX, p1.y+house[i].offsetY, h,w,20,0.9, Math.PI/2)
+	// }else{
+	//   p1 = house[i].shape.seq[house[i].id1]
+	//   p2 = house[i].shape.seq[house[i].id2]
+	//   w = Math.abs(p1.x-p2.x)
+	//   h = Math.abs(p1.y-p2.y)
+	//   translate(0,0,house[i].offsetZ)
+	//   drawSlope(p1.x+house[i].offsetX, p1.y+house[i].offsetY, h,w,20,0.9, Math.PI/2)
 	}
   }
 }
@@ -533,7 +534,7 @@ function draw() {
     // if (cArray[i].Block === ""){;
     //   continue;
     // }
-    drawCont(cArray[i],depot.Area,ori1, ori2)
+    // drawCont(cArray[i],depot.Area,ori1, ori2)
   }
   drawHouse(depot.house);
   checkKeyPress();
@@ -768,4 +769,10 @@ function updateStat(){
     }
     countOpt[idOpt] +=1;
   }
+}
+
+function rotateDiff(a,r){
+  let c = a.copy();
+  a.rotate(r)
+  return p5.Vector.sub(a,c);
 }

@@ -290,67 +290,75 @@ function drawCont(cont,or1, or2){
   setColor(cont.HangTauID);
   let dis2cont, by,bz, dis2Bay;
   dis2cont = myDist(subVec(eyeVector,[-x,y,z]));
-  by = (depot.contHeight)*x_flip + depot.Area[area].y_coor
-  bz = (depot.contWidth);
-  dis2Bay = myDist(subVec(eyeVector,[-x,by,bz]));
+  // by = (depot.contHeight)*x_flip + depot.Area[area].y_coor
+  // bz = (depot.contWidth);
+  // dis2Bay = myDist(subVec(eyeVector,[-x,by,bz]));
   // if (dis2Bay<400){
   //   pop();
   //   return;
   // }
   if ((cont.Bay)%2 == 0){
 	// Container 40ft
+    translate(0,depot.contHalfLength,0)
     box(depot.contWidth, depot.contLength*2, depot.contHeight);     
-    // if (dis2cont>1000) {
+    // if (dis2cont>4000) {
     //   pop();
     //   return;
     // }  
     if (showText){
       fill(255);
       rotateX(-1.5707963268);
-      // drawSideCont(cont, or2, false, dis)
-      if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]==1) {
-        pop();
-        return;
+      drawSideCont(cont, or2, false)
+      if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
+        rotateY(-PI/2)
+        translate(0,0, depot.contWidth/2+2);
+        textSize(smallFontSize);
+        text(cont.ContID, 0,0);
+        translate(0,0, -depot.contWidth/2-2);
+        rotateY(PI/2)
       }
-      if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]==1) {
-        pop();
-        return;
+      
+      if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
+        rotateY(PI/2)
+        translate(0,0, depot.contWidth/2+2);
+        textSize(smallFontSize);
+        text(cont.ContID, 0,0);
       }
-      rotateY(-PI/2)
-      translate(0,0, depot.contWidth/2+2);
-      textSize(smallFontSize);
-      text(cont.ContID, 0,0);
-      // text(Math.floor(dis2Bay),0,0)
     }
   }
   else{
 	// Container 20ft
   box(depot.contWidth, depot.contLength, depot.contHeight);     
-
-	// box(depot.contLength, depot.contHeight, depot.contWidth);     
     if (dis2cont>1000) {
       pop();
       return;
     }  
     if (showText){
       fill(255);
-      rotateX(1.5707963268);
+      rotateX(-1.5707963268);
       drawSideCont(cont, or2, true, dis)
-      if (or1<0.5){
-        if (contArray3D[area][cont.Bay][cont.Row-(1*x_flip)][cont.Tier]==1) {
-          pop();
-          return;
+      
+        if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
+          rotateY(-PI/2)
+          translate(0,0, depot.contWidth/2+2);
+          textSize(smallFontSize);
+          text(cont.ContID, 0,0);
+          translate(0,0, -depot.contWidth/2-2);
+          rotateY(PI/2)
         }
-      rotateY(Math.PI)
-      }else{
-        if (contArray3D[area][cont.Bay][cont.Row+(1*x_flip)][cont.Tier]==1) {
-          pop();
-          return;
+      // rotateY(Math.PI)
+   
+        if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
+          // translate(0,0, depot.contWidth/2+2);
+          // textSize(depot.contHeight/2);
+          // text(cont.ContID, 0,0);
+          rotateY(PI/2)
+          translate(0,0, depot.contWidth/2+2);
+          textSize(smallFontSize);
+          text(cont.ContID, 0,0);
         }
-      }      
-      translate(0,0, depot.contWidth/2+2);
-      textSize(depot.contHeight/2);
-      text(cont.ContID, 0,0);
+          
+      
     }
   }
   pop();
@@ -578,28 +586,36 @@ function mouseReleased(){
   eyeVector = [eX+center[0], eY+center[2], eZ+(-center[1])]
 }
 
-function drawSideCont(cont, or2, twenty_feet,dis){
-  if (((or2>1)||(or2<-1))){
-	rotateY(Math.PI/2);
-  }else{
-	rotateY(-Math.PI/2);
-  }
+function drawSideCont(cont, or2, twenty_feet){
+  // if (((or2>1)||(or2<-1))){
+  //   rotateY(Math.PI/2);
+  // }else{
+  //   rotateY(-Math.PI/2);
+  // }
+  push();
   if (!twenty_feet){
-	translate(0,0, depot.contLength+2);
-	textSize(7)
-	text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
-	translate(0,0, -depot.contLength-2);
+    translate(0,0, depot.contLength+1);
+    textSize(7)
+    text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+    rotateY(Math.PI);
+    translate(0,0, 2*depot.contLength+2);
+    text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+
   }else{
-	translate(0,0, depot.contLength/2+2);
-	textSize(7)
-	text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
-	translate(0,0, -(depot.contLength/2)-2);
+    translate(0,0, depot.contLength/2+1);
+    textSize(7)
+    text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+    rotateY(Math.PI);
+    translate(0,0, (depot.contLength)+2);
+    text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
+
   }
-  if (((or2>1)||(or2<-1))){
-	rotateY(-Math.PI/2);
-  }else{
-	rotateY(Math.PI/2);
-  }
+  pop();
+  // if (((or2>1)||(or2<-1))){
+  //   rotateY(-Math.PI/2);
+  // }else{
+  //   rotateY(Math.PI/2);
+  // }
 }
 
 function dirVector(quat){

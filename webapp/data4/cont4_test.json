@@ -1,0 +1,11 @@
+[
+    {"ContID": "LOCU2927573", "ContTypeSizeID": 9500, "HangTauID": "HLC", "Block": "B-G", "Bay": 1, "Row": 1, "Tier": 1.0, "angle": 0, "x": 0, "y": 0, "z": 0},
+    {"ContID": "GPGU1307412", "ContTypeSizeID": 9500, "HangTauID": "EVG", "Block": "B-G", "Bay": 2, "Row": 2, "Tier": 1.0, "angle": 0, "x": 0, "y": 0, "z": 0},
+    {"ContID": "JHRU1307356", "ContTypeSizeID": 9500, "HangTauID": "YML", "Block": "B-G", "Bay": 3, "Row": 1, "Tier": 1.0, "angle": 0, "x": 0, "y": 0, "z": 0},
+    {"ContID": "JHRU1307356", "ContTypeSizeID": 9500, "HangTauID": "YML", "Block": "B-G", "Bay": 5, "Row": 1, "Tier": 1.0, "angle": 0, "x": 0, "y": 0, "z": 0},
+    {"ContID": "GPGU1307412", "ContTypeSizeID": 9500, "HangTauID": "EVG", "Block": "B-G", "Bay": 6, "Row": 2, "Tier": 1.0, "angle": 0, "x": 0, "y": 0, "z": 0},
+    {"ContID": "JHRU1307356", "ContTypeSizeID": 9500, "HangTauID": "YML", "Block": "B-G", "Bay": 8, "Row": 1, "Tier": 1.0, "angle": 0, "x": 0, "y": 0, "z": 0},
+    {"ContID": "JHRU1307356", "ContTypeSizeID": 9500, "HangTauID": "YML", "Block": "B-G", "Bay": 12, "Row": 1, "Tier": 1.0, "angle": 0, "x": 0, "y": 0, "z": 0},
+    {"ContID": "JHRU1307356", "ContTypeSizeID": 9500, "HangTauID": "YML", "Block": "B-G", "Bay": 16, "Row": 1, "Tier": 1.0, "angle": 0, "x": 0, "y": 0, "z": 0}
+
+]

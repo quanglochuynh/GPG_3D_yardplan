@@ -162,7 +162,13 @@ function processCont(){
     if (cArray[i].Block == ""){;
       continue;
     }
+    // if (cArray[i].Block == "B-F"){
+    //   console.log(cArray[i]);
+    // }
     cArray[i].Block = bayNameArray.indexOf(cArray[i].Block);
+    // if (cArray[i].Block == 0){
+    //   console.log(cArray[i]);
+    // }
   }
   contArray3D = [];
   for (let i=0; i<depot.Area.length;i++){
@@ -255,8 +261,8 @@ function init(){
   showTextCheckbox = createCheckbox("Show Container name",false);
   showTextCheckbox.changed(changeTextVisibility);
   for (let i=0; i<showBay.length; i++){
-	btn = createButton("Bay "+ bayNameArray[i]);
-	btn.mousePressed(() => {switchBay(i)});
+    btn = createButton("Bay "+ bayNameArray[i] + " " + countBay[i]);
+    btn.mousePressed(() => {switchBay(i)});
   } 
   heading = dirVector(easycam.getRotation());
   findCenter();
@@ -275,7 +281,7 @@ function drawCont(cont,or1, or2){
   b = Math.floor(b/2);
   let x_flip=0; 
   let x,y,z;
-  y = b*(depot.contLength+depot.contGap)+depot.contHalfLength
+  y = b*(depot.contLength+depot.contGap)+depot.contHalfLength;
   x = t*(depot.contWidth)
   z = -r*(depot.contHeight);
   push();  
@@ -288,23 +294,26 @@ function drawCont(cont,or1, or2){
     console.log('error: ', cont);
   }
   setColor(cont.HangTauID);
-  let dis2cont, by,bz, dis2Bay;
-  dis2cont = myDist(subVec(eyeVector,[-x,y,z]));
-  // by = (depot.contHeight)*x_flip + depot.Area[area].y_coor
-  // bz = (depot.contWidth);
-  // dis2Bay = myDist(subVec(eyeVector,[-x,by,bz]));
-  // if (dis2Bay<400){
+  // let dis2cont, by,bx, dis2Bay;
+  // let dx = b*(depot.contLength+depot.contGap)-depot.Area[area].x_coor;
+  // let dy = r*depot.contWidth-depot.Area[area].y_coor;
+  // dis2cont = Math.floor(myDist(subVec(eyeVector,[bx, ,z])));
+  // bx = (depot.Area[area].x_coor + b*(depot.contLength+depot.contGap))
+  // by = (depot.Area[area].y_coor)
+  // dis2Bay = myDist(subVec(eyeVector,[bx, by,0]));
+  // if (dis2Bay>4000){
   //   pop();
   //   return;
   // }
+  // if (dis2cont>4000) {
+  //   pop();
+  //   return;
+  // }  
   if ((cont.Bay)%2 == 0){
 	// Container 40ft
     translate(0,depot.contHalfLength,0)
     box(depot.contWidth, depot.contLength*2, depot.contHeight);     
-    // if (dis2cont>4000) {
-    //   pop();
-    //   return;
-    // }  
+
     if (showText){
       fill(255);
       rotateX(-1.5707963268);
@@ -314,6 +323,7 @@ function drawCont(cont,or1, or2){
         translate(0,0, depot.contWidth/2+2);
         textSize(smallFontSize);
         text(cont.ContID, 0,0);
+        // text(dis2Bay, 0,0)
         translate(0,0, -depot.contWidth/2-2);
         rotateY(PI/2)
       }
@@ -323,16 +333,17 @@ function drawCont(cont,or1, or2){
         translate(0,0, depot.contWidth/2+2);
         textSize(smallFontSize);
         text(cont.ContID, 0,0);
+        // text(dis2Bay, 0,0)
       }
     }
   }
   else{
 	// Container 20ft
   box(depot.contWidth, depot.contLength, depot.contHeight);     
-    if (dis2cont>1000) {
-      pop();
-      return;
-    }  
+    // if (dis2cont>1000) {
+    //   pop();
+    //   return;
+    // }  
     if (showText){
       fill(255);
       rotateX(-1.5707963268);
@@ -346,12 +357,7 @@ function drawCont(cont,or1, or2){
           translate(0,0, -depot.contWidth/2-2);
           rotateY(PI/2)
         }
-      // rotateY(Math.PI)
-   
         if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
-          // translate(0,0, depot.contWidth/2+2);
-          // textSize(depot.contHeight/2);
-          // text(cont.ContID, 0,0);
           rotateY(PI/2)
           translate(0,0, depot.contWidth/2+2);
           textSize(smallFontSize);
@@ -446,45 +452,50 @@ function drawDepot(){
 	text(depot.layout.text[i].content, 0,0)
 	pop();
   }
+  stroke(0,255,0);
+  for (let i=0; i<depot.layout.line.length; i++){
+    line(depot.layout.line[i].p1.x,depot.layout.line[i].p1.y,10,depot.layout.line[i].p2.x, depot.layout.line[i].p2.y,10);
+  }
+  stroke(0);
 }
 
 function drawHouse(house){
   for (let i=0; i<house.length; i++){
 	if (house[i].type<2){
-	  push();
-	  p1 = house[i].shape.seq[house[i].id1]
-	  p2 = house[i].shape.seq[house[i].id2]
-	  w = Math.abs(p1.x-p2.x)
-	  h = Math.abs(p1.y-p2.y)
-	  fill(180);
-	  translate(p1.x-w/2,p1.y-h/2,house[i].height/2+house[i].offsetZ)
-	  rotateZ(-house[i].angle)
-	  box(w, h, house[i].height)
-	  // noStroke();
-	  strokeWeight(1)
-	  if (w>h){
-		rotateZ(1.5707963268);
-		translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
-		scale(0.6*h/(roofHeight),1,1 )
-		cylinder(roofHeight,w,4,1)
-		scale((roofHeight)/(0.6*h),1,1 )
-	  }else{
-		translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
-		scale(0.6*w/(roofHeight),1,1 )
-		cylinder(roofHeight,h,4,1)
-		scale((roofHeight)/(0.6*w),1,1 )
-	  }
-	  fill(255)
-	  // resetMatrix();
-	  if (w>h){
-		rotateZ(-Math.PI/2);
-	  }else{
-		rotateZ(Math.PI/2);
-	  }
-	  translate(0,0,roofHeight)
-	  textSize(largeFontSize)
-	  text(house[i].name, 0,0)
-	  pop();
+    push();
+    p1 = house[i].shape.seq[house[i].id1]
+    p2 = house[i].shape.seq[house[i].id2]
+    w = Math.abs(p1.x-p2.x)
+    h = Math.abs(p1.y-p2.y)
+    fill(180);
+    translate(p1.x-w/2,p1.y-h/2,house[i].height/2+house[i].offsetZ)
+    rotateZ(-house[i].angle)
+    box(w, h, house[i].height)
+    // noStroke();
+    strokeWeight(1)
+    if (w>h){
+    rotateZ(1.5707963268);
+    translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
+    scale(0.6*h/(roofHeight),1,1 )
+    cylinder(roofHeight,w,4,1)
+    scale((roofHeight)/(0.6*h),1,1 )
+    }else{
+    translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
+    scale(0.6*w/(roofHeight),1,1 )
+    cylinder(roofHeight,h,4,1)
+    scale((roofHeight)/(0.6*w),1,1 )
+    }
+    fill(255)
+    // resetMatrix();
+    if (w>h){
+    rotateZ(-Math.PI/2);
+    }else{
+    rotateZ(Math.PI/2);
+    }
+    translate(0,0,roofHeight)
+    textSize(largeFontSize)
+    text(house[i].name, 0,0)
+    pop();
 	}else{
 	  p1 = house[i].shape.seq[house[i].id1]
 	  p2 = house[i].shape.seq[house[i].id2]
@@ -503,18 +514,13 @@ function setup() {
 }
 
 function draw() {
-  // text(Math.atan(heading[1]/heading[0]), 40,40);
-  // console.log('Math.atan(heading[1]/heading[0]): ', Math.atan(heading[1]/heading[0])/(2*PI)*360);
-  // console.log('heading: ', heading);
   center = easycam.getCenter();
   dis = easycam.getDistance();
   rot = easycam.getRotation();
   // stroke(0)
   fill('red')
   sphere(20)
-
   translate(-depot.center.x,0, -depot.center.y)
-
   calcEYE();
   background(240);
   rotateX(1.5707963268);
@@ -524,12 +530,12 @@ function draw() {
   ori2 = rot[0]+rot[2];
   strokeWeight(1);
   for(let i =0; i<cArray.length; i++){
-    if (cArray[i].Block == ""){;
-      continue;
-    }
+    // if (cArray[i].Block === ""){;
+    //   continue;
+    // }
     drawCont(cArray[i],depot.Area,ori1, ori2)
   }
-  // drawHouse(depot.house);
+  drawHouse(depot.house);
   checkKeyPress();
 }
 
@@ -748,15 +754,16 @@ function updateStat(){
     countBay.push(0);
   }
   for (let i=0; i<cArray.length; i++){
-    if (cArray[i].Block == ""){;
-      continue;
-    }
     let idBay = bayNameArray.indexOf(cArray[i].Block);
-    if (idBay==-1) continue;
+    if (idBay==-1) {
+      console.log(cArray[i]);
+      continue
+    };
     countBay[idBay] ++;
     let idOpt = optArray.indexOf(cArray[i].HangTauID);
     if (idOpt == -1){
       optArray.push(cArray[i].HangTauID)
+      countOpt.push(0);
       idOpt = optArray.length-1;
     }
     countOpt[idOpt] +=1;

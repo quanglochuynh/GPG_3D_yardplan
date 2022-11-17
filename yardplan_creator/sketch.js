@@ -211,6 +211,7 @@ function drawDepot(){
 function drawGrid(){
   push();
   groundTranform();
+  // circle(0,0,300)
   // stroke('rgba(0,0,0,0.125)');
   stroke(220)
   noFill();
@@ -914,7 +915,7 @@ function changeGridAngle(){
   redraw();
 }
 
-function exportJson(){
+function exportJson(init=true){
   area = [];
   for (let i=0; i<bayNameArray.length; i++){
     let origin = findAreaOrigin(bayNameArray[i])
@@ -941,8 +942,17 @@ function exportJson(){
     }
   }
   depot.Area = area;
-  // depot.teuArray = teuArray;
-  // depot.ground = undefined;
-  console.log(depot);
+  depot.teuArray = [];
+  if (!init){
+    let dp2 = depot;
+    for (let i=0; i<depot.ground.length; i++){
+      delete dp2.ground[i].verticalArray;
+      delete dp2.ground[i].horizontalArray;
+    }
+    console.log(dp2);
+  }else{
+    depot.teuArray = teuArray;
+    console.log(depot);
+  }
   redraw();
 }

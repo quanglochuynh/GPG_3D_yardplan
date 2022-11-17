@@ -30,17 +30,17 @@ let sumAll;
 let contScaleFactor = 1;
 
 const states = [{
-  "distance": 1703.1717439021852,
+  "distance": 4338.310402589384,
   "center": [
-      755.317028515664,
-      284.8921527698694,
-      815.3716493501345
+      754.1258667773367,
+      259.9103759744205,
+      779.1283038618365
   ],
   "rotation": [
-      -0.9191453134534767,
-      0.0983746846629784,
-      0.37359428620692586,
-      -0.07695208566044787
+      -0.8407474900125835,
+      0.20347196432089706,
+      0.491317000722414,
+      -0.10173702656387235
   ]
 },
 {
@@ -294,13 +294,13 @@ function drawCont(cont,or1, or2){
     console.log('error: ', cont);
   }
   setColor(cont.HangTauID);
-  // let dis2cont, by,bx, dis2Bay;
-  // let dx = b*(depot.contLength+depot.contGap)-depot.Area[area].x_coor;
-  // let dy = r*depot.contWidth-depot.Area[area].y_coor;
-  // dis2cont = Math.floor(myDist(subVec(eyeVector,[bx, ,z])));
-  // bx = (depot.Area[area].x_coor + b*(depot.contLength+depot.contGap))
-  // by = (depot.Area[area].y_coor)
-  // dis2Bay = myDist(subVec(eyeVector,[bx, by,0]));
+  let dis2cont, by,bx, dis2Bay;
+  let dx =  depot.Area[area].x_coor + r*depot.contWidth;
+  let dy =  depot.Area[area].y_coor - b*(depot.contLength+depot.contGap);
+  dis2cont = Math.floor(myDist(subVec(eyeVector,[dx, dy,z])));
+  // bx = (depot.Area[area].x_coor)
+  // by = (depot.Area[area].y_coor)- b*(depot.contLength+depot.contGap)
+  // dis2Bay = Math.floor(myDist(subVec(eyeVector,[by, bx,0])));
   // if (dis2Bay>4000){
   //   pop();
   //   return;
@@ -317,13 +317,13 @@ function drawCont(cont,or1, or2){
     if (showText){
       fill(255);
       rotateX(-1.5707963268);
-      drawSideCont(cont, or2, false)
+      // drawSideCont(cont, or2, false)
       if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
         rotateY(-PI/2)
         translate(0,0, depot.contWidth/2+2);
         textSize(smallFontSize);
-        text(cont.ContID, 0,0);
-        // text(dis2Bay, 0,0)
+        // text(cont.ContID, 0,0);
+        text(dis2cont, 0,0)
         translate(0,0, -depot.contWidth/2-2);
         rotateY(PI/2)
       }
@@ -332,41 +332,41 @@ function drawCont(cont,or1, or2){
         rotateY(PI/2)
         translate(0,0, depot.contWidth/2+2);
         textSize(smallFontSize);
-        text(cont.ContID, 0,0);
-        // text(dis2Bay, 0,0)
+        // text(cont.ContID, 0,0);
+        text(dis2cont, 0,0)
       }
     }
   }
-  else{
-	// Container 20ft
-  box(depot.contWidth, depot.contLength, depot.contHeight);     
-    // if (dis2cont>1000) {
-    //   pop();
-    //   return;
-    // }  
-    if (showText){
-      fill(255);
-      rotateX(-1.5707963268);
-      drawSideCont(cont, or2, true, dis)
+  // else{
+	// // Container 20ft
+  // box(depot.contWidth, depot.contLength, depot.contHeight);     
+  //   // if (dis2cont>1000) {
+  //   //   pop();
+  //   //   return;
+  //   // }  
+  //   if (showText){
+  //     fill(255);
+  //     rotateX(-1.5707963268);
+  //     drawSideCont(cont, or2, true, dis)
       
-        if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
-          rotateY(-PI/2)
-          translate(0,0, depot.contWidth/2+2);
-          textSize(smallFontSize);
-          text(cont.ContID, 0,0);
-          translate(0,0, -depot.contWidth/2-2);
-          rotateY(PI/2)
-        }
-        if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
-          rotateY(PI/2)
-          translate(0,0, depot.contWidth/2+2);
-          textSize(smallFontSize);
-          text(cont.ContID, 0,0);
-        }
+  //       if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
+  //         rotateY(-PI/2)
+  //         translate(0,0, depot.contWidth/2+2);
+  //         textSize(smallFontSize);
+  //         text(cont.ContID, 0,0);
+  //         translate(0,0, -depot.contWidth/2-2);
+  //         rotateY(PI/2)
+  //       }
+  //       if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
+  //         rotateY(PI/2)
+  //         translate(0,0, depot.contWidth/2+2);
+  //         textSize(smallFontSize);
+  //         text(cont.ContID, 0,0);
+  //       }
           
       
-    }
-  }
+  //   }
+  // }
   pop();
 }
   
@@ -401,14 +401,14 @@ function drawDepot(){
   }
   pop();
 
-  noFill();
-  for (let j=1; j<depot.layout.shape.length; j++){
-    for (let i =0; i<depot.layout.shape[j].length-1; i++){
-      p1 = depot.layout.shape[j].seq[i]
-      p2 = depot.layout.shape[j].seq[i+1]
-      line(p1.x, p1.y,10, p2.x, p2.y,10)
-    }
-  }
+  // noFill();
+  // for (let j=1; j<depot.layout.shape.length; j++){
+  //   for (let i =0; i<depot.layout.shape[j].length-1; i++){
+  //     p1 = depot.layout.shape[j].seq[i]
+  //     p2 = depot.layout.shape[j].seq[i+1]
+  //     line(p1.x, p1.y,10, p2.x, p2.y,10)
+  //   }
+  // }
   // draw slope
   // for (let i=0; i<depot.slope.length; i++){
 	// let shapeID = depot.slope[i].shapeID;
@@ -443,14 +443,14 @@ function drawDepot(){
   // }
   // draw text
   fill(0);
-  for (let i=0; i<depot.layout.text.length; i++){
-	push();
-	textSize(largeFontSize);
-	pos = depot.layout.text[i].position;
-	translate(pos.x, pos.y,11);
-	rotateZ(Math.PI/2);
-	text(depot.layout.text[i].content, 0,0)
-	pop();
+  for (let i=0; i<depot.Area.length; i++){
+    push();
+    textSize(largeFontSize);
+    pos = depot.Area[i].x_coor;
+    translate(depot.Area[i].x_coor-largeFontSize, depot.Area[i].y_coor,11);
+    rotateZ(Math.PI/2 - depot.Area[i].angle);
+    text(depot.Area[i].name, 0,0)
+    pop();
   }
   stroke(0,255,0);
   for (let i=0; i<depot.layout.line.length; i++){
@@ -545,12 +545,12 @@ function draw() {
   ori2 = rot[0]+rot[2];
   strokeWeight(1);
   for(let i =0; i<cArray.length; i++){
-    // if (cArray[i].Block === ""){;
-    //   continue;
-    // }
-    // drawCont(cArray[i],depot.Area,ori1, ori2)
+    if (cArray[i].Block >1 ){;
+      continue;
+    }
+    drawCont(cArray[i],depot.Area,ori1, ori2)
   }
-  drawHouse(depot.house);
+  // drawHouse(depot.house);
   checkKeyPress();
 }
 

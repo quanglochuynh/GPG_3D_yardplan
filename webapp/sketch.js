@@ -19,7 +19,7 @@ let currentState;
 let heading;
 let eye;
 let center;
-let eyeVector;
+let eyeVector = [0,0,0];
 let lut;
 let areaList;
 let bayNameArray;
@@ -27,22 +27,22 @@ let optArray;
 let countBay;
 let countOpt;;
 let sumAll;
-let contScaleFactor = 1;
+let contScaleFactor = 0.95;
 
 const states = [{
-  "distance": 4338.310402589384,
+  "distance": 3181.7057108469526,
   "center": [
-      754.1258667773367,
-      259.9103759744205,
-      779.1283038618365
+      561.3654397889591,
+      -270.0896240255795,
+      695.8011306993076
   ],
   "rotation": [
-      -0.8407474900125835,
-      0.20347196432089706,
-      0.491317000722414,
-      -0.10173702656387235
+      -0.8513564699917174,
+      0.06907587081447907,
+      0.5186968187780248,
+      -0.03707148855939367
   ]
-},
+} ,
 {
   "distance": 1685.9791504657426,
   "center": [
@@ -203,35 +203,29 @@ function processCont(){
 }
 
 function preload(){
-  // $.getJSON("./data/cont3.json", function(data){
-	// // cArray = data;
-  //   cArray = [];
-	// $.getJSON("./data/etd.json", function(data){
-  //     depot = data;
-  //     console.log(depot);
-  //     processCont(cArray);
-  //     init();
-  //     loop();
-  //   })
-  // })
-    $.getJSON("./data4/cont4.json", function(data){
+  // let path = [
+  //   './data/cont3.json',
+  //   '../../yardplan_creator/data/etdv2.json'
+  // ];
+  let path = [
+    './data4/cont4.json',
+    '../../yardplan_creator/data4/cld.json'
+  ];
+  $.getJSON(path[0], function(data){
 	cArray = data;
-    // cArray = [];
-	$.getJSON("../../yardplan_creator/data4/cld.json", function(data){ 
+	$.getJSON(path[1], function(data){
       depot = data;
       depot.contLength *= contScaleFactor;
       depot.contGap *= contScaleFactor;
       depot.contHalfLength *= contScaleFactor;
       depot.contWidth *= contScaleFactor;
       depot.contHeight *= contScaleFactor;
-      console.log(depot);
       updateStat();
       processCont(cArray);
       init();
       loop();
     })
   })
-  console.log("Done");
 }
 
 function switchBay(id){
@@ -284,6 +278,34 @@ function drawCont(cont,or1, or2){
   y = b*(depot.contLength+depot.contGap)+depot.contHalfLength;
   x = t*(depot.contWidth)
   z = -r*(depot.contHeight);
+
+  let dis2cont;
+  let d = createVector(depot.Area[area].x_coor + depot.contLength, depot.Area[area].y_coor+depot.contWidth, 0.5*depot.contHeight + 20);
+  let k = createVector(-r*depot.contWidth, b*(depot.contLength+depot.contGap));
+  k.rotate(-depot.Area[area].angle);
+  let d2 = p5.Vector.add(d,k);
+  // stroke(0);
+  // strokeWeight(2)
+  // line(depot.center.x+center[0], depot.center.y+center[2], -center[1], d.x,d.y,d.z);
+  // let base = createVector(depot.center.x+center[0], depot.center.y+center[2], -center[1])
+  // let dx = d.x - depot.center.x+center[0];
+  // let dy = d.y - depot.center.y+center[2];
+  // let dz = z+10 -center[1];
+  // dis2cont = Math.floor(myDist(subVec(eyeVector,[dx,dy,dz])));
+  // line(eyeVector[0]+depot.center.x, eyeVector[2]+ depot.center.y, -eyeVector[1] ,d.x,d.y,z+10);
+  let eye = createVector(eyeVector[0]+depot.center.x, eyeVector[2]+ depot.center.y, -eyeVector[1]);
+  let eye2cont = p5.Vector.sub(d2, eye);
+  dis2cont = Math.floor(eye2cont.mag());
+  // let d = p5.Vector.sub()
+  // line(base.x, base.y, base.z,d.x,d.y,z+10);
+  // line(center[0], center[1], center[2], eyeVector[0], -eyeVector[2], eyeVector[1])
+
+  let k2 = createVector(0, b*(depot.contLength+depot.contGap));
+  k2.rotate(-depot.Area[area].angle);
+  let d3 = p5.Vector.add(d,k2);
+  let eye2bay = p5.Vector.sub(d3, eye);
+  dis2Bay = eye2bay.mag();
+
   push();  
   try {
     translate(0.5*depot.contLength, -0.5*depot.contWidth*x_flip, 0.5*depot.contHeight + 10);
@@ -293,37 +315,34 @@ function drawCont(cont,or1, or2){
   } catch (error) {
     console.log('error: ', cont);
   }
+
   setColor(cont.HangTauID);
-  let dis2cont, by,bx, dis2Bay;
-  let dx =  depot.Area[area].x_coor + r*depot.contWidth;
-  let dy =  depot.Area[area].y_coor - b*(depot.contLength+depot.contGap);
-  dis2cont = Math.floor(myDist(subVec(eyeVector,[dx, dy,z])));
   // bx = (depot.Area[area].x_coor)
   // by = (depot.Area[area].y_coor)- b*(depot.contLength+depot.contGap)
   // dis2Bay = Math.floor(myDist(subVec(eyeVector,[by, bx,0])));
-  // if (dis2Bay>4000){
-  //   pop();
-  //   return;
-  // }
-  // if (dis2cont>4000) {
-  //   pop();
-  //   return;
-  // }  
+  if (dis2Bay<600){
+    pop();
+    return;
+  }
+
   if ((cont.Bay)%2 == 0){
 	// Container 40ft
     translate(0,depot.contHalfLength,0)
     box(depot.contWidth, depot.contLength*2, depot.contHeight);     
-
+    if (dis2cont>800) {
+      pop();
+      return;
+    }  
     if (showText){
       fill(255);
       rotateX(-1.5707963268);
-      // drawSideCont(cont, or2, false)
+      drawSideCont(cont, or2, false)
       if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
         rotateY(-PI/2)
         translate(0,0, depot.contWidth/2+2);
         textSize(smallFontSize);
-        // text(cont.ContID, 0,0);
-        text(dis2cont, 0,0)
+        text(cont.ContID, 0,0);
+        // text(dis2cont, 0,0)
         translate(0,0, -depot.contWidth/2-2);
         rotateY(PI/2)
       }
@@ -332,41 +351,41 @@ function drawCont(cont,or1, or2){
         rotateY(PI/2)
         translate(0,0, depot.contWidth/2+2);
         textSize(smallFontSize);
-        // text(cont.ContID, 0,0);
-        text(dis2cont, 0,0)
+        text(cont.ContID, 0,0);
+        // text(dis2cont, 0,0)
       }
     }
   }
-  // else{
-	// // Container 20ft
-  // box(depot.contWidth, depot.contLength, depot.contHeight);     
-  //   // if (dis2cont>1000) {
-  //   //   pop();
-  //   //   return;
-  //   // }  
-  //   if (showText){
-  //     fill(255);
-  //     rotateX(-1.5707963268);
-  //     drawSideCont(cont, or2, true, dis)
+  else{
+	// Container 20ft
+  box(depot.contWidth, depot.contLength, depot.contHeight);      
+    if (dis2cont>800) {
+      pop();
+      return;
+    }  
+    if (showText){
+      fill(255);
+      rotateX(-1.5707963268);
+      drawSideCont(cont, or2, true, dis)
       
-  //       if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
-  //         rotateY(-PI/2)
-  //         translate(0,0, depot.contWidth/2+2);
-  //         textSize(smallFontSize);
-  //         text(cont.ContID, 0,0);
-  //         translate(0,0, -depot.contWidth/2-2);
-  //         rotateY(PI/2)
-  //       }
-  //       if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
-  //         rotateY(PI/2)
-  //         translate(0,0, depot.contWidth/2+2);
-  //         textSize(smallFontSize);
-  //         text(cont.ContID, 0,0);
-  //       }
+        if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
+          rotateY(-PI/2)
+          translate(0,0, depot.contWidth/2+2);
+          textSize(smallFontSize);
+          text(cont.ContID, 0,0);
+          translate(0,0, -depot.contWidth/2-2);
+          rotateY(PI/2)
+        }
+        if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
+          rotateY(PI/2)
+          translate(0,0, depot.contWidth/2+2);
+          textSize(smallFontSize);
+          text(cont.ContID, 0,0);
+        }
           
       
-  //   }
-  // }
+    }
+  }
   pop();
 }
   
@@ -532,25 +551,43 @@ function draw() {
   center = easycam.getCenter();
   dis = easycam.getDistance();
   rot = easycam.getRotation();
+  // push()
   // stroke(0)
-  fill('red')
-  sphere(20)
+  // strokeWeight(2);
+  // fill(255,0,0)
+  // sphere(20,6,6)
+
+  // push();
+  // translate(center[0], center[1], center[2]);
+  // sphere(40,6,6);
+  // pop();
+  // line(0,0,0, center[0], center[1], center[2])
+  // line(center[0], center[1], center[2], eyeVector[0], eyeVector[1], eyeVector[2])
+
+  // pop()
+
+
   translate(-depot.center.x,0, -depot.center.y)
   calcEYE();
   background(240);
   rotateX(1.5707963268);
   strokeWeight(2);
+
+  // line(0,0,0, center[0], center[1], center[2])
+
+
+
   drawDepot();
   ori1 = rot[2]**2;
   ori2 = rot[0]+rot[2];
   strokeWeight(1);
   for(let i =0; i<cArray.length; i++){
-    if (cArray[i].Block >1 ){;
-      continue;
-    }
+    // if (cArray[i].Block >1 ){;
+    //   continue;
+    // }
     drawCont(cArray[i],depot.Area,ori1, ori2)
   }
-  // drawHouse(depot.house);
+  drawHouse(depot.house);
   checkKeyPress();
 }
 
@@ -736,7 +773,9 @@ function calcEYE(){
   let eX = dis*Math.sin(eye[0])*Math.cos(eye[1]);
   let eY = dis*Math.cos(eye[0])*Math.cos(eye[1]);
   let eZ = -dis*Math.sin(eye[1]);
-  eyeVector = [eX+center[0], eY+center[2], eZ+(-center[1])];
+  eyeVector = [eX+center[0], -eZ+center[1], eY+center[2]];
+  // eyeVector = [eX, eY, eZ];
+
 }
 
 function findCenter(){

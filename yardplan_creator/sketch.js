@@ -62,16 +62,16 @@ class Teu{
 }
 
 function preload(){
-  // $.getJSON("./data/etdv2.json", function(data){
-  //   depot = data;
-  //   depot.Area = [];
-  //   $.getJSON("./data/etd_reservation.json", function(data){
-  //     teuArray = data;
-  //     ground = depot.ground;
-  //     init()
-  //     console.log("Done");
-  //   })
-  // })
+  $.getJSON("./data/etdv2.json", function(data){
+    depot = data;
+    depot.Area = [];
+    $.getJSON("./data/etd_reservation.json", function(data){
+      teuArray = data;
+      ground = depot.ground;
+      init()
+      console.log("Done");
+    })
+  })
   // $.getJSON("./data2/std.json", function(data){
   //   depot = data;
   //   // depot.Area = [];
@@ -92,16 +92,16 @@ function preload(){
   //         console.log("Done");
   //       })
   //     })
-  $.getJSON("./data4/cld.json", function(data){
-    depot = data;
-    // depot.Area = [];
-    $.getJSON("./data4/cld_reservation.json", function(data){
-      teuArray = data;
-      ground = depot.ground;
-      init()
-      console.log("Done");
-    })
-  })
+  // $.getJSON("./data4/cld.json", function(data){
+  //   depot = data;
+  //   // depot.Area = [];
+  //   $.getJSON("./data4/cld_reservation.json", function(data){
+  //     teuArray = data;
+  //     ground = depot.ground;
+  //     init()
+  //     console.log("Done");
+  //   })
+  // })
   // $.getJSON("./data5/cpd.json", function(data){
   //   depot = data;
   //   depot.Area = [];

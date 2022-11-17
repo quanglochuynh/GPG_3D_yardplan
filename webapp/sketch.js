@@ -29,7 +29,8 @@ let countOpt;;
 let sumAll;
 let contScaleFactor = 0.95;
 
-const states = [{
+const states = [
+  {
   "distance": 3181.7057108469526,
   "center": [
       561.3654397889591,
@@ -41,76 +42,6 @@ const states = [{
       0.06907587081447907,
       0.5186968187780248,
       -0.03707148855939367
-  ]
-} ,
-{
-  "distance": 1685.9791504657426,
-  "center": [
-	  -276.4506264579203,
-	  106.16259098032675,
-	  -211.9164391674737
-  ],
-  "rotation": [
-	  -0.3537624022177311,
-	  0.041863659727330145,
-	  0.9269739476041958,
-	  -0.11755380569964356
-  ]
-},
-{
-  "distance": 1977.4167746454539,
-  "center": [
-	  277.24663009745524,
-	  317.9617307877529,
-	  353.8653951073716
-  ],
-  "rotation": [
-	  -0.9288240460479843,
-	  0.14723126224919147,
-	  -0.33506782123915624,
-	  0.05777890678786246
-  ]
-},
-{
-  "distance": 1977.4167746454539,
-  "center": [
-	  441.7313948620282,
-	  376.2394294929234,
-	  142.73667287233428
-  ],
-  "rotation": [
-	  -0.4237331232220197,
-	  0.08465511407126676,
-	  -0.8820071472604534,
-	  0.18800836185541125
-  ]
-},
-{
-  "distance": 1063.2537348041867,
-  "center": [
-	  109.47893418893946,
-	  -37.743662779817925,
-	  -403.4403825980332
-  ],
-  "rotation": [
-	  0.6763999840037055,
-	  -0.1631002257457524,
-	  -0.7028718750384398,
-	  0.1478259289888153
-  ]
-},
-{
-  "distance": 533.0972798979914,
-  "center": [
-	  124.47713497822522,
-	  -176.33047332493723,
-	  1296.5832422652277
-  ],
-  "rotation": [
-	  0.8713838273437718,
-	  -0.13264547865021642,
-	  -0.47013966633787396,
-	  0.04543232960216371
   ]
 }
 ]
@@ -211,6 +142,7 @@ function preload(){
     './data4/cont4.json',
     '../../yardplan_creator/data4/cld.json'
   ];
+
   $.getJSON(path[0], function(data){
 	cArray = data;
 	$.getJSON(path[1], function(data){
@@ -544,47 +476,21 @@ function drawHouse(house){
 function setup() {
   createCanvas(windowWidth-10, windowHeight-100, WEBGL);
   noLoop();
-  // frameRate(10)
 }
 
 function draw() {
   center = easycam.getCenter();
   dis = easycam.getDistance();
   rot = easycam.getRotation();
-  // push()
-  // stroke(0)
-  // strokeWeight(2);
-  // fill(255,0,0)
-  // sphere(20,6,6)
-
-  // push();
-  // translate(center[0], center[1], center[2]);
-  // sphere(40,6,6);
-  // pop();
-  // line(0,0,0, center[0], center[1], center[2])
-  // line(center[0], center[1], center[2], eyeVector[0], eyeVector[1], eyeVector[2])
-
-  // pop()
-
-
   translate(-depot.center.x,0, -depot.center.y)
   calcEYE();
   background(240);
   rotateX(1.5707963268);
-  strokeWeight(2);
-
-  // line(0,0,0, center[0], center[1], center[2])
-
-
-
   drawDepot();
   ori1 = rot[2]**2;
   ori2 = rot[0]+rot[2];
   strokeWeight(1);
   for(let i =0; i<cArray.length; i++){
-    // if (cArray[i].Block >1 ){;
-    //   continue;
-    // }
     drawCont(cArray[i],depot.Area,ori1, ori2)
   }
   drawHouse(depot.house);

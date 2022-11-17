@@ -62,26 +62,26 @@ class Teu{
 }
 
 function preload(){
-  $.getJSON("./data/etdv2.json", function(data){
-    depot = data;
-    depot.Area = [];
-    $.getJSON("./data/etd_reservation.json", function(data){
-      teuArray = data;
-      ground = depot.ground;
-      init()
-      console.log("Done");
-    })
-  })
-  // $.getJSON("./data2/std.json", function(data){
+  // $.getJSON("./data/etdv2.json", function(data){
   //   depot = data;
-  //   // depot.Area = [];
-  //   $.getJSON("./data2/std_reservation.json", function(data){
+  //   depot.Area = [];
+  //   $.getJSON("./data/etd_reservation.json", function(data){
   //     teuArray = data;
   //     ground = depot.ground;
   //     init()
   //     console.log("Done");
   //   })
   // })
+  $.getJSON("./data2/std.json", function(data){
+    depot = data;
+    // depot.Area = [];
+    $.getJSON("./data2/std_reservation.json", function(data){
+      teuArray = data;
+      ground = depot.ground;
+      init()
+      console.log("Done");
+    })
+  })
   // $.getJSON("./data3/tbd.json", function(data){
   //       depot = data;
   //       depot.Area = [];

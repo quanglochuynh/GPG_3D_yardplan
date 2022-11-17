@@ -1,7 +1,6 @@
 from json import JSONEncoder
 import math
 
-
 class depotEncoder(JSONEncoder):
     def default(self, o):
         return o.__dict__

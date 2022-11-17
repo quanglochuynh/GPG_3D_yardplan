@@ -461,50 +461,64 @@ function drawDepot(){
 
 function drawHouse(house){
   for (let i=0; i<house.length; i++){
-	if (house[i].type<2){
-    push();
-    p1 = house[i].shape.seq[house[i].id1]
-    p2 = house[i].shape.seq[house[i].id2]
-    let dif = rotateDiff(createVector(p2.x-p1.x, p2.y-p1.y), house[i].angle)
-    w = Math.abs(p1.x-p2.x) + dif.x;
-    h = Math.abs(p1.y-p2.y) + dif.y;
-    fill(180);
-    translate(p1.x-w/2,p1.y-h/2,house[i].height/2+house[i].offsetZ)
-    rotateZ(-house[i].angle)
-    box(w, h, house[i].height)
-  //   // noStroke();
-  //   strokeWeight(1)
-  //   if (w>h){
-  //   rotateZ(1.5707963268);
-  //   translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
-  //   scale(0.6*h/(roofHeight),1,1 )
-  //   cylinder(roofHeight,w,4,1)
-  //   scale((roofHeight)/(0.6*h),1,1 )
-  //   }else{
-  //   translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
-  //   scale(0.6*w/(roofHeight),1,1 )
-  //   cylinder(roofHeight,h,4,1)
-  //   scale((roofHeight)/(0.6*w),1,1 )
-  //   }
-  //   fill(255)
-  //   // resetMatrix();
-  //   if (w>h){
-  //   rotateZ(-Math.PI/2);
-  //   }else{
-  //   rotateZ(Math.PI/2);
-  //   }
-  //   translate(0,0,roofHeight)
-  //   textSize(largeFontSize)
-  //   text(house[i].name, 0,0)
-    pop();
-	// }else{
-	//   p1 = house[i].shape.seq[house[i].id1]
-	//   p2 = house[i].shape.seq[house[i].id2]
-	//   w = Math.abs(p1.x-p2.x)
-	//   h = Math.abs(p1.y-p2.y)
-	//   translate(0,0,house[i].offsetZ)
-	//   drawSlope(p1.x+house[i].offsetX, p1.y+house[i].offsetY, h,w,20,0.9, Math.PI/2)
-	}
+    if (house[i].type<2){
+      // push();
+      // p1 = house[i].shape.seq[house[i].id1]
+      // p2 = house[i].shape.seq[house[i].id2]
+      // let dif = rotateDiff(createVector(p2.x-p1.x, p2.y-p1.y), house[i].angle)
+      // w = Math.abs(p1.x-p2.x) + dif.x;
+      // h = Math.abs(p1.y-p2.y) + dif.y;
+      // fill(180);
+      // translate(p1.x-w/2,p1.y-h/2,house[i].height/2+house[i].offsetZ)
+      // rotateZ(-house[i].angle)
+      // box(w, h, house[i].height)
+    //   // noStroke();
+    //   strokeWeight(1)
+    //   if (w>h){
+    //   rotateZ(1.5707963268);
+    //   translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
+    //   scale(0.6*h/(roofHeight),1,1 )
+    //   cylinder(roofHeight,w,4,1)
+    //   scale((roofHeight)/(0.6*h),1,1 )
+    //   }else{
+    //   translate(0,0,(roofHeight/3)+(house[i].height/2)+4)
+    //   scale(0.6*w/(roofHeight),1,1 )
+    //   cylinder(roofHeight,h,4,1)
+    //   scale((roofHeight)/(0.6*w),1,1 )
+    //   }
+    //   fill(255)
+    //   // resetMatrix();
+    //   if (w>h){
+    //   rotateZ(-Math.PI/2);
+    //   }else{
+    //   rotateZ(Math.PI/2);
+    //   }
+    //   translate(0,0,roofHeight)
+    //   textSize(largeFontSize)
+    //   text(house[i].name, 0,0)
+      // pop();
+    // }else{
+    //   p1 = house[i].shape.seq[house[i].id1]
+    //   p2 = house[i].shape.seq[house[i].id2]
+    //   w = Math.abs(p1.x-p2.x)
+    //   h = Math.abs(p1.y-p2.y)
+    //   translate(0,0,house[i].offsetZ)
+    //   drawSlope(p1.x+house[i].offsetX, p1.y+house[i].offsetY, h,w,20,0.9, Math.PI/2)
+      fill(200);
+      for (let j=0; j<house[i].shape.seq.length-1; j++){
+        beginShape()
+        vertex(house[i].shape.seq[j].x,house[i].shape.seq[j].y,10);
+        vertex(house[i].shape.seq[j+1].x, house[i].shape.seq[j+1].y, 10);
+        vertex(house[i].shape.seq[j+1].x,house[i].shape.seq[j+1].y,house[i].height+10);
+        vertex(house[i].shape.seq[j].x, house[i].shape.seq[j].y, house[i].height+10);
+        endShape(CLOSE)
+      }
+      beginShape()
+      for (let j=0; j<house[i].shape.seq.length; j++){
+        vertex(house[i].shape.seq[j].x,house[i].shape.seq[j].y,house[i].height+10);
+      }
+      endShape(CLOSE)
+    }
   }
 }
 

@@ -916,7 +916,7 @@
             },
             "id1": 0,
             "id2": 2,
-            "height": 200,
+            "height": 100,
             "angle": 0.05235987755982988,
             "offsetX": 0,
             "offsetY": 0
@@ -952,7 +952,7 @@
             },
             "id1": 0,
             "id2": 2,
-            "height": 200,
+            "height": 50,
             "angle": 0.05235987755982988,
             "offsetX": 0,
             "offsetY": 0
@@ -988,7 +988,7 @@
             },
             "id1": 0,
             "id2": 2,
-            "height": 200,
+            "height": 50,
             "angle": 0.05235987755982988,
             "offsetX": 0,
             "offsetY": 0
@@ -1060,13 +1060,13 @@
             },
             "id1": 0,
             "id2": 2,
-            "height": 200,
+            "height": 100,
             "angle": 1.448972345005692,
             "offsetX": 0,
             "offsetY": 0
         },
         {
-            "type": 0,
+            "type": 3,
             "name": "house 7",
             "shape": {
                 "seq": [
@@ -1104,7 +1104,7 @@
             },
             "id1": 0,
             "id2": 2,
-            "height": 200,
+            "height": 0,
             "angle": 0.05235987755982988,
             "offsetX": 0,
             "offsetY": 0

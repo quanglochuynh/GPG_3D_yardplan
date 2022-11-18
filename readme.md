@@ -54,6 +54,4 @@ Phần mềm hoạch định bãi container
     </g>
     </svg>
     ```
-
-    - Các thẻ <polygon> chính là các đa giác trong mặt bằng depot, trình tự các thẻ cũng tuân theo trình tự layer trong phầm mềm
-    
+  - Các thẻ `<polygon>` chính là các đa giác trong mặt bằng depot, trình tự các thẻ cũng tuân theo trình tự layer trong phầm mềm.

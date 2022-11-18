@@ -62,8 +62,25 @@ Phần mềm hoạch định bãi container
   - 2.1: tạo file python có cấu trúc như sau:
     - Phần import thư viện:
 
-    ```python
-    import sys
-    sys.path.append("/Users/lochuynhquang/Documents/GPG_3D_yardplan")
-    from gpg import *
-    ```
+        ```python
+        import sys
+        sys.path.append("/Users/lochuynhquang/Documents/GPG_3D_yardplan")
+        from gpg import *
+        ```
+
+        Đường dẫn trong câu thứ 2 là đường dẫn đến thư mục chứa file `gpg.py`
+    - Phần tạo object Depot
+
+        Tạo đối tượng `Layout` với đường dẫn tới file SVG của depot.
+
+        ```python
+        std_layout = Layout("./std.svg")
+        ```
+
+        Phóng to/thu nhỏ layout bằng method `scale`
+
+        ```python
+        std_layout.scale(cox=6, coy=6)
+        ```
+
+    - Phần xuất object python ra thành JSON string

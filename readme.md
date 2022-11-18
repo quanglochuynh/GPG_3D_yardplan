@@ -1,5 +1,5 @@
 
-# GPG 2D container depot planner
+# GPG 2D Container Depot Planner
 
 Phần mềm hoạch định bãi container
 
@@ -7,27 +7,28 @@ Phần mềm hoạch định bãi container
 
 - [@quanglochuynh](https://github.com/quanglochuynh/)
 
-
 ## Documentation
 
 ### 1. Cách tạo layout cho một depot mới
-- Bước 1: Tạo file mặt bằng sơ đồ bãi bằng các phần mềm CAD, hoặc Adobe Illustrator. 
-    - Layout cần có:
-        - Các đa giác cho từng khu vực 
+
+- Bước 1: Tạo file mặt bằng sơ đồ bãi bằng các phần mềm CAD, hoặc Adobe Illustrator.
+  - Layout cần có:
+    - Các đa giác cho từng khu vực
     ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2010.32.28.png?raw=true)
-        - 1 đa giác cho toàn bộ bãi.
+    - 1 đa giác cho toàn bộ bãi.
     ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2010.36.47.png?raw=true)
-        - Các đa giác cho các khu vực nhà (Gate In/Out, MNR, văn phòng, vv)
+    - Các đa giác cho các khu vực nhà (Gate In/Out, MNR, văn phòng, vv)
     ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2010.44.15.png?raw=true)
-        - Các nút bấm để chuyển đổi giữa các khu vực
+    - Các nút bấm để chuyển đổi giữa các khu vực
     ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2010.46.19.png?raw=true)
-    - Layout hoàn chỉnh như sau: 
+  - Layout hoàn chỉnh như sau:
     ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2010.52.06.png?raw=true)
-- Bước 2: Export file layout bằng định dạng *.svg. 
+- Bước 2: Export file layout bằng định dạng *.svg.
     ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2010.59.38.png?raw=true)
 
     File SVG sẽ có định dạng giống như HTML5 như sau:
-    ```
+
+    ```html
     <svg xmlns="http://www.w3.org/2000/svg" width="504" height="400" viewBox="0 0 504 400">
     <g>
         <polygon class="a" points="15 165 76 166 153 202 182 202 15 122 15 165"/>
@@ -54,4 +55,15 @@ Phần mềm hoạch định bãi container
     </g>
     </svg>
     ```
-  - Các thẻ `<polygon>` chính là các đa giác trong mặt bằng depot, trình tự các thẻ cũng tuân theo trình tự layer trong phầm mềm.
+
+  - Các thẻ "<" polygon ">" chính là các đa giác trong mặt bằng depot, trình tự các thẻ cũng tuân theo trình tự layer trong phầm mềm
+    ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2011.21.06.png?raw=true)
+- Bước 2: Tạo JSON Object chứa thuộc tính depot từ file SVG ở bước 1:
+  - 2.1: tạo file python có cấu trúc như sau:
+    - Phần import thư viện:
+
+    ```python
+    import sys
+    sys.path.append("/Users/lochuynhquang/Documents/GPG_3D_yardplan")
+    from gpg import *
+    ```

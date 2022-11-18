@@ -63,6 +63,7 @@ Phần mềm hoạch định bãi container
 #### Bước 2: Tạo JSON Object chứa thuộc tính depot từ file SVG ở bước 1
 
 - 2.1: tạo file python có cấu trúc như sau:
+
 - 2.1.1 Phần import thư viện:
 
     ```python
@@ -72,6 +73,7 @@ Phần mềm hoạch định bãi container
     ```
 
     Đường dẫn trong câu thứ 2 là đường dẫn đến thư mục chứa file `gpg.py`
+
 - 2.1.2 Phần tạo object Depot
 
   - 2.1.2.1 Tạo đối tượng `Layout` với đường dẫn tới file SVG của depot.
@@ -140,6 +142,7 @@ Phần mềm hoạch định bãi container
       - Width (Pixel): Độ rộng của lưới rải cont.
       - Angle (Radian): Góc nghiêng của lưới rải cont so với trục ngang.
       - Button: object button (khai báo ở trên) tương ứng với khu vực đó.
+
   - 2.1.2.4 Tạo object House
     - Mỗi object House là một khu vực bị tô đen trên mặt bằng depot.
 
@@ -170,7 +173,7 @@ Phần mềm hoạch định bãi container
         )
         ```
 
-- Phần xuất object python ra thành JSON string
+- 2.1.3 Phần xuất object python ra thành JSON string
 
     ```python
     jn = (depotEncoder().encode(std))

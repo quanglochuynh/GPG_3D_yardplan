@@ -217,8 +217,7 @@ class Area:
         self.y_flip = y_flip
 
 class Layout:
-    def __init__(self,name,svg_path) -> None:
-        self.name = name
+    def __init__(self,svg_path) -> None:
         self.shape = svg2layout(svg_path)
         self.text = read_text(svg_path)
         self.line = read_line(svg_path)

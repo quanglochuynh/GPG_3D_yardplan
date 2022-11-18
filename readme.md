@@ -60,7 +60,7 @@ Phần mềm hoạch định bãi container
     ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2011.21.06.png?raw=true)
 - Bước 2: Tạo JSON Object chứa thuộc tính depot từ file SVG ở bước 1:
   - 2.1: tạo file python có cấu trúc như sau:
-    - Phần import thư viện:
+    - 2.1.1 Phần import thư viện:
 
         ```python
         import sys
@@ -69,18 +69,46 @@ Phần mềm hoạch định bãi container
         ```
 
         Đường dẫn trong câu thứ 2 là đường dẫn đến thư mục chứa file `gpg.py`
-    - Phần tạo object Depot
+    - 2.1.2 Phần tạo object Depot
 
-        Tạo đối tượng `Layout` với đường dẫn tới file SVG của depot.
+      - 2.1.2.1 Tạo đối tượng `Layout` với đường dẫn tới file SVG của depot.
 
-        ```python
-        std_layout = Layout("./std.svg")
-        ```
+```python
+std_layout = Layout("./std.svg")
+```
 
-        Phóng to/thu nhỏ layout bằng method `scale`
+        - Phóng to/thu nhỏ layout bằng method `scale`
 
-        ```python
-        std_layout.scale(cox=6, coy=6)
-        ```
+```python
+std_layout.scale(cox=6, coy=6)
+```
+
+        - Chỉnh độ đậm nhạt của các đa giác bằng cách gán giá trị từ 0 tới 1 cho
+
+```python
+std_layout.shape[0].visible = 0.2
+std_layout.shape[1].visible = 0.2
+std_layout.shape[2].visible = 0.2
+std_layout.shape[3].visible = 0.2
+std_layout.shape[4].visible = 0.2
+std_layout.shape[5].visible = 0
+std_layout.shape[6].visible = 0
+```
+
+          - Lưu ý:
+            - Chỉ số của shape là tương ứng với thứ tự của file svg và thứ tự layer trong phần mềm CAD
+            - Các đa giác cho các nút chuyển khu vực nên được set `visible=0`
+
+      - 2.1.2.2 Tạo object Nút bấm (Button) để chuyển đổi khu vực
+
+        - Ví dụ depot có 5 cách đặt container, tương ứng với 5 khu vực khác nhau, chúng ta tạo 5 đối tượng Button cho từng khu vực.
+
+                ```python
+                btn0 = Button(std_layout.shape[12].seq[1], "Area 1", angle=-0.44378560551852564)
+                btn1 = Button(std_layout.shape[13].seq[1], "Area 2", angle=0.7549448708775051)
+                btn2 = Button(std_layout.shape[14].seq[1], "Area 3", angle=math.pi/2)
+                btn3 = Button(std_layout.shape[15].seq[1], "Area 4", angle=1.2217304763960306)
+                btn4 = Button(std_layout.shape[16].seq[1], "Area 5", angle=-0.8158514559173915)
+                ```
 
     - Phần xuất object python ra thành JSON string

@@ -70,20 +70,20 @@ Phần mềm hoạch định bãi container
 
         Đường dẫn trong câu thứ 2 là đường dẫn đến thư mục chứa file `gpg.py`
     - 2.1.2 Phần tạo object Depot
-    
-        - 2.1.2.1 Tạo đối tượng `Layout` với đường dẫn tới file SVG của depot.
+
+      - 2.1.2.1 Tạo đối tượng `Layout` với đường dẫn tới file SVG của depot.
 
             ```python
             std_layout = Layout("./std.svg")
             ```
 
-            - Phóng to/thu nhỏ layout bằng method `scale`
+        - Phóng to/thu nhỏ layout bằng method `scale`
 
                 ```python
                 std_layout.scale(cox=6, coy=6)
                 ```
 
-            - Chỉnh độ đậm nhạt của các đa giác bằng cách gán giá trị từ 0 tới 1 cho 
+        - Chỉnh độ đậm nhạt của các đa giác bằng cách gán giá trị từ 0 tới 1 cho
 
                 ```python
                     std_layout.shape[0].visible = 0.2
@@ -94,14 +94,14 @@ Phần mềm hoạch định bãi container
                     std_layout.shape[5].visible = 0
                     std_layout.shape[6].visible = 0
                 ```
+          - Lưu ý:
+            - Chỉ số của shape là tương ứng với thứ tự của file svg và thứ tự layer trong phần mềm CAD
+            - Các đa giác cho các nút chuyển khu vực nên được set `visible=0`
 
-                - Lưu ý: 
-                    - Chỉ số của shape là tương ứng với thứ tự của file svg và thứ tự layer trong phần mềm CAD
-                    - Các đa giác cho các nút chuyển khu vực nên được set `visible=0`
+      - 2.1.2.2 Tạo object Nút bấm (Button) để chuyển đổi khu vực
 
-        - 2.1.2.2 Tạo object Nút bấm (Button) để chuyển đổi khu vực
+        - Ví dụ depot có 5 cách đặt container, tương ứng với 5 khu vực khác nhau, chúng ta tạo 5 đối tượng Button cho từng khu vực.
 
-            - Ví dụ depot có 5 cách đặt container, tương ứng với 5 khu vực khác nhau, chúng ta tạo 5 đối tượng Button cho từng khu vực.
                 ```python
                 btn0 = Button(std_layout.shape[12].seq[1], "Area 1", angle=-0.44378560551852564)
                 btn1 = Button(std_layout.shape[13].seq[1], "Area 2", angle=0.7549448708775051)
@@ -109,5 +109,8 @@ Phần mềm hoạch định bãi container
                 btn3 = Button(std_layout.shape[15].seq[1], "Area 4", angle=1.2217304763960306)
                 btn4 = Button(std_layout.shape[16].seq[1], "Area 5", angle=-0.8158514559173915)
                 ```
-
+        - Object Button có 3 thuộc tính:
+          - Toạ độ điểm đầu: toạ độ điểm nằm ở góc trên bên trái của button
+          - Tên button: chữ hiển thị bên trong button
+          - Góc xoay: góc xoay của button so với trục ngang (đơn vị Radian, 360 $\degree = 2 $\cdot $\pi radian)
     - Phần xuất object python ra thành JSON string

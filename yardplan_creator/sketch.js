@@ -923,11 +923,21 @@ function exportJson(init=true){
     let p = gridMapingTranspose(origin.position, origin.orient);
     // p = createVector(p.x,p.y);
     // p.rotate(-ground[origin.ground].angle);
-    let dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
+    let dif;
+    if (!origin.orient){
+      dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
+      let x = ground[id].offsetX + p.x + dif.x;
+      let y = ground[id].offsetY + p.y + dif.y;
+      area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle));
+    }else{
+      dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
+      let x = ground[id].offsetX + p.x + dif.x;
+      let y = ground[id].offsetY + p.y + dif.y;
+      area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle + PI/2));
+    }
+
     // console.log(dif);
-    let x = ground[id].offsetX + p.x + dif.x;
-    let y = ground[id].offsetY + p.y + dif.y;
-    area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle));
+    
 
     for (let t=0; t<teuArray.length; t++){
       if (teuArray[t].bay_name == bayNameArray[i]){

@@ -8,9 +8,9 @@ let rot,dis;
 let ori1;
 let ori2;
 let contArray3D;
-const maxRow=20;
-const maxBay = 80;
-const maxTier = 7;
+let maxRow=0;
+let maxBay = 0;
+let maxTier = 0;
 const largeFontSize = 48;
 const smallFontSize = 12
 roofHeight = 20;
@@ -27,7 +27,7 @@ let optArray;
 let countBay;
 let countOpt;;
 let sumAll;
-let contScaleFactor = 0.95;
+let contScaleFactor = 1;
 
 const states = [
   {
@@ -90,9 +90,12 @@ function cvtArea(a){
 function processCont(){
   lut = [];
   for (let i=0; i<cArray.length; i++){
-    if (cArray[i].Block == ""){;
-      continue;
-    }
+    // if (cArray[i].Block == ""){;
+    //   continue;
+    // }
+    maxBay = max(maxBay, parseInt(cArray[i].Bay))
+    maxRow = max(maxRow, parseInt(cArray[i].Row))
+    maxTier = max(maxTier,parseInt(cArray[i].Tier))
     // if (cArray[i].Block == "B-F"){
     //   console.log(cArray[i]);
     // }
@@ -104,11 +107,11 @@ function processCont(){
   contArray3D = [];
   for (let i=0; i<depot.Area.length;i++){
     area = []
-    for (let j=0; j<maxBay; j++){
+    for (let j=0; j<=maxBay; j++){
       bay = []
-      for (let k=0; k<maxRow; k++){
+      for (let k=0; k<=maxRow; k++){
         let r = [];
-        for (let l=0; l<maxTier; l++){
+        for (let l=0; l<=maxTier; l++){
           r.push(0);
         }
         bay.push(r);
@@ -128,7 +131,7 @@ function processCont(){
       contArray3D[a][b][r][t] = 1;
     } catch (error) {
       console.log('error: ', error);
-      // console.log(a,b,r,t);
+      console.log(a,b,r,t);
     }
   }
 }
@@ -138,9 +141,13 @@ function preload(){
   //   './data/cont3.json',
   //   '../../yardplan_creator/data/etdv2.json'
   // ];
+  // let path = [
+  //   './data4/cont4.json',
+  //   '../../yardplan_creator/data4/cld.json'
+  // ];
   let path = [
-    './data4/cont4.json',
-    '../../yardplan_creator/data4/cld.json'
+    './data2/cont2.json',
+    '../../yardplan_creator/data2/std.json'
   ];
 
   $.getJSON(path[0], function(data){

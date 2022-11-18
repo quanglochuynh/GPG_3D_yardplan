@@ -86,13 +86,13 @@ Phần mềm hoạch định bãi container
         - Chỉnh độ đậm nhạt của các đa giác bằng cách gán giá trị từ 0 tới 1 cho
 
                 ```python
-                    std_layout.shape[0].visible = 0.2
-                    std_layout.shape[1].visible = 0.2
-                    std_layout.shape[2].visible = 0.2
-                    std_layout.shape[3].visible = 0.2
-                    std_layout.shape[4].visible = 0.2
-                    std_layout.shape[5].visible = 0
-                    std_layout.shape[6].visible = 0
+    std_layout.shape[0].visible = 0.2
+    std_layout.shape[1].visible = 0.2
+    std_layout.shape[2].visible = 0.2
+    std_layout.shape[3].visible = 0.2
+    std_layout.shape[4].visible = 0.2
+    std_layout.shape[5].visible = 0
+    std_layout.shape[6].visible = 0
                 ```
           - Lưu ý:
             - Chỉ số của shape là tương ứng với thứ tự của file svg và thứ tự layer trong phần mềm CAD

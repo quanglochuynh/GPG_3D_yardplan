@@ -241,7 +241,7 @@ class Layout:
             self.line[i].p2.translate(dx,dy)
 
 class Ground:
-    def __init__(self, shapeID, id1, offsetX=0, offsetY=0, offsetZ=0, angle=0, height=None, width=None, button = None):
+    def __init__(self, shapeID, id1=None, offsetX=0, offsetY=0, offsetZ=0, angle=0, height=None, width=None, button = None):
         self.shapeID = shapeID
         self.id1 = id1
         self.offsetX = offsetX
@@ -253,16 +253,11 @@ class Ground:
         self.wid = width
 
 class House:
-    def __init__(self, type, name, shape, id1=0, id2=2, height=100, angle=0, offsetX=0, offsetY=0) -> None:
+    def __init__(self, type, name, shape, height=100, angle=0, id1=0, id2=2, offsetX=0, offsetY=0) -> None:
         self.type = type
         self.name = name
         self.shape = shape
-        self.id1 = id1
-        self.id2 = id2
         self.height = height
-        self.angle = angle
-        self.offsetX = offsetX
-        self.offsetY = offsetY
 
 class Depot:
     def __init__(self, name, layout, ground=[], area=[], house=[], container_scale=1, offset=Point(0,0), scale=1, defaultGround=0) -> None:        

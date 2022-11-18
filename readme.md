@@ -171,3 +171,10 @@ Phần mềm hoạch định bãi container
         ```
 
 - Phần xuất object python ra thành JSON string
+
+    ```python
+    jn = (depotEncoder().encode(std))
+    ofile = open("./std.json", "w")
+    ofile.write(jn)
+    ofile.close()
+    ```

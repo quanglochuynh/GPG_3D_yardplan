@@ -74,7 +74,7 @@ Phần mềm hoạch định bãi container
 
     Đường dẫn trong câu thứ 2 là đường dẫn đến thư mục chứa file `gpg.py`
 
-- 2.1.2 Phần tạo object Depot
+- 2.1.2 Phần tạo object `Depot`
 
   - 2.1.2.1 Tạo đối tượng `Layout` với đường dẫn tới file SVG của depot.
 
@@ -104,7 +104,7 @@ Phần mềm hoạch định bãi container
         - Chỉ số của shape là tương ứng với thứ tự của file svg và thứ tự layer trong phần mềm CAD
         - Các đa giác cho các nút chuyển khu vực nên được set `visible=0`
 
-  - 2.1.2.2 Tạo object Nút bấm (Button) để chuyển đổi khu vực
+  - 2.1.2.2 Tạo object Nút bấm (`Button`) để chuyển đổi khu vực
 
     - Object Button có 3 thuộc tính:
       - Toạ độ điểm đầu: toạ độ điểm nằm ở góc trên bên trái của button
@@ -121,7 +121,7 @@ Phần mềm hoạch định bãi container
         btn4 = Button(std_layout.shape[16].seq[1], "Area 5", angle=-0.8158514559173915)
         ```
 
-  - 2.1.2.3 Tạo object Ground
+  - 2.1.2.3 Tạo object `Ground`
     - Mỗi Ground tương ứng với 1 khu vực của depot
     - Ví dụ với depot Sóng Thần, chúng ta tạo 5 biến ground
 
@@ -143,7 +143,7 @@ Phần mềm hoạch định bãi container
       - Angle (Radian): Góc nghiêng của lưới rải cont so với trục ngang.
       - Button: object button (khai báo ở trên) tương ứng với khu vực đó.
 
-  - 2.1.2.4 Tạo object House
+  - 2.1.2.4 Tạo object `House`
     - Mỗi object House là một khu vực bị tô đen trên mặt bằng depot.
 
         ```python
@@ -153,7 +153,7 @@ Phần mềm hoạch định bãi container
         pccc = House(0, "Nha Kho", std_layout.shape[11])
         ```
 
-  - 2.1.2.5 Tạo đối tượng Depot
+  - 2.1.2.5 Tạo đối tượng `Depot`
     - Object Depot có những thuộc tính sau:
       - Name: Tên depot.
       - Layout: Object Layout của depot.

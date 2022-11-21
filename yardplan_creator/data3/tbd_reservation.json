@@ -1596,6 +1596,17 @@
     },
     {
         "x": 10,
+        "y": 39,
+        "orient": true,
+        "opt": "COS",
+        "num_of_tier": 6,
+        "bay_name": "B",
+        "bay": 1,
+        "row": 29,
+        "ground": 2
+    },
+    {
+        "x": 10,
         "y": 44,
         "orient": true,
         "opt": "EVG",
@@ -2014,6 +2025,17 @@
     },
     {
         "x": 11,
+        "y": 39,
+        "orient": true,
+        "opt": "COS",
+        "num_of_tier": 6,
+        "bay_name": "B",
+        "bay": 2,
+        "row": 29,
+        "ground": 2
+    },
+    {
+        "x": 11,
         "y": 44,
         "orient": true,
         "opt": "EVG",
@@ -2432,6 +2454,17 @@
     },
     {
         "x": 12,
+        "y": 39,
+        "orient": true,
+        "opt": "COS",
+        "num_of_tier": 6,
+        "bay_name": "B",
+        "bay": 3,
+        "row": 29,
+        "ground": 2
+    },
+    {
+        "x": 12,
         "y": 44,
         "orient": true,
         "opt": "EVG",
@@ -2850,6 +2883,17 @@
     },
     {
         "x": 13,
+        "y": 39,
+        "orient": true,
+        "opt": "COS",
+        "num_of_tier": 6,
+        "bay_name": "B",
+        "bay": 4,
+        "row": 29,
+        "ground": 2
+    },
+    {
+        "x": 13,
         "y": 44,
         "orient": true,
         "opt": "EVG",
@@ -3268,6 +3312,17 @@
     },
     {
         "x": 14,
+        "y": 39,
+        "orient": true,
+        "opt": "COS",
+        "num_of_tier": 6,
+        "bay_name": "B",
+        "bay": 5,
+        "row": 29,
+        "ground": 2
+    },
+    {
+        "x": 14,
         "y": 44,
         "orient": true,
         "opt": "EVG",
@@ -3686,6 +3741,17 @@
     },
     {
         "x": 15,
+        "y": 39,
+        "orient": true,
+        "opt": "COS",
+        "num_of_tier": 6,
+        "bay_name": "B",
+        "bay": 6,
+        "row": 29,
+        "ground": 2
+    },
+    {
+        "x": 15,
         "y": 44,
         "orient": true,
         "opt": "EVG",
@@ -4100,6 +4166,17 @@
         "bay_name": "B",
         "bay": 7,
         "row": 27,
+        "ground": 2
+    },
+    {
+        "x": 16,
+        "y": 39,
+        "orient": true,
+        "opt": "COS",
+        "num_of_tier": 6,
+        "bay_name": "B",
+        "bay": 7,
+        "row": 29,
         "ground": 2
     },
     {
@@ -4521,6 +4598,28 @@
         "ground": 2
     },
     {
+        "x": 18,
+        "y": 34,
+        "orient": true,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "E",
+        "bay": 1,
+        "row": 43,
+        "ground": 2
+    },
+    {
+        "x": 18,
+        "y": 35,
+        "orient": true,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "E",
+        "bay": 1,
+        "row": 45,
+        "ground": 2
+    },
+    {
         "x": 19,
         "y": 1,
         "orient": true,
@@ -4829,6 +4928,28 @@
         "ground": 2
     },
     {
+        "x": 19,
+        "y": 34,
+        "orient": true,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "E",
+        "bay": 2,
+        "row": 43,
+        "ground": 2
+    },
+    {
+        "x": 19,
+        "y": 35,
+        "orient": true,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "E",
+        "bay": 2,
+        "row": 45,
+        "ground": 2
+    },
+    {
         "x": 20,
         "y": 1,
         "orient": true,
@@ -5137,6 +5258,28 @@
         "ground": 2
     },
     {
+        "x": 20,
+        "y": 34,
+        "orient": true,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "E",
+        "bay": 3,
+        "row": 43,
+        "ground": 2
+    },
+    {
+        "x": 20,
+        "y": 35,
+        "orient": true,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "E",
+        "bay": 3,
+        "row": 45,
+        "ground": 2
+    },
+    {
         "x": 21,
         "y": 1,
         "orient": true,
@@ -5445,6 +5588,28 @@
         "ground": 2
     },
     {
+        "x": 21,
+        "y": 34,
+        "orient": true,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "E",
+        "bay": 4,
+        "row": 43,
+        "ground": 2
+    },
+    {
+        "x": 21,
+        "y": 35,
+        "orient": true,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "E",
+        "bay": 4,
+        "row": 45,
+        "ground": 2
+    },
+    {
         "x": 22,
         "y": 1,
         "orient": true,
@@ -5742,17 +5907,6 @@
         "ground": 2
     },
     {
-        "x": 22,
-        "y": 33,
-        "orient": true,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "E",
-        "bay": 5,
-        "row": 41,
-        "ground": 2
-    },
-    {
         "x": 23,
         "y": 1,
         "orient": true,
@@ -5962,39 +6116,6 @@
         "ground": 2
     },
     {
-        "x": 23,
-        "y": 25,
-        "orient": true,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "E",
-        "bay": 6,
-        "row": 25,
-        "ground": 2
-    },
-    {
-        "x": 23,
-        "y": 26,
-        "orient": true,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "E",
-        "bay": 6,
-        "row": 27,
-        "ground": 2
-    },
-    {
-        "x": 23,
-        "y": 27,
-        "orient": true,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "E",
-        "bay": 6,
-        "row": 29,
-        "ground": 2
-    },
-    {
         "x": 24,
         "y": 1,
         "orient": true,
@@ -6102,50 +6223,6 @@
         "bay_name": "E",
         "bay": 7,
         "row": 5,
-        "ground": 2
-    },
-    {
-        "x": 24,
-        "y": 16,
-        "orient": true,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "E",
-        "bay": 7,
-        "row": 7,
-        "ground": 2
-    },
-    {
-        "x": 24,
-        "y": 17,
-        "orient": true,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "E",
-        "bay": 7,
-        "row": 9,
-        "ground": 2
-    },
-    {
-        "x": 24,
-        "y": 18,
-        "orient": true,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "E",
-        "bay": 7,
-        "row": 11,
-        "ground": 2
-    },
-    {
-        "x": 24,
-        "y": 19,
-        "orient": true,
-        "opt": "YML",
-        "num_of_tier": 6,
-        "bay_name": "E",
-        "bay": 7,
-        "row": 13,
         "ground": 2
     },
     {

@@ -69,7 +69,7 @@ function preload(){
     './data4/cld.json',
     './data5/cpd.json'
   ]
-  dPath = path[1];
+  dPath = path[2];
   $.getJSON(dPath, function(data){
     depot = data;
     teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';

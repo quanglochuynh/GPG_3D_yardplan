@@ -69,7 +69,7 @@ function preload(){
     './data4/cld.json',
     './data5/cpd.json'
   ]
-  dPath = path[4];
+  dPath = path[1];
   $.getJSON(dPath, function(data){
     depot = data;
     teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
@@ -899,7 +899,7 @@ function exportJson(init=true){
     // p.rotate(-ground[origin.ground].angle);
     let dif;
     if (!origin.orient){
-      dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
+      dif = rotateDiff(createVector(p.x, p.y), -depot.ground[origin.ground].angle)
       let x = depot.ground[id].offsetX + p.x + dif.x;
       let y = depot.ground[id].offsetY + p.y + dif.y;
       area.push(new Area(bayNameArray[i], x, y, depot.ground[origin.ground].angle));
@@ -926,7 +926,6 @@ function exportJson(init=true){
     }
   }
   depot.Area = area;
-  depot.teuArray = [];
   if (!init){
     let dp2 = depot;
     for (let i=0; i<depot.ground.length; i++){

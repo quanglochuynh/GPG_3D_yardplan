@@ -219,3 +219,9 @@ Phần mềm hoạch định bãi container
 - Sau đó, chỉnh sửa biến `dPath = path[id của đường dẫn file json trong mảng path]`
 - VD: file `std.json`đang nằm ở vị trí thứ 5 ==> `dPath = path[4]`
 - Quy trình setup depot mới hoàn thành.
+
+### Xuất file JSON cấu hình depot
+
+- File cấu hình depot được xuất ra khi gọi hàm `exportJSON()`
+- Khi hàm `exportJSON()` được gọi. Biến depot sẽ được log ra console kèm theo thuộc tính `teuArray` lưu cách data sắp xếp depot của người dùng và `Area` lưu toạ độ của từng block
+- Khi gọi hàm `exportJSON(false)` - có tham số false - thì chỉ có thuộc tính `Area` được xuất để giảm dung lượng file JSON

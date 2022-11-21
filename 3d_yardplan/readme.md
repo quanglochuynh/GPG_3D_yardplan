@@ -101,8 +101,13 @@ Phần mềm hoạch mô phỏng bãi container 3D
 ## Lưu ý
 
 - Một số lỗi có thể xảy ra như sau:
-  1. Đối tượng Container nằm ở Block không được liệt kê ở object `depot`
-  - ví dụ:
-    - Tên Block của container: 'A', tên Block của depot: 'a'
-    - Tên Block của container: 'A', object depot không có block 'A'
-  - Hướng giải quyết: xuất lại file `depot.json` từ `GPG 2D Container Depot Planner` với tên block chính xác
+  - Đối tượng Container nằm ở Block không được liệt kê ở object `depot`
+    - Ví dụ:
+      - Tên Block của container: 'A', tên Block của depot: 'a'
+      - Tên Block của container: 'A', object depot không có block 'A'
+    - Hướng giải quyết: xuất lại file `depot.json` từ `GPG 2D Container Depot Planner` với tên block chính xác
+
+  - JSON stock full chứa container có thông tin không hợp lệ:
+    - Ví dụ:
+      - Thông tin Hãng tàu là rỗng (`HangTauID=''`)
+      - Thiếu bất kì thông số nào khác.

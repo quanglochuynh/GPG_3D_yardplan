@@ -225,7 +225,7 @@ function drawSelection(){
   push()
   groundTranform()
   stroke("blue");
-  strokeWeight(1);
+  strokeWeight(depot.contWidth/10);
   noFill();
   for (let i=0; i<selection.length; i++){
     if (!gridAngle){
@@ -627,7 +627,7 @@ function initTeuArray(){      // chua toi uu height, width cua ground
 
 function updateVerticalHorizontal(){
   teuArray = []
-  for (let g=0; g<ground.length; g++){
+  for (let g=0; g<depot.ground.length; g++){
     for (let x=0; x<depot.ground[g].verticalArray.length; x++){
       for (let y=0; y<depot.ground[g].verticalArray[0].length; y++){
         if (depot.ground[g].verticalArray[x][y].opt==undefined) continue
@@ -816,7 +816,7 @@ function doneAddArea(){
     let y = selection[i].y;
     if (bayNameArray.indexOf(bay.toUpperCase())>=0){
       if (!gridAngle){
-        if ((ground[activeGround].verticalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].verticalArray[x][y-1].bay_name==bay.toUpperCase())){
+        if ((depot.ground[activeGround].verticalArray[x-1][y].bay_name==bay.toUpperCase())||(depot.ground[activeGround].verticalArray[x][y-1].bay_name==bay.toUpperCase())){
           depot.ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
           depot.ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
           depot.ground[activeGround].verticalArray[x][y].num_of_tier = tier;
@@ -827,7 +827,7 @@ function doneAddArea(){
           break;
         }
       }else{
-        if ((ground[activeGround].horizontalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].horizontalArray[x][y-1].bay_name==bay.toUpperCase())){
+        if ((depot.ground[activeGround].horizontalArray[x-1][y].bay_name==bay.toUpperCase())||(depot.ground[activeGround].horizontalArray[x][y-1].bay_name==bay.toUpperCase())){
           depot.ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
           depot.ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
           depot.ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
@@ -895,8 +895,6 @@ function exportJson(init=true){
     let origin = findAreaOrigin(bayNameArray[i])
     let id = origin.ground;
     let p = gridMapingTranspose(origin.position, origin.orient);
-    // p = createVector(p.x,p.y);
-    // p.rotate(-ground[origin.ground].angle);
     let dif;
     if (!origin.orient){
       dif = rotateDiff(createVector(p.x, p.y), -depot.ground[origin.ground].angle)
@@ -908,11 +906,7 @@ function exportJson(init=true){
       let x = depot.ground[id].offsetX + p.x + dif.x;
       let y = depot.ground[id].offsetY + p.y + dif.y;
       area.push(new Area(bayNameArray[i], x, y, depot.ground[origin.ground].angle + PI/2));
-    }
-
-    // console.log(dif);
-    
-
+    }    
     for (let t=0; t<teuArray.length; t++){
       if (teuArray[t].bay_name == bayNameArray[i]){
         if (!teuArray[t].orient){

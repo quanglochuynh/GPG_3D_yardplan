@@ -1,4 +1,4 @@
-# GPG depot management module
+# GPG depot management modules
 
 Module quản lý depot GPG
 
@@ -13,4 +13,4 @@ Module quản lý depot GPG
   - 1. `yardplan_creator`: Phần mềm hoạch định bãi container
   - 2. `3d_yardplan`: Phần mềm mô phỏng 3D bãi container
 
-- Ps: mỗi thư mục đều có hướng dẫn nằm trong file readme.md
+- P/s: mỗi thư mục đều có hướng dẫn nằm trong file readme.md

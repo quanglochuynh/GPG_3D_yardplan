@@ -73,11 +73,11 @@ function preload(){
   $.getJSON(dPath, function(data){
     depot = data;
     teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
-    console.log(teupath);
+    // console.log(teupath);
     $.getJSON(teupath,function(json){
       teuArray = json;
       init()
-      console.log(teuArray)
+      // console.log(teuArray)
       console.log("Done")
     })
     console.log(teuArray)

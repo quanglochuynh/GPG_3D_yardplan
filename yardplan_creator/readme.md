@@ -18,7 +18,7 @@ Phần mềm hoạch định bãi container
 ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2010.32.28.png?raw=true)
 - 1 đa giác cho toàn bộ bãi.
 ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2010.36.47.png?raw=true)
-- Các đa giác cho các khu vực nhà (Gate In/Out, MNR, văn phòng, vv)
+- Các đa giác cho các khu vực nhà (Gate In/Out, MNR, văn phòng, vv...)
 ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2010.44.15.png?raw=true)
 - Các nút bấm để chuyển đổi giữa các khu vực
 ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2010.46.19.png?raw=true)

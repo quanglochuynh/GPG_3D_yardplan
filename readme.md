@@ -58,7 +58,8 @@ Phần mềm hoạch định bãi container
     ```
 
   - Các thẻ `<polygon>` chính là các đa giác trong mặt bằng depot, trình tự các thẻ cũng tuân theo trình tự layer trong phầm mềm
-    ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2011.21.06.png?raw=true)
+
+  ![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-18%20at%2011.21.06.png?raw=true)
 
 #### Bước 2: Tạo JSON Object chứa thuộc tính depot từ file SVG ở bước 1
 

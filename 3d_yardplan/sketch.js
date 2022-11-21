@@ -96,6 +96,7 @@ function processCont(){
     maxBay = max(maxBay, parseInt(cArray[i].Bay))
     maxRow = max(maxRow, parseInt(cArray[i].Row))
     maxTier = max(maxTier,parseInt(cArray[i].Tier))
+
     // if (cArray[i].Block == "B-F"){
     //   console.log(cArray[i]);
     // }
@@ -104,6 +105,9 @@ function processCont(){
     //   console.log(cArray[i]);
     // }
   }
+  maxBay++;
+  maxRow++;
+  maxTier++;
   contArray3D = [];
   for (let i=0; i<depot.Area.length;i++){
     area = []

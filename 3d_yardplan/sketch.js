@@ -90,20 +90,10 @@ function cvtArea(a){
 function processCont(){
   lut = [];
   for (let i=0; i<cArray.length; i++){
-    // if (cArray[i].Block == ""){;
-    //   continue;
-    // }
     maxBay = max(maxBay, parseInt(cArray[i].Bay))
     maxRow = max(maxRow, parseInt(cArray[i].Row))
     maxTier = max(maxTier,parseInt(cArray[i].Tier))
-
-    // if (cArray[i].Block == "B-F"){
-    //   console.log(cArray[i]);
-    // }
     cArray[i].Block = bayNameArray.indexOf(cArray[i].Block);
-    // if (cArray[i].Block == 0){
-    //   console.log(cArray[i]);
-    // }
   }
   maxBay++;
   maxRow++;
@@ -124,7 +114,6 @@ function processCont(){
     }
     contArray3D.push(area)
   }
-  // console.log('contArray3D: ', contArray3D);
   let a,b,r,t;
   for (let i=0; i<cArray.length; i++){
     a = cArray[i].Block;
@@ -216,28 +205,14 @@ function drawCont(cont,or1, or2){
   y = b*(depot.contLength+depot.contGap)+depot.contHalfLength;
   x = t*(depot.contWidth)
   z = -r*(depot.contHeight);
-
   let dis2cont;
   let d = createVector(depot.Area[area].x_coor + depot.contLength, depot.Area[area].y_coor+depot.contWidth, 0.5*depot.contHeight + 20);
   let k = createVector(-r*depot.contWidth, b*(depot.contLength+depot.contGap));
   k.rotate(-depot.Area[area].angle);
   let d2 = p5.Vector.add(d,k);
-  // stroke(0);
-  // strokeWeight(2)
-  // line(depot.center.x+center[0], depot.center.y+center[2], -center[1], d.x,d.y,d.z);
-  // let base = createVector(depot.center.x+center[0], depot.center.y+center[2], -center[1])
-  // let dx = d.x - depot.center.x+center[0];
-  // let dy = d.y - depot.center.y+center[2];
-  // let dz = z+10 -center[1];
-  // dis2cont = Math.floor(myDist(subVec(eyeVector,[dx,dy,dz])));
-  // line(eyeVector[0]+depot.center.x, eyeVector[2]+ depot.center.y, -eyeVector[1] ,d.x,d.y,z+10);
   let eye = createVector(eyeVector[0]+depot.center.x, eyeVector[2]+ depot.center.y, -eyeVector[1]);
   let eye2cont = p5.Vector.sub(d2, eye);
   dis2cont = Math.floor(eye2cont.mag());
-  // let d = p5.Vector.sub()
-  // line(base.x, base.y, base.z,d.x,d.y,z+10);
-  // line(center[0], center[1], center[2], eyeVector[0], -eyeVector[2], eyeVector[1])
-
   let k2 = createVector(0, b*(depot.contLength+depot.contGap));
   k2.rotate(-depot.Area[area].angle);
   let d3 = p5.Vector.add(d,k2);
@@ -253,11 +228,7 @@ function drawCont(cont,or1, or2){
   } catch (error) {
     console.log('error: ', cont);
   }
-
   setColor(cont.HangTauID);
-  // bx = (depot.Area[area].x_coor)
-  // by = (depot.Area[area].y_coor)- b*(depot.contLength+depot.contGap)
-  // dis2Bay = Math.floor(myDist(subVec(eyeVector,[by, bx,0])));
   if (dis2Bay<600){
     pop();
     return;
@@ -290,7 +261,6 @@ function drawCont(cont,or1, or2){
         translate(0,0, depot.contWidth/2+2);
         textSize(smallFontSize);
         text(cont.ContID, 0,0);
-        // text(dis2cont, 0,0)
       }
     }
   }
@@ -305,7 +275,6 @@ function drawCont(cont,or1, or2){
       fill(255);
       rotateX(-1.5707963268);
       drawSideCont(cont, or2, true, dis)
-      
         if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
           rotateY(-PI/2)
           translate(0,0, depot.contWidth/2+2);
@@ -515,7 +484,6 @@ function changeTextVisibility(){
   }else{
 	showText = false;
 	// frameRate(60);
-
   }
 }
 
@@ -539,13 +507,6 @@ function drawSlope(x, y, wid, len, hei, offset, angle){
 
   endShape(CLOSE);
   pop();
-}
-
-function setCamera(state){
-  // easycam.setRotation(state.rotation,500);
-  // easycam.setDistance(state.distance,500);
-  // easycam.setCenter(state.center,500);
-  console.log(state);
 }
 
 function mouseReleased(){

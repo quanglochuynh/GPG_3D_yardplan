@@ -134,14 +134,14 @@ function preload(){
   //   './data/cont3.json',
   //   '../../yardplan_creator/data/etdv2.json'
   // ];
-  let path = [
-    './data4/cont4.json',
-    '../../yardplan_creator/data4/cld.json'
-  ];
   // let path = [
-  //   './data2/cont2.json',
-  //   '../../yardplan_creator/data2/std.json'
+  //   './data4/cont4.json',
+  //   '../../yardplan_creator/data4/cld.json'
   // ];
+  let path = [
+    './data2/cont2.json',
+    '../../yardplan_creator/data2/std.json'
+  ];
 
   $.getJSON(path[0], function(data){
 	cArray = data;

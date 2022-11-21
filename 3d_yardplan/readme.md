@@ -8,7 +8,28 @@ Phần mềm hoạch mô phỏng bãi container 3D
 
 ## Documentation
 
-### 1. Cấu trúc dữ liệu đầu vào
+### 1. Dependencies
+
+- Các thư viện phục vụ cho app gồm có:
+  - p5
+
+  ```html
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.min.js"></script>
+  ```
+
+  - JQuery
+
+  ```html
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  ```
+
+  - p5.EasyCam
+
+  ```html
+  <script src="https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.min.js"></script>
+  ```
+
+### 2. Cấu trúc dữ liệu đầu vào
 
 - Hiện tại, phần mềm đang đọc file json local nằm trong các thư mục `data`
 - Trong các thư mục data cho mỗi depot, có 2 file json cần phải đọc (mỗi depot BẮT BUỘC phải có 2 JSON này):
@@ -50,11 +71,11 @@ Phần mềm hoạch mô phỏng bãi container 3D
         }
       ```
 
-### 2. Đọc JSON dữ liệu đầu vào
+### 3. Đọc JSON dữ liệu đầu vào
 
 - Phần xử lí dữ liệu đầu vào được thực hiện trong hàm `preload()` - hiện tại đang đọc file JSON local bằng hàm `$.getJSON` của JQuery
 
-- Mục đích chính của `preload()` là để đưa hết data vào 2 biến `cArray` - chứa dữ liệu stock - và `depot` chứa cấu hình depot.
+- Mục đích chính của `preload()` là để đưa hết data vào 2 biến `cArray` - chứa dữ liệu stock - và `depot` - chứa cấu hình depot.
 
 - Lưu ý: nếu anh/chị có bất kì chỉnh sửa gì về API nhận JSON data đầu vào, vui lòng chỉ chỉnh sửa trong hàm `preload()`
 
@@ -84,4 +105,4 @@ Phần mềm hoạch mô phỏng bãi container 3D
   - ví dụ:
     - Tên Block của container: 'A', tên Block của depot: 'a'
     - Tên Block của container: 'A', object depot không có block 'A'
-  - Hướng giải quyết: xuất lại file `depot.json` từ `GPG 2D Container Depot Planner`
+  - Hướng giải quyết: xuất lại file `depot.json` từ `GPG 2D Container Depot Planner` với tên block chính xác

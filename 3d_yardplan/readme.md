@@ -12,8 +12,8 @@ Phần mềm hoạch mô phỏng bãi container 3D
 
 - Hiện tại, phần mềm đang đọc file json local nằm trong các thư mục `data`
 - Trong các thư mục data cho mỗi depot, có 2 file json cần phải đọc (mỗi depot BẮT BUỘC phải có 2 JSON này):
-  - 1. Cấu hình của - `depot`: được xuất ra từ `yardplan_creator` - GPG 2D Container Depot Planner
-  - 2. Dữ liệu container - `container stock`: được lấy trực tiếp từ CMS -> Quản lý số lượng -> Stock Full
+  1. Cấu hình của - `depot`: được xuất ra từ `yardplan_creator` - GPG 2D Container Depot Planner
+  2. Dữ liệu container - `container stock`: được lấy trực tiếp từ CMS -> Quản lý số lượng -> Stock Full
     -Cấu trúc dữ liệu: một array gồm nhiều Container Object
 
     ```json
@@ -27,20 +27,61 @@ Phần mềm hoạch mô phỏng bãi container 3D
     ]
     ```
 
-    - Mỗi object `Container` có các thuộc tính sau:
+  - Mỗi object `Container` có các thuộc tính sau:
+    - ContID: Số container (ISO 6346)
+    - ContTypeSizeID: Loại container
+    - HangTauID: Tên viết tắt hãng tàu
+    - Block: tên block
+    - Bay: Số bay
+    - Row: Số row
+    - Tier: Số tier
 
-    ```json
-    Container = {
-      "ContID": "CAIU7676581",
-      "ContTypeSizeID": 4500,
-      "HangTauID": "YML",
-      "Block": "A",
-      "Bay": 16.0,
-      "Row": 9.0,
-      "Tier": 1.0,
-      "angle": 0,
-      "x": 0,
-      "y": 0,
-      "z": 0
-    }
-    ```
+      - Ví dụ:
+
+      ```json
+      Container = {
+        "ContID": "CAIU7676581",
+        "ContTypeSizeID": 4500,
+        "HangTauID": "YML",
+        "Block": "A",
+        "Bay": 16,
+        "Row": 9,
+        "Tier": 1
+        }
+      ```
+
+### 2. Đọc JSON dữ liệu đầu vào
+
+- Phần xử lí dữ liệu đầu vào được thực hiện trong hàm `preload()` - hiện tại đang đọc file JSON local bằng hàm `$.getJSON` của JQuery
+
+- Mục đích chính của `preload()` là để đưa hết data vào 2 biến `cArray` - chứa dữ liệu stock - và `depot` chứa cấu hình depot.
+
+- Lưu ý: nếu anh/chị có bất kì chỉnh sửa gì về API nhận JSON data đầu vào, vui lòng chỉ chỉnh sửa trong hàm `preload()`
+
+  ```javascript
+  function preload(){
+    let path = [
+      './data4/cont4.json',
+      '../../yardplan_creator/data4/cld.json'
+    ];
+    $.getJSON(path[0], function(data){
+    cArray = data;
+    $.getJSON(path[1], function(data){
+        depot = data;
+        updateStat();
+        processCont(cArray);
+        init();
+        loop();
+      })
+    })
+  }
+  ```
+
+## Lưu ý
+
+- Một số lỗi có thể xảy ra như sau:
+  1. Đối tượng Container nằm ở Block không được liệt kê ở object `depot`
+  - ví dụ:
+    - Tên Block của container: 'A', tên Block của depot: 'a'
+    - Tên Block của container: 'A', object depot không có block 'A'
+  - Hướng giải quyết: xuất lại file `depot.json` từ `GPG 2D Container Depot Planner`

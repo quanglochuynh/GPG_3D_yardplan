@@ -27,7 +27,7 @@ let optArray;
 let countBay;
 let countOpt;;
 let sumAll;
-let contScaleFactor = 1;
+// let contScaleFactor = 1;
 
 const states = [
   {
@@ -154,11 +154,6 @@ function preload(){
 	cArray = data;
 	$.getJSON(path[1], function(data){
       depot = data;
-      depot.contLength *= contScaleFactor;
-      depot.contGap *= contScaleFactor;
-      depot.contHalfLength *= contScaleFactor;
-      depot.contWidth *= contScaleFactor;
-      depot.contHeight *= contScaleFactor;
       updateStat();
       processCont(cArray);
       init();

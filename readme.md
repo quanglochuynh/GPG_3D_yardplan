@@ -184,4 +184,37 @@ Phần mềm hoạch định bãi container
 
 #### Bước 3: Load file JSON vào app
 
-- Sau khi đã có file `std.json`
+- Sau khi đã có file `std.json`, chúng ta mở file `yardplan_creator/sketch.js`
+- Tìm mảng `path` trong function `preload`, 
+
+  ```javascript
+    function preload(){
+    path = [
+      './data/etdv2.json',
+      './data3/tbd.json',
+      './data4/cld.json',
+      './data5/cpd.json'
+    ]
+    dPath = path[3];
+
+    $.getJSON(dPath, function(data){
+      ...
+    })
+    }
+  ```
+
+- Thêm địa chỉ của file json vào mảng `path`
+
+```javascript
+  path = [
+      './data/etdv2.json',
+      './data3/tbd.json',
+      './data4/cld.json',
+      './data5/cpd.json',
+      './data2/std.json'
+    ]
+```
+
+- Sau đó, chỉnh sửa biến `dPath = path[id của đường dẫn file json trong mảng path]`
+- VD: file `std.json`đang nằm ở vị trí thứ 5 ==> `dPath = path[4]`
+- Quy trình setup depot mới hoàn thành.

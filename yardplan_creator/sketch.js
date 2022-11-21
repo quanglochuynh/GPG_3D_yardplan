@@ -69,14 +69,9 @@ function preload(){
     './data4/cld.json',
     './data5/cpd.json'
   ]
-
   dPath = path[4];
-
-
   $.getJSON(dPath, function(data){
     depot = data;
-    // depot.Area = [];
-    // teuArray = [];
     teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
     console.log(teupath);
     $.getJSON(teupath,function(json){

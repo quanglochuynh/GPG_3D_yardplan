@@ -79,7 +79,7 @@ Phần mềm hoạch mô phỏng bãi container 3D
 
 - Mục đích chính của `preload()` là để đưa hết data vào 2 biến `cArray` - chứa dữ liệu stock - và `depot` - chứa cấu hình depot.
 
-- Lưu ý: nếu anh/chị có bất kì chỉnh sửa gì về API nhận JSON data đầu vào, vui lòng chỉ chỉnh sửa trong hàm `preload()`
+> Lưu ý: nếu anh/chị có bất kì chỉnh sửa gì về API nhận JSON data đầu vào, vui lòng chỉ chỉnh sửa trong hàm `preload()`
 
   ```javascript
   function preload(){
@@ -113,3 +113,7 @@ Phần mềm hoạch mô phỏng bãi container 3D
     - Ví dụ:
       - Thông tin Hãng tàu là rỗng (`HangTauID=''`)
       - Thiếu bất kì thông số nào khác.
+
+## Demo
+
+[Chân Thật Long Thạnh Mỹ depot](https://editor.p5js.org/quanglochuynh/full/vrqGwNupw)

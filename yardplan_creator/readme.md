@@ -225,3 +225,7 @@ Phần mềm hoạch định bãi container
 - File cấu hình depot được xuất ra khi gọi hàm `exportJSON()`
 - Khi hàm `exportJSON()` được gọi. Biến depot sẽ được log ra console kèm theo thuộc tính `teuArray` lưu data cách sắp xếp depot của người dùng và `Area` lưu thông số của  của từng block (Toạ độ điểm đầu và góc xoay)
 - Khi gọi hàm `exportJSON(false)` - có tham số false - thì chỉ có thuộc tính `Area` được xuất để giảm dung lượng file JSON
+
+## Demo
+
+[Yardplan Creator](https://editor.p5js.org/quanglochuynh/full/CXH9R1aWt)

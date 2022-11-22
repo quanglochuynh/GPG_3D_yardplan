@@ -525,12 +525,12 @@ function processCont(){                  // Hàm đổ cont từ cArray qua cont
     try {
       contArray3D[a][b][r][t] = 1;
     } catch (error) {
-      console.log('error: ', error);
+      // console.log('error: ', error);
       console.log(a,b,r,t);
+      alert("Container không hợp lệ")
     }
   }
 }
-
 
 const deviceType = () => {               // Hàm tìm loại thiết bị của người dùng
   const ua = navigator.userAgent;

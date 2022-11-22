@@ -118,7 +118,7 @@ Phần mềm hoạch định bãi container
 
     - Ví dụ depot có 5 cách đặt container, tương ứng với 5 khu vực khác nhau, chúng ta tạo 5 đối tượng Button cho từng khu vực.
 
-        ```python
+        ```Python
         btn0 = Button(std_layout.shape[12].seq[1], "Area 1", angle=-0.44378560551852564)
         btn1 = Button(std_layout.shape[13].seq[1], "Area 2", angle=0.7549448708775051)
         btn2 = Button(std_layout.shape[14].seq[1], "Area 3", angle=math.pi/2)
@@ -212,11 +212,11 @@ Phần mềm hoạch định bãi container
 
 ```javascript
   path = [
-      './data/etdv2.json',
-      './data3/tbd.json',
-      './data4/cld.json',
-      './data5/cpd.json',
-      './data2/std.json'
+      './data/etdv2.json',    // 0
+      './data3/tbd.json',     // 1
+      './data4/cld.json',     // 2
+      './data5/cpd.json',     // 3
+      './data2/std.json'      // 4
     ]
 ```
 

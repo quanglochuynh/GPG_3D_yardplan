@@ -83,7 +83,7 @@ Phần mềm hoạch mô phỏng bãi container 3D
 
 - Mục đích chính của `preload()` là để đưa hết data vào 2 biến `cArray` - chứa dữ liệu stock - và `depot` - chứa cấu hình depot.
 
-> Lưu ý: nếu anh/chị có bất kì chỉnh sửa gì về API nhận JSON data đầu vào, vui lòng chỉ chỉnh sửa trong hàm `preload()`
+> Lưu ý: nếu anh/chị có bất kì chỉnh sửa gì về API nhận JSON data đầu vào, vui lòng **chỉ** chỉnh sửa trong hàm `preload()`
 
   ```javascript
   function preload(){
@@ -109,11 +109,11 @@ Phần mềm hoạch mô phỏng bãi container 3D
 - Một số lỗi có thể xảy ra như sau:
   - Đối tượng Container nằm ở Block không được liệt kê ở object `depot`
     - Ví dụ:
-      - Tên Block của container: 'A', tên Block của depot: 'a'
-      - Tên Block của container: 'A', object depot không có block 'A'
+      1. Tên Block của container: 'A', tên Block của depot: 'a'
+      2. Tên Block của container: 'A', object depot không có block 'A'
     - Hướng giải quyết: xuất lại file `depot.json` từ `GPG 2D Container Depot Planner` với tên block chính xác
 
   - JSON stock full chứa container có thông tin không hợp lệ:
     - Ví dụ:
-      - Thông tin Hãng tàu là rỗng (`HangTauID=''`)
-      - Thiếu bất kì thông số nào khác.
+      1. Thông tin Hãng tàu là rỗng (`HangTauID=''`)
+      2. Thiếu bất kì thông số nào khác.

@@ -8,6 +8,8 @@ Phần mềm hoạch mô phỏng bãi container 3D
 
 ## Documentation
 
+![alt text](https://github.com/quanglochuynh/GPG_3D_yardplan/blob/master/img/Screenshot%202022-11-22%20at%2009.11.42.png?raw=true)
+
 ### 1. Dependencies
 
 - Các thư viện phục vụ cho app gồm có:
@@ -37,7 +39,7 @@ Phần mềm hoạch mô phỏng bãi container 3D
   2. Dữ liệu container - `container stock`: được lấy trực tiếp từ CMS -> Quản lý số lượng -> Stock Full
     -Cấu trúc dữ liệu: một array gồm nhiều Container Object
 
-    ```json
+    ```javascript
     [
       Container,
       Container,
@@ -59,7 +61,7 @@ Phần mềm hoạch mô phỏng bãi container 3D
 
       - Ví dụ:
 
-      ```json
+      ```javascript
       Container = {
         "ContID": "CAIU7676581",
         "ContTypeSizeID": 4500,

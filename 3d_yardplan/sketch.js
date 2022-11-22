@@ -36,14 +36,14 @@ const states = [                      // Cấu hình camera mặc định
 
 // p5js main functions 
 function preload(){                    // Hàm load trước dữ liệu vào 2 biến cArray và depot
-  let path = [
-    './data/cont3.json',
-    '../../yardplan_creator/data/etdv2.json'
-  ];
   // let path = [
-  //   './data4/cont4.json',
-  //   '../../yardplan_creator/data4/cld.json'
+  //   './data/cont3.json',
+  //   '../../yardplan_creator/data/etdv2.json'
   // ];
+  let path = [
+    './data4/cont4.json',
+    '../../yardplan_creator/data4/cld.json'
+  ];
   // let path = [
   //   './data2/cont2.json',
   //   '../../yardplan_creator/data2/std.json'
@@ -70,17 +70,21 @@ function draw() {                      // Vòng lặp để vẽ cho mỗi frame
   center = easycam.getCenter();
   dis = easycam.getDistance();
   rot = easycam.getRotation();
+  background(240);
+  // drawStat();
   translate(-depot.center.x,0, -depot.center.y)
   calcEYE();
-  background(240);
   rotateX(1.5707963268);
   drawDepot();
   strokeWeight(1);
+  textAlign(CENTER,CENTER);
   for(let i =0; i<cArray.length; i++){
     drawCont(cArray[i],depot.Area)
   }
   drawHouse(depot.house);
+  // showHUD();
   checkKeyPress();
+  // noLoop();
 }
 
 // DRAW
@@ -140,7 +144,7 @@ function drawCont(cont){               // Vẽ container
       if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
         rotateY(-PI/2)
         translate(0,0, depot.contWidth/2+2);
-        textSize(smallFontSize);
+        textSize(depot.contHeight/3);
         text(cont.ContID, 0,0);
         // text(dis2cont, 0,0)
         translate(0,0, -depot.contWidth/2-2);
@@ -150,7 +154,7 @@ function drawCont(cont){               // Vẽ container
       if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
         rotateY(PI/2)
         translate(0,0, depot.contWidth/2+2);
-        textSize(smallFontSize);
+        textSize(depot.contHeight/3);
         text(cont.ContID, 0,0);
       }
     }
@@ -169,7 +173,7 @@ function drawCont(cont){               // Vẽ container
         if (contArray3D[area][cont.Bay][cont.Row-1][cont.Tier]!=1) {
           rotateY(-PI/2)
           translate(0,0, depot.contWidth/2+2);
-          textSize(smallFontSize);
+          textSize(depot.contHeight/3);
           text(cont.ContID, 0,0);
           translate(0,0, -depot.contWidth/2-2);
           rotateY(PI/2)
@@ -177,7 +181,7 @@ function drawCont(cont){               // Vẽ container
         if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
           rotateY(PI/2)
           translate(0,0, depot.contWidth/2+2);
-          textSize(smallFontSize);
+          textSize(depot.contHeight/3);
           text(cont.ContID, 0,0);
         }
           
@@ -482,6 +486,7 @@ function init(){                         // Khởi tạo dữ liệu ban đầu
   center = easycam.getCenter();
   dis = easycam.getDistance();
   rot = easycam.getRotation();
+  // initHUD();
   center = [depot.center.x, 0, depot.center.y];
 }
 
@@ -536,7 +541,7 @@ const deviceType = () => {               // Hàm tìm loại thiết bị của 
 	  return 2;
   }
   return 0;
-};
+}
 
 // p5 Events
 
@@ -676,3 +681,50 @@ function dirVector(quat){               // Tính vector 2D cơ bản từ quater
   V[0] = Math.sin(eye[0]);
   return V;
 }
+
+function drawStat(){
+  // console.log("test")
+  push();
+  textAlign(RIGHT, TOP);
+  textSize(14);
+  fill(0);
+  // strokeWeight(1)
+  noStroke();
+  translate(width,0);
+  text("Tổng sức chứa: " + sumAll + " Teus", 0, 10);
+  translate(0,10);
+  for (let i=0; i<bayNameArray.length; i++){
+    translate(0, 20)
+    text("Bay "+bayNameArray[i]+ ": " + countBay[i] + " Teus", 0, 0)
+  }
+  // translate(0,20);
+  stroke(0);
+  line(0,25,-100,25)
+  translate(0,10);
+  noStroke();
+  for (let i=0; i<optArray.length; i++){
+    translate(0, 20)
+    text(optArray[i]+ ": " + countOpt[i] + " Teus", 0, 0)
+  }
+  pop();
+}
+
+// function initHUD(){
+//   let hright = select('#hud-right');
+//   for (let i=0; i<bayNameArray.length; i++){
+//     createElement('li', bayNameArray[i]).parent(hright);
+//     // createElement('li', "gpu_renderer").parent(hright);
+//   }
+// }
+
+// function showHUD(){
+//   // console.log("test")
+//   easycam.beginHUD()
+//   let ul = select('#hud-right');
+//   // console.log(ul)
+//   for (let i=0; i<bayNameArray.length; i++){
+//     ul.elt.children[i].inneText = bayNameArray[i];
+//   }
+//   easycam.endHUD()
+// }
+

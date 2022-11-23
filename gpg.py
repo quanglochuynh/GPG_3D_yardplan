@@ -241,9 +241,8 @@ class Layout:
             self.line[i].p2.translate(dx,dy)
 
 class Ground:
-    def __init__(self, shapeID, id1=None, offsetX=0, offsetY=0, offsetZ=0, angle=0, height=None, width=None, button = None):
+    def __init__(self, shapeID, offsetX=0, offsetY=0, offsetZ=0, angle=0, height=None, width=None, button = None):
         self.shapeID = shapeID
-        self.id1 = id1
         self.offsetX = offsetX
         self.offsetY = offsetY
         self.offsetZ = offsetZ
@@ -286,3 +285,5 @@ class Button:
         self.position.x +=x;
         self.position.y +=y;
 
+def deg2rad(a):
+    return (((a)/360)*(2*math.pi))

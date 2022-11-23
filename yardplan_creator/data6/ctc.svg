@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="815" height="467" viewBox="0 0 815 467">
+  <defs>
+    <style>
+      .a, .b, .c {
+        fill: none;
+        stroke: #000;
+      }
+
+      .a, .b {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.08px;
+      }
+
+      .a {
+        opacity: 0.45;
+      }
+
+      .c {
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <polygon class="a" points="629 128 688 173 740 220 775 255 815 298 383 424 362 372 379 341 410 345 481 186 424 160 352 312 370 336 315 433 204 466 98 415 6 421 39 221 233 257 301 273 326 284 413 8 466 29 495 45 583 97 629 128"/>
+  <g>
+    <polygon class="b" points="424 160 481 186 410 345 379 341 370 336 352 312 424 160"/>
+    <polygon class="b" points="406 412 384 419 373 390 395 382 406 412"/>
+    <polygon class="b" points="647 180 665 212 662 213 663 215 636 231 635 230 632 231 609 191 611 189 603 174 630 159 644 182 647 180"/>
+    <polygon class="b" points="628 127 603 174 579 187 614 246 664 218 671 229 726 213 747 231 770 311 815 298 775 255 740 220 688 173 628 127"/>
+    <polygon class="b" points="413 8 408 23 485 57 452 148 469 157 486 114 498 120 521 69 584 106 588 100 495 45 466 29 413 8"/>
+  </g>
+  <g>
+    <polygon class="b" points="105 229 40 218 42 208 105 219 105 229"/>
+    <polygon class="b" points="323 435 354 377 363 382 332 438 323 435"/>
+    <polygon class="b" points="154 458 95 429 99 420 157 448 154 458"/>
+    <polygon class="b" points="71 434 5 439 1 428 68 424 71 434"/>
+    <polygon class="b" points="326 281 272 257 277 247 328 270 326 281"/>
+    <polygon class="b" points="488 36 427 10 431 1 490 26 488 36"/>
+    <polygon class="b" points="590 96 533 62 538 54 593 86 590 96"/>
+    <polygon class="b" points="776 324 713 343 710 333 771 315 776 324"/>
+  </g>
+  <g>
+    <line class="b" x1="195" y1="250" x2="188" y2="282"/>
+    <line class="b" x1="188" y1="282" x2="267" y2="309"/>
+    <line class="b" x1="379" y1="116" x2="452" y2="148"/>
+    <line class="b" x1="469" y1="157" x2="461" y2="177"/>
+    <line class="b" x1="267" y1="309" x2="282" y2="269"/>
+    <line class="c" x1="34" y1="251" x2="188" y2="279"/>
+  </g>
+</svg>

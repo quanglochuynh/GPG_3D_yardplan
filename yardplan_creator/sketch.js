@@ -73,6 +73,8 @@ function preload(){
   dPath = path[5];
   $.getJSON(dPath, function(data){
     depot = data;
+    // console.log(data)
+    ground = depot.ground;
     teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
     // console.log(teupath);
     $.getJSON(teupath,function(json){
@@ -81,7 +83,7 @@ function preload(){
       // console.log(teuArray)
       console.log("Done")
     })
-    console.log(teuArray)
+    // console.log(teuArray)
     if (teuArray===undefined){
       teuArray = [];
       init();
@@ -108,7 +110,7 @@ function init(){
   resetSelection();
   initButton();
   noLoop();
-  exportJson();
+  // exportJson();
   redraw();
 }
 
@@ -192,14 +194,14 @@ function drawGrid(){
   noFill();
   strokeWeight(depot.contWidth/10);
   if (document.getElementById("checkAngle").checked == false){
-    for (let x=0; x<depot.ground[activeGround].wid; x+=depot.contWidth){
-      for (let y=0; y<depot.ground[activeGround].hei; y+=(depot.contLength+depot.contGap)){
+    for (let x=0; x<ground[activeGround].wid; x+=depot.contWidth){
+      for (let y=0; y<ground[activeGround].hei; y+=(depot.contLength+depot.contGap)){
         rect(x,y, depot.contWidth, depot.contLength);
       }
     }
   }else{
-    for (let x = 0; x<depot.ground[activeGround].wid; x+=(depot.contLength + depot.contGap)){
-      for (let y=0; y<depot.ground[activeGround].hei; y+= (depot.contWidth)){
+    for (let x = 0; x<ground[activeGround].wid; x+=(depot.contLength + depot.contGap)){
+      for (let y=0; y<ground[activeGround].hei; y+= (depot.contWidth)){
         rect(x, y, depot.contLength, depot.contWidth)      
       }
     }
@@ -213,8 +215,8 @@ function drawSelectionRect(){
     noFill();
     strokeWeight(2);
     translate(selectRectStart.x, selectRectStart.y,)
-    rotate(-depot.ground[activeGround].angle);
-    let dif = rotateDiff(createVector(mouseX - selectRectStart.x, mouseY-selectRectStart.y) ,depot.ground[activeGround].angle);
+    rotate(-ground[activeGround].angle);
+    let dif = rotateDiff(createVector(mouseX - selectRectStart.x, mouseY-selectRectStart.y) ,ground[activeGround].angle);
     // console.log('dif: ', dif);
     if (insideDepot(mouseX,mouseY)==false) return;
     rect(0,0, mouseX - selectRectStart.x + dif.x, mouseY-selectRectStart.y + dif.y);
@@ -313,8 +315,8 @@ function drawStat(){
 function drawCursor(){
   push();
   translate(width/2+depot.offset.x,height/2 + depot.offset.y);
-  translate(depot.ground[activeGround].offsetX*scaleFactor, depot.ground[activeGround].offsetY*scaleFactor);
-  rotate(-depot.ground[activeGround].angle)
+  translate(ground[activeGround].offsetX*scaleFactor, ground[activeGround].offsetY*scaleFactor);
+  rotate(-ground[activeGround].angle)
   scale(scaleFactor);
   strokeWeight(1);
   stroke("red");
@@ -360,8 +362,8 @@ function setColor(opt){
 function groundTranform(){
   translate(width/2+depot.offset.x,height/2 + depot.offset.y);
   scale(scaleFactor);
-  translate(depot.ground[activeGround].offsetX, depot.ground[activeGround].offsetY);
-  rotate(-depot.ground[activeGround].angle)
+  translate(ground[activeGround].offsetX, ground[activeGround].offsetY);
+  rotate(-ground[activeGround].angle)
 }
 
 // P5 EVENT
@@ -453,7 +455,7 @@ function mouseReleased(){
         for (let j=selectionStart.y; j<=selectionEnd.y; j++){
           // let p = mouseMap(i,j);
           // if (checkGround(p.x,p.y)>=0){
-          // if ((i>0)&&(i<depot.ground[activeGround].wid) && (j>0)&&(j<depot.ground[activeGround].hei)){
+          // if ((i>0)&&(i<ground[activeGround].wid) && (j>0)&&(j<ground[activeGround].hei)){
             selection.push(new Point(i,j));
           // }
         }
@@ -514,14 +516,14 @@ function mouseMap2(x,y){
   v.mult(scaleFactor);
   m.add(v);
   let v0 = depot.gridOrigin;
-  let v1 = createVector(depot.ground[activeGround].offsetX, depot.ground[activeGround].offsetY);
+  let v1 = createVector(ground[activeGround].offsetX, ground[activeGround].offsetY);
   let vOff = p5.Vector.sub(v1,v0);
   vOff.mult(scaleFactor);
   let p = p5.Vector.sub(m, vOff);
   let v3 = p5.Vector.mult(v1,scaleFactor);
   v3.add(p5.Vector.add(createVector(width/2, height/2), depot.offset))
   let m2 = p5.Vector.sub(createVector(x,y),v3)
-  let dif = rotateDiff(m2,depot.ground[activeGround].angle);
+  let dif = rotateDiff(m2,ground[activeGround].angle);
   p.add(dif);
   return p
 }
@@ -594,22 +596,22 @@ function alignMap(){
 }
 
 function initTeuArray(){      // chua toi uu height, width cua ground
-  for (let g=0; g<depot.ground.length; g++){
-    depot.ground[g].verticalArray = [];
-    for (let x=0; x<depot.ground[g].wid/depot.contWidth; x++){
+  for (let g=0; g<ground.length; g++){
+    ground[g].verticalArray = [];
+    for (let x=0; x<ground[g].wid/depot.contWidth; x++){
       let temp = [];
-      for (let y=0; y<depot.ground[g].hei/(depot.contLength+depot.contGap); y++){
+      for (let y=0; y<ground[g].hei/(depot.contLength+depot.contGap); y++){
         temp.push(new Teu(x,y, 0))
       }
-      depot.ground[g].verticalArray.push(temp);
+      ground[g].verticalArray.push(temp);
     }
-    depot.ground[g].horizontalArray = [];
-    for (let x = 0; x<depot.ground[g].wid/(depot.contLength + depot.contGap); x++){
+    ground[g].horizontalArray = [];
+    for (let x = 0; x<ground[g].wid/(depot.contLength + depot.contGap); x++){
       let temp = [];
-      for (let y=0; y<depot.ground[g].hei/depot.contWidth; y++){
+      for (let y=0; y<ground[g].hei/depot.contWidth; y++){
         temp.push(new Teu(x,y, 1))
       }
-      depot.ground[g].horizontalArray.push(temp);
+      ground[g].horizontalArray.push(temp);
     }
   }
   
@@ -618,9 +620,9 @@ function initTeuArray(){      // chua toi uu height, width cua ground
     gridAngle = teuArray[i].orient
     let g = teuArray[i].ground;
     if (teuArray[i].orient==0){
-      depot.ground[g].verticalArray[teuArray[i].x][teuArray[i].y] = teuArray[i];
+      ground[g].verticalArray[teuArray[i].x][teuArray[i].y] = teuArray[i];
     }else{
-      depot.ground[g].horizontalArray[teuArray[i].x][teuArray[i].y] = teuArray[i];
+      ground[g].horizontalArray[teuArray[i].x][teuArray[i].y] = teuArray[i];
     }
   }
   gridAngle = temp;
@@ -628,17 +630,17 @@ function initTeuArray(){      // chua toi uu height, width cua ground
 
 function updateVerticalHorizontal(){
   teuArray = []
-  for (let g=0; g<depot.ground.length; g++){
-    for (let x=0; x<depot.ground[g].verticalArray.length; x++){
-      for (let y=0; y<depot.ground[g].verticalArray[0].length; y++){
-        if (depot.ground[g].verticalArray[x][y].opt==undefined) continue
-        teuArray.push(depot.ground[g].verticalArray[x][y])
+  for (let g=0; g<ground.length; g++){
+    for (let x=0; x<ground[g].verticalArray.length; x++){
+      for (let y=0; y<ground[g].verticalArray[0].length; y++){
+        if (ground[g].verticalArray[x][y].opt==undefined) continue
+        teuArray.push(ground[g].verticalArray[x][y])
       }
     }
-    for (let x = 0; x<depot.ground[g].horizontalArray.length; x++){
-      for (let y=0; y<depot.ground[g].horizontalArray[0].length; y++){
-        if (depot.ground[g].horizontalArray[x][y].opt==undefined) continue
-        teuArray.push(depot.ground[g].horizontalArray[x][y])
+    for (let x = 0; x<ground[g].horizontalArray.length; x++){
+      for (let y=0; y<ground[g].horizontalArray[0].length; y++){
+        if (ground[g].horizontalArray[x][y].opt==undefined) continue
+        teuArray.push(ground[g].horizontalArray[x][y])
       }
     }
   } 
@@ -686,10 +688,10 @@ function updatePanel(teu){
 function initButton(){
   buttonArray = [];
   let p = (createVector(width/2 + depot.offset.x, height/2 + depot.offset.y));
-  for (let i=0; i<depot.ground.length; i++){
-    let p1 = createVector(depot.ground[i].button.position.x, depot.ground[i].button.position.y);
+  for (let i=0; i<ground.length; i++){
+    let p1 = createVector(ground[i].button.position.x, ground[i].button.position.y);
     let p2 = p5.Vector.add(p, p1.mult(scaleFactor));
-    buttonArray.push(new Button(p2.x,p2.y, depot.ground[i].button.text, i, -depot.ground[i].button.angle, scaleFactor));
+    buttonArray.push(new Button(p2.x,p2.y, ground[i].button.text, i, -ground[i].button.angle, scaleFactor));
   }
   buttonArray[activeGround].active = true;
 }
@@ -726,15 +728,14 @@ function getTeuFromCursor(x,y){
   gridAngle = !gridAngle;
   try {
     if (!gridAngle){
-      if ((p1.x>=0)&&(p1.y>=0)&&(depot.ground[activeGround].verticalArray[p1.x][p1.y].opt != undefined))    return depot.ground[activeGround].verticalArray[p1.x][p1.y];
-      if ((p2.x>=0)&&(p2.y>=0)&&(depot.ground[activeGround].horizontalArray[p2.x][p2.y].opt != undefined))    return depot.ground[activeGround].horizontalArray[p2.x][p2.y];
+      if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].verticalArray[p1.x][p1.y].opt != undefined))    return ground[activeGround].verticalArray[p1.x][p1.y];
+      if ((p2.x>=0)&&(p2.y>=0)&&(ground[activeGround].horizontalArray[p2.x][p2.y].opt != undefined))    return ground[activeGround].horizontalArray[p2.x][p2.y];
     }else{
-      if ((p1.x>=0)&&(p1.y>=0)&&(depot.ground[activeGround].verticalArray[p2.x][p2.y].opt != undefined))   return depot.ground[activeGround].verticalArray[p2.x][p2.y];
-      if ((p1.x>=0)&&(p1.y>=0)&&(depot.ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined))    return depot.ground[activeGround].horizontalArray[p1.x][p1.y];
+      if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].verticalArray[p2.x][p2.y].opt != undefined))   return ground[activeGround].verticalArray[p2.x][p2.y];
+      if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined))    return ground[activeGround].horizontalArray[p1.x][p1.y];
     }
   } catch (error) {
     console.log('error: ', error);
-    
   }
   
   return new Teu(0,0,gridAngle);
@@ -747,8 +748,8 @@ function insideDepot(x,y){
 }
 
 function  checkGround(x,y){
-  for (let i=0; i<depot.ground.length; i++){
-    let id = depot.ground[i].shapeID
+  for (let i=0; i<ground.length; i++){
+    let id = ground[i].shapeID
     let k = pointIsInPoly(mouseMap(x,y), depot.layout.shape[id].seq)
     if (k!=false) return i;
   }
@@ -817,23 +818,23 @@ function doneAddArea(){
     let y = selection[i].y;
     if (bayNameArray.indexOf(bay.toUpperCase())>=0){
       if (!gridAngle){
-        if ((depot.ground[activeGround].verticalArray[x-1][y].bay_name==bay.toUpperCase())||(depot.ground[activeGround].verticalArray[x][y-1].bay_name==bay.toUpperCase())){
-          depot.ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
-          depot.ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
-          depot.ground[activeGround].verticalArray[x][y].num_of_tier = tier;
-          depot.ground[activeGround].verticalArray[x][y].orient = gridAngle;
-          depot.ground[activeGround].verticalArray[x][y].ground = activeGround;
+        if ((ground[activeGround].verticalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].verticalArray[x][y-1].bay_name==bay.toUpperCase())){
+          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
+          ground[activeGround].verticalArray[x][y].orient = gridAngle;
+          ground[activeGround].verticalArray[x][y].ground = activeGround;
         }else{
           alert("Các Row phải liền kề nhau");
           break;
         }
       }else{
-        if ((depot.ground[activeGround].horizontalArray[x-1][y].bay_name==bay.toUpperCase())||(depot.ground[activeGround].horizontalArray[x][y-1].bay_name==bay.toUpperCase())){
-          depot.ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
-          depot.ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
-          depot.ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
-          depot.ground[activeGround].horizontalArray[x][y].orient = gridAngle;
-          depot.ground[activeGround].horizontalArray[x][y].ground = activeGround;
+        if ((ground[activeGround].horizontalArray[x-1][y].bay_name==bay.toUpperCase())||(ground[activeGround].horizontalArray[x][y-1].bay_name==bay.toUpperCase())){
+          ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
+          ground[activeGround].horizontalArray[x][y].orient = gridAngle;
+          ground[activeGround].horizontalArray[x][y].ground = activeGround;
         }else{
           alert("Các Row phải liền kề nhau");
           break;
@@ -842,17 +843,17 @@ function doneAddArea(){
     }else{
       try {
         if (!gridAngle){
-          depot.ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
-          depot.ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
-          depot.ground[activeGround].verticalArray[x][y].num_of_tier = tier;
-          depot.ground[activeGround].verticalArray[x][y].orient = gridAngle;
-          depot.ground[activeGround].verticalArray[x][y].ground = activeGround;
+          ground[activeGround].verticalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].verticalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].verticalArray[x][y].num_of_tier = tier;
+          ground[activeGround].verticalArray[x][y].orient = gridAngle;
+          ground[activeGround].verticalArray[x][y].ground = activeGround;
         }else{
-          depot.ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
-          depot.ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
-          depot.ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
-          depot.ground[activeGround].horizontalArray[x][y].orient = gridAngle;
-          depot.ground[activeGround].horizontalArray[x][y].ground = activeGround;
+          ground[activeGround].horizontalArray[x][y].opt = opt.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].bay_name = bay.toUpperCase();
+          ground[activeGround].horizontalArray[x][y].num_of_tier = tier;
+          ground[activeGround].horizontalArray[x][y].orient = gridAngle;
+          ground[activeGround].horizontalArray[x][y].ground = activeGround;
         }
       } catch (error) {
         alert(error)
@@ -863,19 +864,19 @@ function doneAddArea(){
   updateVerticalHorizontal();
   updateStat();
   resetSelection();
-  // exportJson();
+  exportJson();
 }
 
 function resetArea(){
   for (let i=0; i<selection.length; i++){
     if (!gridAngle){
-      depot.ground[activeGround].verticalArray[selection[i].x][selection[i].y].opt = undefined;
-      depot.ground[activeGround].verticalArray[selection[i].x][selection[i].y].bay_name = undefined
-      depot.ground[activeGround].verticalArray[selection[i].x][selection[i].y].num_of_tier = "";
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].opt = undefined;
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].bay_name = undefined
+      ground[activeGround].verticalArray[selection[i].x][selection[i].y].num_of_tier = "";
     }else{
-      depot.ground[activeGround].horizontalArray[selection[i].x][selection[i].y].opt = undefined;
-      depot.ground[activeGround].horizontalArray[selection[i].x][selection[i].y].bay_name = undefined
-      depot.ground[activeGround].horizontalArray[selection[i].x][selection[i].y].num_of_tier = "";
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].opt = undefined;
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].bay_name = undefined
+      ground[activeGround].horizontalArray[selection[i].x][selection[i].y].num_of_tier = "";
     }
   }
   updateVerticalHorizontal();
@@ -898,15 +899,15 @@ function exportJson(init=true){
     let p = gridMapingTranspose(origin.position, origin.orient);
     let dif;
     if (!origin.orient){
-      dif = rotateDiff(createVector(p.x, p.y), -depot.ground[origin.ground].angle)
-      let x = depot.ground[id].offsetX + p.x + dif.x;
-      let y = depot.ground[id].offsetY + p.y + dif.y;
-      area.push(new Area(bayNameArray[i], x, y, depot.ground[origin.ground].angle));
+      dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
+      let x = ground[id].offsetX + p.x + dif.x;
+      let y = ground[id].offsetY + p.y + dif.y;
+      area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle));
     }else{
-      dif = rotateDiff(createVector(p.x, p.y), -depot.ground[origin.ground].angle)
-      let x = depot.ground[id].offsetX + p.x + dif.x;
-      let y = depot.ground[id].offsetY + p.y + dif.y;
-      area.push(new Area(bayNameArray[i], x, y, depot.ground[origin.ground].angle + PI/2));
+      dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
+      let x = ground[id].offsetX + p.x + dif.x;
+      let y = ground[id].offsetY + p.y + dif.y;
+      area.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle + PI/2));
     }    
     for (let t=0; t<teuArray.length; t++){
       if (teuArray[t].bay_name == bayNameArray[i]){
@@ -923,14 +924,17 @@ function exportJson(init=true){
   depot.teuArray = teuArray;
   depot.Area = area;
   if (!init){
-    let dp2 = depot;
-    // for (let i=0; i<depot.ground.length; i++){
-    //   delete dp2.ground[i].verticalArray;
-    //   delete dp2.ground[i].horizontalArray;
-    // }
-    console.log(dp2);
+    // delete depot.ground;
+    // depot.ground = [];
+    console.log(simplifyJSON(depot));
+    // depot.ground = ground;
   }else{
     console.log(depot);
   }
   redraw();
+}
+
+function simplifyJSON(dp){
+  delete dp.ground;
+  return dp;
 }

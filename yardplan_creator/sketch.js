@@ -176,7 +176,7 @@ function drawDepot(){
   // strokeWeight(depot.contWidth/10)
   // fill(0);
   // circle(0,0,20);
-  
+  stroke(0,255,0);
   for (let i=0; i<depot.layout.line.length; i++){
     line(depot.layout.line[i].p1.x,depot.layout.line[i].p1.y,depot.layout.line[i].p2.x, depot.layout.line[i].p2.y);
   }
@@ -863,7 +863,7 @@ function doneAddArea(){
   updateVerticalHorizontal();
   updateStat();
   resetSelection();
-  exportJson();
+  // exportJson();
 }
 
 function resetArea(){
@@ -919,17 +919,17 @@ function exportJson(init=true){
         }
       }
     }
-  }
+  }    
+  depot.teuArray = teuArray;
   depot.Area = area;
   if (!init){
     let dp2 = depot;
-    for (let i=0; i<depot.ground.length; i++){
-      delete dp2.ground[i].verticalArray;
-      delete dp2.ground[i].horizontalArray;
-    }
+    // for (let i=0; i<depot.ground.length; i++){
+    //   delete dp2.ground[i].verticalArray;
+    //   delete dp2.ground[i].horizontalArray;
+    // }
     console.log(dp2);
   }else{
-    depot.teuArray = teuArray;
     console.log(depot);
   }
   redraw();

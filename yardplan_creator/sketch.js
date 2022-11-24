@@ -68,9 +68,10 @@ function preload(){
     './data3/tbd.json',
     './data4/cld.json',
     './data5/cpd.json',
-    './data6/ctc.json'
+    './data6/ctc.json',
+    './data7/tkd.json'
   ]
-  dPath = path[5];
+  dPath = path[6];
   $.getJSON(dPath, function(data){
     depot = data;
     // console.log(data)

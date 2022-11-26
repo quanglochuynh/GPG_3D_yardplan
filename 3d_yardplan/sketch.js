@@ -347,7 +347,7 @@ function drawSideCont(cont, twenty_feet){ // Vẽ tên cont lên hai đầu cont
   push();
   if (!twenty_feet){
     translate(0,0, depot.contLength+1);
-    textSize(7)
+    textSize(depot.contHeight/5)
     text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
     rotateY(Math.PI);
     translate(0,0, 2*depot.contLength+2);
@@ -355,7 +355,7 @@ function drawSideCont(cont, twenty_feet){ // Vẽ tên cont lên hai đầu cont
 
   }else{
     translate(0,0, depot.contLength/2+1);
-    textSize(7)
+    textSize(depot.contHeight/5)
     text(cont.ContID.substring(0,4)+"\n" + cont.ContID.substring(4,11), 0,0);
     rotateY(Math.PI);
     translate(0,0, (depot.contLength)+2);

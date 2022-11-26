@@ -500,7 +500,7 @@
                 "length": 5,
                 "visible": 1
             },
-            "height": 0
+            "height": 130
         },
         {
             "type": 0,
@@ -531,7 +531,7 @@
                 "length": 5,
                 "visible": 1
             },
-            "height": 2
+            "height": 130
         },
         {
             "type": 0,
@@ -562,7 +562,7 @@
                 "length": 5,
                 "visible": 1
             },
-            "height": 3
+            "height": 60
         }
     ],
     "ground": [

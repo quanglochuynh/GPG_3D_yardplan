@@ -1,5 +1,6 @@
 let largeFontSize = 16;
 let depot;
+let depotArray = [];
 let scaleFactor=1;
 let gridAngle = 0;
 let selection;
@@ -18,6 +19,7 @@ let sumAll;
 let showGrid = true;
 let currentTeu;
 let teuArray;
+let teuArrayList=[];
 let activeGround = 0;
 let centerOffset;
 let area;
@@ -28,6 +30,17 @@ let buttonArray;
 let screenOffset, offsetStart;
 let screenCenter;
 let mouseOffset, mo;
+const path = [
+  './data/etdv2.json',
+  './data2/std.json',
+  './data3/tbd.json',
+  './data4/cld.json',
+  './data5/cpd.json',
+  './data6/ctc.json',
+  './data7/tkd.json'
+]
+
+let depotID = 0;
 
 class Point{
   constructor(x,y){
@@ -62,16 +75,7 @@ class Teu{
 }
 
 function preload(){
-  path = [
-    './data/etdv2.json',
-    './data2/std.json',
-    './data3/tbd.json',
-    './data4/cld.json',
-    './data5/cpd.json',
-    './data6/ctc.json',
-    './data7/tkd.json'
-  ]
-  dPath = path[6];
+  let dPath = path[6];
   $.getJSON(dPath, function(data){
     depot = data;
     // console.log(data)
@@ -92,6 +96,37 @@ function preload(){
   })
 }
 
+// function preload(){
+//   for (let i=0; i<path.length; i++){
+//     $.getJSON(path[i], function(data){loadDepot(data)})
+//   }
+//   for (let i=0; i<path.length; i++){
+//     let dPath = path[i]
+//     let teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
+//     $.getJSON(teupath, function(data){loadTeu(data)})
+//   }
+// }
+
+// function loadDepot(data){
+//   depotArray.push(data);
+//   if ((teuArrayList.length==path.length)&&(depotArray.length==path.length)&&(depot===undefined)){
+//     depot = depotArray[depotID];
+//     ground = depot.ground;
+//     teuArray = teuArrayList[depotID]
+//     init()
+//   }
+// }
+
+// function loadTeu(data){
+//   teuArrayList.push(data);
+//   if ((teuArrayList.length==path.length)&&(depotArray.length==path.length)){
+//     depot = depotArray[depotID];
+//     ground = depot.ground;
+//     teuArray = teuArrayList[depotID]
+//     init()
+//   }
+// }
+
 function init(){
   document.getElementById("checkAngle").checked = false;
   for (let element of document.getElementsByClassName("p5Canvas")) {
@@ -111,7 +146,6 @@ function init(){
   resetSelection();
   initButton();
   noLoop();
-  // exportJson();
   redraw();
 }
 
@@ -939,3 +973,10 @@ function simplifyJSON(dp){
   delete dp.ground;
   return dp;
 }
+
+function changeDepot(){
+  let id = document.getElementById('select_depot').value
+  depotID = id;
+  init()
+}
+

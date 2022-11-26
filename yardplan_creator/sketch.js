@@ -74,58 +74,58 @@ class Teu{
   }
 }
 
+// function preload(){
+//   let dPath = path[6];
+//   $.getJSON(dPath, function(data){
+//     depot = data;
+//     // console.log(data)
+//     ground = depot.ground;
+//     teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
+//     // console.log(teupath);
+//     $.getJSON(teupath,function(json){
+//       teuArray = json;
+//       init()
+//       // console.log(teuArray)
+//       console.log("Done")
+//     })
+//     // console.log(teuArray)
+//     if (teuArray===undefined){
+//       teuArray = [];
+//       init();
+//     }
+//   })
+// }
+
 function preload(){
-  let dPath = path[6];
-  $.getJSON(dPath, function(data){
-    depot = data;
-    // console.log(data)
-    ground = depot.ground;
-    teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
-    // console.log(teupath);
-    $.getJSON(teupath,function(json){
-      teuArray = json;
-      init()
-      // console.log(teuArray)
-      console.log("Done")
-    })
-    // console.log(teuArray)
-    if (teuArray===undefined){
-      teuArray = [];
-      init();
-    }
-  })
+  for (let i=0; i<path.length; i++){
+    $.getJSON(path[i], function(data){loadDepot(data)})
+  }
+  for (let i=0; i<path.length; i++){
+    let dPath = path[i]
+    let teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
+    $.getJSON(teupath, function(data){loadTeu(data)})
+  }
 }
 
-// function preload(){
-//   for (let i=0; i<path.length; i++){
-//     $.getJSON(path[i], function(data){loadDepot(data)})
-//   }
-//   for (let i=0; i<path.length; i++){
-//     let dPath = path[i]
-//     let teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
-//     $.getJSON(teupath, function(data){loadTeu(data)})
-//   }
-// }
+function loadDepot(data){
+  depotArray.push(data);
+  if ((teuArrayList.length==path.length)&&(depotArray.length==path.length)&&(depot===undefined)){
+    depot = depotArray[depotID];
+    ground = depot.ground;
+    teuArray = teuArrayList[depotID]
+    init()
+  }
+}
 
-// function loadDepot(data){
-//   depotArray.push(data);
-//   if ((teuArrayList.length==path.length)&&(depotArray.length==path.length)&&(depot===undefined)){
-//     depot = depotArray[depotID];
-//     ground = depot.ground;
-//     teuArray = teuArrayList[depotID]
-//     init()
-//   }
-// }
-
-// function loadTeu(data){
-//   teuArrayList.push(data);
-//   if ((teuArrayList.length==path.length)&&(depotArray.length==path.length)){
-//     depot = depotArray[depotID];
-//     ground = depot.ground;
-//     teuArray = teuArrayList[depotID]
-//     init()
-//   }
-// }
+function loadTeu(data){
+  teuArrayList.push(data);
+  if ((teuArrayList.length==path.length)&&(depotArray.length==path.length)){
+    depot = depotArray[depotID];
+    ground = depot.ground;
+    teuArray = teuArrayList[depotID]
+    init()
+  }
+}
 
 function init(){
   document.getElementById("checkAngle").checked = false;
@@ -977,6 +977,9 @@ function simplifyJSON(dp){
 function changeDepot(){
   let id = document.getElementById('select_depot').value
   depotID = id;
+  depot = depotArray[depotID];
+  ground = depot.ground;
+  teuArray = teuArrayList[depotID]
   init()
 }
 

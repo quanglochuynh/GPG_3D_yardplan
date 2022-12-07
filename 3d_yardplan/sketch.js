@@ -1,4 +1,4 @@
-let cArray;                           // array lấy data container từ CMS stock-full
+var cArray;                           // array lấy data container từ CMS stock-full
 let depot;                            // object lưu cấu hình depot
 let showText = false;                 // có show tên cont hay không
 let showBay = [];                     // có show bay thứ n hay không
@@ -15,7 +15,7 @@ let bayNameArray;                     // List tên của block
 let optArray;                         // List tên của Hãng tàu
 let countBay;                         // List số lượng cont theo block
 let countOpt;                         // List số lượng cont theo hãng tàu
-let sumAll;                           // Tổng số lượng cont
+var sumAll;                           // Tổng số lượng cont
 
 const states = [                      // Cấu hình camera mặc định
   {
@@ -49,16 +49,36 @@ function preload(){                    // Hàm load trước dữ liệu vào 2 
   //   '../../yardplan_creator/data2/std.json'
   // ];
 
-  $.getJSON(path[0], function(data){
-	cArray = data;
-	$.getJSON(path[1], function(data){
-      depot = data;
-      updateStat();
-      processCont(cArray);
-      init();
-      loop();
-    })
-  })
+  // let path = [
+  //   './data4/cont4.json',
+  //   '../../yardplan_creator/data2/std.json'
+  // ];
+
+  cArray = [];
+  async function load(){
+    const res2 = await $.getJSON(path[1], function(data){depot = data})
+    console.log(depot)
+    const res1 = await getContArray("ETD");
+    console.log(cArray)
+    
+    let k = [];
+    for (let i=0; i<cArray.length;i++){
+      if (cArray[i].Block=='') continue;
+      k.push(cArray[i]);
+    }
+    cArray = k;
+
+    updateStat();
+
+    processCont(cArray);
+    init();
+    loop();
+  };
+  load();
+
+    
+  
+
 }
 
 function setup() {                     // Cài đặt cơ bản của app
@@ -78,18 +98,19 @@ function draw() {                      // Vòng lặp để vẽ cho mỗi frame
   drawDepot();
   strokeWeight(1);
   textAlign(CENTER,CENTER);
+
   for(let i =0; i<cArray.length; i++){
     drawCont(cArray[i],depot.Area)
   }
   drawHouse(depot.house);
-  // showHUD();
   checkKeyPress();
-  // noLoop();
+  
 }
 
 // DRAW
 function drawCont(cont){               // Vẽ container
   area = cont.Block;
+  // if (area==-1) return
   if (showBay[area]==false) return
   let b =  cont.Bay-1;
   let r =  -cont.Tier+1;
@@ -101,7 +122,11 @@ function drawCont(cont){               // Vẽ container
   x = t*(depot.contWidth)
   z = -r*(depot.contHeight);
   let dis2cont;
-  let d = createVector(depot.Area[area].x_coor + depot.contLength, depot.Area[area].y_coor+depot.contWidth, 0.5*depot.contHeight + 20);
+  try {
+    var d = createVector(depot.Area[area].x_coor + depot.contLength, depot.Area[area].y_coor+depot.contWidth, 0.5*depot.contHeight + 20);
+  } catch (error) {
+    console.log(area);
+  }
   let k = createVector(-r*depot.contWidth, b*(depot.contLength+depot.contGap));
   k.rotate(-depot.Area[area].angle);
   let d2 = p5.Vector.add(d,k);
@@ -150,13 +175,19 @@ function drawCont(cont){               // Vẽ container
         translate(0,0, -depot.contWidth/2-2);
         rotateY(PI/2)
       }
-      
       if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
         rotateY(PI/2)
         translate(0,0, depot.contWidth/2+2);
         textSize(depot.contHeight/3);
         text(cont.ContID, 0,0);
       }
+
+      // if (contArray3D[area][cont.Bay][cont.Row+1][cont.Tier]!=1) {
+      //   rotateY(PI/2)
+      //   translate(0,0, depot.contWidth/2+2);
+      //   textSize(depot.contHeight/3);
+      //   text(cont.ContID, 0,0);
+      // }
     }
   }
   else{
@@ -423,6 +454,16 @@ function updateStat(){                   // Cập nhật thống kê của depot
     bayNameArray.push(depot.Area[i].name);
     countBay.push(0);
   }
+  // for (let i=0; i<cArray.length; i++){
+  //   let idBay = bayNameArray.indexOf(cArray[i].Block);
+  //   if (idBay==-1) {
+  //     console.log(cArray[i]);
+  //     continue
+  //   };
+  //   a.push(cArray[i]);
+  // }
+  // cArray = a;
+
   for (let i=0; i<cArray.length; i++){
     let idBay = bayNameArray.indexOf(cArray[i].Block);
     if (idBay==-1) {
@@ -463,10 +504,10 @@ function init(){                         // Khởi tạo dữ liệu ban đầu
   setAttributes('antialias', true);
   easycam = new Dw.EasyCam(this._renderer, states[0]); 
   if (deviceType()!=0){
-	easycam.setRotationScale(0.0004);
+	  easycam.setRotationScale(0.0004);
   }else{
-	console.log("Desktop");
-	easycam.setRotationScale(0.0006);
+	  console.log("Desktop");
+	  easycam.setRotationScale(0.0006);
   }
   document.oncontextmenu = function() { return false; }
   document.onmousedown   = function() { return false; }
@@ -486,7 +527,6 @@ function init(){                         // Khởi tạo dữ liệu ban đầu
   center = easycam.getCenter();
   dis = easycam.getDistance();
   rot = easycam.getRotation();
-  // initHUD();
   center = [depot.center.x, 0, depot.center.y];
 }
 
@@ -497,9 +537,9 @@ function processCont(){                  // Hàm đổ cont từ cArray qua cont
     maxTier = max(maxTier,parseInt(cArray[i].Tier))
     cArray[i].Block = bayNameArray.indexOf(cArray[i].Block);
   }
-  maxBay++;
-  maxRow++;
-  maxTier++;
+  maxBay+=1;
+  maxRow+=1;
+  maxTier+=1;
   contArray3D = [];
   for (let i=0; i<depot.Area.length;i++){
     area = []
@@ -519,6 +559,7 @@ function processCont(){                  // Hàm đổ cont từ cArray qua cont
   let a,b,r,t;
   for (let i=0; i<cArray.length; i++){
     a = cArray[i].Block;
+    if (a===-1) continue;
     b = cArray[i].Bay;
     r = cArray[i].Row;
     t = cArray[i].Tier;
@@ -526,8 +567,8 @@ function processCont(){                  // Hàm đổ cont từ cArray qua cont
       contArray3D[a][b][r][t] = 1;
     } catch (error) {
       // console.log('error: ', error);
-      console.log(a,b,r,t);
-      alert("Container không hợp lệ")
+      console.log(i,a,b,r,t);
+      alert("Container không hợp lệ ")
     }
   }
 }

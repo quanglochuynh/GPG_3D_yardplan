@@ -40,7 +40,7 @@ const path = [
   './data7/tkd.json'
 ]
 
-let depotID = 0;
+let depotID = 5;
 
 class Point{
   constructor(x,y){
@@ -74,38 +74,38 @@ class Teu{
   }
 }
 
-// function preload(){
-//   let dPath = path[6];
-//   $.getJSON(dPath, function(data){
-//     depot = data;
-//     // console.log(data)
-//     ground = depot.ground;
-//     teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
-//     // console.log(teupath);
-//     $.getJSON(teupath,function(json){
-//       teuArray = json;
-//       init()
-//       // console.log(teuArray)
-//       console.log("Done")
-//     })
-//     // console.log(teuArray)
-//     if (teuArray===undefined){
-//       teuArray = [];
-//       init();
-//     }
-//   })
-// }
-
 function preload(){
-  for (let i=0; i<path.length; i++){
-    $.getJSON(path[i], function(data){loadDepot(data)})
-  }
-  for (let i=0; i<path.length; i++){
-    let dPath = path[i]
-    let teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
-    $.getJSON(teupath, function(data){loadTeu(data)})
-  }
+  let dPath = path[depotID];
+  $.getJSON(dPath, function(data){
+    depot = data;
+    // console.log(data)
+    ground = depot.ground;
+    teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
+    // console.log(teupath);
+    $.getJSON(teupath,function(json){
+      teuArray = json;
+      init()
+      // console.log(teuArray)
+      console.log("Done")
+    })
+    // console.log(teuArray)
+    if (teuArray===undefined){
+      teuArray = [];
+      init();
+    }
+  })
 }
+
+// function preload(){
+//   for (let i=0; i<path.length; i++){
+//     $.getJSON(path[i], function(data){loadDepot(data)})
+//   }
+//   for (let i=0; i<path.length; i++){
+//     let dPath = path[i]
+//     let teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
+//     $.getJSON(teupath, function(data){loadTeu(data)})
+//   }
+// }
 
 function loadDepot(data){
   depotArray.push(data);

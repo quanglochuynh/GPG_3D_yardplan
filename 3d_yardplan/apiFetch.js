@@ -39,8 +39,6 @@ async function getContArray(dpName){
             "appversion":17
         })
     }
-    const cont0 = await fetch(yardPlanURL, yardPlanAPI).then(response => response.json())
-    // sumAll = cont0.data[0].total_row.r;
     var ci=1;
     const res = await batchLoadCont(tokenAPI,ci,myDepot);
     // console.log("done", cArray)
@@ -89,3 +87,4 @@ async function batchLoadCont(tokenAPI,ci,myDepot){
     ci += 1;
     return batchLoadCont(tokenAPI,ci,myDepot);
 }
+

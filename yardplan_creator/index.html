@@ -15,7 +15,7 @@
     <div class="toolbar">
         <input class="toolbar_button"  id="checkGrid" type="checkbox" value="Edit" onchange="addArea()" checked>
         <label for="checkGrid">Show grid</label>
-        <select name="select_depot" id="select_depot" onchange="changeDepot()">
+        <!-- <select name="select_depot" id="select_depot" onchange="changeDepot()">
             <option value=0>ETD</option>
             <option value=1>STD</option>
             <option value=2>TBD</option>
@@ -24,7 +24,7 @@
             <option value=5>CTC</option>
             <option value=6>TKD</option>
         </select>
-        <label for="select_depot">Choose depot</label><br>
+        <label for="select_depot">Choose depot</label><br> -->
         <div id="addPanel">
             <input class="single_char_input" id="edtxBay" type="text" placeholder="Line: A, B, C, ...">
             <select name="selectOpt" id="edtxOpt">
@@ -37,6 +37,14 @@
             <input class="single_char_input" id="edtxNumTier" type="text" placeholder="Num of tier">
             <input class="checkbox" id="checkAngle" type="checkbox" onchange="changeGridAngle()">
             <label for="checkAngle">Container ngang</label>
+            <div id="line_prop" style="visibility:visible;">
+                <input class="checkbox" id="check_1mat" type="checkbox" onchange="one_face()">
+                <label for="check_1mat">Line 1 mặt</label>
+                <input class="checkbox" id="check_x_flip" type="checkbox" onchange="">
+                <label for="check_x_flip">xflip</label>
+                <input class="checkbox" id="check_y_flip" type="checkbox" onchange="">
+                <label for="check_y_flip">yflip</label>
+            </div>
             <input class="toolbar_button" id="btnReset" type="button" value="Reset" onclick="resetArea()">
             <input class="toolbar_button" id="btnDoneAddArea" type="button" value="Set" onclick="doneAddArea()">
             <input class="toolbar_button" id="btnExportJson" type="button" value="Export" onclick="exportJson(false)">

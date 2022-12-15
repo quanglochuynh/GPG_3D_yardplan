@@ -49,7 +49,7 @@ class Point{
   }
 }
 class Area{
-  constructor(name,x,y,a, x_flip=0, y_flip=0, one_face=false, num_bay=0, num_row=0, orient=0){
+  constructor(name,x,y,a, x_flip=false, y_flip=false, one_face=false, num_bay=0, num_row=0, orient=0){
     this.name = name;
     this.angle = a;
     this.x_coor = x;
@@ -306,6 +306,8 @@ function drawTeu(){
         fill(0);
         noStroke();
         text(teuArray[i].num_of_tier, p.x + depot.contWidth/2, p.y+depot.contLength/2)
+        text(teuArray[i].bay + " " + teuArray[i].row, p.x + depot.contWidth/2, p.y+depot.contLength/2)
+
       }
     }else{
       // if (teuArray[i].row == 1){
@@ -319,7 +321,9 @@ function drawTeu(){
       if (scaleFactor>1){
         noStroke();
         fill(0)
-        text(teuArray[i].num_of_tier, p.x + depot.contLength/2, p.y+depot.contWidth/2)
+        // text(teuArray[i].num_of_tier, p.x + depot.contLength/2, p.y+depot.contWidth/2)
+        text(teuArray[i].bay + " " + teuArray[i].row, p.x + depot.contLength/2, p.y+depot.contWidth/2)
+
       }
     }
     if (teuArray[i].bay == 1){
@@ -798,6 +802,7 @@ function findAreaOrigin(area){
       g = teuArray[t];
     }
   }
+
   return {position: {x:minX, y:minY}, orient: g.orient, ground: parseInt(g.ground), wid: maxX-minX+1, hei: maxY-minY+1};
 }
 
@@ -1001,11 +1006,11 @@ function exportJson(init=true){
     for (let t=0; t<teuArray.length; t++){
       if (teuArray[t].bay_name == bayNameArray[i]){
         if (!teuArray[t].orient){
-          teuArray[t].row = teuArray[t].x - origin.position.x + 1;
-          teuArray[t].bay = (teuArray[t].y - origin.position.y)*2 + 1;
-        }else{
           teuArray[t].bay = teuArray[t].x - origin.position.x + 1;
-          teuArray[t].row = (teuArray[t].y - origin.position.y)*2 + 1;
+          teuArray[t].row = (teuArray[t].y - origin.position.y) + 1;
+        }else{
+          teuArray[t].row = teuArray[t].x - origin.position.x + 1;
+          teuArray[t].bay = (teuArray[t].y - origin.position.y) + 1;
         }
       }
     }
@@ -1046,4 +1051,22 @@ function one_face(){
   console.log(document.getElementById("check_1mat").checked);
   depot.Area[index].one_face = !depot.Area[index].one_face;
 
+}
+
+function changeXFlip(){
+  let line = document.getElementById("edtxBay").value;
+  const index = depot.Area.findIndex(object => {
+    return object.name == line;
+  });
+  console.log(index)
+  depot.Area[index].x_flip = document.getElementById("check_x_flip").checked
+}
+
+function changeYFlip(){
+  let line = document.getElementById("edtxBay").value;
+  const index = depot.Area.findIndex(object => {
+    return object.name == line;
+  });
+  console.log(index)
+  depot.Area[index].y_flip = document.getElementById("check_y_flip").checked;
 }

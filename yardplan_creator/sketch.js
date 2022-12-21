@@ -30,6 +30,7 @@ let buttonArray;
 let screenOffset, offsetStart;
 let screenCenter;
 let mouseOffset, mo;
+
 const path = [
   './data/etdv2.json',
   './data2/std.json',
@@ -80,17 +81,17 @@ function preload(){
   let dPath = path[depotID];
   $.getJSON(dPath, function(data){
     depot = data;
-    // console.log(data)
+    // 
     ground = depot.ground;
     teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
-    // console.log(teupath);
+    // 
     $.getJSON(teupath,function(json){
       teuArray = json;
       init()
-      // console.log(teuArray)
-      console.log("Done")
+      // 
+      
     })
-    // console.log(teuArray)
+    // 
     if (teuArray===undefined){
       teuArray = [];
       init();
@@ -135,7 +136,7 @@ function init(){
     element.addEventListener("contextmenu", (e) => e.preventDefault());
   }
   document.body.classList.add("stop-scrolling")
-  document.getElementById("line_prop").style.visibility = "hidden";
+  changeLinePropertiesState(true);
   screenOffset = createVector(0,0)    //pixel
   screenCenter = createVector(width/2,height/2);
   findCenter();
@@ -256,7 +257,7 @@ function drawSelectionRect(){
     translate(selectRectStart.x, selectRectStart.y,)
     rotate(-ground[activeGround].angle);
     let dif = rotateDiff(createVector(mouseX - selectRectStart.x, mouseY-selectRectStart.y) ,ground[activeGround].angle);
-    // console.log('dif: ', dif);
+    // 
     if (insideDepot(mouseX,mouseY)==false) return;
     rect(0,0, mouseX - selectRectStart.x + dif.x, mouseY-selectRectStart.y + dif.y);
     pop();
@@ -294,29 +295,15 @@ function drawTeu(){
     stroke(0)
     textSize(depot.contWidth)
     if (teuArray[i].orient==0){
-      // if (teuArray[i].row == 1){
-      //   push();
-      //   stroke("blue");
-      //   strokeWeight(depot.contWidth/10);
-      //   line(p.x, p.y,p.x, p.y + depot.contLength+depot.contGap);
-      //   pop();
-      // }
       rect(p.x, p.y, depot.contWidth, depot.contLength);
       if (scaleFactor>1){
         fill(0);
         noStroke();
-        text(teuArray[i].num_of_tier, p.x + depot.contWidth/2, p.y+depot.contLength/2)
+        // text(teuArray[i].num_of_tier, p.x + depot.contWidth/2, p.y+depot.contLength/2)
+        textSize(10)
         text(teuArray[i].bay + " " + teuArray[i].row, p.x + depot.contWidth/2, p.y+depot.contLength/2)
-
       }
     }else{
-      // if (teuArray[i].row == 1){
-      //   push();
-      //   stroke("blue");
-      //   strokeWeight(depot.contWidth/5);
-      //   line(p.x-depot.contGap, p.y,p.x + depot.contLength+depot.contGap, p.y)
-      //   pop();
-      // }
       rect(p.x, p.y, depot.contLength, depot.contWidth);
       if (scaleFactor>1){
         noStroke();
@@ -332,9 +319,6 @@ function drawTeu(){
         fill(0);  
         textSize(depot.contWidth*2)
         text(teuArray[i].bay_name,p.x-(depot.contWidth), p.y-(depot.contWidth));
-        // textSize(10)
-        // let ar = depot.Area[bayNameArray.indexOf(teuArray[i].bay_name)];
-        // text(ar.x_coor + " " + ar.y_coor,p.x-(depot.contWidth), p.y-(depot.contWidth));
       }
     }
     pop();
@@ -350,15 +334,25 @@ function drawLine(){
     scale(scaleFactor);
     translate(depot.Area[i].x_coor, depot.Area[i].y_coor);
     rotate(-depot.Area[i].angle);
+
     stroke("BLUE")
     strokeWeight(depot.contGap)
     // rect(0,0, (1-2*depot.Area[i].orient) * depot.Area[i].num_row *depot.contWidth, (depot.Area[i].num_bay)*(depot.contLength+depot.contGap))
-    line(0,0,0, depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap)
-    if (!depot.Area[i].one_face){
-      line((1-2*depot.Area[i].orient) * depot.Area[i].num_row *depot.contWidth,0,(1-2*depot.Area[i].orient) * depot.Area[i].num_row *depot.contWidth, depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap)
+    if (depot.Area[i].x_flip){
+      // line(0,0,0, -((depot.Area[i].num_bay+1)*depot.contLength+(depot.Area[i].num_bay+1)*depot.contGap))
+      translate(0,-(depot.Area[i].num_bay+2)*depot.contLength+(depot.Area[i].num_bay-2)*depot.contGap)
+      line(0,0,0, (depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap))
+      if (!depot.Area[i].one_face){
+        translate(depot.contWidth*depot.Area[i].num_row, 0)
+        line(0,0,0, (depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap))
+      }
+    }else{
+      line(0,0,0, depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap)
+      if (!depot.Area[i].one_face){
+        line((1-2*depot.Area[i].orient) * depot.Area[i].num_row *depot.contWidth,0,(1-2*depot.Area[i].orient) * depot.Area[i].num_row *depot.contWidth, depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap)
+      }
     }
     pop();
-
   }
 }
 
@@ -459,7 +453,7 @@ function mousePressed(){
       }
     }
     if (checkGround(x,y)<0) {
-      // console.log("eger");
+      // 
       return
     }
     if ((x<0)||(y<0)) {return}
@@ -480,7 +474,7 @@ function mousePressed(){
     }
     redraw();
   }else if (mouseButton===RIGHT){
-    // console.log("Pan");
+    // 
     screenOffset = depot.center;
     offsetStart = createVector(mouseX,mouseY);
   }
@@ -552,7 +546,7 @@ function keyPressed(){
       doneAddArea();
       break;
   }
-  // console.log(key);
+  // 
 }
 
 function windowResized() {
@@ -753,14 +747,22 @@ function updatePanel(teu){
     document.getElementById("edtxOpt").value = "";
     document.getElementById("edtxNumTier").value = "";
     document.getElementById("checkAngle").checked = gridAngle;
-    document.getElementById("line_prop").style.visibility = "hidden";
     document.getElementById("check_1mat").checked = false;
+    document.getElementById("check_x_flip").checked = false;
+    document.getElementById("check_y_flip").checked = false;
+    changeLinePropertiesState(true);
   }else{
+    const areaIndex = depot.Area.findIndex(object => {
+      return object.name == teu.bay_name;
+    });
     document.getElementById("edtxBay").value = teu.bay_name;
     document.getElementById("edtxOpt").value = teu.opt;
     document.getElementById("edtxNumTier").value = teu.num_of_tier;
     document.getElementById("checkAngle").checked = teu.orient;
-    document.getElementById("line_prop").style.visibility = "visible";
+    changeLinePropertiesState(false);
+    document.getElementById("check_1mat").checked = depot.Area[areaIndex].one_face;
+    document.getElementById("check_x_flip").checked = depot.Area[areaIndex].x_flip;
+    document.getElementById("check_y_flip").checked = depot.Area[areaIndex].y_flip;
     const index = depot.Area.findIndex(object => {
       return object.name == teu.bay_name;
     });
@@ -820,7 +822,7 @@ function getTeuFromCursor(x,y){
       if ((p1.x>=0)&&(p1.y>=0)&&(ground[activeGround].horizontalArray[p1.x][p1.y].opt != undefined))    return ground[activeGround].horizontalArray[p1.x][p1.y];
     }
   } catch (error) {
-    console.log('error: ', error);
+    
   }
   
   return new Teu(0,0,gridAngle);
@@ -873,7 +875,7 @@ function pointIsInPoly(p, polygon) {
 
 function changeDepot(){
   let depotID = document.getElementById("selectDepot").value;
-  console.log(depotID);
+  
 }
 
 function addArea(){
@@ -899,9 +901,9 @@ function doneAddArea(){
   }
   if (bayNameArray.indexOf(bay.toUpperCase())<0){
     depot.Area.push(new Area(bay.toUpperCase(),undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,gridAngle));
-    console.log(depot.Area)
+    
     bayNameArray.push(bay.toUpperCase())
-    console.log(bayNameArray)
+    
     for (let i=0; i<selection.length; i++){
       let x = selection[i].x;
       let y = selection[i].y;
@@ -980,56 +982,79 @@ function changeGridAngle(){
   redraw();
 }
 
-function exportJson(init=true){
+function exportJson(full=true){
   let newArea = []
   // area = [];
   for (let i=0; i<bayNameArray.length; i++){
     let origin = findAreaOrigin(bayNameArray[i])
     let id = origin.ground;
+    if (depot.Area[i].x_flip){
+      if (!origin.orient){
+        
+        origin.position.y += origin.hei+1;
+      }else{
+        
+        origin.position.x += origin.wid+1;
+      }
+    }
+    if (depot.Area[i].y_flip){
+      if (!origin.orient){
+        
+        origin.position.x += origin.wid+1;
+      }else{
+        
+        origin.position.y += origin.hei+1;
+      }
+    }
     let p = gridMapingTranspose(origin.position, origin.orient);
     let dif;
     if (!origin.orient){
       dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
       let x = ground[id].offsetX + p.x + dif.x;
       let y = ground[id].offsetY + p.y + dif.y;
-      console.log(origin.orient)
-      console.log(depot.Area[i].orient)
+      
+      
       newArea.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle, depot.Area[i].x_flip, depot.Area[i].y_flip, depot.Area[i].one_face, origin.hei, origin.wid, depot.Area[i].orient));
     }else{
       dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
       let x = ground[id].offsetX + p.x + dif.x;
       let y = ground[id].offsetY + p.y + dif.y;
-      console.log(origin.orient)
-      console.log(depot.Area[i].orient)
+      
+      
       newArea.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle + PI/2, depot.Area[i].x_flip, depot.Area[i].y_flip, depot.Area[i].one_face, origin.wid, origin.hei,depot.Area[i].orient));
     }    
     for (let t=0; t<teuArray.length; t++){
       if (teuArray[t].bay_name == bayNameArray[i]){
         if (!teuArray[t].orient){
-          teuArray[t].bay = teuArray[t].x - origin.position.x + 1;
-          teuArray[t].row = (teuArray[t].y - origin.position.y) + 1;
+          teuArray[t].row = abs(teuArray[t].x - origin.position.x + 1);
+          teuArray[t].bay = abs(teuArray[t].y - origin.position.y + 1);
         }else{
-          teuArray[t].row = teuArray[t].x - origin.position.x + 1;
-          teuArray[t].bay = (teuArray[t].y - origin.position.y) + 1;
+          teuArray[t].bay = abs(teuArray[t].x - origin.position.x + 1);
+          teuArray[t].row = abs(teuArray[t].y - origin.position.y + 1);
         }
       }
     }
   }    
   depot.teuArray = teuArray;
   depot.Area = newArea;
-  if (!init){
-    // delete depot.ground;
-    // depot.ground = [];
-    console.log(simplifyJSON(depot));
-    // depot.ground = ground;
+  if (!full){
+    console.log("SIMPLIFIED")
+    console.log(JSON.stringify(simplifyJSON(depot)));
+    initTeuArray();
   }else{
+    console.log("FULL")
     console.log(depot);
   }
   redraw();
 }
 
 function simplifyJSON(dp){
-  delete dp.ground;
+  // delete dp.ground;
+  for (let i=0; i<dp.ground.length; i++){
+    delete dp.ground[i].horizontalArray;
+    delete dp.ground[i].verticalArray;
+  }
+  delete dp.teuArray;
   return dp;
 }
 
@@ -1047,8 +1072,8 @@ function one_face(){
   const index = depot.Area.findIndex(object => {
     return object.name == line;
   });
-  console.log(index)
-  console.log(document.getElementById("check_1mat").checked);
+  
+  
   depot.Area[index].one_face = !depot.Area[index].one_face;
 
 }
@@ -1058,7 +1083,7 @@ function changeXFlip(){
   const index = depot.Area.findIndex(object => {
     return object.name == line;
   });
-  console.log(index)
+  
   depot.Area[index].x_flip = document.getElementById("check_x_flip").checked
 }
 
@@ -1067,6 +1092,13 @@ function changeYFlip(){
   const index = depot.Area.findIndex(object => {
     return object.name == line;
   });
-  console.log(index)
+  
   depot.Area[index].y_flip = document.getElementById("check_y_flip").checked;
+
+}
+
+function changeLinePropertiesState(stt){
+  document.getElementById("check_1mat").disabled = stt;
+  document.getElementById("check_x_flip").disabled = stt;
+  document.getElementById("check_y_flip").disabled = stt;
 }

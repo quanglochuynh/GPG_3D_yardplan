@@ -41,13 +41,15 @@
                 <input class="checkbox" id="check_1mat" type="checkbox" onchange="one_face()">
                 <label for="check_1mat">Line 1 mặt</label>
                 <input class="checkbox" id="check_x_flip" type="checkbox" onchange="changeXFlip()">
-                <label for="check_x_flip">xflip</label>
+                <label for="check_x_flip">Flip Bay</label>
                 <input class="checkbox" id="check_y_flip" type="checkbox" onchange="changeYFlip()">
-                <label for="check_y_flip">yflip</label>
+                <label for="check_y_flip">Flip Row</label>
             </div>
             <input class="toolbar_button" id="btnReset" type="button" value="Reset" onclick="resetArea()">
             <input class="toolbar_button" id="btnDoneAddArea" type="button" value="Set" onclick="doneAddArea()">
-            <input class="toolbar_button" id="btnExportJson" type="button" value="Export" onclick="exportJson(false)">
+            <input class="toolbar_button" id="btnExportJson" type="button" value="Export Simplified" onclick="exportJson(false)">
+            <input class="toolbar_button" id="btnExportJsonFull" type="button" value="Export Full" onclick="exportJson()">
+
         </div> 
     </div>
     <div class="p5canvas" id="main_canvas"></div>

@@ -78,35 +78,59 @@ class Teu{
 }
 
 function preload(){
-  let dPath = path[depotID];
-  $.getJSON(dPath, function(data){
-    depot = data;
-    // 
-    ground = depot.ground;
-    teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
-    // 
-    $.getJSON(teupath,function(json){
-      teuArray = json;
-      init()
-      // 
+  // let dPath = path[depotID];
+  // $.getJSON(dPath, function(data){
+  //   depot = data;
+  //   // 
+  //   ground = depot.ground;
+  //   teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
+  //   // 
+  //   $.getJSON(teupath,function(json){
+  //     teuArray = json;
+  //     init()
+  //     // 
       
-    })
-    // 
-    if (teuArray===undefined){
-      teuArray = [];
-      init();
-    }
-  })
+  //   })
+  //   // 
+  //   if (teuArray===undefined){
+  //     teuArray = [];
+  //     init();
+  //   }
+  // })
+  changeDepot();
 }
 
-// function preload(){
-//   for (let i=0; i<path.length; i++){
-//     $.getJSON(path[i], function(data){loadDepot(data)})
+// async function preload(){
+//   depotID = 0;
+//   await batchLoadDepot();
+//   depotID = 0;
+//   await batchLoadTeu();
+
+
+// }
+
+// function batchLoadDepot(){
+//   if (depotID=path.length){
+//     return;
+//   }else{
+//     let dPath = path[depotID];
+//     $.getJSON(dPath,function(json){
+//       depotArray.push(json);
+//     })
+//     depotID++;
+//     batchLoadDepot()
 //   }
-//   for (let i=0; i<path.length; i++){
-//     let dPath = path[i]
+// }
+// function batchLoadTeu(){
+//   if (depotID=path.length){
+//     return;
+//   }else{
 //     let teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
-//     $.getJSON(teupath, function(data){loadTeu(data)})
+//     $.getJSON(teupath,function(json){
+//       depotArray.push(json);
+//     })
+//     depotID++;
+//     batchLoadDepot()
 //   }
 // }
 
@@ -299,26 +323,18 @@ function drawTeu(){
       if (scaleFactor>1){
         fill(0);
         noStroke();
-        // text(teuArray[i].num_of_tier, p.x + depot.contWidth/2, p.y+depot.contLength/2)
-        textSize(10)
-        text(teuArray[i].bay + " " + teuArray[i].row, p.x + depot.contWidth/2, p.y+depot.contLength/2)
+        text(teuArray[i].num_of_tier, p.x + depot.contWidth/2, p.y+depot.contLength/2)
+        // textSize(10)
+        // text(teuArray[i].bay + " " + teuArray[i].row, p.x + depot.contWidth/2, p.y+depot.contLength/2)
       }
     }else{
       rect(p.x, p.y, depot.contLength, depot.contWidth);
       if (scaleFactor>1){
         noStroke();
         fill(0)
-        // text(teuArray[i].num_of_tier, p.x + depot.contLength/2, p.y+depot.contWidth/2)
-        text(teuArray[i].bay + " " + teuArray[i].row, p.x + depot.contLength/2, p.y+depot.contWidth/2)
+        text(teuArray[i].num_of_tier, p.x + depot.contLength/2, p.y+depot.contWidth/2)
+        // text(teuArray[i].bay + " " + teuArray[i].row, p.x + depot.contLength/2, p.y+depot.contWidth/2)
 
-      }
-    }
-    if (teuArray[i].bay == 1){
-      if (teuArray[i].row == 1){
-        noStroke();
-        fill(0);  
-        textSize(depot.contWidth*2)
-        text(teuArray[i].bay_name,p.x-(depot.contWidth), p.y-(depot.contWidth));
       }
     }
     pop();
@@ -335,21 +351,79 @@ function drawLine(){
     translate(depot.Area[i].x_coor, depot.Area[i].y_coor);
     rotate(-depot.Area[i].angle);
 
-    stroke("BLUE")
     strokeWeight(depot.contGap)
-    // rect(0,0, (1-2*depot.Area[i].orient) * depot.Area[i].num_row *depot.contWidth, (depot.Area[i].num_bay)*(depot.contLength+depot.contGap))
+    circle(0,0,30) 
+    noStroke();
+    fill(0);  
+    textSize(depot.contWidth*2)
+    text(depot.Area[i].name,0,0);
+    // translate(depot.contWidth,0)
+    // translate(0,-depot.contLength-2*depot.contGap);
+    stroke("RED");
+    let l = depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap
+    let w = (depot.contWidth*(depot.Area[i].num_row));
     if (depot.Area[i].x_flip){
-      // line(0,0,0, -((depot.Area[i].num_bay+1)*depot.contLength+(depot.Area[i].num_bay+1)*depot.contGap))
-      translate(0,-(depot.Area[i].num_bay+2)*depot.contLength+(depot.Area[i].num_bay-2)*depot.contGap)
-      line(0,0,0, (depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap))
-      if (!depot.Area[i].one_face){
-        translate(depot.contWidth*depot.Area[i].num_row, 0)
-        line(0,0,0, (depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap))
+      stroke("blue")
+      translate(0,-l-(depot.contLength+2*depot.contGap));
+    }
+    if ((depot.Area[i].y_flip)){
+      if (!depot.Area[i].orient){
+        stroke("green")
+        translate(-w - depot.contWidth,0)
+      }else{
+        stroke("yellow")
+        translate((w+depot.contWidth),0)
       }
-    }else{
-      line(0,0,0, depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap)
-      if (!depot.Area[i].one_face){
-        line((1-2*depot.Area[i].orient) * depot.Area[i].num_row *depot.contWidth,0,(1-2*depot.Area[i].orient) * depot.Area[i].num_row *depot.contWidth, depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap)
+    }
+    // if (depot.Area[i].orient){
+    //   circle(0,0,30);
+    //   circle(0,l,20);
+    //   circle(-w,l,20);
+    //   circle(-w,0,20);
+    // }else{
+    //   circle(0,0,30);
+    //   circle(0,l,20);
+    //   circle(w,l,20);
+    //   circle(w,0,20);
+    // }
+
+    // if (depot.Area[i].orient){
+    //   translate(w,0)
+    // }
+    // circle(0,0,30);
+    // circle(0,l,20);
+    // circle(w,l,20);
+    // circle(w,0,20);
+
+    if (depot.Area[i].one_face){ //Có 1 mặt
+      if (depot.Area[i].y_flip){ // Có flip row
+        if (depot.Area[i].orient){  // cont ngang
+          // circle(0,0,30);
+          // circle(0,l,20);
+          line(0,0,0,l)
+          // circle(-w,l,20);
+          // circle(-w,0,20);
+        }else{
+          // circle(0,0,30);
+          // circle(0,l,20);
+          line(0,0,0,l)
+          // circle(w,l,20);
+          // circle(w,0,20);
+        }
+      }else{  // Không flip row
+        if (depot.Area[i].orient){  // cont ngang
+          // circle(0,0,30);
+          // circle(0,l,20);
+          // circle(-w,l,20);
+          // circle(-w,0,20);
+          line(-w,l,-w,0)
+        }else{
+          // circle(0,0,30);
+          // circle(0,l,20);
+          // circle(w,l,20);
+          // circle(w,0,20);
+          line(w,l,w,0)
+        } 
       }
     }
     pop();
@@ -804,7 +878,6 @@ function findAreaOrigin(area){
       g = teuArray[t];
     }
   }
-
   return {position: {x:minX, y:minY}, orient: g.orient, ground: parseInt(g.ground), wid: maxX-minX+1, hei: maxY-minY+1};
 }
 
@@ -873,10 +946,10 @@ function pointIsInPoly(p, polygon) {
 
 // DOM EVENTS
 
-function changeDepot(){
-  let depotID = document.getElementById("selectDepot").value;
+// function changeDepot(){
+//   let depotID = document.getElementById("selectDepot").value;
   
-}
+// }
 
 function addArea(){
   showGrid = document.getElementById("checkGrid").checked;
@@ -990,47 +1063,38 @@ function exportJson(full=true){
     let id = origin.ground;
     if (depot.Area[i].x_flip){
       if (!origin.orient){
-        
         origin.position.y += origin.hei+1;
       }else{
-        
         origin.position.x += origin.wid+1;
       }
     }
     if (depot.Area[i].y_flip){
       if (!origin.orient){
-        
         origin.position.x += origin.wid+1;
       }else{
-        
         origin.position.y += origin.hei+1;
       }
     }
     let p = gridMapingTranspose(origin.position, origin.orient);
-    let dif;
+
+    let dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle);
+    let x = ground[id].offsetX + p.x + dif.x;
+    let y = ground[id].offsetY + p.y + dif.y;
+
     if (!origin.orient){
-      dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
-      let x = ground[id].offsetX + p.x + dif.x;
-      let y = ground[id].offsetY + p.y + dif.y;
-      
-      
       newArea.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle, depot.Area[i].x_flip, depot.Area[i].y_flip, depot.Area[i].one_face, origin.hei, origin.wid, depot.Area[i].orient));
     }else{
-      dif = rotateDiff(createVector(p.x, p.y), -ground[origin.ground].angle)
-      let x = ground[id].offsetX + p.x + dif.x;
-      let y = ground[id].offsetY + p.y + dif.y;
-      
-      
       newArea.push(new Area(bayNameArray[i], x, y, ground[origin.ground].angle + PI/2, depot.Area[i].x_flip, depot.Area[i].y_flip, depot.Area[i].one_face, origin.wid, origin.hei,depot.Area[i].orient));
-    }    
+    }
+
     for (let t=0; t<teuArray.length; t++){
       if (teuArray[t].bay_name == bayNameArray[i]){
         if (!teuArray[t].orient){
-          teuArray[t].row = abs(teuArray[t].x - origin.position.x + 1);
-          teuArray[t].bay = abs(teuArray[t].y - origin.position.y + 1);
+          teuArray[t].row = abs(teuArray[t].x - (origin.position.x - 1));
+          teuArray[t].bay = abs(teuArray[t].y - (origin.position.y - 1));
         }else{
-          teuArray[t].bay = abs(teuArray[t].x - origin.position.x + 1);
-          teuArray[t].row = abs(teuArray[t].y - origin.position.y + 1);
+          teuArray[t].bay = abs(teuArray[t].x - (origin.position.x - 1));
+          teuArray[t].row = abs(teuArray[t].y - (origin.position.y - 1));
         }
       }
     }
@@ -1058,13 +1122,25 @@ function simplifyJSON(dp){
   return dp;
 }
 
-function changeDepot(){
+async function changeDepot(){
   let id = document.getElementById('select_depot').value
   depotID = id;
-  depot = depotArray[depotID];
-  ground = depot.ground;
-  teuArray = teuArrayList[depotID]
-  init()
+  // depot = depotArray[depotID];
+  // ground = depot.ground;
+  // teuArray = teuArrayList[depotID]
+  // init()
+  let dPath = path[depotID];
+  let teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
+  console.log(dPath);
+  console.log(teupath);
+  await $.getJSON(dPath, function(json){
+    depot = json;
+    ground = depot.ground;
+  })
+  await $.getJSON(teupath, function(json){
+    teuArray = json;
+  })
+  init();
 }
 
 function one_face(){
@@ -1083,8 +1159,8 @@ function changeXFlip(){
   const index = depot.Area.findIndex(object => {
     return object.name == line;
   });
-  
   depot.Area[index].x_flip = document.getElementById("check_x_flip").checked
+  exportJson();
 }
 
 function changeYFlip(){
@@ -1092,9 +1168,8 @@ function changeYFlip(){
   const index = depot.Area.findIndex(object => {
     return object.name == line;
   });
-  
   depot.Area[index].y_flip = document.getElementById("check_y_flip").checked;
-
+  exportJson();
 }
 
 function changeLinePropertiesState(stt){

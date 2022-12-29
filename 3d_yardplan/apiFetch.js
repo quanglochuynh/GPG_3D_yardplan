@@ -26,19 +26,6 @@ async function getContArray(dpName){
             "data": data
         })
     }
-    const tk = await fetch(tokenURL, tokenAPI).then(response => response.json())
-    let yardPlanAPI = {
-        method:"POST",
-        headers: {
-            "Content-Type": "application/json;charset=utf-8"
-        },
-        body: JSON.stringify({
-            "token":tk.token,
-            "reqtime":tk.reqtime,
-            "data":data,
-            "appversion":17
-        })
-    }
     var ci=1;
     const res = await batchLoadCont(tokenAPI,ci,myDepot);
     // console.log("done", cArray)

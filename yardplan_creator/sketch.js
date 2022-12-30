@@ -344,6 +344,7 @@ function drawTeu(){
 }
 
 function drawLine(){
+  resetMatrix();
   for (let i=0; i<depot.Area.length; i++){
     push();
     translate(width/2+depot.offset.x,height/2 + depot.offset.y);
@@ -362,19 +363,19 @@ function drawLine(){
     stroke("RED");
     let l = depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap
     let w = (depot.contWidth*(depot.Area[i].num_row));
-    if (depot.Area[i].x_flip){
-      stroke("blue")
-      translate(0,-l-(depot.contLength+2*depot.contGap));
-    }
-    if ((depot.Area[i].y_flip)){
-      if (!depot.Area[i].orient){
-        stroke("green")
-        translate(-w - depot.contWidth,0)
-      }else{
-        stroke("yellow")
-        translate((w+depot.contWidth),0)
-      }
-    }
+    // if (depot.Area[i].x_flip){
+    //   stroke("blue")
+    //   translate(0,-l-(depot.contLength+2*depot.contGap));
+    // }
+    // if ((depot.Area[i].y_flip)){
+    //   if (!depot.Area[i].orient){
+    //     stroke("green")
+    //     translate(-w - depot.contWidth,0)
+    //   }else{
+    //     stroke("yellow")
+    //     translate((w+depot.contWidth),0)
+    //   }
+    // }
     // if (depot.Area[i].orient){
     //   circle(0,0,30);
     //   circle(0,l,20);
@@ -396,8 +397,8 @@ function drawLine(){
     // circle(w,0,20);
 
     if (depot.Area[i].one_face){ //Có 1 mặt
-      if (depot.Area[i].y_flip){ // Có flip row
-        if (depot.Area[i].orient){  // cont ngang
+      if (!depot.Area[i].y_flip){ // Có flip row
+        if (!depot.Area[i].orient){  // cont ngang
           // circle(0,0,30);
           // circle(0,l,20);
           line(0,0,0,l)
@@ -411,7 +412,7 @@ function drawLine(){
           // circle(w,0,20);
         }
       }else{  // Không flip row
-        if (depot.Area[i].orient){  // cont ngang
+        if (!depot.Area[i].orient){  // cont ngang
           // circle(0,0,30);
           // circle(0,l,20);
           // circle(-w,l,20);

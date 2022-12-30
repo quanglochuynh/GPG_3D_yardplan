@@ -316,7 +316,7 @@ function drawTeu(){
     gridAngle = teuArray[i].orient
     let p = gridMapingTranspose(teuArray[i], teuArray[i].orient);
     setColor(teuArray[i].opt)
-    stroke(0)
+    stroke(0);
     textSize(depot.contWidth)
     if (teuArray[i].orient==0){
       rect(p.x, p.y, depot.contWidth, depot.contLength);

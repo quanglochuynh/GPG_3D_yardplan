@@ -1,5 +1,71 @@
 [
     {
+        "x": 28,
+        "y": 1,
+        "orient": false,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "F",
+        "bay": 1,
+        "row": 1,
+        "ground": 0
+    },
+    {
+        "x": 28,
+        "y": 2,
+        "orient": false,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "F",
+        "bay": 2,
+        "row": 1,
+        "ground": 0
+    },
+    {
+        "x": 28,
+        "y": 3,
+        "orient": false,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "F",
+        "bay": 3,
+        "row": 1,
+        "ground": 0
+    },
+    {
+        "x": 28,
+        "y": 4,
+        "orient": false,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "F",
+        "bay": 4,
+        "row": 1,
+        "ground": 0
+    },
+    {
+        "x": 28,
+        "y": 5,
+        "orient": false,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "F",
+        "bay": 5,
+        "row": 1,
+        "ground": 0
+    },
+    {
+        "x": 28,
+        "y": 6,
+        "orient": false,
+        "opt": "YML",
+        "num_of_tier": 6,
+        "bay_name": "F",
+        "bay": 6,
+        "row": 1,
+        "ground": 0
+    },
+    {
         "x": 4,
         "y": 6,
         "orient": false,

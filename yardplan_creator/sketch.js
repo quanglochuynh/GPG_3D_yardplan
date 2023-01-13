@@ -41,7 +41,7 @@ const path = [
   './data7/tkd.json'
 ]
 
-let depotID = 1;
+let depotID = 2;
 
 class Point{
   constructor(x,y){
@@ -353,29 +353,30 @@ function drawLine(){
     rotate(-depot.Area[i].angle);
 
     strokeWeight(depot.contGap)
-    circle(0,0,30) 
+    // circle(0,0,30) 
     noStroke();
     fill(0);  
     textSize(depot.contWidth*2)
     text(depot.Area[i].name,0,0);
+    pop();continue;
     // translate(depot.contWidth,0)
     // translate(0,-depot.contLength-2*depot.contGap);
     stroke("RED");
     let l = depot.Area[i].num_bay*depot.contLength+(depot.Area[i].num_bay-1)*depot.contGap
     let w = (depot.contWidth*(depot.Area[i].num_row));
-    // if (depot.Area[i].x_flip){
-    //   stroke("blue")
-    //   translate(0,-l-(depot.contLength+2*depot.contGap));
-    // }
-    // if ((depot.Area[i].y_flip)){
-    //   if (!depot.Area[i].orient){
-    //     stroke("green")
-    //     translate(-w - depot.contWidth,0)
-    //   }else{
-    //     stroke("yellow")
-    //     translate((w+depot.contWidth),0)
-    //   }
-    // }
+    if (depot.Area[i].x_flip){
+      stroke("blue")
+      translate(0,-l-(depot.contLength+2*depot.contGap));
+    }
+    if ((depot.Area[i].y_flip)){
+      if (!depot.Area[i].orient){
+        stroke("green")
+        translate(-w - depot.contWidth,0)
+      }else{
+        stroke("yellow")
+        translate((w+depot.contWidth),0)
+      }
+    }
     // if (depot.Area[i].orient){
     //   circle(0,0,30);
     //   circle(0,l,20);
@@ -399,31 +400,31 @@ function drawLine(){
     if (depot.Area[i].one_face){ //Có 1 mặt
       if (!depot.Area[i].y_flip){ // Có flip row
         if (!depot.Area[i].orient){  // cont ngang
-          // circle(0,0,30);
-          // circle(0,l,20);
-          line(0,0,0,l)
-          // circle(-w,l,20);
-          // circle(-w,0,20);
+          circle(0,0,30);
+          circle(0,l,20);
+          // line(0,0,0,l)
+          circle(-w,l,20);
+          circle(-w,0,20);
         }else{
-          // circle(0,0,30);
-          // circle(0,l,20);
-          line(0,0,0,l)
-          // circle(w,l,20);
-          // circle(w,0,20);
+          circle(0,0,30);
+          circle(0,l,20);
+          // line(0,0,0,l)
+          circle(w,l,20);
+          circle(w,0,20);
         }
       }else{  // Không flip row
         if (!depot.Area[i].orient){  // cont ngang
-          // circle(0,0,30);
-          // circle(0,l,20);
-          // circle(-w,l,20);
-          // circle(-w,0,20);
-          line(-w,l,-w,0)
+          circle(0,0,30);
+          circle(0,l,20);
+          circle(-w,l,20);
+          circle(-w,0,20);
+          // line(-w,l,-w,0)
         }else{
-          // circle(0,0,30);
-          // circle(0,l,20);
-          // circle(w,l,20);
-          // circle(w,0,20);
-          line(w,l,w,0)
+          circle(0,0,30);
+          circle(0,l,20);
+          circle(w,l,20);
+          circle(w,0,20);
+          // line(w,l,w,0)
         } 
       }
     }

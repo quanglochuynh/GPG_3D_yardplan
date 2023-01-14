@@ -36,29 +36,12 @@ const states = [                      // Cấu hình camera mặc định
 
 // p5js main functions 
 function preload(){                    // Hàm load trước dữ liệu vào 2 biến cArray và depot
-  let path = [
-    './data/cont3.json',
-    '../../yardplan_creator/data/etdv2.json'
-  ];
-  // let path = [
-  //   './data4/cont4.json',
-  //   '../../yardplan_creator/data4/cld.json'
-  // ];
-  // let path = [
-  //   './data2/cont2.json',
-  //   '../../yardplan_creator/data2/std.json'
-  // ];
 
-  // let path = [
-  //   './data4/cont4.json',
-  //   '../../yardplan_creator/data2/std.json'
-  // ];
-
-  cArray = [];
+  let dpName = ["ETD", "CSD", "TBD", "CLD", "CPD", "CTC", "GKP"]
   async function load(){
-    const res2 = await $.getJSON(path[1], function(data){depot = data})
+    depot = await getDepotConfig("ETD")
     console.log(depot)
-    const res1 = await getContArray("ETD");
+    cArray = await getContArray("ETD");
     console.log(cArray)
     
     let k = [];
@@ -67,18 +50,12 @@ function preload(){                    // Hàm load trước dữ liệu vào 2 
       k.push(cArray[i]);
     }
     cArray = k;
-
     updateStat();
-
     processCont(cArray);
     init();
     loop();
   };
   load();
-
-    
-  
-
 }
 
 function setup() {                     // Cài đặt cơ bản của app

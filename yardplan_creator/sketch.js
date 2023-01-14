@@ -41,7 +41,7 @@ const path = [
   './data7/tkd.json'
 ]
 
-let depotID = 2;
+let currentDepotID = 2;
 
 class Point{
   constructor(x,y){
@@ -78,7 +78,7 @@ class Teu{
 }
 
 function preload(){
-  // let dPath = path[depotID];
+  // let dPath = path[currentDepotID];
   // $.getJSON(dPath, function(data){
   //   depot = data;
   //   // 
@@ -101,35 +101,35 @@ function preload(){
 }
 
 // async function preload(){
-//   depotID = 0;
+//   currentDepotID = 0;
 //   await batchLoadDepot();
-//   depotID = 0;
+//   currentDepotID = 0;
 //   await batchLoadTeu();
 
 
 // }
 
 // function batchLoadDepot(){
-//   if (depotID=path.length){
+//   if (currentDepotID=path.length){
 //     return;
 //   }else{
-//     let dPath = path[depotID];
+//     let dPath = path[currentDepotID];
 //     $.getJSON(dPath,function(json){
 //       depotArray.push(json);
 //     })
-//     depotID++;
+//     currentDepotID++;
 //     batchLoadDepot()
 //   }
 // }
 // function batchLoadTeu(){
-//   if (depotID=path.length){
+//   if (currentDepotID=path.length){
 //     return;
 //   }else{
 //     let teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
 //     $.getJSON(teupath,function(json){
 //       depotArray.push(json);
 //     })
-//     depotID++;
+//     currentDepotID++;
 //     batchLoadDepot()
 //   }
 // }
@@ -137,9 +137,9 @@ function preload(){
 function loadDepot(data){
   depotArray.push(data);
   if ((teuArrayList.length==path.length)&&(depotArray.length==path.length)&&(depot===undefined)){
-    depot = depotArray[depotID];
+    depot = depotArray[currentDepotID];
     ground = depot.ground;
-    teuArray = teuArrayList[depotID]
+    teuArray = teuArrayList[currentDepotID]
     init()
   }
 }
@@ -147,9 +147,9 @@ function loadDepot(data){
 function loadTeu(data){
   teuArrayList.push(data);
   if ((teuArrayList.length==path.length)&&(depotArray.length==path.length)){
-    depot = depotArray[depotID];
+    depot = depotArray[currentDepotID];
     ground = depot.ground;
-    teuArray = teuArrayList[depotID]
+    teuArray = teuArrayList[currentDepotID]
     init()
   }
 }
@@ -949,7 +949,7 @@ function pointIsInPoly(p, polygon) {
 // DOM EVENTS
 
 // function changeDepot(){
-//   let depotID = document.getElementById("selectDepot").value;
+//   let currentDepotID = document.getElementById("selectDepot").value;
   
 // }
 
@@ -1126,19 +1126,22 @@ function simplifyJSON(dp){
 
 async function changeDepot(){
   let id = document.getElementById('select_depot').value
-  depotID = id;
-  // depot = depotArray[depotID];
+  currentDepotID = id;
+  // depot = depotArray[currentDepotID];
   // ground = depot.ground;
-  // teuArray = teuArrayList[depotID]
+  // teuArray = teuArrayList[currentDepotID]
   // init()
-  let dPath = path[depotID];
+  let dPath = path[currentDepotID];
   let teupath = dPath.substring(0,dPath.indexOf('.json')) + '_reservation.json';
   console.log(dPath);
   console.log(teupath);
-  await $.getJSON(dPath, function(json){
-    depot = json;
-    ground = depot.ground;
-  })
+  // await $.getJSON(dPath, function(json){
+  //   depot = json;
+  //   ground = depot.ground;
+  // })
+  let dpName = ["ETD", "CSD", "TBD", "CLD", "CPD", "CTC", "GKP"]
+  depot = await getDepotConfig(dpName[currentDepotID])
+  ground = depot.ground;
   await $.getJSON(teupath, function(json){
     teuArray = json;
   })
@@ -1150,10 +1153,7 @@ function one_face(){
   const index = depot.Area.findIndex(object => {
     return object.name == line;
   });
-  
-  
   depot.Area[index].one_face = !depot.Area[index].one_face;
-
 }
 
 function changeXFlip(){

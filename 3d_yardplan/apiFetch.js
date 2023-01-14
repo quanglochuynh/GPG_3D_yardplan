@@ -1,10 +1,51 @@
-var sumAll;
-var cArray;
 const depotName = ["CHD", "CTC", "CSD", "GKP", "TBD", "PCD", "ECD", "ETD", "GKD", "CLD", "CPD"];
 const depotID   = [    0,     1,     3,     4,    18,    27,    28,    32,    38,    39,    40] 
 const tokenURL = 'https://apiedepot.gsotgroup.vn/api/data/util/gettoken'
 const yardPlanURL = 'https://apiedepot.gsotgroup.vn/api/data/process/GetDataYardPlan'
+const depotConfigURL = 'https://apiedepot.gsotgroup.vn/api/data/process/GetDepotConfigByDepotID'
 
+
+async function getDepotConfig(dpName){
+    cArray = [];
+    var myDepot = depotID[depotName.indexOf(dpName)]
+    var data = {
+        "DepotID": myDepot,
+    };
+    
+    var tokenAPI = {
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json;charset=utf-8"
+        },
+        body: JSON.stringify({
+            "reqid": "GetDepotConfigByDepotID",
+            "data": data
+        })
+    }
+    // var ci=1;
+    const new_tk = await fetch(tokenURL, tokenAPI).then(response => response.json())
+    // console.log(new_tk);
+    let depotConfigAPI = {
+            method:"POST",
+            headers: {
+                "Content-Type": "application/json;charset=utf-8"
+            },
+            body: JSON.stringify({
+                "token":new_tk.token,
+                "reqtime":new_tk.reqtime,
+                "data": JSON.stringify(data),
+                "appversion":24
+            })
+        }
+    const depotConfig = await fetch(depotConfigURL, depotConfigAPI).then(response => response.json())
+    // console.log(depotConfig)
+    console.log("status 200");
+    if (depotConfig.data.length==0){
+        console.log("No data on DB");
+        
+    }
+    return JSON.parse(depotConfig.data[0].Depot_Config.v);
+}
 
 async function getContArray(dpName){
     cArray = [];
@@ -39,6 +80,7 @@ async function getContArray(dpName){
         cArray[i].HangTauID = cArray[i].HangTauID.r;
         delete cArray[i].total_row;
     }
+    return cArray
 }
 
 async function batchLoadCont(tokenAPI,ci,myDepot){

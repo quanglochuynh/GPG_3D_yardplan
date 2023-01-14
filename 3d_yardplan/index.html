@@ -10,6 +10,16 @@
     <script src="https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.1/p5.easycam.min.js"></script>
 </head>
 <body>
+    <select name="select_depot" id="select_depot" onchange="changeDepot()">
+        <option value=0 selected="selected">ETD</option>
+        <option value=1>CSD</option>
+        <option value=2>TBD</option>
+        <option value=3>CLD</option>
+        <option value=4>CPD</option>
+        <option value=5>CTC</option>
+        <option value=6>TKD</option>
+    </select>
+    <label for="select_depot">Choose depot</label><br>
     <script src="../3d_yardplan/apiFetch.js"></script>
     <script src="sketch.js"></script>
 </body>

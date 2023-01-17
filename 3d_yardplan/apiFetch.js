@@ -3,7 +3,9 @@ const depotID   = [    0,     1,     3,     4,    18,    27,    28,    32,    38
 const tokenURL = 'https://apiedepot.gsotgroup.vn/api/data/util/gettoken'
 const yardPlanURL = 'https://apiedepot.gsotgroup.vn/api/data/process/GetDataYardPlan'
 const depotConfigURL = 'https://apiedepot.gsotgroup.vn/api/data/process/GetDepotConfigByDepotID'
-
+const loginURL = 'https://apiedepot.gsotgroup.vn/api/Users/Login'
+const teuArrayURL = 'https://apiedepot.gsotgroup.vn/api/data/process/GetDataTable'
+const tbname = "Qiu5/cH4+qip8kYFFBGmqA4etTF6KqA7YrFxBgiGZGw=";
 
 async function getDepotConfig(dpName){
     cArray = [];
@@ -117,3 +119,117 @@ async function batchLoadCont(tokenAPI,ci,myDepot){
     return batchLoadCont(tokenAPI,ci,myDepot);
 }
 
+// API yardplan setting
+
+async function login(user, pass){
+    let apiBody = {
+        "user": user,
+        "password": pass,
+        "appversion": 2023
+    }
+
+    let loginAPI = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json;charset=utf-8"
+        },
+        body: JSON.stringify(apiBody)
+    }
+
+    const res = await fetch(loginURL,loginAPI).then(response => response.json())
+    return res
+}
+// let tk = getToken("GetDataTable",{
+//     "tablename": "vw_eDepot_GPG_CMS_DepotYard_Setting",
+//     "moreExp": "depotID=1"
+// });
+
+// console.log(tk)
+
+async function getYardPlanSetting(user, pass, tablename, filter="1=1"){
+    let loginRes = await login(user,pass);
+    console.log(loginRes);
+
+    var tokenAPI = {
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json;charset=utf-8",
+            "Authorization": "Bearer " + loginRes.token
+        },
+        body: JSON.stringify({
+            "reqid": "GetDataTable",
+            "data": JSON.stringify({
+                "tablename": tablename,
+                "moreExp": filter
+            })
+        })
+    }
+    const new_tk = await fetch(tokenURL, tokenAPI).then(response => response.json())
+    console.log(new_tk)
+
+    let apiBody = {
+        "token": new_tk.token,
+        "reqtime": new_tk.reqtime,
+        "data": JSON.stringify({
+            "tablename": tablename,
+            "moreExp": filter,
+        }),
+        "appversion": 2023
+    }
+    let yardPlanSettingAPI = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + loginRes.token
+        },
+        body: JSON.stringify(apiBody)
+    }
+    const resData = await fetch(teuArrayURL, yardPlanSettingAPI).then(res => res.json())
+    console.log(resData)
+    return resData
+}
+
+async function queryDatabase(tablename){
+    let loginRes = await login(user,pass);
+    var tokenAPI = {
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json;charset=utf-8",
+            "Authorization": "Bearer " + loginRes.token
+        },
+        body: JSON.stringify({
+            "reqid": "GetDataTable",
+            "data": JSON.stringify({
+                "tablename": tablename
+               
+            })
+        })
+    }
+    const new_tk = await fetch(tokenURL, tokenAPI).then(response => response.json())
+    console.log(new_tk)
+
+    let apiBody = {
+        "token": new_tk.token,
+        "reqtime": new_tk.reqtime,
+        "data": JSON.stringify({
+            "tablename": tablename,
+            "row":JSON.stringify([
+                {
+                    // "ID:"
+                }
+            ])
+        }),
+        "appversion": 2023
+    }
+    let yardPlanSettingAPI = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + loginRes.token
+        },
+        body: JSON.stringify(apiBody)
+    }
+    const resData = await fetch(teuArrayURL, yardPlanSettingAPI).then(res => res.json())
+    console.log(resData)
+    return resData
+}

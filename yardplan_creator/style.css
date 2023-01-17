@@ -19,3 +19,56 @@ p5canvas{
     margin: 10px;
     padding: 10px;
 }
+
+table, th, td {
+    border:1px solid black;
+}
+.block_list{
+    display: inline;
+}
+
+.block_list .single_block_container{
+    display: inline;
+    width: max-content;
+    height: max-content;
+}
+
+.block_list .single_block_container .block_overview_div{
+    margin: 0pt, 10pt, 0, 10pt;
+    padding:0pt, 10pt, 0, 10pt;
+    background-color: rgb(0, 40, 100);
+    width: 100%;
+    height: fit-content;
+    display: flex;
+}
+
+.block_list .single_block_container .block_overview_div:hover{
+    background-color: rgb(59, 154, 188);
+}
+
+.block_list .single_block_container .tenblock{
+    color: aliceblue;
+    font-size:25pt;
+    padding: 10pt;
+    width:fit-content;
+}
+
+.block_list .single_block_container .propdiv{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+
+}
+
+.block_list .single_block_container .block_sep{
+    width: max-content;
+}
+
+.block_list .single_block_container .block_detail_div{
+    background-color: rgb(176, 176, 176);
+    margin: 5pt;
+    padding: 10pt;
+    display: inline-block;
+    width:inherit;
+}
+

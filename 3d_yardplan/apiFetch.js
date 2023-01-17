@@ -42,9 +42,9 @@ async function getDepotConfig(dpName){
     console.log("status 200");
     if (depotConfig.data.length==0){
         console.log("No data on DB");
-        
     }
     return JSON.parse(depotConfig.data[0].Depot_Config.v);
+    // return depotConfig
 }
 
 async function getContArray(dpName){
@@ -105,7 +105,7 @@ async function batchLoadCont(tokenAPI,ci,myDepot){
             "token":new_tk.token,
             "reqtime":new_tk.reqtime,
             "data":idata,
-            "appversion":17
+            "appversion":2023
         })
     }
     const contArray = await fetch(yardPlanURL, yardPlanAPI).then(response => response.json())

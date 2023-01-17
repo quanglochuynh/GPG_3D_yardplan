@@ -39,9 +39,9 @@ function preload(){                    // Hàm load trước dữ liệu vào 2 
 
   let dpName = ["ETD", "CSD", "TBD", "CLD", "CPD", "CTC", "GKP"]
   async function load(){
-    depot = await getDepotConfig("ETD")
+    depot = await getDepotConfig("CLD")
     console.log(depot)
-    cArray = await getContArray("ETD");
+    cArray = await getContArray("CLD");
     console.log(cArray)
     
     let k = [];

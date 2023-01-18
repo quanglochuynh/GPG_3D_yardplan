@@ -18,7 +18,7 @@ let countOpt;;
 let sumAll;
 let showGrid = true;
 let currentTeu;
-let teuArray;
+let teuArray = [];
 let teuArrayList=[];
 let activeGround = 0;
 let centerOffset;
@@ -40,7 +40,7 @@ const path = [
   './data7/tkd.json'
 ]
 
-var currentDepotID = 2;
+var currentDepotID = 0;
 
 
 

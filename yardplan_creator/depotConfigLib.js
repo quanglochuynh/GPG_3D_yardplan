@@ -801,6 +801,7 @@ function doneAddArea() {
         return;
     }
     if (bayNameArray.indexOf(bay.toUpperCase()) < 0) {
+        //tao bay moi
         depot.Area.push(new Area(bay.toUpperCase(), undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, gridAngle));
 
         bayNameArray.push(bay.toUpperCase())
@@ -822,6 +823,11 @@ function doneAddArea() {
                 ground[activeGround].horizontalArray[x][y].ground = activeGround;
             }
         }
+        updateVerticalHorizontal();
+        exportJson();
+
+        //create new area on vw_eDepot_GPG_CMS_DepotYard
+
     } else {
         for (let i = 0; i < selection.length; i++) {
             let x = selection[i].x;
@@ -852,11 +858,11 @@ function doneAddArea() {
                 }
             }
         }
+        updateVerticalHorizontal();
+        exportJson();
     }
-    updateVerticalHorizontal();
     updateStat();
     resetSelection();
-    exportJson();
 }
 
 function resetArea() {
@@ -957,20 +963,20 @@ async function changeDepot() {
     // ground = depot.ground;
     // teuArray = teuArrayList[currentDepotID]
     // init()
-    let dPath = path[currentDepotID];
-    let teupath = dPath.substring(0, dPath.indexOf('.json')) + '_reservation.json';
-    console.log(dPath);
-    console.log(teupath);
+    // let dPath = path[currentDepotID];
+    // let teupath = dPath.substring(0, dPath.indexOf('.json')) + '_reservation.json';
+    // console.log(dPath);
+    // console.log(teupath);
     // await $.getJSON(dPath, function(json){
     //   depot = json;
     //   ground = depot.ground;
     // })
-    let dpName = ["ETD", "CSD", "TBD", "CLD", "CPD", "CTC", "GKP"]
+    let dpName = ["ETD", "CSD", "TBD", "CLD", "CPD", "CTC", "GKP", "Test"]
     depot = await getDepotConfig(dpName[currentDepotID])
     ground = depot.ground;
-    await $.getJSON(teupath, function (json) {
-        teuArray = json;
-    })
+    // await $.getJSON(teupath, function (json) {
+    //     teuArray = json;
+    // })
     init();
 }
 

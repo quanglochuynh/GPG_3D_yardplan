@@ -16,44 +16,44 @@ let areaGrid = [];
 async function loadDepot(dp, callback){
     depot = await getDepotConfig(dp);
     ground = depot.ground;
-    let dPath =   './data/etdv2.json';
-    let teupath = dPath.substring(0, dPath.indexOf('.json')) + '_reservation.json';
-    await $.getJSON(teupath, function (json) {
-        teuArray = json;
-    })
+    // let dPath =   './data/etdv2.json';
+    // let teupath = dPath.substring(0, dPath.indexOf('.json')) + '_reservation.json';
+    // await $.getJSON(teupath, function (json) {
+    //     teuArray = json;
+    // })
     callback();
 }
 
-loadDepot("ETD", init);
+loadDepot(32, init);
 
 function init(){
-    updateStat();
-    initTeuArray();
-    processTeu()
-    // document.getElementById("depot_name").innerText = depot.name
-    // blocklist = document.getElementById("depot_block_list");
-    // for (let i=0; i<depot.Area.length; i++){
-    //     // console.log(depot.Area[i].name)
-    //     singleBlock = document.createElement('div')
-    //     singleBlock.setAttribute('class', 'single_block_container')
-    //     singleBlock.setAttribute('onclick', 'block_pressed('+ i +')')
-    //     singleBlock.innerHTML = `<div class="block_overview_div">
-    //     <div class="tenblock">` + depot.Area[i].name + `</div>
-    //     <div class="block_sep">
-    //     </div>
-    //     <div class="propdiv">
-    //         <div class="checkbox_div">
-    //             <input class="checkbox_all" type="checkbox">
-    //             <input class="checkbox_all" type="checkbox">
-    //         </div>
-    //     </div>
-    // </div>
-    // <div class="block_detail_div" id="block_detail_container_`+ i +`" style="display: none;">
-    //     <h2>Detail</h2>
-    // </div>`
-    //     // console.log(singleBlock)
-    //     blocklist.appendChild(singleBlock)
-    // }
+    // updateStat();
+    // initTeuArray();
+    // processTeu()
+    document.getElementById("depot_name").innerText = depot.name
+    blocklist = document.getElementById("depot_block_list");
+    for (let i=0; i<depot.Area.length; i++){
+        // console.log(depot.Area[i].name)
+        singleBlock = document.createElement('div')
+        singleBlock.setAttribute('class', 'single_block_container')
+        singleBlock.setAttribute('onclick', 'block_pressed('+ i +')')
+        singleBlock.innerHTML = `<div class="block_overview_div">
+        <div class="tenblock">` + depot.Area[i].name + `</div>
+        <div class="block_sep">
+        </div>
+        <div class="propdiv">
+            <div class="checkbox_div">
+                <input class="checkbox_all" type="checkbox">
+                <input class="checkbox_all" type="checkbox">
+            </div>
+        </div>
+    </div>
+    <div class="block_detail_div" id="block_detail_container_`+ i +`" style="display: none;">
+        <h2>Detail</h2>
+    </div>`
+        // console.log(singleBlock)
+        blocklist.appendChild(singleBlock)
+    }
 }
 
 function block_pressed(id){

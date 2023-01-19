@@ -1,5 +1,4 @@
-const depotName = ["CHD", "CTC", "CSD", "GKP", "TBD", "PCD", "ECD", "ETD", "GKD", "CLD", "CPD", "Test"];
-const depotID   = [    0,     1,     3,     4,    18,    27,    28,    32,    38,    39,    40,     15] 
+var depotID   = [    0,     1,     3,     4,    18,    27,    28,    32,    38,    39,    40,     15] 
 const tokenURL = 'https://apiedepot.gsotgroup.vn/api/data/util/gettoken'
 const yardPlanURL = 'https://apiedepot.gsotgroup.vn/api/data/process/GetDataYardPlan'
 const depotConfigURL = 'https://apiedepot.gsotgroup.vn/api/data/process/GetDepotConfigByDepotID'
@@ -8,13 +7,12 @@ const teuArrayURL = 'https://apiedepot.gsotgroup.vn/api/data/process/GetDataTabl
 const updateTableURL = 'https://apiedepot.gsotgroup.vn/api/data/process/UpdateData'
 const tbname = "Qiu5/cH4+qip8kYFFBGmqA4etTF6KqA7YrFxBgiGZGw=";
 const updateDepotConfigURl = "https://apiedepot.gsotgroup.vn/api/data/process/UpdateDepotConfigByDepotID"
-
-async function getDepotConfig(dpName){
+var li;
+async function getDepotConfigByDepotID(dpID){
+    console.log("getDepotConfig");
     cArray = [];
-    var myDepot = depotID[depotName.indexOf(dpName)]
-    console.log(myDepot)
     var data = {
-        "DepotID": myDepot,
+        "DepotID": dpID,
     };
     
     var tokenAPI = {
@@ -53,11 +51,10 @@ async function getDepotConfig(dpName){
     // return depotConfig
 }
 
-async function getContArray(dpName){
+async function getContArray(dpID){
     cArray = [];
-    var myDepot = depotID[depotName.indexOf(dpName)]
     var data = {
-        "moreExp": "DepotID=" + myDepot,
+        "moreExp": "DepotID=" + dpID,
         "sortExp":"ID",
         "current_index":1,
         "next_index":1
@@ -147,6 +144,7 @@ async function login(user, pass){
 }
 
 async function getCMSTable(tablename, filter="1=1",  logres=undefined, user=undefined, pass=undefined){
+    console.log("getCMSTable " + tablename);
     let loginRes = logres;
     if (loginRes===undefined){
         loginRes = await login(user,pass);
@@ -164,10 +162,9 @@ async function getCMSTable(tablename, filter="1=1",  logres=undefined, user=unde
                 "moreExp": filter
             })
         })
-    }
+    }   
+    // console.log(tokenAPI)
     const new_tk = await fetch(tokenURL, tokenAPI).then(response => response.json())
-    // console.log(new_tk)
-
     let apiBody = {
         "token": new_tk.token,
         "reqtime": new_tk.reqtime,
@@ -186,11 +183,11 @@ async function getCMSTable(tablename, filter="1=1",  logres=undefined, user=unde
         body: JSON.stringify(apiBody)
     }
     const resData = await fetch(teuArrayURL, yardPlanSettingAPI).then(res => res.json())
-    // console.log(resData)
     return resData
 }
 
 async function queryDatabase(jsonData, logres=undefined, user=undefined, pass=undefined){
+    console.log("queryDatabase");
     let loginRes = logres;
     if (loginRes===undefined){
         loginRes = await login(user,pass);
@@ -207,7 +204,7 @@ async function queryDatabase(jsonData, logres=undefined, user=undefined, pass=un
         })
     }
     const new_tk = await fetch(tokenURL, tokenAPI).then(response => response.json())
-    console.log(new_tk)
+    // console.log(new_tk)
 
     let apiBody = {
         "token": new_tk.token,
@@ -229,7 +226,7 @@ async function queryDatabase(jsonData, logres=undefined, user=undefined, pass=un
     return resData
 }
 
-async function getDepotArea(depotID, loginToken){
+async function getDepotArea(depotID, loginToken){           //depotyard
     let res1 = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard","Depot="+depotID,loginToken);
     return res1.data
 }
@@ -239,11 +236,10 @@ async function getDepotArea(depotID, loginToken){
 // GPG_CMS_Depot                                      Qd2GYXhV49FT/u2kN8MTNgN1JsXGktJxb7gQEh6jAPY=
 
 
-
 async function test(){
-    let li = await login("3307","P@ssw0rd300807");
+    li = await login("3307","P@ssw0rd300807");
     // let res = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard", "Depot=15",li)
-    // let res = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard_Setting","DepotYardID=56",li);
+    let res = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard_Setting",undefined,li);
     // let res = await getCMSTable("GPG_CMS_Depot", undefined,li)
     // let res = pushNewArea({
     //     "name": "TestAPI",
@@ -257,17 +253,21 @@ async function test(){
     //     "num_row": 8,
     //     "orient": false
     // },15,li)
-    // console.log(res)
+    // let res = updateDepotConfig(15, depot, li)
+    console.log(res)
     // let data = {
-    //     "tbname": "GY4EHGl/J7m1PZBHXIZi0CFPqCsTkuBE+cXl5iYRCuQ=",
-    //     "rows":[
+    //     "tbname": "Qiu5/cH4+qip8kYFFBGmqA4etTF6KqA7YrFxBgiGZGw=",
+    //     "rows": [
     //         {
-    //             "ID": "152",
-    //             "state": "3",
-    //             // "Depot_Config": "test"
+    //             "ID": 1,
+    //             "state": 1,
+    //             "ground_x": 1,
+    //             "ground_y": 1,
+    //             "ground": 0,
+    //             "orient": 0
     //         }
     //     ]
-    // };
+    // }
     // let res2 = await queryDatabase(data, li)
     // console.log(res2)
 
@@ -281,13 +281,38 @@ async function test(){
     // console.log(query)
     // let res3 = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard_Setting",query,li);
     // console.log(res3)
-    let res = await getTeuArray(15, li);
-    console.log(res);
+    // let res = await getTeuArray(15, li);
+    // console.log(res);
+    
+    
+    // let rows = []
+    // let teuArray = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard_Setting", "(DepotYardID=56) OR (DepotYardID=148)", li);
+    // teuArray.data.forEach(element => {
+    //     // query += "(DepotYardID=" + element.ID + ") OR "
+    //     rows.push({
+    //         "ID": element.ID,
+    //         "state":1,
+    //         "ground_x": 1,
+    //         "ground_y": 1,
+    //         "ground": 0,
+    //         "orient": 0,
+    //     })
+    //     // console.log(element.ID)
+    // });
+    // console.log(rows)
+
+    // let data = {
+    //     "tablename": "Qiu5/cH4+qip8kYFFBGmqA4etTF6KqA7YrFxBgiGZGw=",
+    //     "rows": JSON.stringify(rows[0]),
+    // }
+    // let res4 = await queryDatabase(data,li);
+    // console.log(res4)
+    // let res5 = await getHangtauID(li);
+    // console.log(res5);
+
 }
 
 // test();
-
-//DepotYardID=83 OR DepotYardID=84 OR DepotYardID=85 OR DepotYardID=117 OR DepotYardID=118 OR DepotYardID=86
 
 async function pushNewArea(area, depotID,li){
     let data = {
@@ -331,8 +356,9 @@ async function removeAreaByID(id, li){
 
 
 async function updateDepotConfig(depotID, depotConfig, loginRes){
+    console.log("updateDepotConfig")
     let jsonData = {
-        "Depot_Config": depotConfig + "",
+        "Depot_Config": JSON.stringify(depotConfig),
         "DepotID": depotID,
     };
 
@@ -348,7 +374,7 @@ async function updateDepotConfig(depotID, depotConfig, loginRes){
         })
     }
     const new_tk = await fetch(tokenURL, tokenAPI).then(response => response.json())
-    console.log(new_tk)
+    // console.log(new_tk)
 
     let apiBody = {
         "token": new_tk.token,
@@ -366,8 +392,16 @@ async function updateDepotConfig(depotID, depotConfig, loginRes){
     }
     // console.log(yardPlanSettingAPI);
     const resData = await fetch(updateDepotConfigURl, yardPlanSettingAPI).then(res => res.json())
-    console.log(resData)
+    // console.log(resData)
     return resData
+}
+
+function processNone(str){
+    if (str==''){
+        return 0;
+    }else{
+        return str;
+    }
 }
 
 async function getTeuArray(depotID, li){
@@ -377,14 +411,28 @@ async function getTeuArray(depotID, li){
     let areaArray = await getDepotArea(depotID, li);
     areaArray.forEach(element => {
         query += "(DepotYardID=" + element.ID + ") OR "
-        lineName.push()
+        lineName.push({id:element.ID, line:element.BlockName, kv:element.AreaName})
     });
     query = query.substring(0, query.length-4)
-    console.log(query)
+    // console.log(lineName)
     let res3 = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard_Setting",query,li);
-    console.log(res3.data);
+    // console.log(res3.data);
+
     res3.data.forEach(element => {
-        teuArray.push(new Teu(element.ground_x.v, element.ground_y.v, element.orient.v,element.HangTauID.v, element.TierSetting.v, element.DepotYardID.v, element.BaySetting.v, element.RowSetting_From.v, element.ground.v))
+        teuArray.push(new Teu(
+            element.ground_x.v, 
+            element.ground_y.v, 
+            element.orient.v,
+            element.HangTauID.v, 
+            element.TierSetting.v, 
+            lineName.find(o => o.id==element.DepotYardID.v).line.v,
+            element.DepotYardID.v, 
+            element.BaySetting.v, 
+            element.RowSetting_From.v, 
+            element.ground.v,
+            element.ID));
+        // teuArray.push(element)
+        // teuArray[teuArray.length-1].BlockName = lineName.find(o => o.id==element.DepotYardID.v).line;
     });
     return teuArray;
 }
@@ -394,15 +442,63 @@ async function pushTeuArrayByDepotID(depotID, teuArray, li){
 }
 
 async function removeAllTeuByDepotID(depotID, li){
-    let areaArray = await getDepotArea(depotID, li);
+    let areaArray = await getTeuArray(depotID, li);
     rows = [];
     areaArray.forEach(element => {
-        rows.push({"ID":element.ID, "state": 3})
+        rows.push({"ID":element.id, "state": 3})
     });
     let data = {
         "tbname": "Qiu5/cH4+qip8kYFFBGmqA4etTF6KqA7YrFxBgiGZGw=",
-        "rows":JSON.stringify(rows),
+        "rows":rows,
     }
+    console.log(data)
     let res2 = await queryDatabase(data, li)
     console.log(res2)
 }
+
+async function getHangtauID(li){
+    let res = await getCMSTable("vw_GPG_CMS_HangTau",undefined,li)
+    return res
+}
+
+async function getTeuByDepotLine(lineID, li){
+    let res = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard_Setting","DepotYardID=" + lineID,li)
+    return res
+}
+
+async function upSertTeuByID(teuID, teu,li){
+    let res = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard_Setting","ID="+teuID,li)
+    console.log(res);
+    if (res.data.length>0){
+        console.log("update");
+    }else{
+        console.log("insert");
+        let data = {
+            "tablename": "Qiu5/cH4+qip8kYFFBGmqA4etTF6KqA7YrFxBgiGZGw=",
+            "rows": [
+                {
+                    "ID": -1,
+                    "state": 2,
+                    "ID": "22",
+                    "DepotYardID": teu.bay_id,
+                    "BaySetting": teu.bay,
+                    "RowSetting_From":teu.row,
+                    "RowSetting_To": teu.row,
+                    "TierSetting": teu.num_of_tier,
+                    "HangTauID": "11",
+                    "PhanLoaiID": "1;3",
+                    "ContTypeSizeID": "67;49",
+                    "Ha": "True",
+                    "Nang": "True",
+                    "ground_x": teu.y,
+                    "ground_y": teu.x,
+                    "ground": teu.ground,
+                    "orient": "False",
+                }
+            ]
+        }
+        let res2 = await queryDatabase(data, li);
+        console.log(res2.result);
+    }
+}
+

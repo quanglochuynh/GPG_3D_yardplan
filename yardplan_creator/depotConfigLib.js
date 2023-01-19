@@ -13,16 +13,18 @@ class Area {
     }
 }
 class Teu {
-    constructor(x, y, o, opt=undefined, num_of_tier=undefined, bay_name=undefined, bay=undefined, row=undefined, ground=undefined) {
+    constructor(x, y, o, opt=undefined, num_of_tier=undefined, bay_name=undefined, bay_id=undefined, bay=undefined, row=undefined, ground=undefined, id=-1) {
         this.x = x;
         this.y = y;
         this.orient = o;      //0 vertical, 1 horizontal
         this.opt = opt;
         this.num_of_tier = num_of_tier;
         this.bay_name = bay_name;
+        this.bay_id = bay_id
         this.bay = bay;
         this.row = row;
         this.ground = ground;
+        this.id = id
     }
 }
 
@@ -639,7 +641,7 @@ function updateStat() {
             countOpt.push(0);
         }
         countOpt[idOpt] += teuArray[i].num_of_tier;
-        sumAll += teuArray[i].num_of_tier;
+        sumAll += parseInt(teuArray[i].num_of_tier);
     }
 }
 
@@ -889,7 +891,7 @@ function changeGridAngle() {
     redraw();
 }
 
-function exportJson(full = true) {
+async function exportJson(full = true) {
     let newArea = []
     // area = [];
     for (let i = 0; i < bayNameArray.length; i++) {
@@ -938,6 +940,13 @@ function exportJson(full = true) {
     if (!full) {
         console.log("SIMPLIFIED")
         console.log(JSON.stringify(simplifyJSON(depot)));
+        await updateDepotConfig(currentDepotID, depot, li)
+        let i=0;
+        await removeAllTeuByDepotID(currentDepotID,li)
+        while (i<teuArray.length){
+            await upSertTeuByID(currentDepotID, teuArray[i],li);
+            i++;
+        }
         initTeuArray();
     } else {
         console.log("FULL")
@@ -957,26 +966,15 @@ function simplifyJSON(dp) {
 }
 
 async function changeDepot() {
+    li = await login(username, password);
     let id = document.getElementById('select_depot').value
+    id = parseInt(id);
     currentDepotID = id;
-    // depot = depotArray[currentDepotID];
-    // ground = depot.ground;
-    // teuArray = teuArrayList[currentDepotID]
-    // init()
-    // let dPath = path[currentDepotID];
-    // let teupath = dPath.substring(0, dPath.indexOf('.json')) + '_reservation.json';
-    // console.log(dPath);
-    // console.log(teupath);
-    // await $.getJSON(dPath, function(json){
-    //   depot = json;
-    //   ground = depot.ground;
-    // })
-    let dpName = ["ETD", "CSD", "TBD", "CLD", "CPD", "CTC", "GKP", "Test"]
-    depot = await getDepotConfig(dpName[currentDepotID])
+    depot = await getDepotConfigByDepotID(id)
     ground = depot.ground;
-    // await $.getJSON(teupath, function (json) {
-    //     teuArray = json;
-    // })
+    console.log(depot)
+    teuArray = await getTeuArray(id, li)
+    // console.log(teuArray)
     init();
 }
 

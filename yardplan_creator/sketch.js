@@ -20,7 +20,7 @@ let showGrid = true;
 let currentTeu;
 let teuArray = [];
 let teuArrayList=[];
-let activeGround = 0;
+var activeGround = 0;
 let centerOffset;
 let area;
 let selectGround;
@@ -29,7 +29,11 @@ let buttonArray;
 let screenOffset, offsetStart;
 let screenCenter;
 let mouseOffset, mo;
+var li;
+var currentDepotID;
 
+const username = "3307";
+const  password = "P@ssw0rd300807";
 const path = [
   './data/etdv2.json',
   './data2/std.json',
@@ -65,6 +69,7 @@ function preload(){
   //     init();
   //   }
   // })
+  noLoop();
   changeDepot();
 }
 
@@ -155,11 +160,10 @@ function setup() {
 
 function draw(){
   background(250); 
+  stroke(0);
   textAlign(LEFT, BOTTOM);
   textSize(1.25*largeFontSize);
   text(depot.name,0,height)
-    // rotate(PI/2)
-
   if (showGrid){
     drawGrid();
   }
@@ -175,3 +179,4 @@ function draw(){
   drawButton()
 }
 
+// updateDepotConfig(15, JSON.stringify(depot), li)

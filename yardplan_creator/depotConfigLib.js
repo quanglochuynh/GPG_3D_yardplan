@@ -13,16 +13,16 @@ class Area {
     }
 }
 class Teu {
-    constructor(x, y, o) {
+    constructor(x, y, o, opt=undefined, num_of_tier=undefined, bay_name=undefined, bay=undefined, row=undefined, ground=undefined) {
         this.x = x;
         this.y = y;
         this.orient = o;      //0 vertical, 1 horizontal
-        this.opt = undefined;
-        this.num_of_tier = undefined;
-        this.bay_name = undefined;
-        this.bay = undefined;
-        this.row = undefined;
-        this.ground = undefined
+        this.opt = opt;
+        this.num_of_tier = num_of_tier;
+        this.bay_name = bay_name;
+        this.bay = bay;
+        this.row = row;
+        this.ground = ground;
     }
 }
 

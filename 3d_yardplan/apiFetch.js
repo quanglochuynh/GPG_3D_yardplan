@@ -281,6 +281,8 @@ async function test(){
     // console.log(query)
     // let res3 = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard_Setting",query,li);
     // console.log(res3)
+    let res = await getTeuArray(15, li);
+    console.log(res);
 }
 
 // test();
@@ -300,10 +302,25 @@ async function pushNewArea(area, depotID,li){
                 "BlockName": area.name,
                 "RowTo": area.num_row + "",
                 "TierTo": "7",
-                "KhongBatRule": "False",
+                "KhongBatRule": "True",
                 "LoaiBai": "2",
                 "STT": "0",
                 "ViTri": "1",
+            }
+        ]
+    };
+    // console.log(data);
+    let res2 = await queryDatabase(data, li)
+    console.log(res2)
+}
+
+async function removeAreaByID(id, li){
+    let data = {
+        "tbname": "GY4EHGl/J7m1PZBHXIZi0CFPqCsTkuBE+cXl5iYRCuQ=",
+        "rows":[
+            {
+                "ID": ""+id,
+                "state": "3",
             }
         ]
     };
@@ -353,4 +370,39 @@ async function updateDepotConfig(depotID, depotConfig, loginRes){
     return resData
 }
 
+async function getTeuArray(depotID, li){
+    let teuArray = []
+    let lineName = []
+    let query = "";
+    let areaArray = await getDepotArea(depotID, li);
+    areaArray.forEach(element => {
+        query += "(DepotYardID=" + element.ID + ") OR "
+        lineName.push()
+    });
+    query = query.substring(0, query.length-4)
+    console.log(query)
+    let res3 = await getCMSTable("vw_eDepot_GPG_CMS_DepotYard_Setting",query,li);
+    console.log(res3.data);
+    res3.data.forEach(element => {
+        teuArray.push(new Teu(element.ground_x.v, element.ground_y.v, element.orient.v,element.HangTauID.v, element.TierSetting.v, element.DepotYardID.v, element.BaySetting.v, element.RowSetting_From.v, element.ground.v))
+    });
+    return teuArray;
+}
 
+async function pushTeuArrayByDepotID(depotID, teuArray, li){
+
+}
+
+async function removeAllTeuByDepotID(depotID, li){
+    let areaArray = await getDepotArea(depotID, li);
+    rows = [];
+    areaArray.forEach(element => {
+        rows.push({"ID":element.ID, "state": 3})
+    });
+    let data = {
+        "tbname": "Qiu5/cH4+qip8kYFFBGmqA4etTF6KqA7YrFxBgiGZGw=",
+        "rows":JSON.stringify(rows),
+    }
+    let res2 = await queryDatabase(data, li)
+    console.log(res2)
+}

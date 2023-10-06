@@ -1,6 +1,6 @@
 # GPG depot management modules
 
-Module quản lý depot GPG
+Module quản lý depot GPG (Công ty Cổ phần Đối tác Chân thật)
 
 ## Authors
 
